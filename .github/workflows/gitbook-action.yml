@@ -12,4 +12,4 @@ jobs:
     - name: Gitbook Action           # https://github.com/ZanderZhao/gitbook-action/releases
       uses: ZanderZhao/gitbook-action@master  # -> or ZanderZhao/gitbook-action@master.  If not use master click above, use latest please 
       with:                                   #    or fork this repo and use YourName/gitbook-action@master
-        token: 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
+        token: ${{ secrets.PERSONAL_TOKEN }} 
