@@ -5,11 +5,15 @@ on:
       - main  # trigger branch
 jobs:
   build:
+    name: Build Gitbook
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout action
-      uses: actions/checkout@v2
-    - name: Gitbook Action           # https://github.com/ZanderZhao/gitbook-action/releases
-      uses: ZanderZhao/gitbook-action@master  # -> or ZanderZhao/gitbook-action@master.  If not use master click above, use latest please 
-      with:                                   #    or fork this repo and use YourName/gitbook-action@master
-        token: ${{ secrets.PERSONAL_TOKEN }} 
+      # Check out the repo first
+      - name: Checkout code
+        uses: actions/checkout@v2
+      # Run this action to publish gitbook
+      - name: Publish
+        uses: tuliren/publish-gitbook@v1.0.0
+        with:
+          # specify either github_token or personal_token
+          github_token: ${{ secrets.GITHUB_TOKEN }}
