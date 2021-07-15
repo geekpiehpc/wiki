@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
       # Run this action to publish gitbook
       - name: Publish
-        uses: murez/publish-gitbook@master
+        uses: geekpiehpc/publish-gitbook@master
         with:
           # specify either github_token or personal_token
           github_token: ${{ secrets.GITHUB_TOKEN }}
