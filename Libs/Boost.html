@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Hpl Dat · GitBook</title>
+        <title>Boost · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../DevOps/" />
     
-    
-    <link rel="prev" href="hpcg-dat.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -377,9 +375,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="./">
+        <li class="chapter " data-level="1.4" data-path="../Benchmark/">
             
-                <a href="./">
+                <a href="../Benchmark/">
             
                     
                     Benchmark
@@ -391,9 +389,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="hpcg-dat.html">
+        <li class="chapter " data-level="1.4.1" data-path="../Benchmark/hpcg-dat.html">
             
-                <a href="hpcg-dat.html">
+                <a href="../Benchmark/hpcg-dat.html">
             
                     
                     Hpcg Dat
@@ -404,9 +402,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.2" data-path="hpl-dat.html">
+        <li class="chapter " data-level="1.4.2" data-path="../Benchmark/hpl-dat.html">
             
-                <a href="hpl-dat.html">
+                <a href="../Benchmark/hpl-dat.html">
             
                     
                     Hpl Dat
@@ -512,9 +510,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="../Libs/">
+        <li class="chapter " data-level="1.7" data-path="./">
             
-                <a href="../Libs/">
+                <a href="./">
             
                     
                     Libs
@@ -526,9 +524,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../Libs/Boost.html">
+        <li class="chapter active" data-level="1.7.1" data-path="Boost.html">
             
-                <a href="../Libs/Boost.html">
+                <a href="Boost.html">
             
                     
                     Boost
@@ -645,7 +643,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Hpl Dat</a>
+        <a href=".." >Boost</a>
     </h1>
 </div>
 
@@ -660,77 +658,27 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <!-- TITLE: HPL hpl.dat Config -->
-<!-- SUBTITLE: Ancestral hpl.dat config file -->
-<h1 id="hpl-dat-config-file">HPL .dat config file</h1>
-<h2 id="asc18">ASC18</h2>
-<p>The following is the HPL <code>.dat</code> configuration file template from ASC18.</p>
-<pre><code>HPLinpack benchmark input file
-Innovative Computing Laboratory, University of Tennessee
-HPL.out      output file name (if any)
-6            device out (6=stdout,7=stderr,file)
-1            # of problems sizes (N)
-67200 65280 62976 65280 96000 65280 38400 96000 102400 168960 153600 76800   142848 153600 142848 124416 96256 142848 124416 115200 110592 96256 Ns
-1             # of NBs
-384 768 384 768 1024 768 896 768 1024 512 384 640 768 896 960 1024 1152 1280 384 640 960 768 640 256  960 512 768 1152         NBs
-0            PMAP process mapping (0=Row-,1=Column-major)
-1            # of process grids (P x Q)
-2 1 2 1        Ps
-1 2 2 4        Qs
-16.0         threshold
-1            # of panel fact
-0 1 2        PFACTs (0=left, 1=Crout, 2=Right)
-1            # of recursive stopping criterium
-2 8          NBMINs (&gt;= 1)
-1            # of panels in recursion
-2            NDIVs
-1            # of recursive panel fact.
-0 1 2        RFACTs (0=left, 1=Crout, 2=Right)
-1            # of broadcast
-2 0 2          BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)
-1            # of lookahead depth
-0            DEPTHs (&gt;=0)
-1            SWAP (0=bin-exch,1=long,2=mix)
-192          swapping threshold
-1            L1 in (0=transposed,1=no-transposed) form
-0            U  in (0=transposed,1=no-transposed) form
-1            Equilibration (0=no,1=yes)
-8            memory alignment in double (&gt; 0)
-</code></pre><h2 id="asc20">ASC20</h2>
-<p>The following is the HPL <code>.dat</code> configuration file template from ASC20.
-Machine Spec : 8 Tesla V100</p>
-<pre><code>HPLinpack benchmark input file
-Innovative Computing Laboratory, University of Tennessee
-HPL.out      output file name (if any)
-6            device out (6=stdout,7=stderr,file)
-2            # of problems sizes (N)
-175104 178176 165888 168960 172032 175104 Ns
-2             # of NBs
-384 256 128 256 384 192 288 320 384 384 768 1024 768 896 768 1024 512 384 640 768 896 960 1024 1152 1280 384 640 960 768 640 256  960 512 768 1152         NBs
-0            PMAP process mapping (0=Row-,1=Column-major)
-1            # of process grids (P x Q)
-4 2 8 1 2 1        Ps
-4 8 2 2 4        Qs
-16.0         threshold
-1            # of panel fact
-0 1 2        PFACTs (0=left, 1=Crout, 2=Right)
-1            # of recursive stopping criterium
-2 8          NBMINs (&gt;= 1)
-1            # of panels in recursion
-2            NDIVs
-1            # of recursive panel fact.
-0 1 2        RFACTs (0=left, 1=Crout, 2=Right)
-1            # of broadcast
-2 0 2          BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)
-1            # of lookahead depth
-0            DEPTHs (&gt;=0)
-1            SWAP (0=bin-exch,1=long,2=mix)
-192          swapping threshold
-1            L1 in (0=transposed,1=no-transposed) form
-0            U  in (0=transposed,1=no-transposed) form
-1            Equilibration (0=no,1=yes)
-8            memory alignment in double (&gt; 0)
+                                <h1 id="boost">Boost</h1>
+<p><a href="https://www.boost.org/" target="_blank">website</a></p>
+<h2 id="spack">Spack</h2>
+<pre><code class="lang-bash">spack info boost
+spack install boost
 </code></pre>
+<h2 id="source">Source</h2>
+<pre><code class="lang-bash">./bootstrap.sh --help
+<span class="hljs-comment"># Select your configuration options and invoke ./bootstrap.sh again without the --help option. Unless you have write permission in your system&apos;s /usr/local/ directory, you&apos;ll probably want to at least use</span>
+
+./bootstrap.sh --prefix=path/to/installation/prefix
+<span class="hljs-comment"># to install somewhere else. Also, consider using the --show-libraries and --with-libraries=library-name-list options to limit the long wait you&apos;ll experience if you build everything. Finally,</span>
+
+./b2 install
+<span class="hljs-comment"># will leave Boost binaries in the lib/ subdirectory of your installation prefix. You will also find a copy of the Boost headers in the include/ subdirectory of the installation prefix, so you can henceforth use that directory as an #include path in place of the Boost root directory.</span>
+
+<span class="hljs-comment"># and add to PATH and LD and INCLUDE</span>
+</code></pre>
+<h2 id="&#x7248;&#x672C;&#x76F8;&#x5173;&#x95EE;&#x9898;">&#x7248;&#x672C;&#x76F8;&#x5173;&#x95EE;&#x9898;</h2>
+<p>This is Version 3 of the Filesystem library. Version 2 is not longer supported. 1.49.0 was the last release of Boost to supply Version 2&#x3002;</p>
+
                                 
                                 </section>
                             
@@ -757,14 +705,10 @@ HPL.out      output file name (if any)
 
             
                 
-                <a href="hpcg-dat.html" class="navigation navigation-prev " aria-label="Previous page: Hpcg Dat">
+                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Libs">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="../DevOps/" class="navigation navigation-next " aria-label="Next page: Dev Ops">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -773,7 +717,7 @@ HPL.out      output file name (if any)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Hpl Dat","level":"1.4.2","depth":2,"next":{"title":"Dev Ops","level":"1.5","depth":1,"path":"DevOps/README.md","ref":"DevOps/README.md","articles":[{"title":"LADP","level":"1.5.1","depth":2,"path":"DevOps/LADP.md","ref":"DevOps/LADP.md","articles":[]},{"title":"Singularity","level":"1.5.2","depth":2,"path":"DevOps/Singularity.md","ref":"DevOps/Singularity.md","articles":[]}]},"previous":{"title":"Hpcg Dat","level":"1.4.1","depth":2,"path":"Benchmark/hpcg-dat.md","ref":"Benchmark/hpcg-dat.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Benchmark/hpl-dat.md","mtime":"2021-07-21T21:56:20.449Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-21T21:57:15.272Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Boost","level":"1.7.1","depth":2,"next":{"title":"Sysadmin","level":"1.8","depth":1,"ref":"","articles":[{"title":"Cluster Setup","level":"1.8.1","depth":2,"path":"Sysadmin/cluster-setup.md","ref":"Sysadmin/cluster-setup.md","articles":[]},{"title":"Environment Installation","level":"1.8.2","depth":2,"path":"Sysadmin/environment-installation.md","ref":"Sysadmin/environment-installation.md","articles":[]},{"title":"Environment Modules","level":"1.8.3","depth":2,"path":"Sysadmin/environment-modules.md","ref":"Sysadmin/environment-modules.md","articles":[]},{"title":"Machine","level":"1.8.4","depth":2,"path":"Sysadmin/machine.md","ref":"Sysadmin/machine.md","articles":[]}]},"previous":{"title":"Libs","level":"1.7","depth":1,"path":"Libs/README.md","ref":"Libs/README.md","articles":[{"title":"Boost","level":"1.7.1","depth":2,"path":"Libs/Boost.md","ref":"Libs/Boost.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Libs/Boost.md","mtime":"2021-07-21T21:56:20.453Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-21T21:57:15.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
