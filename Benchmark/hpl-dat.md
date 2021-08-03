@@ -76,3 +76,4 @@ HPL.out      output file name (if any)
 1            Equilibration (0=no,1=yes)
 8            memory alignment in double (> 0)
 ```
+
