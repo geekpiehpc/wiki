@@ -156,7 +156,7 @@
 <p><img src="./quest-circuit.png" alt="" /></p>
 <h3 id="different-bits-state---qubits"><a class="header" href="#different-bits-state---qubits">different bits state - qubits</a></h3>
 <p>3 states: <code>1</code> <code>0</code> <code>0/1</code></p>
-<p>store by qreal which is actualy a complex number a+bi  (a+b=1), and it can be stated as \( (\begin{smallmatrix}0.123124&amp;0\0&amp;0.876876\end{smallmatrix}) \) , also note that because gpu only support float32 computing. So native qreal (precision=4) is not supported in gpu simutation.</p>
+<p>store by qreal which is actualy a complex number a+bi  (a+b=1), and it can be stated as \( (\begin{smallmatrix}0.123124&amp;0\ 0&amp;0.876876\end{smallmatrix}) \) , also note that because gpu only support float32 computing. So native qreal (precision=4) is not supported in gpu simutation.</p>
 <pre><code class="language-cpp">/*
  * Single precision, which uses 4 bytes per amplitude component
  */
@@ -200,30 +200,30 @@
 # endif
 </code></pre>
 <h3 id="many-matrices-computation"><a class="header" href="#many-matrices-computation">many matrices computation</a></h3>
-<img src="https://www.victoryang00.cn/picture/image-20200206182352740.png" alt="image-20200206182352740" style="zoom:33%;" />
+<img src="./image-20200206182352740.png" alt="image-20200206182352740" style="zoom:33%;" />
 <p>all of the gate corresponds to one of the manipulation on qubits.</p>
 <h4 id="basic-operation-on-a-and-b-httpsarxivorgpdfquant-ph0207118pdf"><a class="header" href="#basic-operation-on-a-and-b-httpsarxivorgpdfquant-ph0207118pdf">Basic operation on a and b https://arxiv.org/pdf/quant-ph/0207118.pdf</a></h4>
 <p>random variables = density matrix </p>
-<p><strong>hermitian</strong>:\(\rho^T=\rho\)</p>
+<p><strong>hermitian</strong>:\(\rho^{\dagger}=\rho\)</p>
 <p><strong>positive semidefinite</strong>:  <strong>eigenvalue</strong> \(\geq\) 0</p>
 <p><strong>trace</strong>: \(\Sigma(diagnal\ elements)=1\)</p>
 <p>dirac notation: ket \(v_{\phi}=|\phi\rangle=\left(\begin{array}{l}\phi_{0} \\phi_{1}\end{array}\right)\)</p>
-<p>bra   \( v_{\phi}^T=\langle\phi|=\left(\begin{array}{ll}\phi_{0} &amp; \phi_{1}\end{array}\right)\)</p>
+<p>bra   \( v_{\phi}^{\dagger}=\langle\phi|=\left(\begin{array}{ll}\phi_{0} &amp; \phi_{1}\end{array}\right)\)</p>
 <p>\(\langle\phi \mid \psi\rangle\)= inner products of bra(fi) and ket(theta). notice: \(\langle\phi \mid \phi\rangle=1\)</p>
 <p>\(|\phi\rangle|\psi\rangle\)=tensor product of ket(fi) and bra(theta)</p>
-<p>2 special notation: \(u_{0}=|0\rangle=\left(\begin{array}{l}1 \0\end{array}\right) \quad v_{1}=|1\rangle=\left(\begin{array}{l}0 \1\end{array}\right)\)</p>
-<p>the dense <strong>matrix</strong>:\(\rho=\left(\begin{array}{cc}q_{0} &amp; 0 \0 &amp; q_{1}\end{array}\right)\) (\(q_{0}+q_{1}=1\), the purpose of the equation is to illustrate the complex number ) can be stated  as \(\rho=q_{0}|0\rangle\left\langle 0\left|+q_{1}\right| 1\right\rangle\langle 1|\)</p>
+<p>2 special notation: \(u_{0}=|0\rangle=\left(\begin{array}{l}1 \ 0\end{array}\right) \quad v_{1}=|1\rangle=\left(\begin{array}{l}0 \ 1\end{array}\right)\)</p>
+<p>the dense <strong>matrix</strong>:\(\rho=\left(\begin{array}{cc}q_{0} &amp; 0 \ 0 &amp; q_{1}\end{array}\right)\) (\(q_{0}+q_{1}=1\), the purpose of the equation is to illustrate the complex number ) can be stated  as \(\rho=q_{0}|0\rangle\left\langle 0\left|+q_{1}\right| 1\right\rangle\langle 1|\)</p>
 <p>so \(\rho|0\rangle=\left(q_{0}|0\rangle\left\langle 0\left|+q_{1}\right| 1\right\rangle\langle 1|\right)|0\rangle=q_{0}|0\rangle\)</p>
-<p>dot product (from normal bits to qubits):[ |a b\rangle=|a\rangle \otimes|b\rangle=v_{00}|00\rangle+v_{01}|01\rangle+v_{10}|10\rangle \dashv v_{11}|11\rangle \rightarrow\left[\begin{array}{l}v_{00} \v_{01} \v_{10} \v_{11}\end{array}\right]]</p>
-<p>for example in bits 5 = 101b, while in qubits \(|5\rangle_{3}=|101\rangle=|1\rangle|0\rangle|1\rangle=\left(\begin{array}{l}0 \1\end{array}\right)\left(\begin{array}{l}1 \0\end{array}\right)\left(\begin{array}{l}0 \1\end{array}\right)=\left(\begin{array}{l}0 \0 \0 \0 \0 \1 \0 \0\end{array}\right)\)</p>
+<p>dot product (from normal bits to qubits):\( |a b\rangle=|a\rangle \otimes|b\rangle=v_{00}|00\rangle+v_{01}|01\rangle+v_{10}|10\rangle \dashv v_{11}|11\rangle \rightarrow\left[\begin{array}{l}v_{00} \ v_{01} \ v_{10} \ v_{11}\end{array}\right] \)</p>
+<p>for example in bits 5 = 101b, while in qubits \(|5\rangle_{3}=|101\rangle=|1\rangle|0\rangle|1\rangle=\left(\begin{array}{l}0 \ 1\end{array}\right)\left(\begin{array}{l}1 \ 0\end{array}\right)\left(\begin{array}{l}0 \ 1\end{array}\right)=\left(\begin{array}{l}0 \ 0 \ 0 \ 0 \ 0 \ 1 \ 0 \ 0\end{array}\right)\)</p>
 <p><img src="image-20200206193126579.png" alt="" /></p>
 <h4 id="hadamard-gate-operations"><a class="header" href="#hadamard-gate-operations">Hadamard gate operations</a></h4>
-<p>[\begin{aligned}H(|0\rangle) &amp;=\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle=:|+\rangle \H(|1\rangle) &amp;=\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{2}}|1\rangle=:|-\rangle \H\left(\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle\right) &amp;=\frac{1}{2}(|0\rangle+|1\rangle)+\frac{1}{2}(|0\rangle-|1\rangle)=|0\rangle \H\left(\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{2}}|1\rangle\right) &amp;=\frac{1}{2}(|0\rangle+|1\rangle)-\frac{1}{2}(|0\rangle-|1\rangle)=|1\rangle\end{aligned}]</p>
-<p>corresponding matrix operation in dirac notation: \(H_{1}=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}1 &amp; 1 \1 &amp; -1\end{array}\right)\)</p>
+<p>\begin{aligned}H(|0\rangle) &amp;=\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle=:|+\rangle \ H(|1\rangle) &amp;=\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{2}}|1\rangle=:|-\rangle \ H\left(\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle\right) &amp;=\frac{1}{2}(|0\rangle+|1\rangle)+\frac{1}{2}(|0\rangle-|1\rangle)=|0\rangle \ H\left(\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{2}}|1\rangle\right) &amp;=\frac{1}{2}(|0\rangle+|1\rangle)-\frac{1}{2}(|0\rangle-|1\rangle)=|1\rangle\end{aligned}</p>
+<p>corresponding matrix operation in dirac notation: \(H_{1}=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}1 &amp; 1 \ 1 &amp; -1\end{array}\right)\)</p>
 <p>some specialty:</p>
 <ol>
 <li>\(H=\frac{|0\rangle+|1\rangle}{\sqrt{2}}\langle 0|+\frac{|0\rangle-|1\rangle}{\sqrt{2}}\langle 1|\)</li>
-<li>Since <img src="https://www.victoryang00.cn/picture/6390e45c284a61ae56967efa897265f7c676116a.svg" alt="graph" style="zoom:100%;" /> where <em>I</em> is the identity matrix, <em>H</em> is a <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary matrix</a> (like all other quantum logical gates). Also, it is its own <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary inverse</a>, <img src="https://www.victoryang00.cn/picture/67587a10e5b72c23dc1e91b7e197e82315f70288.svg" alt="graph" style="zoom:100%;" />.</li>
+<li>Since <img src="https://www.victoryang00.cn/picture/6390e45c284a61ae56967efa897265f7c676116a.svg" alt="graph" style="zoom:100%;" /> where <em>I</em> is the identity matrix, <em>H</em> is a <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary matrix</a> (like all other quantum logical gates). Also, it is its own <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary inverse</a>, $H=H^{\dagger}$.</li>
 </ol>
 <p>One application of the Hadamard gate to either a 0 or 1 qubit will produce a quantum state that, if observed, will be a 0 or 1 with equal probability (as seen in the first two operations). This is exactly like flipping a fair coin in the standard <a href="https://en.wikipedia.org/wiki/Probabilistic_Turing_machine">probabilistic model of computation</a>. However, if the Hadamard gate is applied twice in succession (as is effectively being done in the last two operations), then the final state is always the same as the initial state.</p>
 <pre><code class="language-cpp">__global__ void statevec_hadamardKernel (Qureg qureg, const int targetQubit){
@@ -284,7 +284,7 @@ void statevec_hadamard(Qureg qureg, const int targetQubit)
 }
 </code></pre>
 <h4 id="pauli-xyz-gate"><a class="header" href="#pauli-xyz-gate">Pauli-X/Y/Z gate</a></h4>
-<p>The Pauli-X gate acts on a single qubit. It is the quantum equivalent of the [ X=\left[\begin{array}{ll}0 &amp; 1 \1 &amp; 0\end{array}\right]]</p>
+<p>The Pauli-X gate acts on a single qubit. It is the quantum equivalent of the \( X=\left[\begin{array}{ll}0 &amp; 1 \ 1 &amp; 0\end{array}\right]\)</p>
 <pre><code class="language-cpp">void pauliX(Qureg qureg, const int targetQubit) {
     validateTarget(qureg, targetQubit, __func__);
     
