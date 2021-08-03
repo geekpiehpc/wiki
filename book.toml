@@ -11,6 +11,7 @@ create-missing = false
 [output.html]
 git-repository-url = "https://github.com/geekpiehpc/wiki"
 site-url = "/wiki/"
+mathjax-support = true
 
 [output.linkcheck]
 follow-web-links = true

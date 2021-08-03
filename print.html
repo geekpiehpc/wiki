@@ -33,6 +33,8 @@
 
         <!-- Custom theme stylesheets -->
         
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
             </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -215,7 +217,7 @@ application called MPI_Abort(MPI_COMM_WORLD, 1001) - process 182
 <h1 id="quest-analysis"><a class="header" href="#quest-analysis">quest analysis</a></h1>
 <h2 id="program-goal-analysis"><a class="header" href="#program-goal-analysis">program goal analysis</a></h2>
 <p>what's code is actually doing is to simulate quantum computing.</p>
-<img src="http://victoryang00.cn/picture/image-20200206175943861.png" alt="image-20200206175943861" style="zoom:33%;" />
+<img src="https://www.victoryang00.cn/picture/image-20200206175943861.png" alt="image-20200206175943861" style="zoom:33%;" />
 <h3 id="different-bits-state---qubits"><a class="header" href="#different-bits-state---qubits">different bits state - qubits</a></h3>
 <p>3 states: <code>1</code> <code>0</code> <code>0/1</code></p>
 <p>store by qreal which is actualy a complex number a+bi  (a+b=1), and it can be stated as $\bigl(\begin{smallmatrix}0.123124&amp;0\0&amp;0.876876\end{smallmatrix})$ , also note that because gpu only support float32 computing. So native qreal (precision=4) is not supported in gpu simutation.</p>
@@ -262,27 +264,31 @@ application called MPI_Abort(MPI_COMM_WORLD, 1001) - process 182
 # endif
 </code></pre>
 <h3 id="many-matrices-computation"><a class="header" href="#many-matrices-computation">many matrices computation</a></h3>
-<img src="http://victoryang00.cn/picture/image-20200206182352740.png" alt="image-20200206182352740" style="zoom:33%;" />
+<img src="https://www.victoryang00.cn/picture/image-20200206182352740.png" alt="image-20200206182352740" style="zoom:33%;" />
 <p>all of the gate corresponds to one of the manipulation on qubits.</p>
 <h4 id="basic-operation-on-a-and-b-httpsarxivorgpdfquant-ph0207118pdf"><a class="header" href="#basic-operation-on-a-and-b-httpsarxivorgpdfquant-ph0207118pdf">Basic operation on a and b https://arxiv.org/pdf/quant-ph/0207118.pdf</a></h4>
 <p>random variables = density matrix </p>
-<p><strong>hermitian</strong>:<img src="http://victoryang00.cn/picture/equation-1580988244760.svg" alt="graph" style="zoom:150%;" />=<img src="http://victoryang00.cn/picture/equation-1580988258203.svg" alt="graph" style="zoom:150%;" /></p>
-<p><strong>positive semidefinite</strong>:  <strong>eigenvalue</strong>$\geq$0</p>
+<p><strong>hermitian</strong>:$\rho^T=\rho$</p>
+<p><strong>positive semidefinite</strong>:  <strong>eigenvalue</strong> $\geq$ 0</p>
 <p><strong>trace</strong>: $\Sigma(diagnal\ elements)=1$</p>
-<p>dirac notation: ket    <a href="http://victoryang00.cn/picture/equation-1580987580687.svg">graph</a>=<a href="http://victoryang00.cn/picture/equation.svg">graph</a>= <a href="http://victoryang00.cn/picture/equation-1580987560476.svg">graph</a></p>
-<p>​						   bra    <a href="http://victoryang00.cn/picture/equation-1580987606986.svg">graph</a>=<a href="http://victoryang00.cn/picture/equation-1580987606950.svg">graph</a>=<a href="http://victoryang00.cn/picture/equation-1580987607534.svg">graph</a> </p>
-<p><a href="http://victoryang00.cn/picture/equation-1580987681032.svg">graph</a>= inner products of bra(fi) and ket(theta). notice:<a href="http://victoryang00.cn/picture/equation-1580987782971.svg">graph</a></p>
-<p><a href="http://victoryang00.cn/picture/equation-1580987794494.svg">graph</a>=tensor product of ket(fi) and bra(theta)</p>
-<p>2 special notation: <a href="http://victoryang00.cn/picture/equation-1580987857724.svg">graph</a> ，<a href="http://victoryang00.cn/picture/equation-1580987857723.svg">graph</a></p>
-<p>the dense <strong>matrix</strong>:<a href="http://victoryang00.cn/picture/equation-1580987922717.svg">graph</a>(<a href="http://victoryang00.cn/picture/equation-1580988030121.svg">graph</a>, the purpose of the equation is to illustrate the complex number ) can be stated  as   <a href="http://victoryang00.cn/picture/equation-1580987909551.svg">graph</a></p>
-<p>so  <a href="http://victoryang00.cn/picture/equation-1580987960377.svg">graph</a></p>
-<p>dot product (from normal bits to qubits):<img src="http://victoryang00.cn/picture/image-20200206183002545.png" alt="image-20200206183002545" style="zoom:67%;" /></p>
-<p>for example in bits 5 = 101b, while in qubits<img src="http://victoryang00.cn/picture/image-20200206192812921.png" alt="image-20200206192812921" style="zoom:67%;" /></p>
-<p><a href="http://victoryang00.cn/picture/image-20200206193126579.png">image-20200206193126579</a></p>
+<p>dirac notation: ket $v_{\phi}=|\phi\rangle=\left(\begin{array}{l}\phi_{0} \\phi_{1}\end{array}\right)$</p>
+<p>bra   $ v_{\phi}^T=\langle\phi|=\left(\begin{array}{ll}\phi_{0} &amp; \phi_{1}\end{array}\right)$</p>
+<p>$\langle\phi \mid \psi\rangle$= inner products of bra(fi) and ket(theta). notice: $\langle\phi \mid \phi\rangle=1$</p>
+<p>$|\phi\rangle|\psi\rangle$=tensor product of ket(fi) and bra(theta)</p>
+<p>2 special notation: $u_{0}=|0\rangle=\left(\begin{array}{l}1 \0\end{array}\right) \quad v_{1}=|1\rangle=\left(\begin{array}{l}0 \1\end{array}\right)$</p>
+<p>the dense <strong>matrix</strong>:$\rho=\left(\begin{array}{cc}q_{0} &amp; 0 \0 &amp; q_{1}\end{array}\right)$ ($q_{0}+q_{1}=1$, the purpose of the equation is to illustrate the complex number ) can be stated  as $\rho=q_{0}|0\rangle\left\langle 0\left|+q_{1}\right| 1\right\rangle\langle 1|$</p>
+<p>so $\rho|0\rangle=\left(q_{0}|0\rangle\left\langle 0\left|+q_{1}\right| 1\right\rangle\langle 1|\right)|0\rangle=q_{0}|0\rangle$</p>
+<p>dot product (from normal bits to qubits):$|a b\rangle=|a\rangle \otimes|b\rangle=v_{00}|00\rangle+v_{01}|01\rangle+v_{10}|10\rangle \dashv v_{11}|11\rangle \rightarrow\left[\begin{array}{l}v_{00} \v_{01} \v_{10} \v_{11}\end{array}\right]$</p>
+<p>for example in bits 5 = 101b, while in qubits $|5\rangle_{3}=|101\rangle=|1\rangle|0\rangle|1\rangle=\left(\begin{array}{l}0 \1\end{array}\right)\left(\begin{array}{l}1 \0\end{array}\right)\left(\begin{array}{l}0 \1\end{array}\right)=\left(\begin{array}{l}0 \0 \0 \0 \0 \1 \0 \0\end{array}\right)$</p>
+<img src="https://www.victoryang00.cn/picture/image-20200206193126579.png" alt="graph" style="zoom:100%;" />
 <h4 id="hadamard-gate-operations"><a class="header" href="#hadamard-gate-operations">Hadamard gate operations</a></h4>
-<p><a href="http://victoryang00.cn/picture/image-20200206183257976.png">image-20200206183257976</a></p>
-<p>corresponding matrix operation in dirac notation:<a href="http://victoryang00.cn/picture/image-20200206183333863.png">image-20200206183333863</a> </p>
-<p>some specialty:1.<a href="http://victoryang00.cn/picture/image-20200206190344235.png">image-20200206190344235</a>2.Since <a href="http://victoryang00.cn/picture/6390e45c284a61ae56967efa897265f7c676116a.svg">{\displaystyle HH^{\dagger }=I}</a> where <em>I</em> is the identity matrix, <em>H</em> is a <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary matrix</a> (like all other quantum logical gates). Also, it is its own <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary inverse</a>, <a href="http://victoryang00.cn/picture/67587a10e5b72c23dc1e91b7e197e82315f70288.svg">{\displaystyle H=H^{\dagger }}</a>.</p>
+<p>$$\begin{aligned}H(|0\rangle) &amp;=\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle=:|+\rangle \H(|1\rangle) &amp;=\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{2}}|1\rangle=:|-\rangle \H\left(\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle\right) &amp;=\frac{1}{2}(|0\rangle+|1\rangle)+\frac{1}{2}(|0\rangle-|1\rangle)=|0\rangle \H\left(\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{2}}|1\rangle\right) &amp;=\frac{1}{2}(|0\rangle+|1\rangle)-\frac{1}{2}(|0\rangle-|1\rangle)=|1\rangle\end{aligned}$$</p>
+<p>corresponding matrix operation in dirac notation: $H_{1}=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}1 &amp; 1 \1 &amp; -1\end{array}\right)$</p>
+<p>some specialty:</p>
+<ol>
+<li>$H=\frac{|0\rangle+|1\rangle}{\sqrt{2}}\langle 0|+\frac{|0\rangle-|1\rangle}{\sqrt{2}}\langle 1|$</li>
+<li>Since <img src="https://www.victoryang00.cn/picture/6390e45c284a61ae56967efa897265f7c676116a.svg" alt="graph" style="zoom:100%;" /> where <em>I</em> is the identity matrix, <em>H</em> is a <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary matrix</a> (like all other quantum logical gates). Also, it is its own <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary inverse</a>, <img src="https://www.victoryang00.cn/picture/67587a10e5b72c23dc1e91b7e197e82315f70288.svg" alt="graph" style="zoom:100%;" />.</li>
+</ol>
 <p>One application of the Hadamard gate to either a 0 or 1 qubit will produce a quantum state that, if observed, will be a 0 or 1 with equal probability (as seen in the first two operations). This is exactly like flipping a fair coin in the standard <a href="https://en.wikipedia.org/wiki/Probabilistic_Turing_machine">probabilistic model of computation</a>. However, if the Hadamard gate is applied twice in succession (as is effectively being done in the last two operations), then the final state is always the same as the initial state.</p>
 <pre><code class="language-cpp">__global__ void statevec_hadamardKernel (Qureg qureg, const int targetQubit){
     // ----- sizes
@@ -342,7 +348,7 @@ void statevec_hadamard(Qureg qureg, const int targetQubit)
 }
 </code></pre>
 <h4 id="pauli-xyz-gate"><a class="header" href="#pauli-xyz-gate">Pauli-X/Y/Z gate</a></h4>
-<p>The Pauli-X gate acts on a single qubit. It is the quantum equivalent of the <a href="https://en.wikipedia.org/wiki/NOT_gate">NOT gate</a> for classical computers (with respect to the standard basis <a href="http://victoryang00.cn/picture/ed066a3ad158da0ad6d6a421a606b1c8a35eb95b.svg">|0\rangle </a>, <a href="http://victoryang00.cn/picture/2f53021ca18e77477ee5bd3c1523e5830189ec5c.svg">|1\rangle </a>, which distinguishes the <em>Z</em>-direction.<a href="http://victoryang00.cn/picture/image-20200206190608424.png">image-20200206190608424</a></p>
+<p>The Pauli-X gate acts on a single qubit. It is the quantum equivalent of the $X=\left[\begin{array}{ll}0 &amp; 1 \1 &amp; 0\end{array}\right]$</p>
 <pre><code class="language-cpp">void pauliX(Qureg qureg, const int targetQubit) {
     validateTarget(qureg, targetQubit, __func__);
     
@@ -483,33 +489,34 @@ void statevec_pauliX(Qureg qureg, const int targetQubit)
 </code></pre>
 <h2 id="source-code-analysis"><a class="header" href="#source-code-analysis">source code analysis</a></h2>
 <h4 id="tree"><a class="header" href="#tree">tree</a></h4>
-<p>.
+<pre><code class="language-bash">.
 ├── CMakeLists.txt
 ├── include
 │   ├── QuEST_complex.h				 //determine to use native external cpp support or c complex support.
 │   ├── QuEST.h								  //main func claim
 │   └── QuEST_precision.h				//define the precision
 └── src
-├── CMakeLists.txt
-├── CPU
-│   ├── CMakeLists.txt
-│   ├── QuEST_cpu.c
-│   ├── QuEST_cpu_distributed.c	//distributed activator and implementation
-│   ├── QuEST_cpu_internal.h		 //other cpu related headers here
-│   └── QuEST_cpu_local.c			   //only cpu implementation
-├── GPU
-│   ├── CMakeLists.txt
-│   └── QuEST_gpu.cu 					 //gpu counterpart
-├── mt19937ar.c							  //梅森旋轉算法-伪随机数矩阵生成
-├── mt19937ar.h
-├── QuEST.c										//main func definition
-├── QuEST_common.c					  //func activator defined here
-├── QuEST_debug.h						  //debug information here
-├── QuEST_internal.h
-├── QuEST_qasm.c							//is a quantum record standard, defined qasm assertion here.
-├── QuEST_qasm.h
-├── QuEST_validation.c					//assert number of qubit here
-└── QuEST_validation.h</p>
+    ├── CMakeLists.txt
+    ├── CPU
+    │   ├── CMakeLists.txt
+    │   ├── QuEST_cpu.c
+    │   ├── QuEST_cpu_distributed.c	//distributed activator and implementation
+    │   ├── QuEST_cpu_internal.h		 //other cpu related headers here
+    │   └── QuEST_cpu_local.c			   //only cpu implementation
+    ├── GPU
+    │   ├── CMakeLists.txt
+    │   └── QuEST_gpu.cu 					 //gpu counterpart
+    ├── mt19937ar.c							  //梅森旋轉算法-伪随机数矩阵生成
+    ├── mt19937ar.h
+    ├── QuEST.c										//main func definition
+    ├── QuEST_common.c					  //func activator defined here
+    ├── QuEST_debug.h						  //debug information here
+    ├── QuEST_internal.h
+    ├── QuEST_qasm.c							//is a quantum record standard, defined qasm assertion here.
+    ├── QuEST_qasm.h
+    ├── QuEST_validation.c					//assert number of qubit here
+    └── QuEST_validation.h
+</code></pre>
 <p>https://www.quantum-inspire.com/kbase/introduction-to-quantum-computing</p>
 <h2 id="testcase-analysis"><a class="header" href="#testcase-analysis">testcase analysis</a></h2>
 <p><code>mytimer.hpp</code></p>
@@ -659,13 +666,13 @@ export FI_PROVIDER=tcp
 mpirun -machinefile mac -np 2 ./demo 
 </code></pre>
 <p>profiling result</p>
-<p><a href="http://victoryang00.cn/picture/image-20200206174728724.png">image-20200206174728724</a></p>
-<p><a href="http://victoryang00.cn/picture/image-20200206174748013.png">image-20200206174748013</a></p>
+<img src="https://www.victoryang00.cn/picture/image-20200206174728724.png" alt="graph" style="zoom:100%;" />
+<img src="https://www.victoryang00.cn/picture/image-20200206174748013.png" alt="graph" style="zoom:100%;" />
 <p>the most time-consuming part is statevec_compactUnitaryLocal</p>
 </li>
 <li>
 <p>2node 16core each <code>mpi:omp=1:32</code></p>
-<img src="http://victoryang00.cn/picture/image-20200206180552841.png" alt="image-20200206180552841" style="zoom:33%;" />
+<img src="https://www.victoryang00.cn/picture/image-20200206180552841.png" alt="image-20200206180552841" style="zoom:33%;" />
 </li>
 <li>
 <p>1node 1tesla v100</p>
@@ -684,16 +691,16 @@ make
 ./demo 
 </code></pre>
 <p>profiling result</p>
-<p><a href="http://victoryang00.cn/picture/image-20200206200505308.png">image-20200206200505308</a></p>
+<img src="https://www.victoryang00.cn/picture/image-20200206200505308.png" alt="graph" style="zoom:100%;" />
 </li>
 </ol>
 <p>summary</p>
-<img src="http://victoryang00.cn/picture/image-20200206200701826.png" alt="image-20200206200701826" style="zoom:50%;" />
-<p><a href="http://victoryang00.cn/picture/image-20200206202701475.png">image-20200206202701475</a></p>
+<img src="https://www.victoryang00.cn/picture/image-20200206200701826.png" alt="image-20200206200701826" style="zoom:50%;" />
+<img src="https://www.victoryang00.cn/picture/image-20200206202701475.png" alt="graph" style="zoom:100%;" />
 <p>the summary for profiling of both cpu and gpu, the most time is consumed on computing the real kernel which I think the computing power is fully utilized. </p>
 <p>Accelerated percentage of single node over omp+mpi is 319.799/220.807=1.448319120317744‬‬</p>
 <p>Accelerated percentage of single node over single gpu is 319.799/19.328=16.54627720533642</p>
-<p>power consumption: over cpu:<img src="http://victoryang00.cn/picture/image-20200206203642478.png" alt="image-20200206203642478" style="zoom:25%;" /></p>
+<p>power consumption: over cpu:<img src="https://www.victoryang00.cn/picture/image-20200206203642478.png" alt="image-20200206203642478" style="zoom:25%;" /></p>
 <p>​									over gpu: 111W on average</p>
 <p>Our future plan: </p>
 <ol>
@@ -704,7 +711,7 @@ make
 <p>Loves from Github</p>
 <ol>
 <li>https://github.com/QuEST-Kit/QuEST/issues/220
-<a href="http://victoryang00.cn/picture/image-20200206203018990.png">image-20200206203018990</a></li>
+<img src="https://www.victoryang00.cn/picture/image-20200206203018990.png" alt="graph" style="zoom:100%;" /></li>
 </ol>
 <pre><code>Hi Jiachen,
 
@@ -1420,7 +1427,9 @@ $ bash</p>
         
                         <script type="text/javascript">
         window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
         });
         </script>
                 
