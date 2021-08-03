@@ -6,7 +6,7 @@
 
 ### Lib
 
-[Boost](/Libs/Boost)
+[Boost](../../../Libs/Boost.md)
 
 just add the code into `SConstruct` to tell `scons` where is the boost lib is.
 
