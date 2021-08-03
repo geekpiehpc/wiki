@@ -120,7 +120,7 @@ $ vi /etc/sysconfig/network-scripts/ifcfg-<INTERFACE>   #修改 IPADDR=192.168.<
 
 ## 数据盘 NFS 共享（over IB RDMA）
 
-[howto-configure-nfs-over-rdma--roce-x](https://t.co/IUDyeGZ26P?amp=1)
+[howto-configure-nfs-over-rdma--roce-x](https://developer.nvidia.com/blog/doubling-network-file-system-performance-with-rdma-enabled-networking/)
 
 Maybe useful according to teacher Zhang
 ```
