@@ -103,13 +103,19 @@ for example in bits 5 = 101b, while in qubits \\(|5\rangle_{3}=|101\rangle=|1\ra
 
 #### Hadamard gate operations
 
-\begin{aligned}H(|0\rangle) &=\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle=:|+\rangle \\ H(|1\rangle) &=\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{2}}|1\rangle=:|-\rangle \\ H\left(\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle\right) &=\frac{1}{2}(|0\rangle+|1\rangle)+\frac{1}{2}(|0\rangle-|1\rangle)=|0\rangle \\ H\left(\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{2}}|1\rangle\right) &=\frac{1}{2}(|0\rangle+|1\rangle)-\frac{1}{2}(|0\rangle-|1\rangle)=|1\rangle\end{aligned}
+\begin{aligned}H(|0\rangle) &=\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle=:|+\rangle \end{aligned}
+
+ \begin{aligned} H(|1\rangle) &=\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{2}}|1\rangle=:|-\rangle \end{aligned}
+
+ \begin{aligned} H\left(\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle\right) &=\frac{1}{2}(|0\rangle+|1\rangle)+\frac{1}{2}(|0\rangle-|1\rangle)=|0\rangle \end{aligned}
+ 
+ \begin{aligned} H\left(\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{2}}|1\rangle\right) &=\frac{1}{2}(|0\rangle+|1\rangle)-\frac{1}{2}(|0\rangle-|1\rangle)=|1\rangle\end{aligned}
 
 corresponding matrix operation in dirac notation: \\(H_{1}=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}1 & 1 \\ 1 & -1\end{array}\right)\\)
 
 some specialty:
 1. \\(H=\frac{|0\rangle+|1\rangle}{\sqrt{2}}\langle 0|+\frac{|0\rangle-|1\rangle}{\sqrt{2}}\langle 1|\\)
-2. Since <img src="https://www.victoryang00.cn/picture/6390e45c284a61ae56967efa897265f7c676116a.svg" alt="graph" style="zoom:100%;" /> where *I* is the identity matrix, *H* is a [unitary matrix](https://en.wikipedia.org/wiki/Unitary_matrix) (like all other quantum logical gates). Also, it is its own [unitary inverse](https://en.wikipedia.org/wiki/Unitary_matrix), $H=H^{\dagger}$.
+2. Since \\(HH^{\dagger}=I\\) where *I* is the identity matrix, *H* is a [unitary matrix](https://en.wikipedia.org/wiki/Unitary_matrix) (like all other quantum logical gates). Also, it is its own [unitary inverse](https://en.wikipedia.org/wiki/Unitary_matrix), \\(H=H^{\dagger}\\).
 
 
 
