@@ -8,9 +8,9 @@
 
 ## 目前wiki维护
 
-[murez](mailto:zhangsy3@shanghaitech.edu.cn) 可以在白裙和HPC群找到。命名采用小端大写法。需要push即可。
+murez 可以在白裙和HPC群找到。命名采用小端大写法。需要push即可。
 
 ## 有关招新
 
-[招新公告](https://hpc.geekpie.club/archives/)，有关请咨询[队长：杨易为]([yangyw@shanghaitech.edu.cn](mailto:yangyw@shanghaitech.edu.cn)，[slack](https://geekpiehpc.slack.com)用上科大邮箱可以注册。
+[招新公告](https://hpc.geekpie.club/archives/)，[slack](https://geekpiehpc.slack.com)用上科大邮箱可以注册。
 
