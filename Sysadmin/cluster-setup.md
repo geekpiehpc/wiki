@@ -128,7 +128,7 @@ opensmd
 openibd
 ```
 
-## 数据盘 NFS 共享（over TCP）[备选]
+## 数据盘 NFS 共享（over TCP）备选
 
 主节点插上用作共享盘的硬盘，`lsblk` 查看新硬盘已插上及名称，可看到出现 e.g. `sdb1` 盘（根据大小判断那个为共享盘，勿搞错）
 
@@ -243,7 +243,7 @@ $ ssh-copy-id localhost
 
 环境安装目录文件树放置于 `/opt` 下
 
-> 所需环境及安装流程 - 见 “[Environment Installation](/hpc/sysadmin/environment-installation)”
+> 所需环境及安装流程 - 见 “[Environment Installation](Sysadmin/environment-installation.md)”
 
 ## 环境 Environment Modules 配置
 
@@ -255,4 +255,4 @@ export MODULEPATH=/opt/modulefiles
 
 > 勿忘 `source /etc/environment`
 
-> 曾用 modulefile 文件 - 见 “[Modulefile Records](/hpc/sysadmin/environment-modules)”
+> 曾用 modulefile 文件 - 见 “[Modulefile Records](Sysadmin/environment-modules.md)”

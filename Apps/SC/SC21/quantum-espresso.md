@@ -49,7 +49,7 @@ To control the number of processors in each group, command line switches: -nimag
 
 First run with 24 processes and 4 thread each: 
 
-![img](./quantum-espresso.png)
+[img](./quantum-espresso.png)
 
 Problem: OMP threads can only use up to 200% CPU per process even with 256 threads per process. 
 

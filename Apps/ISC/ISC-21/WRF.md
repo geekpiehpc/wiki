@@ -66,7 +66,7 @@ make install
 
 > 4个node有负面效果，需要8个node及以上才会和NertCDF有异
 
-[![pnetcdf.png](https://z3.ax1x.com/2021/07/15/WnELTI.md.png)](https://imgtu.com/i/WnELTI)
+[pnetcdf.png](https://z3.ax1x.com/2021/07/15/WnELTI.md.png)
 
 安装方法见官网
 

@@ -71,25 +71,25 @@ all of the gate corresponds to one of the manipulation on qubits.
 
 random variables = density matrix 
 
-**hermitian**:<img src="http://victoryang00.cn/picture/equation-1580988244760.svg" alt="[公式]" style="zoom:150%;" />=<img src="http://victoryang00.cn/picture/equation-1580988258203.svg" alt="[公式]" style="zoom:150%;" />
+**hermitian**:<img src="http://victoryang00.cn/picture/equation-1580988244760.svg" alt="graph" style="zoom:150%;" />=<img src="http://victoryang00.cn/picture/equation-1580988258203.svg" alt="graph" style="zoom:150%;" />
 
 **positive semidefinite**:  **eigenvalue**$\geq$0
 
 **trace**: $\Sigma(diagnal\ elements)=1$
 
-dirac notation: ket    ![[公式]](http://victoryang00.cn/picture/equation-1580987580687.svg)=![[公式]](http://victoryang00.cn/picture/equation.svg)= ![[公式]](http://victoryang00.cn/picture/equation-1580987560476.svg)
+dirac notation: ket    [graph](http://victoryang00.cn/picture/equation-1580987580687.svg)=[graph](http://victoryang00.cn/picture/equation.svg)= [graph](http://victoryang00.cn/picture/equation-1580987560476.svg)
 
-​						   bra    ![[公式]](http://victoryang00.cn/picture/equation-1580987606986.svg)=![[公式]](http://victoryang00.cn/picture/equation-1580987606950.svg)=![[公式]](http://victoryang00.cn/picture/equation-1580987607534.svg) 
+​						   bra    [graph](http://victoryang00.cn/picture/equation-1580987606986.svg)=[graph](http://victoryang00.cn/picture/equation-1580987606950.svg)=[graph](http://victoryang00.cn/picture/equation-1580987607534.svg) 
 
-![[公式]](http://victoryang00.cn/picture/equation-1580987681032.svg)= inner products of bra(fi) and ket(theta). notice:![[公式]](http://victoryang00.cn/picture/equation-1580987782971.svg)
+[graph](http://victoryang00.cn/picture/equation-1580987681032.svg)= inner products of bra(fi) and ket(theta). notice:[graph](http://victoryang00.cn/picture/equation-1580987782971.svg)
 
-![[公式]](http://victoryang00.cn/picture/equation-1580987794494.svg)=tensor product of ket(fi) and bra(theta)
+[graph](http://victoryang00.cn/picture/equation-1580987794494.svg)=tensor product of ket(fi) and bra(theta)
 
-2 special notation: ![[公式]](http://victoryang00.cn/picture/equation-1580987857724.svg) ，![[公式]](http://victoryang00.cn/picture/equation-1580987857723.svg)
+2 special notation: [graph](http://victoryang00.cn/picture/equation-1580987857724.svg) ，[graph](http://victoryang00.cn/picture/equation-1580987857723.svg)
 
-the dense **matrix**:![[公式]](http://victoryang00.cn/picture/equation-1580987922717.svg)(![[公式]](http://victoryang00.cn/picture/equation-1580988030121.svg), the purpose of the equation is to illustrate the complex number ) can be stated  as   ![[公式]](http://victoryang00.cn/picture/equation-1580987909551.svg)
+the dense **matrix**:[graph](http://victoryang00.cn/picture/equation-1580987922717.svg)([graph](http://victoryang00.cn/picture/equation-1580988030121.svg), the purpose of the equation is to illustrate the complex number ) can be stated  as   [graph](http://victoryang00.cn/picture/equation-1580987909551.svg)
 
-so  ![[公式]](http://victoryang00.cn/picture/equation-1580987960377.svg)
+so  [graph](http://victoryang00.cn/picture/equation-1580987960377.svg)
 
 dot product (from normal bits to qubits):<img src="http://victoryang00.cn/picture/image-20200206183002545.png" alt="image-20200206183002545" style="zoom:67%;" />
 
@@ -97,17 +97,17 @@ dot product (from normal bits to qubits):<img src="http://victoryang00.cn/pictur
 
 for example in bits 5 = 101b, while in qubits<img src="http://victoryang00.cn/picture/image-20200206192812921.png" alt="image-20200206192812921" style="zoom:67%;" />
 
-![image-20200206193126579](http://victoryang00.cn/picture/image-20200206193126579.png)
+[image-20200206193126579](http://victoryang00.cn/picture/image-20200206193126579.png)
 
 
 
 #### Hadamard gate operations
 
-![image-20200206183257976](http://victoryang00.cn/picture/image-20200206183257976.png)
+[image-20200206183257976](http://victoryang00.cn/picture/image-20200206183257976.png)
 
-corresponding matrix operation in dirac notation:![image-20200206183333863](http://victoryang00.cn/picture/image-20200206183333863.png) 
+corresponding matrix operation in dirac notation:[image-20200206183333863](http://victoryang00.cn/picture/image-20200206183333863.png) 
 
-some specialty:1.![image-20200206190344235](http://victoryang00.cn/picture/image-20200206190344235.png)2.Since ![{\displaystyle HH^{\dagger }=I}](http://victoryang00.cn/picture/6390e45c284a61ae56967efa897265f7c676116a.svg) where *I* is the identity matrix, *H* is a [unitary matrix](https://en.wikipedia.org/wiki/Unitary_matrix) (like all other quantum logical gates). Also, it is its own [unitary inverse](https://en.wikipedia.org/wiki/Unitary_matrix), ![{\displaystyle H=H^{\dagger }}](http://victoryang00.cn/picture/67587a10e5b72c23dc1e91b7e197e82315f70288.svg).
+some specialty:1.[image-20200206190344235](http://victoryang00.cn/picture/image-20200206190344235.png)2.Since [{\displaystyle HH^{\dagger }=I}](http://victoryang00.cn/picture/6390e45c284a61ae56967efa897265f7c676116a.svg) where *I* is the identity matrix, *H* is a [unitary matrix](https://en.wikipedia.org/wiki/Unitary_matrix) (like all other quantum logical gates). Also, it is its own [unitary inverse](https://en.wikipedia.org/wiki/Unitary_matrix), [{\displaystyle H=H^{\dagger }}](http://victoryang00.cn/picture/67587a10e5b72c23dc1e91b7e197e82315f70288.svg).
 
 
 
@@ -176,7 +176,7 @@ void statevec_hadamard(Qureg qureg, const int targetQubit)
 
 #### Pauli-X/Y/Z gate
 
-The Pauli-X gate acts on a single qubit. It is the quantum equivalent of the [NOT gate](http://victoryang00.cn/picture/https://en.wikipedia.org/wiki/NOT_gate) for classical computers (with respect to the standard basis ![|0\rangle ](http://victoryang00.cn/picture/ed066a3ad158da0ad6d6a421a606b1c8a35eb95b.svg), ![|1\rangle ](http://victoryang00.cn/picture/2f53021ca18e77477ee5bd3c1523e5830189ec5c.svg), which distinguishes the *Z*-direction.![image-20200206190608424](http://victoryang00.cn/picture/image-20200206190608424.png)
+The Pauli-X gate acts on a single qubit. It is the quantum equivalent of the [NOT gate](http://victoryang00.cn/picture/https://en.wikipedia.org/wiki/NOT_gate) for classical computers (with respect to the standard basis [|0\rangle ](http://victoryang00.cn/picture/ed066a3ad158da0ad6d6a421a606b1c8a35eb95b.svg), [|1\rangle ](http://victoryang00.cn/picture/2f53021ca18e77477ee5bd3c1523e5830189ec5c.svg), which distinguishes the *Z*-direction.[image-20200206190608424](http://victoryang00.cn/picture/image-20200206190608424.png)
 
 ```cpp
 void pauliX(Qureg qureg, const int targetQubit) {
@@ -523,9 +523,9 @@ int main(int narg, char *argv[])
 
    profiling result
 
-   ![image-20200206174728724](http://victoryang00.cn/picture/image-20200206174728724.png)
+   [image-20200206174728724](http://victoryang00.cn/picture/image-20200206174728724.png)
 
-   ![image-20200206174748013](http://victoryang00.cn/picture/image-20200206174748013.png)
+   [image-20200206174748013](http://victoryang00.cn/picture/image-20200206174748013.png)
 
    the most time-consuming part is statevec_compactUnitaryLocal
 
@@ -554,7 +554,7 @@ int main(int narg, char *argv[])
 
    profiling result
 
-   ![image-20200206200505308](http://victoryang00.cn/picture/image-20200206200505308.png)
+   [image-20200206200505308](http://victoryang00.cn/picture/image-20200206200505308.png)
 
 summary
 
@@ -562,7 +562,7 @@ summary
 
 
 
-![image-20200206202701475](http://victoryang00.cn/picture/image-20200206202701475.png)
+[image-20200206202701475](http://victoryang00.cn/picture/image-20200206202701475.png)
 
 
 
@@ -586,7 +586,7 @@ Our future plan:
 
 Loves from Github
 1. https://github.com/QuEST-Kit/QuEST/issues/220
-![image-20200206203018990](http://victoryang00.cn/picture/image-20200206203018990.png)
+[image-20200206203018990](http://victoryang00.cn/picture/image-20200206203018990.png)
 ```
 Hi Jiachen,
 
