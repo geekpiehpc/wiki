@@ -61,9 +61,9 @@
 
 1. **gcc** (包含 **gfortran**) - Version 7.4 + 5.5 + 4.9.4 + 4.4.7
     - `CentOS` 自带的gcc版本过老，可以使用 `scl enable devtoolset-9 bash`以支持最新gcc特性。
-    - 7.4：[gcc-7.4.0.tar.gz](ftp://ftp.gnu.org/gnu/gcc/gcc-7.4.0/gcc-7.4.0.tar.gz)
-    - 5.5：[gcc-5.5.0.tar.gz](ftp://ftp.gnu.org/gnu/gcc/gcc-5.5.0/gcc-5.5.0.tar.gz)
-    - 4.4.7：[gcc-4.4.7.tar.gz](ftp://ftp.gnu.org/gnu/gcc/gcc-4.4.7/gcc-4.4.7.tar.gz)
+    - 7.4：[gcc-7.4.0.tar.gz](http://ftp.gnu.org/gnu/gcc/gcc-7.4.0/gcc-7.4.0.tar.gz)
+    - 5.5：[gcc-5.5.0.tar.gz](http://ftp.gnu.org/gnu/gcc/gcc-5.5.0/gcc-5.5.0.tar.gz)
+    - 4.4.7：[gcc-4.4.7.tar.gz](http://ftp.gnu.org/gnu/gcc/gcc-4.4.7/gcc-4.4.7.tar.gz)
 2. **icc** & **ifort**：包含于 *Intel Parallel Studio XE* 中
 
 ## Intel Parallel Studio XE 全家桶
