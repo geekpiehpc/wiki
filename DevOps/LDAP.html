@@ -1,813 +1,199 @@
-
 <!DOCTYPE HTML>
-<html lang="" >
+<html lang="cn" class="sidebar-visible no-js light">
     <head>
+        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
+        <title>LDAP - GeekPie_HPC Wiki</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>LDAP · GitBook</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        
-        
-        
-    
-    <link rel="stylesheet" href="../gitbook/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
 
-    
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
         
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
-    
-
-    
+        <!-- Custom theme stylesheets -->
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="Schduler.html" />
-    
-    
-    <link rel="prev" href="./" />
-    
-
-    </head>
+            </head>
     <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
-            
-                <nav role="navigation">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../Algorithm/index.html"><strong aria-hidden="true">1.</strong> Algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Algorithm/dgemm.html"><strong aria-hidden="true">1.1.</strong> Dgemm</a></li><li class="chapter-item expanded "><a href="../Algorithm/kmer.html"><strong aria-hidden="true">1.2.</strong> Kmer</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/index.html"><strong aria-hidden="true">2.</strong> Apps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/index.html"><strong aria-hidden="true">2.1.</strong> ASC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-19/index.html"><strong aria-hidden="true">2.1.1.</strong> Asc 19</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-19/cesm.html"><strong aria-hidden="true">2.1.1.1.</strong> Cesm</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/ASC/asc-20/index.html"><strong aria-hidden="true">2.1.2.</strong> Asc 20</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-20/quest.html"><strong aria-hidden="true">2.1.2.1.</strong> Quest</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Apps/ISC/index.html"><strong aria-hidden="true">2.2.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/index.html"><strong aria-hidden="true">2.2.1.</strong> ISC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/CodeChallenge.html"><strong aria-hidden="true">2.2.1.1.</strong> Code Challenge</a></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/WRF.html"><strong aria-hidden="true">2.2.1.2.</strong> WRF</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Apps/SC/index.html"><strong aria-hidden="true">2.3.</strong> SC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/SC/SC20.html"><strong aria-hidden="true">2.3.1.</strong> SC 20</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Benchmark/index.html"><strong aria-hidden="true">3.</strong> Benchmark</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Benchmark/hpcg-dat.html"><strong aria-hidden="true">3.1.</strong> Hpcg Dat</a></li><li class="chapter-item expanded "><a href="../Benchmark/hpl-dat.html"><strong aria-hidden="true">3.2.</strong> Hpl Dat</a></li></ol></li><li class="chapter-item expanded "><a href="../DevOps/index.html"><strong aria-hidden="true">4.</strong> Dev Ops</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../DevOps/LDAP.html" class="active"><strong aria-hidden="true">4.1.</strong> LDAP</a></li><li class="chapter-item expanded "><a href="../DevOps/SaltStack.html"><strong aria-hidden="true">4.2.</strong> Salt Stack</a></li><li class="chapter-item expanded "><a href="../DevOps/Schduler.html"><strong aria-hidden="true">4.3.</strong> Schduler</a></li><li class="chapter-item expanded "><a href="../DevOps/Singularity.html"><strong aria-hidden="true">4.4.</strong> Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="../Language/index.html"><strong aria-hidden="true">5.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Language/Chisel.html"><strong aria-hidden="true">5.1.</strong> Chisel</a></li><li class="chapter-item expanded "><a href="../Language/Go.html"><strong aria-hidden="true">5.2.</strong> Go</a></li><li class="chapter-item expanded "><a href="../Language/Rust.html"><strong aria-hidden="true">5.3.</strong> Rust</a></li></ol></li><li class="chapter-item expanded "><a href="../Libs/index.html"><strong aria-hidden="true">6.</strong> Libs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Libs/Boost.html"><strong aria-hidden="true">6.1.</strong> Boost</a></li></ol></li><li class="chapter-item expanded "><a href="../Profiling/index.html"><strong aria-hidden="true">7.</strong> Profiling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Profiling/ArmForge.html"><strong aria-hidden="true">7.1.</strong> Arm Forge</a></li><li class="chapter-item expanded "><a href="../Profiling/uProf.html"><strong aria-hidden="true">7.2.</strong> U Prof</a></li><li class="chapter-item expanded "><a href="../Profiling/Vtune.html"><strong aria-hidden="true">7.3.</strong> Vtune</a></li></ol></li><li class="chapter-item expanded "><a href="../Sysadmin/index.html"><strong aria-hidden="true">8.</strong> Sysadmin</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Sysadmin/cluster-setup.html"><strong aria-hidden="true">8.1.</strong> Cluster Setup</a></li><li class="chapter-item expanded "><a href="../Sysadmin/environment-installation.html"><strong aria-hidden="true">8.2.</strong> Environment Installation</a></li><li class="chapter-item expanded "><a href="../Sysadmin/environment-modules.html"><strong aria-hidden="true">8.3.</strong> Environment Modules</a></li><li class="chapter-item expanded "><a href="../Sysadmin/machine.html"><strong aria-hidden="true">8.4.</strong> Machine</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
                 
-
-
-<ul class="summary">
-    
-    
-
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../">
-            
-                <a href="../">
-            
-                    
-                    Introduction
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="../Algorithm/">
-            
-                <a href="../Algorithm/">
-            
-                    
-                    Algorithm
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.2.1" data-path="../Algorithm/dgemm.html">
-            
-                <a href="../Algorithm/dgemm.html">
-            
-                    
-                    Dgemm
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../Algorithm/kmer.html">
-            
-                <a href="../Algorithm/kmer.html">
-            
-                    
-                    Kmer
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="../Apps/">
-            
-                <a href="../Apps/">
-            
-                    
-                    Apps
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" >
-            
-                <span>
-            
-                    
-                    ASC
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1.1" >
-            
-                <span>
-            
-                    
-                    Asc 19
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1.1.1" data-path="../Apps/ASC/asc-19/cesm.html">
-            
-                <a href="../Apps/ASC/asc-19/cesm.html">
-            
-                    
-                    Cesm
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.1.2" >
-            
-                <span>
-            
-                    
-                    Asc 20
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1.2.1" data-path="../Apps/ASC/asc-20/quest.html">
-            
-                <a href="../Apps/ASC/asc-20/quest.html">
-            
-                    
-                    Quest
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2" data-path="../Apps/ISC/">
-            
-                <a href="../Apps/ISC/">
-            
-                    
-                    ISC
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.2.1" data-path="../Apps/ISC/ISC-21/">
-            
-                <a href="../Apps/ISC/ISC-21/">
-            
-                    
-                    ISC 21
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.2.1.1" data-path="../Apps/ISC/ISC-21/CodeChallenge.html">
-            
-                <a href="../Apps/ISC/ISC-21/CodeChallenge.html">
-            
-                    
-                    Code Challenge
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2.1.2" data-path="../Apps/ISC/ISC-21/WRF.html">
-            
-                <a href="../Apps/ISC/ISC-21/WRF.html">
-            
-                    
-                    WRF
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" >
-            
-                <span>
-            
-                    
-                    SC
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.3.1" >
-            
-                <span>
-            
-                    
-                    SC 21
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.3.1.1" data-path="../Apps/SC/SC21/ramBLe.html">
-            
-                <a href="../Apps/SC/SC21/ramBLe.html">
-            
-                    
-                    Ram B Le
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3.2" data-path="../Apps/SC/SC20.html">
-            
-                <a href="../Apps/SC/SC20.html">
-            
-                    
-                    SC 20
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="../Benchmark/">
-            
-                <a href="../Benchmark/">
-            
-                    
-                    Benchmark
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.4.1" data-path="../Benchmark/hpcg-dat.html">
-            
-                <a href="../Benchmark/hpcg-dat.html">
-            
-                    
-                    Hpcg Dat
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.2" data-path="../Benchmark/hpl-dat.html">
-            
-                <a href="../Benchmark/hpl-dat.html">
-            
-                    
-                    Hpl Dat
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    Dev Ops
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter active" data-level="1.5.1" data-path="LDAP.html">
-            
-                <a href="LDAP.html">
-            
-                    
-                    LDAP
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.2" data-path="Schduler.html">
-            
-                <a href="Schduler.html">
-            
-                    
-                    Schduler
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.3" data-path="Singularity.html">
-            
-                <a href="Singularity.html">
-            
-                    
-                    Singularity
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="../Language/">
-            
-                <a href="../Language/">
-            
-                    
-                    Language
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1" data-path="../Language/Chisel.html">
-            
-                <a href="../Language/Chisel.html">
-            
-                    
-                    Chisel
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.2" data-path="../Language/Go.html">
-            
-                <a href="../Language/Go.html">
-            
-                    
-                    Go
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3" data-path="../Language/Rust.html">
-            
-                <a href="../Language/Rust.html">
-            
-                    
-                    Rust
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="../Libs/">
-            
-                <a href="../Libs/">
-            
-                    
-                    Libs
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.7.1" data-path="../Libs/Boost.html">
-            
-                <a href="../Libs/Boost.html">
-            
-                    
-                    Boost
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8" >
-            
-                <span>
-            
-                    
-                    Profiling
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1" data-path="../Profiling/ArmForce.html">
-            
-                <a href="../Profiling/ArmForce.html">
-            
-                    
-                    Arm Force
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.2" data-path="../Profiling/Vtune.html">
-            
-                <a href="../Profiling/Vtune.html">
-            
-                    
-                    Vtune
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9" >
-            
-                <span>
-            
-                    
-                    Sysadmin
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.9.1" data-path="../Sysadmin/cluster-setup.html">
-            
-                <a href="../Sysadmin/cluster-setup.html">
-            
-                    
-                    Cluster Setup
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.2" data-path="../Sysadmin/environment-installation.html">
-            
-                <a href="../Sysadmin/environment-installation.html">
-            
-                    
-                    Environment Installation
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.3" data-path="../Sysadmin/environment-modules.html">
-            
-                <a href="../Sysadmin/environment-modules.html">
-            
-                    
-                    Environment Modules
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.4" data-path="../Sysadmin/machine.html">
-            
-                <a href="../Sysadmin/machine.html">
-            
-                    
-                    Machine
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >LDAP</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">GeekPie_HPC Wiki</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/geekpiehpc/wiki" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
                     </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
                 
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../DevOps/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../DevOps/SaltStack.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
             </div>
 
-            
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../DevOps/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Dev Ops">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="Schduler.html" class="navigation navigation-next " aria-label="Next page: Schduler">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
-    </div>
+                                    <a rel="next" href="../DevOps/SaltStack.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
 
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LDAP","level":"1.5.1","depth":2,"next":{"title":"Schduler","level":"1.5.2","depth":2,"path":"DevOps/Schduler.md","ref":"DevOps/Schduler.md","articles":[]},"previous":{"title":"Dev Ops","level":"1.5","depth":1,"path":"DevOps/README.md","ref":"DevOps/README.md","articles":[{"title":"LDAP","level":"1.5.1","depth":2,"path":"DevOps/LDAP.md","ref":"DevOps/LDAP.md","articles":[]},{"title":"Schduler","level":"1.5.2","depth":2,"path":"DevOps/Schduler.md","ref":"DevOps/Schduler.md","articles":[]},{"title":"Singularity","level":"1.5.3","depth":2,"path":"DevOps/Singularity.md","ref":"DevOps/Singularity.md","articles":[]}]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"DevOps/LDAP.md","mtime":"2021-07-22T11:35:46.250Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-22T11:36:34.752Z"},"basePath":"..","book":{"language":""}});
-        });
-    </script>
-</div>
+        </div>
 
         
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
-    
         
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
-    
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
         
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
         
-    
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
+        <!-- Custom JS scripts -->
+        
+        
     </body>
 </html>
-

@@ -1,797 +1,214 @@
-
 <!DOCTYPE HTML>
-<html lang="" >
+<html lang="cn" class="sidebar-visible no-js light">
     <head>
+        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
+        <title>WRF - GeekPie_HPC Wiki</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>WRF · GitBook</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        
-        
-        
-    
-    <link rel="stylesheet" href="../../../gitbook/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
 
-    
-            
-                
-                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
+                <link rel="icon" href="../../../favicon.svg">
+                        <link rel="shortcut icon" href="../../../favicon.png">
+                <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+                <link rel="stylesheet" href="../../../css/print.css" media="print">
         
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../../../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
 
-    
-
-    
+        <!-- Custom theme stylesheets -->
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    
-    <link rel="prev" href="CodeChallenge.html" />
-    
-
-    </head>
+            </head>
     <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
-            
-                <nav role="navigation">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../Algorithm/index.html"><strong aria-hidden="true">1.</strong> Algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Algorithm/dgemm.html"><strong aria-hidden="true">1.1.</strong> Dgemm</a></li><li class="chapter-item expanded "><a href="../../../Algorithm/kmer.html"><strong aria-hidden="true">1.2.</strong> Kmer</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/index.html"><strong aria-hidden="true">2.</strong> Apps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/index.html"><strong aria-hidden="true">2.1.</strong> ASC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-19/index.html"><strong aria-hidden="true">2.1.1.</strong> Asc 19</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-19/cesm.html"><strong aria-hidden="true">2.1.1.1.</strong> Cesm</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-20/index.html"><strong aria-hidden="true">2.1.2.</strong> Asc 20</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-20/quest.html"><strong aria-hidden="true">2.1.2.1.</strong> Quest</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/index.html"><strong aria-hidden="true">2.2.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/index.html"><strong aria-hidden="true">2.2.1.</strong> ISC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/CodeChallenge.html"><strong aria-hidden="true">2.2.1.1.</strong> Code Challenge</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/WRF.html" class="active"><strong aria-hidden="true">2.2.1.2.</strong> WRF</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/SC/index.html"><strong aria-hidden="true">2.3.</strong> SC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/SC/SC20.html"><strong aria-hidden="true">2.3.1.</strong> SC 20</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Benchmark/index.html"><strong aria-hidden="true">3.</strong> Benchmark</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Benchmark/hpcg-dat.html"><strong aria-hidden="true">3.1.</strong> Hpcg Dat</a></li><li class="chapter-item expanded "><a href="../../../Benchmark/hpl-dat.html"><strong aria-hidden="true">3.2.</strong> Hpl Dat</a></li></ol></li><li class="chapter-item expanded "><a href="../../../DevOps/index.html"><strong aria-hidden="true">4.</strong> Dev Ops</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/LDAP.html"><strong aria-hidden="true">4.1.</strong> LDAP</a></li><li class="chapter-item expanded "><a href="../../../DevOps/SaltStack.html"><strong aria-hidden="true">4.2.</strong> Salt Stack</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Schduler.html"><strong aria-hidden="true">4.3.</strong> Schduler</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Singularity.html"><strong aria-hidden="true">4.4.</strong> Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Language/index.html"><strong aria-hidden="true">5.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Language/Chisel.html"><strong aria-hidden="true">5.1.</strong> Chisel</a></li><li class="chapter-item expanded "><a href="../../../Language/Go.html"><strong aria-hidden="true">5.2.</strong> Go</a></li><li class="chapter-item expanded "><a href="../../../Language/Rust.html"><strong aria-hidden="true">5.3.</strong> Rust</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Libs/index.html"><strong aria-hidden="true">6.</strong> Libs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Libs/Boost.html"><strong aria-hidden="true">6.1.</strong> Boost</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Profiling/index.html"><strong aria-hidden="true">7.</strong> Profiling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Profiling/ArmForge.html"><strong aria-hidden="true">7.1.</strong> Arm Forge</a></li><li class="chapter-item expanded "><a href="../../../Profiling/uProf.html"><strong aria-hidden="true">7.2.</strong> U Prof</a></li><li class="chapter-item expanded "><a href="../../../Profiling/Vtune.html"><strong aria-hidden="true">7.3.</strong> Vtune</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Sysadmin/index.html"><strong aria-hidden="true">8.</strong> Sysadmin</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Sysadmin/cluster-setup.html"><strong aria-hidden="true">8.1.</strong> Cluster Setup</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/environment-installation.html"><strong aria-hidden="true">8.2.</strong> Environment Installation</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/environment-modules.html"><strong aria-hidden="true">8.3.</strong> Environment Modules</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/machine.html"><strong aria-hidden="true">8.4.</strong> Machine</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
                 
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
 
+                    <h1 class="menu-title">GeekPie_HPC Wiki</h1>
 
-<ul class="summary">
-    
-    
+                    <div class="right-buttons">
+                                                <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/geekpiehpc/wiki" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
 
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../../../">
-            
-                <a href="../../../">
-            
-                    
-                    Introduction
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="../../../Algorithm/">
-            
-                <a href="../../../Algorithm/">
-            
-                    
-                    Algorithm
-            
-                </a>
-            
-
-            
-            <ul class="articles">
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
                 
-    
-        <li class="chapter " data-level="1.2.1" data-path="../../../Algorithm/dgemm.html">
-            
-                <a href="../../../Algorithm/dgemm.html">
-            
-                    
-                    Dgemm
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../../../Algorithm/kmer.html">
-            
-                <a href="../../../Algorithm/kmer.html">
-            
-                    
-                    Kmer
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="../../">
-            
-                <a href="../../">
-            
-                    
-                    Apps
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" >
-            
-                <span>
-            
-                    
-                    ASC
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1.1" >
-            
-                <span>
-            
-                    
-                    Asc 19
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1.1.1" data-path="../../ASC/asc-19/cesm.html">
-            
-                <a href="../../ASC/asc-19/cesm.html">
-            
-                    
-                    Cesm
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.1.2" >
-            
-                <span>
-            
-                    
-                    Asc 20
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1.2.1" data-path="../../ASC/asc-20/quest.html">
-            
-                <a href="../../ASC/asc-20/quest.html">
-            
-                    
-                    Quest
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2" data-path="../">
-            
-                <a href="../">
-            
-                    
-                    ISC
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.2.1" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    ISC 21
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.2.1.1" data-path="CodeChallenge.html">
-            
-                <a href="CodeChallenge.html">
-            
-                    
-                    Code Challenge
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.3.2.1.2" data-path="WRF.html">
-            
-                <a href="WRF.html">
-            
-                    
-                    WRF
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" >
-            
-                <span>
-            
-                    
-                    SC
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.3.1" >
-            
-                <span>
-            
-                    
-                    SC 21
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.3.1.1" data-path="../../SC/SC21/ramBLe.html">
-            
-                <a href="../../SC/SC21/ramBLe.html">
-            
-                    
-                    Ram B Le
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3.2" data-path="../../SC/SC20.html">
-            
-                <a href="../../SC/SC20.html">
-            
-                    
-                    SC 20
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="../../../Benchmark/">
-            
-                <a href="../../../Benchmark/">
-            
-                    
-                    Benchmark
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.4.1" data-path="../../../Benchmark/hpcg-dat.html">
-            
-                <a href="../../../Benchmark/hpcg-dat.html">
-            
-                    
-                    Hpcg Dat
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.2" data-path="../../../Benchmark/hpl-dat.html">
-            
-                <a href="../../../Benchmark/hpl-dat.html">
-            
-                    
-                    Hpl Dat
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="../../../DevOps/">
-            
-                <a href="../../../DevOps/">
-            
-                    
-                    Dev Ops
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.5.1" data-path="../../../DevOps/LDAP.html">
-            
-                <a href="../../../DevOps/LDAP.html">
-            
-                    
-                    LDAP
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.2" data-path="../../../DevOps/Schduler.html">
-            
-                <a href="../../../DevOps/Schduler.html">
-            
-                    
-                    Schduler
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.3" data-path="../../../DevOps/Singularity.html">
-            
-                <a href="../../../DevOps/Singularity.html">
-            
-                    
-                    Singularity
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="../../../Language/">
-            
-                <a href="../../../Language/">
-            
-                    
-                    Language
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1" data-path="../../../Language/Chisel.html">
-            
-                <a href="../../../Language/Chisel.html">
-            
-                    
-                    Chisel
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.2" data-path="../../../Language/Go.html">
-            
-                <a href="../../../Language/Go.html">
-            
-                    
-                    Go
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3" data-path="../../../Language/Rust.html">
-            
-                <a href="../../../Language/Rust.html">
-            
-                    
-                    Rust
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="../../../Libs/">
-            
-                <a href="../../../Libs/">
-            
-                    
-                    Libs
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.7.1" data-path="../../../Libs/Boost.html">
-            
-                <a href="../../../Libs/Boost.html">
-            
-                    
-                    Boost
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8" >
-            
-                <span>
-            
-                    
-                    Profiling
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1" data-path="../../../Profiling/ArmForce.html">
-            
-                <a href="../../../Profiling/ArmForce.html">
-            
-                    
-                    Arm Force
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.2" data-path="../../../Profiling/Vtune.html">
-            
-                <a href="../../../Profiling/Vtune.html">
-            
-                    
-                    Vtune
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9" >
-            
-                <span>
-            
-                    
-                    Sysadmin
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.9.1" data-path="../../../Sysadmin/cluster-setup.html">
-            
-                <a href="../../../Sysadmin/cluster-setup.html">
-            
-                    
-                    Cluster Setup
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.2" data-path="../../../Sysadmin/environment-installation.html">
-            
-                <a href="../../../Sysadmin/environment-installation.html">
-            
-                    
-                    Environment Installation
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.3" data-path="../../../Sysadmin/environment-modules.html">
-            
-                <a href="../../../Sysadmin/environment-modules.html">
-            
-                    
-                    Environment Modules
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.4" data-path="../../../Sysadmin/machine.html">
-            
-                <a href="../../../Sysadmin/machine.html">
-            
-                    
-                    Machine
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >WRF</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <h1 id="wrf">WRF</h1>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="wrf"><a class="header" href="#wrf">WRF</a></h1>
 <blockquote>
-<p>&#x50BB;&#x903C;Fortran&#xFF0C;2021&#x5E74;&#x4E86;&#xFF0C;&#x5C45;&#x7136;&#x8FD8;&#x6709;&#x4EBA;&#x7528;Fortran&#xFF08;</p>
-<p>&#x6700;&#x597D;&#x627E;&#x505A;&#x6C14;&#x8C61;&#x7684;&#x4EBA;&#x95EE;&#x95EE;&#x6709;&#x5173;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x60DC;&#x6211;&#x6CA1;&#x627E;&#x5230;</p>
+<p>傻逼Fortran，2021年了，居然还有人用Fortran</p>
+<p>最好找做气象的人问问有关参数设置的问题，可惜我没找到</p>
 </blockquote>
-<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x5173;&#x5730;&#x7403;&#x79D1;&#x5B66;&#x7684;&#x5929;&#x6C14;&#x6A21;&#x62DF;&#x7CFB;&#x7EDF;&#xFF0C;&#x6240;&#x6709;&#x6709;&#x5173;&#x5730;&#x7403;&#x79D1;&#x5B66;&#x548C;Fortran&#x5E76;&#x884C;&#x5316;&#x7684;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x90FD;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x4E00;&#x4E0B;</p>
-<h2 id="task-links-and-introductions">Task links and introductions</h2>
-<p><a href="https://hpcadvisorycouncil.atlassian.net/wiki/spaces/HPCWORKS/pages/1827438600/WRF+with+Single+Domain+-+Practice+case+for+ISC21+SCC" target="_blank">Practice case for ISC21 SCC</a></p>
-<p><a href="https://hpcadvisorycouncil.atlassian.net/wiki/spaces/HPCWORKS/pages/1827438607/WRF+-+3+Domain+Problem+for+ISC21+SCC" target="_blank">3 Domain Problem for ISC21 SCC</a></p>
-<h2 id="install">Install</h2>
-<h3 id="required-libs">required libs</h3>
-<p>HDF5, NetCDF-C, NetCDF-Fortran (&#x624B;&#x52A8;&#x5B89;&#x88C5;&#x53EF;&#x80FD;&#x66F4;&#x597D;&#xFF0C;&#x9700;&#x8981;mpi)</p>
-<h4 id="hdf5">HDF5</h4>
-<pre><code class="lang-bash">./configure --prefix=&#x4F60;&#x7684;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;/hdf5 --enable-fortran --enable-fortran2003 --enable-parallel
+<p>这是一个有关地球科学的天气模拟系统，所有有关地球科学和Fortran并行化的其他应用都可以参考一下</p>
+<h2 id="task-links-and-introductions"><a class="header" href="#task-links-and-introductions">Task links and introductions</a></h2>
+<p><a href="https://hpcadvisorycouncil.atlassian.net/wiki/spaces/HPCWORKS/pages/1827438600/WRF+with+Single+Domain+-+Practice+case+for+ISC21+SCC">Practice case for ISC21 SCC</a></p>
+<p><a href="https://hpcadvisorycouncil.atlassian.net/wiki/spaces/HPCWORKS/pages/1827438607/WRF+-+3+Domain+Problem+for+ISC21+SCC">3 Domain Problem for ISC21 SCC</a></p>
+<h2 id="install"><a class="header" href="#install">Install</a></h2>
+<h3 id="required-libs"><a class="header" href="#required-libs">required libs</a></h3>
+<p>HDF5, NetCDF-C, NetCDF-Fortran (手动安装可能更好，需要mpi)</p>
+<h4 id="hdf5"><a class="header" href="#hdf5">HDF5</a></h4>
+<pre><code class="language-bash">./configure --prefix=你的安装路径/hdf5 --enable-fortran --enable-fortran2003 --enable-parallel
 make -j 48
 make install
 </code></pre>
-<pre><code class="lang-bash"><span class="hljs-comment"># vi ~/.bashrc</span>
-<span class="hljs-built_in">export</span> HDF5=&#x4F60;&#x7684;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;/hdf5
-<span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$HDF5</span>/bin:<span class="hljs-variable">$PATH</span>
-<span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-variable">$HDF5</span>/lib:<span class="hljs-variable">$LD_LIBRARY_PATH</span>
-<span class="hljs-built_in">export</span> INCLUDE=<span class="hljs-variable">$HDF5</span>/include:<span class="hljs-variable">$INCLUDE</span>
-<span class="hljs-comment"># source ~/.bashrc</span>
+<pre><code class="language-bash"># vi ~/.bashrc
+export HDF5=你的安装路径/hdf5
+export PATH=$HDF5/bin:$PATH
+export LD_LIBRARY_PATH=$HDF5/lib:$LD_LIBRARY_PATH
+export INCLUDE=$HDF5/include:$INCLUDE
+# source ~/.bashrc
 </code></pre>
-<h4 id="netcdf-c">NetCDF-C</h4>
-<pre><code class="lang-bash">./configure --prefix=&#x4F60;&#x7684;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;/netcdf LDFLAGS=<span class="hljs-string">&quot;-L<span class="hljs-variable">$HDF5</span>/lib&quot;</span> CPPFLAGS=<span class="hljs-string">&quot;-I<span class="hljs-variable">$HDF5</span>/include&quot;</span> CC=mpiicc --disable-dap
+<h4 id="netcdf-c"><a class="header" href="#netcdf-c">NetCDF-C</a></h4>
+<pre><code class="language-bash">./configure --prefix=你的安装路径/netcdf LDFLAGS=&quot;-L$HDF5/lib&quot; CPPFLAGS=&quot;-I$HDF5/include&quot; CC=mpiicc --disable-dap
 make -j 48
 make install
 </code></pre>
-<pre><code class="lang-bash"><span class="hljs-comment"># vi ~/.bashrc</span>
-<span class="hljs-built_in">export</span> NETCDF=/usr/<span class="hljs-built_in">local</span>/netcdf
-<span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$NETCDF</span>/bin:<span class="hljs-variable">$PATH</span>
-<span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-variable">$NETCDF</span>/lib:<span class="hljs-variable">$LD_LIBRARY_PATH</span>
-<span class="hljs-built_in">export</span> INCLUDE=<span class="hljs-variable">$NETCDF</span>/include:<span class="hljs-variable">$INCLUDE</span>
-<span class="hljs-comment"># source ~/.bashrc</span>
+<pre><code class="language-bash"># vi ~/.bashrc
+export NETCDF=/usr/local/netcdf
+export PATH=$NETCDF/bin:$PATH
+export LD_LIBRARY_PATH=$NETCDF/lib:$LD_LIBRARY_PATH
+export INCLUDE=$NETCDF/include:$INCLUDE
+# source ~/.bashrc
 </code></pre>
-<h4 id="netcdf-fortran">NetCDF-Fortran</h4>
-<pre><code class="lang-bash">./configure --prefix=&#x4F60;&#x7684;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;/netcdf CPPFLAGS=<span class="hljs-string">&quot;-I<span class="hljs-variable">$HDF5</span>/include -I<span class="hljs-variable">$NETCDF</span>/include&quot;</span> LDFLAGS=<span class="hljs-string">&quot;-L<span class="hljs-variable">$HDF5</span>/lib -L<span class="hljs-variable">$NETCDF</span>/lib&quot;</span> CC=mpiicc FC=mpiif90 F77=mpiif90 <span class="hljs-comment"># &#x4E0E;NetCDF-C&#x5B89;&#x88C5;&#x5728;&#x540C;&#x4E00;&#x76EE;&#x5F55;&#x4E0B;</span>
+<h4 id="netcdf-fortran"><a class="header" href="#netcdf-fortran">NetCDF-Fortran</a></h4>
+<pre><code class="language-bash">./configure --prefix=你的安装路径/netcdf CPPFLAGS=&quot;-I$HDF5/include -I$NETCDF/include&quot; LDFLAGS=&quot;-L$HDF5/lib -L$NETCDF/lib&quot; CC=mpiicc FC=mpiif90 F77=mpiif90 # 与NetCDF-C安装在同一目录下
 make -j 48
 make install
 </code></pre>
-<h3 id="advanced-lib">Advanced lib</h3>
-<p><a href="https://parallel-netcdf.github.io/" target="_blank">PNetCDF</a> A Parallel I/O Library for NetCDF File Access</p>
+<h3 id="advanced-lib"><a class="header" href="#advanced-lib">Advanced lib</a></h3>
+<p><a href="https://parallel-netcdf.github.io/">PNetCDF</a> A Parallel I/O Library for NetCDF File Access</p>
 <blockquote>
-<p>4&#x4E2A;node&#x6709;&#x8D1F;&#x9762;&#x6548;&#x679C;&#xFF0C;&#x9700;&#x8981;8&#x4E2A;node&#x53CA;&#x4EE5;&#x4E0A;&#x624D;&#x4F1A;&#x548C;NertCDF&#x6709;&#x5F02;</p>
+<p>4个node有负面效果，需要8个node及以上才会和NertCDF有异</p>
 </blockquote>
-<p><a href="https://imgtu.com/i/WnELTI" target="_blank"><img src="https://z3.ax1x.com/2021/07/15/WnELTI.md.png" alt="pnetcdf.png"></a></p>
-<p>&#x5B89;&#x88C5;&#x65B9;&#x6CD5;&#x89C1;&#x5B98;&#x7F51;</p>
-<h3 id="main-program">Main Program</h3>
-<p>&#x7ECF;&#x8FC7;&#x6D4B;&#x8BD5;&#xFF0C;&#x4F7F;&#x7528;intelMPI&#x4F1A;&#x51FA;&#x73B0;segment fault&#xFF0C;OpenMPI&#x5219;&#x4E0D;&#x4F1A;&#xFF0C;&#x7136;&#x800C;intelMPI&#x597D;&#x50CF;&#x5E76;&#x6CA1;&#x6709;&#x5F88;&#x591A;&#x63D0;&#x9AD8;&#xFF0C;&#x53EF;&#x4EE5;&#x4ECE;stack size&#x7684;&#x89D2;&#x5EA6;&#x5C1D;&#x8BD5;&#x4FEE;&#x6B63;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
-<h4 id="env-setting">env setting</h4>
-<pre><code class="lang-bash">intel openmpi hdf5 netcdf
+<p><a href="https://z3.ax1x.com/2021/07/15/WnELTI.md.png">pnetcdf.png</a></p>
+<p>安装方法见官网</p>
+<h3 id="main-program"><a class="header" href="#main-program">Main Program</a></h3>
+<p>经过测试，使用intelMPI会出现segment fault，OpenMPI则不会，然而intelMPI好像并没有很多提高，可以从stack size的角度尝试修正这个问题。</p>
+<h4 id="env-setting"><a class="header" href="#env-setting">env setting</a></h4>
+<pre><code class="language-bash">intel openmpi hdf5 netcdf
 </code></pre>
-<h4 id="config-and-build">config and build</h4>
-<pre><code class="lang-bash">./configure
+<h4 id="config-and-build"><a class="header" href="#config-and-build">config and build</a></h4>
+<pre><code class="language-bash">./configure
 </code></pre>
-<pre><code class="lang-bash">checking <span class="hljs-keyword">for</span> perl5... no
-checking <span class="hljs-keyword">for</span> perl... found /usr/bin/perl (perl)
-Will use NETCDF <span class="hljs-keyword">in</span> dir: /global/software/centos-7.x86_64/modules/intel/2020.1.217/netcdf/4.7.4
-HDF5 not <span class="hljs-built_in">set</span> <span class="hljs-keyword">in</span> environment. Will configure WRF <span class="hljs-keyword">for</span> use without.
-PHDF5 not <span class="hljs-built_in">set</span> <span class="hljs-keyword">in</span> environment. Will configure WRF <span class="hljs-keyword">for</span> use without.
-Will use <span class="hljs-string">&apos;time&apos;</span> to report timing information
-<span class="hljs-variable">$JASPERLIB</span> or <span class="hljs-variable">$JASPERINC</span> not found <span class="hljs-keyword">in</span> environment, configuring to build without grib2 I/O...
+<pre><code class="language-bash">checking for perl5... no
+checking for perl... found /usr/bin/perl (perl)
+Will use NETCDF in dir: /global/software/centos-7.x86_64/modules/intel/2020.1.217/netcdf/4.7.4
+HDF5 not set in environment. Will configure WRF for use without.
+PHDF5 not set in environment. Will configure WRF for use without.
+Will use 'time' to report timing information
+$JASPERLIB or $JASPERINC not found in environment, configuring to build without grib2 I/O...
 ------------------------------------------------------------------------
 Please select from among the following Linux x86_64 options:
 
@@ -810,8 +227,8 @@ Please select from among the following Linux x86_64 options:
  44. (serial)  45. (smpar)  46. (dmpar)  47. (dm+sm)   CRAY CCE (ftn $(NOOMP)/cc): Cray XE and XC
  48. (serial)  49. (smpar)  50. (dmpar)  51. (dm+sm)   INTEL (ftn/icc): Cray XC
  52. (serial)  53. (smpar)  54. (dmpar)  55. (dm+sm)   PGI (pgf90/pgcc)
- 56. (serial)  57. (smpar)  58. (dmpar)  59. (dm+sm)   PGI (pgf90/gcc): <span class="hljs-_">-f</span>90=pgf90
- 60. (serial)  61. (smpar)  62. (dmpar)  63. (dm+sm)   PGI (pgf90/pgcc): <span class="hljs-_">-f</span>90=pgf90
+ 56. (serial)  57. (smpar)  58. (dmpar)  59. (dm+sm)   PGI (pgf90/gcc): -f90=pgf90
+ 60. (serial)  61. (smpar)  62. (dmpar)  63. (dm+sm)   PGI (pgf90/pgcc): -f90=pgf90
  64. (serial)  65. (smpar)  66. (dmpar)  67. (dm+sm)   INTEL (ifort/icc): HSW/BDW
  68. (serial)  69. (smpar)  70. (dmpar)  71. (dm+sm)   INTEL (ifort/icc): KNL MIC
  72. (serial)  73. (smpar)  74. (dmpar)  75. (dm+sm)   FUJITSU (frtpx/fccpx): FX10/FX100 SPARC64 IXfx/Xlfx
@@ -819,145 +236,120 @@ Please select from among the following Linux x86_64 options:
 Enter selection [1-75] :
 </code></pre>
 <p>dm+sm: OMP+MPI</p>
-<pre><code class="lang-bash">./compile -j 6 em_real &gt;&amp; build_wrf.log
+<pre><code class="language-bash">./compile -j 6 em_real &gt;&amp; build_wrf.log
 tail -15 build_wrf.log
 </code></pre>
-<h4 id="finish">finish</h4>
-<p>&#x6240;&#x6709;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x90FD;&#x5728;<code>run</code>&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x3002;</p>
-<h2 id="run">Run</h2>
-<pre><code class="lang-bash"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> ../WRF/run/* ; <span class="hljs-keyword">do</span> ln -sf <span class="hljs-variable">$i</span> $(&#x6570;&#x636E;&#x6240;&#x5728;&#x76EE;&#x5F55;) ; <span class="hljs-keyword">done</span>
+<h4 id="finish"><a class="header" href="#finish">finish</a></h4>
+<p>所有执行文件都在<code>run</code>文件夹中。</p>
+<h2 id="run"><a class="header" href="#run">Run</a></h2>
+<pre><code class="language-bash">for i in ../WRF/run/* ; do ln -sf $i $(数据所在目录) ; done
 </code></pre>
-<p><code>namelist.input</code>&#x662F;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;&#x6709;&#x4F17;&#x591A;&#x53C2;&#x6570;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://esrl.noaa.gov/gsd/wrfportal/namelist_input_options.html" target="_blank"><strong>WRF NAMELIST.INPUT FILE DESCRIPTION</strong></a>&#x3002;</p>
-<h3 id="slurm-script">slurm script</h3>
-<pre><code class="lang-bash"><span class="hljs-comment">#!/bin/bash -l</span>
-<span class="hljs-comment">#SBATCH -N 4</span>
-<span class="hljs-comment">#SBATCH --ntasks-per-node=20</span>
-<span class="hljs-comment">#SBATCH --cpus-per-task=2</span>
-<span class="hljs-comment">#SBATCH --ntasks=80</span>
-<span class="hljs-comment">#SBATCH -J wrf3Dom_mpi_80_omp_2</span>
-<span class="hljs-comment">#SBATCH -p compute</span>
-<span class="hljs-comment">#SBATCH -t 2:00:00</span>
-<span class="hljs-comment">#SBATCH -o wrf3Dom-%j.out</span>
+<p><code>namelist.input</code>是输入文件，其中有众多参数需要设置，可以参考<a href="https://esrl.noaa.gov/gsd/wrfportal/namelist_input_options.html"><strong>WRF NAMELIST.INPUT FILE DESCRIPTION</strong></a>。</p>
+<h3 id="slurm-script"><a class="header" href="#slurm-script">slurm script</a></h3>
+<pre><code class="language-bash">#!/bin/bash -l
+#SBATCH -N 4
+#SBATCH --ntasks-per-node=20
+#SBATCH --cpus-per-task=2
+#SBATCH --ntasks=80
+#SBATCH -J wrf3Dom_mpi_80_omp_2
+#SBATCH -p compute
+#SBATCH -t 2:00:00
+#SBATCH -o wrf3Dom-%j.out
 sleep 300
 module load NiaEnv/2019b
 module load intel/2019u4  openmpi/4.0.1
-<span class="hljs-comment">#hdf5/1.10.5</span>
-<span class="hljs-comment">#module load netcdf/4.6.3</span>
+#hdf5/1.10.5
+#module load netcdf/4.6.3
 
-<span class="hljs-built_in">ulimit</span> -c unlimited
-<span class="hljs-built_in">ulimit</span> <span class="hljs-_">-s</span> unlimited
+ulimit -c unlimited
+ulimit -s unlimited
 
 module list
 
-<span class="hljs-built_in">export</span> HDF5=/home/l/lcl_uotiscscc/lcl_uotiscsccs1034/scratch/nonspack/hdf5
-<span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$HDF5</span>/bin:<span class="hljs-variable">$PATH</span>
-<span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-variable">$HDF5</span>/lib:<span class="hljs-variable">$LD_LIBRARY_PATH</span>
-<span class="hljs-built_in">export</span> INCLUDE=<span class="hljs-variable">$HDF5</span>/include:<span class="hljs-variable">$INCLUDE</span>
+export HDF5=/home/l/lcl_uotiscscc/lcl_uotiscsccs1034/scratch/nonspack/hdf5
+export PATH=$HDF5/bin:$PATH
+export LD_LIBRARY_PATH=$HDF5/lib:$LD_LIBRARY_PATH
+export INCLUDE=$HDF5/include:$INCLUDE
 
-<span class="hljs-built_in">export</span> NETCDF=/home/l/lcl_uotiscscc/lcl_uotiscsccs1034/scratch/nonspack/netcdf
-<span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$NETCDF</span>/bin:<span class="hljs-variable">$PATH</span>
-<span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-variable">$NETCDF</span>/lib:<span class="hljs-variable">$LD_LIBRARY_PATH</span>
-<span class="hljs-built_in">export</span> INCLUDE=<span class="hljs-variable">$NETCDF</span>/include:<span class="hljs-variable">$INCLUDE</span>
-
-
-<span class="hljs-built_in">export</span> KMP_STACKSIZE=20480000000
+export NETCDF=/home/l/lcl_uotiscscc/lcl_uotiscsccs1034/scratch/nonspack/netcdf
+export PATH=$NETCDF/bin:$PATH
+export LD_LIBRARY_PATH=$NETCDF/lib:$LD_LIBRARY_PATH
+export INCLUDE=$NETCDF/include:$INCLUDE
 
 
-<span class="hljs-built_in">export</span> OMP_NUM_THREADS=<span class="hljs-variable">$SLURM_CPUS_PER_TASK</span>
-<span class="hljs-built_in">cd</span> ~/scratch/pl/orifiles
-mpirun -np 80 -cpus-per-rank <span class="hljs-variable">$SLURM_CPUS_PER_TASK</span> ./wrf.exe
+export KMP_STACKSIZE=20480000000
+
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+cd ~/scratch/pl/orifiles
+mpirun -np 80 -cpus-per-rank $SLURM_CPUS_PER_TASK ./wrf.exe
 </code></pre>
-<h2 id="important-notice">Important Notice</h2>
-<h3 id="stack-size-and-segment-fault"><code>stack size</code> and <code>segment fault</code></h3>
+<h2 id="important-notice"><a class="header" href="#important-notice">Important Notice</a></h2>
+<h3 id="stack-size-and-segment-fault"><a class="header" href="#stack-size-and-segment-fault"><code>stack size</code> and <code>segment fault</code></a></h3>
 <p><code>ulimit</code> sets the OS limits for the program.
 <code>KMP_STACKSIZE</code> tells the OpenMP implementation about how much stack to actually allocate for each of the stacks. So, depending on your OS defaults you might need both. BTW, you should rather use <code>OMP_STACKSIZE</code> instead, as <code>KMP_STACKSIZE</code> is the environment variable used by the Intel and clang compilers. <code>OMP_STACKSIZE</code> is the standard way of setting the stack size of the OpenMP threads.
 Note, that this problem is usually more exposed, as Fortran tends to keep more data on the stack, esp. arrays. Some compilers can move such arrays to the heap automatically, see for instance <code>-heap-arrays</code> for the Intel compiler.</p>
-<p>Fortran&#x7684;OMP&#x8FDB;&#x7A0B;&#x4F1A;&#x5728;stack&#x91CC;&#x585E;&#x4E00;&#x5927;&#x5806;&#x4E1C;&#x897F;&#xFF0C;&#x5F88;&#x591A;&#x65F6;&#x5019;&#x4F1A;&#x7206;&#x6808;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;Fortran&#x548C;OMP&#x7684;&#x5E94;&#x7528;&#x9700;&#x8981;&#x6CE8;&#x610F;<code>export KMP_STACKSIZE=20480000000</code>, &#x800C;&#x4E14;<code>gcc</code>&#x662F;<code>OMP</code>,<code>icc</code>&#x662F;<code>KMP</code>&#x3002;</p>
-<h3 id="fortran-and-mpi">Fortran and MPI</h3>
-<p>&#x4E0D;&#x77E5;&#x9053;&#x662F;slurm&#x8FD8;&#x662F;Fortran&#x7684;&#x95EE;&#x9898;&#xFF0C;slurm&#x4E0D;&#x80FD;&#x5BF9;Fortran&#x7684;MPI&#x7A0B;&#x5E8F;&#x81EA;&#x52A8;&#x5206;&#x914D;CPU&#x6838;&#x5FC3;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#xFF0C;</p>
-<pre><code class="lang-bash">mpirun -np 16 -cpus-per-rank <span class="hljs-variable">$SLURM_CPUS_PER_TASK</span> ./wrf.exe
+<p>Fortran的OMP进程会在stack里塞一大堆东西，很多时候会爆栈，所以使用Fortran和OMP的应用需要注意<code>export KMP_STACKSIZE=20480000000</code>, 而且<code>gcc</code>是<code>OMP</code>,<code>icc</code>是<code>KMP</code>。</p>
+<h3 id="fortran-and-mpi"><a class="header" href="#fortran-and-mpi">Fortran and MPI</a></h3>
+<p>不知道是slurm还是Fortran的问题，slurm不能对Fortran的MPI程序自动分配CPU核心，所以需要手动设置，</p>
+<pre><code class="language-bash">mpirun -np 16 -cpus-per-rank $SLURM_CPUS_PER_TASK ./wrf.exe
 </code></pre>
 <p>tell mpi how many cpu cores should one mpi rank get for openmp</p>
-<h3 id="ipm-report-env-setting">IPM Report env setting</h3>
-<p>IPM&#x662F;&#x4E00;&#x4E2A;&#x76D1;&#x63A7;MPI&#x4F7F;&#x7528;&#x7684;profiler&#x3002;&#x4F7F;&#x7528;IPM&#x53EA;&#x9700;&#x8981;perloadIPM&#x7684;lib&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x5B8C;&#x6574;&#x751F;&#x6210;&#x62A5;&#x544A;&#x56FE;&#x7247;&#xFF0C;&#x9700;&#x8981;&#x8BBE;&#x5B9A;&#x4EE5;&#x4E0B;&#x53D8;&#x91CF;</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">export</span> IPM_REPORT=full
-<span class="hljs-built_in">export</span> IPM_LOG=full
+<h3 id="ipm-report-env-setting"><a class="header" href="#ipm-report-env-setting">IPM Report env setting</a></h3>
+<p>IPM是一个监控MPI使用的profiler。使用IPM只需要perloadIPM的lib就可以了。但是为了完整生成报告图片，需要设定以下变量</p>
+<pre><code class="language-bash">export IPM_REPORT=full
+export IPM_LOG=full
 </code></pre>
-<p>When using IPM, set above envs to make sure you can get right xml to visualize, or using <a href="https://files.slack.com/files-pri/TAXMW9014-F02586VN27L/download/ipm.ipynb" target="_blank">https://files.slack.com/files-pri/TAXMW9014-F02586VN27L/download/ipm.ipynb</a> to visualize</p>
-<h2 id="others">Others</h2>
+<p>When using IPM, set above envs to make sure you can get right xml to visualize, or using https://files.slack.com/files-pri/TAXMW9014-F02586VN27L/download/ipm.ipynb to visualize</p>
+<h2 id="others"><a class="header" href="#others">Others</a></h2>
 
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
+                    </main>
 
-                        </div>
-                    </div>
-                
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../../../Apps/ISC/ISC-21/CodeChallenge.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../../../Apps/SC/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
             </div>
 
-            
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../../../Apps/ISC/ISC-21/CodeChallenge.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
-                <a href="CodeChallenge.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Code Challenge">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-            
-        
-    </div>
+                                    <a rel="next" href="../../../Apps/SC/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
 
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"WRF","level":"1.3.2.1.2","depth":4,"next":{"title":"SC","level":"1.3.3","depth":2,"ref":"","articles":[{"title":"SC 21","level":"1.3.3.1","depth":3,"ref":"","articles":[{"title":"Ram B Le","level":"1.3.3.1.1","depth":4,"path":"Apps/SC/SC21/ramBLe.md","ref":"Apps/SC/SC21/ramBLe.md","articles":[]}]},{"title":"SC 20","level":"1.3.3.2","depth":3,"path":"Apps/SC/SC20.md","ref":"Apps/SC/SC20.md","articles":[]}]},"previous":{"title":"Code Challenge","level":"1.3.2.1.1","depth":4,"path":"Apps/ISC/ISC-21/CodeChallenge.md","ref":"Apps/ISC/ISC-21/CodeChallenge.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Apps/ISC/ISC-21/WRF.md","mtime":"2021-07-22T11:35:46.250Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-22T11:36:34.752Z"},"basePath":"../../..","book":{"language":""}});
-        });
-    </script>
-</div>
+        </div>
 
         
-    <script src="../../../gitbook/gitbook.js"></script>
-    <script src="../../../gitbook/theme.js"></script>
-    
         
-        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
-    
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
         
-        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
         
-    
+                <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
         
-        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
 
+        <!-- Custom JS scripts -->
+        
+        
     </body>
 </html>
-

@@ -1,844 +1,261 @@
-
 <!DOCTYPE HTML>
-<html lang="" >
+<html lang="cn" class="sidebar-visible no-js light">
     <head>
+        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
+        <title>Quest - GeekPie_HPC Wiki</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Quest · GitBook</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        
-        
-        
-    
-    <link rel="stylesheet" href="../../../gitbook/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
 
-    
-            
-                
-                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
+                <link rel="icon" href="../../../favicon.svg">
+                        <link rel="shortcut icon" href="../../../favicon.png">
+                <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+                <link rel="stylesheet" href="../../../css/print.css" media="print">
         
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../../../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
 
-    
-
-    
+        <!-- Custom theme stylesheets -->
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="../../ISC/" />
-    
-    
-
-    </head>
+            </head>
     <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
-            
-                <nav role="navigation">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../Algorithm/index.html"><strong aria-hidden="true">1.</strong> Algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Algorithm/dgemm.html"><strong aria-hidden="true">1.1.</strong> Dgemm</a></li><li class="chapter-item expanded "><a href="../../../Algorithm/kmer.html"><strong aria-hidden="true">1.2.</strong> Kmer</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/index.html"><strong aria-hidden="true">2.</strong> Apps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/index.html"><strong aria-hidden="true">2.1.</strong> ASC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-19/index.html"><strong aria-hidden="true">2.1.1.</strong> Asc 19</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-19/cesm.html"><strong aria-hidden="true">2.1.1.1.</strong> Cesm</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-20/index.html"><strong aria-hidden="true">2.1.2.</strong> Asc 20</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-20/quest.html" class="active"><strong aria-hidden="true">2.1.2.1.</strong> Quest</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/index.html"><strong aria-hidden="true">2.2.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/index.html"><strong aria-hidden="true">2.2.1.</strong> ISC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/CodeChallenge.html"><strong aria-hidden="true">2.2.1.1.</strong> Code Challenge</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/WRF.html"><strong aria-hidden="true">2.2.1.2.</strong> WRF</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/SC/index.html"><strong aria-hidden="true">2.3.</strong> SC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/SC/SC20.html"><strong aria-hidden="true">2.3.1.</strong> SC 20</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Benchmark/index.html"><strong aria-hidden="true">3.</strong> Benchmark</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Benchmark/hpcg-dat.html"><strong aria-hidden="true">3.1.</strong> Hpcg Dat</a></li><li class="chapter-item expanded "><a href="../../../Benchmark/hpl-dat.html"><strong aria-hidden="true">3.2.</strong> Hpl Dat</a></li></ol></li><li class="chapter-item expanded "><a href="../../../DevOps/index.html"><strong aria-hidden="true">4.</strong> Dev Ops</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/LDAP.html"><strong aria-hidden="true">4.1.</strong> LDAP</a></li><li class="chapter-item expanded "><a href="../../../DevOps/SaltStack.html"><strong aria-hidden="true">4.2.</strong> Salt Stack</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Schduler.html"><strong aria-hidden="true">4.3.</strong> Schduler</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Singularity.html"><strong aria-hidden="true">4.4.</strong> Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Language/index.html"><strong aria-hidden="true">5.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Language/Chisel.html"><strong aria-hidden="true">5.1.</strong> Chisel</a></li><li class="chapter-item expanded "><a href="../../../Language/Go.html"><strong aria-hidden="true">5.2.</strong> Go</a></li><li class="chapter-item expanded "><a href="../../../Language/Rust.html"><strong aria-hidden="true">5.3.</strong> Rust</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Libs/index.html"><strong aria-hidden="true">6.</strong> Libs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Libs/Boost.html"><strong aria-hidden="true">6.1.</strong> Boost</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Profiling/index.html"><strong aria-hidden="true">7.</strong> Profiling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Profiling/ArmForge.html"><strong aria-hidden="true">7.1.</strong> Arm Forge</a></li><li class="chapter-item expanded "><a href="../../../Profiling/uProf.html"><strong aria-hidden="true">7.2.</strong> U Prof</a></li><li class="chapter-item expanded "><a href="../../../Profiling/Vtune.html"><strong aria-hidden="true">7.3.</strong> Vtune</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Sysadmin/index.html"><strong aria-hidden="true">8.</strong> Sysadmin</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Sysadmin/cluster-setup.html"><strong aria-hidden="true">8.1.</strong> Cluster Setup</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/environment-installation.html"><strong aria-hidden="true">8.2.</strong> Environment Installation</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/environment-modules.html"><strong aria-hidden="true">8.3.</strong> Environment Modules</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/machine.html"><strong aria-hidden="true">8.4.</strong> Machine</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
                 
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
 
+                    <h1 class="menu-title">GeekPie_HPC Wiki</h1>
 
-<ul class="summary">
-    
-    
+                    <div class="right-buttons">
+                                                <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/geekpiehpc/wiki" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
 
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../../../">
-            
-                <a href="../../../">
-            
-                    
-                    Introduction
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="../../../Algorithm/">
-            
-                <a href="../../../Algorithm/">
-            
-                    
-                    Algorithm
-            
-                </a>
-            
-
-            
-            <ul class="articles">
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
                 
-    
-        <li class="chapter " data-level="1.2.1" data-path="../../../Algorithm/dgemm.html">
-            
-                <a href="../../../Algorithm/dgemm.html">
-            
-                    
-                    Dgemm
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../../../Algorithm/kmer.html">
-            
-                <a href="../../../Algorithm/kmer.html">
-            
-                    
-                    Kmer
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="../../">
-            
-                <a href="../../">
-            
-                    
-                    Apps
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" >
-            
-                <span>
-            
-                    
-                    ASC
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1.1" >
-            
-                <span>
-            
-                    
-                    Asc 19
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1.1.1" data-path="../asc-19/cesm.html">
-            
-                <a href="../asc-19/cesm.html">
-            
-                    
-                    Cesm
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.1.2" >
-            
-                <span>
-            
-                    
-                    Asc 20
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter active" data-level="1.3.1.2.1" data-path="quest.html">
-            
-                <a href="quest.html">
-            
-                    
-                    Quest
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2" data-path="../../ISC/">
-            
-                <a href="../../ISC/">
-            
-                    
-                    ISC
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.2.1" data-path="../../ISC/ISC-21/">
-            
-                <a href="../../ISC/ISC-21/">
-            
-                    
-                    ISC 21
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.2.1.1" data-path="../../ISC/ISC-21/CodeChallenge.html">
-            
-                <a href="../../ISC/ISC-21/CodeChallenge.html">
-            
-                    
-                    Code Challenge
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2.1.2" data-path="../../ISC/ISC-21/WRF.html">
-            
-                <a href="../../ISC/ISC-21/WRF.html">
-            
-                    
-                    WRF
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" >
-            
-                <span>
-            
-                    
-                    SC
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.3.1" >
-            
-                <span>
-            
-                    
-                    SC 21
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.3.1.1" data-path="../../SC/SC21/ramBLe.html">
-            
-                <a href="../../SC/SC21/ramBLe.html">
-            
-                    
-                    Ram B Le
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3.2" data-path="../../SC/SC20.html">
-            
-                <a href="../../SC/SC20.html">
-            
-                    
-                    SC 20
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="../../../Benchmark/">
-            
-                <a href="../../../Benchmark/">
-            
-                    
-                    Benchmark
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.4.1" data-path="../../../Benchmark/hpcg-dat.html">
-            
-                <a href="../../../Benchmark/hpcg-dat.html">
-            
-                    
-                    Hpcg Dat
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.2" data-path="../../../Benchmark/hpl-dat.html">
-            
-                <a href="../../../Benchmark/hpl-dat.html">
-            
-                    
-                    Hpl Dat
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="../../../DevOps/">
-            
-                <a href="../../../DevOps/">
-            
-                    
-                    Dev Ops
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.5.1" data-path="../../../DevOps/LDAP.html">
-            
-                <a href="../../../DevOps/LDAP.html">
-            
-                    
-                    LDAP
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.2" data-path="../../../DevOps/Schduler.html">
-            
-                <a href="../../../DevOps/Schduler.html">
-            
-                    
-                    Schduler
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.3" data-path="../../../DevOps/Singularity.html">
-            
-                <a href="../../../DevOps/Singularity.html">
-            
-                    
-                    Singularity
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="../../../Language/">
-            
-                <a href="../../../Language/">
-            
-                    
-                    Language
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1" data-path="../../../Language/Chisel.html">
-            
-                <a href="../../../Language/Chisel.html">
-            
-                    
-                    Chisel
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.2" data-path="../../../Language/Go.html">
-            
-                <a href="../../../Language/Go.html">
-            
-                    
-                    Go
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3" data-path="../../../Language/Rust.html">
-            
-                <a href="../../../Language/Rust.html">
-            
-                    
-                    Rust
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="../../../Libs/">
-            
-                <a href="../../../Libs/">
-            
-                    
-                    Libs
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.7.1" data-path="../../../Libs/Boost.html">
-            
-                <a href="../../../Libs/Boost.html">
-            
-                    
-                    Boost
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8" >
-            
-                <span>
-            
-                    
-                    Profiling
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1" data-path="../../../Profiling/ArmForce.html">
-            
-                <a href="../../../Profiling/ArmForce.html">
-            
-                    
-                    Arm Force
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.2" data-path="../../../Profiling/Vtune.html">
-            
-                <a href="../../../Profiling/Vtune.html">
-            
-                    
-                    Vtune
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9" >
-            
-                <span>
-            
-                    
-                    Sysadmin
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.9.1" data-path="../../../Sysadmin/cluster-setup.html">
-            
-                <a href="../../../Sysadmin/cluster-setup.html">
-            
-                    
-                    Cluster Setup
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.2" data-path="../../../Sysadmin/environment-installation.html">
-            
-                <a href="../../../Sysadmin/environment-installation.html">
-            
-                    
-                    Environment Installation
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.3" data-path="../../../Sysadmin/environment-modules.html">
-            
-                <a href="../../../Sysadmin/environment-modules.html">
-            
-                    
-                    Environment Modules
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.4" data-path="../../../Sysadmin/machine.html">
-            
-                <a href="../../../Sysadmin/machine.html">
-            
-                    
-                    Machine
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >Quest</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <!-- TITLE: Quest -->
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- TITLE: Quest -->
 <!-- SUBTITLE: A quick summary of Quest -->
-<h1 id="quest-analysis">quest analysis</h1>
-<h2 id="program-goal-analysis">program goal analysis</h2>
-<p>what&apos;s code is actually doing is to simulate quantum computing.</p>
-<p><img src="http://victoryang00.cn/picture/image-20200206175943861.png" alt="image-20200206175943861" style="zoom:33%;"></p>
-<h3 id="different-bits-state---qubits">different bits state - qubits</h3>
+<h1 id="quest-analysis"><a class="header" href="#quest-analysis">quest analysis</a></h1>
+<h2 id="program-goal-analysis"><a class="header" href="#program-goal-analysis">program goal analysis</a></h2>
+<p>what's code is actually doing is to simulate quantum computing.</p>
+<img src="http://victoryang00.cn/picture/image-20200206175943861.png" alt="image-20200206175943861" style="zoom:33%;" />
+<h3 id="different-bits-state---qubits"><a class="header" href="#different-bits-state---qubits">different bits state - qubits</a></h3>
 <p>3 states: <code>1</code> <code>0</code> <code>0/1</code></p>
 <p>store by qreal which is actualy a complex number a+bi  (a+b=1), and it can be stated as $\bigl(\begin{smallmatrix}0.123124&amp;0\0&amp;0.876876\end{smallmatrix})$ , also note that because gpu only support float32 computing. So native qreal (precision=4) is not supported in gpu simutation.</p>
-<pre><code class="lang-cpp"><span class="hljs-comment">/*
+<pre><code class="language-cpp">/*
  * Single precision, which uses 4 bytes per amplitude component
- */</span>
-<span class="hljs-meta"># <span class="hljs-meta-keyword">if</span> QuEST_PREC==1</span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> qreal float</span>
-    <span class="hljs-comment">// \cond HIDDEN_SYMBOLS   </span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> MPI_QuEST_REAL MPI_FLOAT</span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> MPI_MAX_AMPS_IN_MSG (1LL&lt;&lt;29) <span class="hljs-comment">// must be 2^int</span></span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> REAL_STRING_FORMAT <span class="hljs-string">&quot;%.8f&quot;</span></span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> REAL_QASM_FORMAT <span class="hljs-string">&quot;%.8g&quot;</span></span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> REAL_EPS 1e-5</span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> absReal(X) fabs(X) <span class="hljs-comment">// not fabsf(X) - better to return doubles where possible</span></span>
-    <span class="hljs-comment">// \endcond</span>
-<span class="hljs-comment">/*
+ */
+# if QuEST_PREC==1
+    # define qreal float
+    // \cond HIDDEN_SYMBOLS   
+    # define MPI_QuEST_REAL MPI_FLOAT
+    # define MPI_MAX_AMPS_IN_MSG (1LL&lt;&lt;29) // must be 2^int
+    # define REAL_STRING_FORMAT &quot;%.8f&quot;
+    # define REAL_QASM_FORMAT &quot;%.8g&quot;
+    # define REAL_EPS 1e-5
+    # define absReal(X) fabs(X) // not fabsf(X) - better to return doubles where possible
+    // \endcond
+/*
  * Double precision, which uses 8 bytes per amplitude component
- */</span>
-<span class="hljs-meta"># <span class="hljs-meta-keyword">elif</span> QuEST_PREC==2</span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> qreal double</span>
-    <span class="hljs-comment">// \cond HIDDEN_SYMBOLS   </span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> MPI_QuEST_REAL MPI_DOUBLE</span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> MPI_MAX_AMPS_IN_MSG (1LL&lt;&lt;28) <span class="hljs-comment">// must be 2^int</span></span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> REAL_STRING_FORMAT <span class="hljs-string">&quot;%.14f&quot;</span></span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> REAL_QASM_FORMAT <span class="hljs-string">&quot;%.14g&quot;</span></span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> REAL_EPS 1e-13</span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> absReal(X) fabs(X)</span>
-    <span class="hljs-comment">// \endcond</span>
-<span class="hljs-comment">/*
+ */
+# elif QuEST_PREC==2
+    # define qreal double
+    // \cond HIDDEN_SYMBOLS   
+    # define MPI_QuEST_REAL MPI_DOUBLE
+    # define MPI_MAX_AMPS_IN_MSG (1LL&lt;&lt;28) // must be 2^int
+    # define REAL_STRING_FORMAT &quot;%.14f&quot;
+    # define REAL_QASM_FORMAT &quot;%.14g&quot;
+    # define REAL_EPS 1e-13
+    # define absReal(X) fabs(X)
+    // \endcond
+/*
  * Quad precision, which uses 16 bytes per amplitude component.
  * This is not compatible with most GPUs.
- */</span>
-<span class="hljs-meta"># <span class="hljs-meta-keyword">elif</span> QuEST_PREC==4</span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> qreal long double</span>
-    <span class="hljs-comment">// \cond HIDDEN_SYMBOLS   </span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> MPI_QuEST_REAL MPI_LONG_DOUBLE</span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> MPI_MAX_AMPS_IN_MSG (1LL&lt;&lt;27) <span class="hljs-comment">// must be 2^int</span></span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> REAL_STRING_FORMAT <span class="hljs-string">&quot;%.17Lf&quot;</span></span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> REAL_QASM_FORMAT <span class="hljs-string">&quot;%.17Lg&quot;</span></span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> REAL_EPS 1e-14</span>
-    <span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> absReal(X) fabsl(X)</span>
-    <span class="hljs-comment">// \endcond</span>
-<span class="hljs-meta"># <span class="hljs-meta-keyword">endif</span></span>
+ */
+# elif QuEST_PREC==4
+    # define qreal long double
+    // \cond HIDDEN_SYMBOLS   
+    # define MPI_QuEST_REAL MPI_LONG_DOUBLE
+    # define MPI_MAX_AMPS_IN_MSG (1LL&lt;&lt;27) // must be 2^int
+    # define REAL_STRING_FORMAT &quot;%.17Lf&quot;
+    # define REAL_QASM_FORMAT &quot;%.17Lg&quot;
+    # define REAL_EPS 1e-14
+    # define absReal(X) fabsl(X)
+    // \endcond
+# endif
 </code></pre>
-<h3 id="many-matrices-computation">many matrices computation</h3>
-<p><img src="http://victoryang00.cn/picture/image-20200206182352740.png" alt="image-20200206182352740" style="zoom:33%;"></p>
+<h3 id="many-matrices-computation"><a class="header" href="#many-matrices-computation">many matrices computation</a></h3>
+<img src="http://victoryang00.cn/picture/image-20200206182352740.png" alt="image-20200206182352740" style="zoom:33%;" />
 <p>all of the gate corresponds to one of the manipulation on qubits.</p>
-<h4 id="basic-operation-on-a-and-b-httpsarxivorgpdfquant-ph0207118pdf">Basic operation on a and b <a href="https://arxiv.org/pdf/quant-ph/0207118.pdf" target="_blank">https://arxiv.org/pdf/quant-ph/0207118.pdf</a></h4>
+<h4 id="basic-operation-on-a-and-b-httpsarxivorgpdfquant-ph0207118pdf"><a class="header" href="#basic-operation-on-a-and-b-httpsarxivorgpdfquant-ph0207118pdf">Basic operation on a and b https://arxiv.org/pdf/quant-ph/0207118.pdf</a></h4>
 <p>random variables = density matrix </p>
-<p><strong>hermitian</strong>:<img src="http://victoryang00.cn/picture/equation-1580988244760.svg" alt="[&#x516C;&#x5F0F;]" style="zoom:150%;">=<img src="http://victoryang00.cn/picture/equation-1580988258203.svg" alt="[&#x516C;&#x5F0F;]" style="zoom:150%;"></p>
+<p><strong>hermitian</strong>:<img src="http://victoryang00.cn/picture/equation-1580988244760.svg" alt="graph" style="zoom:150%;" />=<img src="http://victoryang00.cn/picture/equation-1580988258203.svg" alt="graph" style="zoom:150%;" /></p>
 <p><strong>positive semidefinite</strong>:  <strong>eigenvalue</strong>$\geq$0</p>
 <p><strong>trace</strong>: $\Sigma(diagnal\ elements)=1$</p>
-<p>dirac notation: ket    <img src="http://victoryang00.cn/picture/equation-1580987580687.svg" alt="[&#x516C;&#x5F0F;]">=<img src="http://victoryang00.cn/picture/equation.svg" alt="[&#x516C;&#x5F0F;]">= <img src="http://victoryang00.cn/picture/equation-1580987560476.svg" alt="[&#x516C;&#x5F0F;]"></p>
-<p>&#x200B;                           bra    <img src="http://victoryang00.cn/picture/equation-1580987606986.svg" alt="[&#x516C;&#x5F0F;]">=<img src="http://victoryang00.cn/picture/equation-1580987606950.svg" alt="[&#x516C;&#x5F0F;]">=<img src="http://victoryang00.cn/picture/equation-1580987607534.svg" alt="[&#x516C;&#x5F0F;]"> </p>
-<p><img src="http://victoryang00.cn/picture/equation-1580987681032.svg" alt="[&#x516C;&#x5F0F;]">= inner products of bra(fi) and ket(theta). notice:<img src="http://victoryang00.cn/picture/equation-1580987782971.svg" alt="[&#x516C;&#x5F0F;]"></p>
-<p><img src="http://victoryang00.cn/picture/equation-1580987794494.svg" alt="[&#x516C;&#x5F0F;]">=tensor product of ket(fi) and bra(theta)</p>
-<p>2 special notation: <img src="http://victoryang00.cn/picture/equation-1580987857724.svg" alt="[&#x516C;&#x5F0F;]"> &#xFF0C;<img src="http://victoryang00.cn/picture/equation-1580987857723.svg" alt="[&#x516C;&#x5F0F;]"></p>
-<p>the dense <strong>matrix</strong>:<img src="http://victoryang00.cn/picture/equation-1580987922717.svg" alt="[&#x516C;&#x5F0F;]">(<img src="http://victoryang00.cn/picture/equation-1580988030121.svg" alt="[&#x516C;&#x5F0F;]">, the purpose of the equation is to illustrate the complex number ) can be stated  as   <img src="http://victoryang00.cn/picture/equation-1580987909551.svg" alt="[&#x516C;&#x5F0F;]"></p>
-<p>so  <img src="http://victoryang00.cn/picture/equation-1580987960377.svg" alt="[&#x516C;&#x5F0F;]"></p>
-<p>dot product (from normal bits to qubits):<img src="http://victoryang00.cn/picture/image-20200206183002545.png" alt="image-20200206183002545" style="zoom:67%;"></p>
-<p>for example in bits 5 = 101b, while in qubits<img src="http://victoryang00.cn/picture/image-20200206192812921.png" alt="image-20200206192812921" style="zoom:67%;"></p>
-<p><img src="http://victoryang00.cn/picture/image-20200206193126579.png" alt="image-20200206193126579"></p>
-<h4 id="hadamard-gate-operations">Hadamard gate operations</h4>
-<p><img src="http://victoryang00.cn/picture/image-20200206183257976.png" alt="image-20200206183257976"></p>
-<p>corresponding matrix operation in dirac notation:<img src="http://victoryang00.cn/picture/image-20200206183333863.png" alt="image-20200206183333863"> </p>
-<p>some specialty:1.<img src="http://victoryang00.cn/picture/image-20200206190344235.png" alt="image-20200206190344235">2.Since <img src="http://victoryang00.cn/picture/6390e45c284a61ae56967efa897265f7c676116a.svg" alt="{\displaystyle HH^{\dagger }=I}"> where <em>I</em> is the identity matrix, <em>H</em> is a <a href="https://en.wikipedia.org/wiki/Unitary_matrix" target="_blank">unitary matrix</a> (like all other quantum logical gates). Also, it is its own <a href="https://en.wikipedia.org/wiki/Unitary_matrix" target="_blank">unitary inverse</a>, <img src="http://victoryang00.cn/picture/67587a10e5b72c23dc1e91b7e197e82315f70288.svg" alt="{\displaystyle H=H^{\dagger }}">.</p>
-<p>One application of the Hadamard gate to either a 0 or 1 qubit will produce a quantum state that, if observed, will be a 0 or 1 with equal probability (as seen in the first two operations). This is exactly like flipping a fair coin in the standard <a href="https://en.wikipedia.org/wiki/Probabilistic_Turing_machine" target="_blank">probabilistic model of computation</a>. However, if the Hadamard gate is applied twice in succession (as is effectively being done in the last two operations), then the final state is always the same as the initial state.</p>
-<pre><code class="lang-cpp">__<span class="hljs-function">global__ <span class="hljs-keyword">void</span> <span class="hljs-title">statevec_hadamardKernel</span> <span class="hljs-params">(Qureg qureg, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> targetQubit)</span></span>{
-    <span class="hljs-comment">// ----- sizes</span>
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> sizeBlock,                                           <span class="hljs-comment">// size of blocks</span>
-         sizeHalfBlock;                                       <span class="hljs-comment">// size of blocks halved</span>
-    <span class="hljs-comment">// ----- indices</span>
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> thisBlock,                                           <span class="hljs-comment">// current block</span>
-         indexUp,indexLo;                                     <span class="hljs-comment">// current index and corresponding index in lower half block</span>
+<p>dirac notation: ket    <a href="http://victoryang00.cn/picture/equation-1580987580687.svg">graph</a>=<a href="http://victoryang00.cn/picture/equation.svg">graph</a>= <a href="http://victoryang00.cn/picture/equation-1580987560476.svg">graph</a></p>
+<p>​						   bra    <a href="http://victoryang00.cn/picture/equation-1580987606986.svg">graph</a>=<a href="http://victoryang00.cn/picture/equation-1580987606950.svg">graph</a>=<a href="http://victoryang00.cn/picture/equation-1580987607534.svg">graph</a> </p>
+<p><a href="http://victoryang00.cn/picture/equation-1580987681032.svg">graph</a>= inner products of bra(fi) and ket(theta). notice:<a href="http://victoryang00.cn/picture/equation-1580987782971.svg">graph</a></p>
+<p><a href="http://victoryang00.cn/picture/equation-1580987794494.svg">graph</a>=tensor product of ket(fi) and bra(theta)</p>
+<p>2 special notation: <a href="http://victoryang00.cn/picture/equation-1580987857724.svg">graph</a> ，<a href="http://victoryang00.cn/picture/equation-1580987857723.svg">graph</a></p>
+<p>the dense <strong>matrix</strong>:<a href="http://victoryang00.cn/picture/equation-1580987922717.svg">graph</a>(<a href="http://victoryang00.cn/picture/equation-1580988030121.svg">graph</a>, the purpose of the equation is to illustrate the complex number ) can be stated  as   <a href="http://victoryang00.cn/picture/equation-1580987909551.svg">graph</a></p>
+<p>so  <a href="http://victoryang00.cn/picture/equation-1580987960377.svg">graph</a></p>
+<p>dot product (from normal bits to qubits):<img src="http://victoryang00.cn/picture/image-20200206183002545.png" alt="image-20200206183002545" style="zoom:67%;" /></p>
+<p>for example in bits 5 = 101b, while in qubits<img src="http://victoryang00.cn/picture/image-20200206192812921.png" alt="image-20200206192812921" style="zoom:67%;" /></p>
+<p><a href="http://victoryang00.cn/picture/image-20200206193126579.png">image-20200206193126579</a></p>
+<h4 id="hadamard-gate-operations"><a class="header" href="#hadamard-gate-operations">Hadamard gate operations</a></h4>
+<p><a href="http://victoryang00.cn/picture/image-20200206183257976.png">image-20200206183257976</a></p>
+<p>corresponding matrix operation in dirac notation:<a href="http://victoryang00.cn/picture/image-20200206183333863.png">image-20200206183333863</a> </p>
+<p>some specialty:1.<a href="http://victoryang00.cn/picture/image-20200206190344235.png">image-20200206190344235</a>2.Since <a href="http://victoryang00.cn/picture/6390e45c284a61ae56967efa897265f7c676116a.svg">{\displaystyle HH^{\dagger }=I}</a> where <em>I</em> is the identity matrix, <em>H</em> is a <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary matrix</a> (like all other quantum logical gates). Also, it is its own <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary inverse</a>, <a href="http://victoryang00.cn/picture/67587a10e5b72c23dc1e91b7e197e82315f70288.svg">{\displaystyle H=H^{\dagger }}</a>.</p>
+<p>One application of the Hadamard gate to either a 0 or 1 qubit will produce a quantum state that, if observed, will be a 0 or 1 with equal probability (as seen in the first two operations). This is exactly like flipping a fair coin in the standard <a href="https://en.wikipedia.org/wiki/Probabilistic_Turing_machine">probabilistic model of computation</a>. However, if the Hadamard gate is applied twice in succession (as is effectively being done in the last two operations), then the final state is always the same as the initial state.</p>
+<pre><code class="language-cpp">__global__ void statevec_hadamardKernel (Qureg qureg, const int targetQubit){
+    // ----- sizes
+    long long int sizeBlock,                                           // size of blocks
+         sizeHalfBlock;                                       // size of blocks halved
+    // ----- indices
+    long long int thisBlock,                                           // current block
+         indexUp,indexLo;                                     // current index and corresponding index in lower half block
 
-    <span class="hljs-comment">// ----- temp variables</span>
-    qreal   stateRealUp,stateRealLo,                             <span class="hljs-comment">// storage for previous state values</span>
-           stateImagUp,stateImagLo;                             <span class="hljs-comment">// (used in updates)</span>
-    <span class="hljs-comment">// ----- temp variables</span>
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> thisTask;                                   <span class="hljs-comment">// task based approach for expose loop with small granularity</span>
-    <span class="hljs-keyword">const</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> numTasks=qureg.numAmpsPerChunk&gt;&gt;<span class="hljs-number">1</span>;
+    // ----- temp variables
+    qreal   stateRealUp,stateRealLo,                             // storage for previous state values
+           stateImagUp,stateImagLo;                             // (used in updates)
+    // ----- temp variables
+    long long int thisTask;                                   // task based approach for expose loop with small granularity
+    const long long int numTasks=qureg.numAmpsPerChunk&gt;&gt;1;
 
-    sizeHalfBlock = <span class="hljs-number">1L</span>L &lt;&lt; targetQubit;                               <span class="hljs-comment">// size of blocks halved</span>
-    sizeBlock     = <span class="hljs-number">2L</span>L * sizeHalfBlock;                           <span class="hljs-comment">// size of blocks</span>
+    sizeHalfBlock = 1LL &lt;&lt; targetQubit;                               // size of blocks halved
+    sizeBlock     = 2LL * sizeHalfBlock;                           // size of blocks
 
-    <span class="hljs-comment">// ---------------------------------------------------------------- //</span>
-    <span class="hljs-comment">//            rotate                                                //</span>
-    <span class="hljs-comment">// ---------------------------------------------------------------- //</span>
+    // ---------------------------------------------------------------- //
+    //            rotate                                                //
+    // ---------------------------------------------------------------- //
 
-    <span class="hljs-comment">//! fix -- no necessary for GPU version</span>
+    //! fix -- no necessary for GPU version
     qreal *stateVecReal = qureg.deviceStateVec.real;
     qreal *stateVecImag = qureg.deviceStateVec.imag;
 
-    qreal recRoot2 = <span class="hljs-number">1.0</span>/<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2.0</span>);
+    qreal recRoot2 = 1.0/sqrt(2.0);
 
     thisTask = blockIdx.x*blockDim.x + threadIdx.x;
-    <span class="hljs-keyword">if</span> (thisTask&gt;=numTasks) <span class="hljs-keyword">return</span>;
+    if (thisTask&gt;=numTasks) return;
 
     thisBlock   = thisTask / sizeHalfBlock;
     indexUp     = thisBlock*sizeBlock + thisTask%sizeHalfBlock;
     indexLo     = indexUp + sizeHalfBlock;
 
-    <span class="hljs-comment">// store current state vector values in temp variables</span>
+    // store current state vector values in temp variables
     stateRealUp = stateVecReal[indexUp];
     stateImagUp = stateVecImag[indexUp];
 
@@ -852,57 +269,57 @@
     stateVecImag[indexLo] = recRoot2*(stateImagUp - stateImagLo);
 }
 
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">statevec_hadamard</span><span class="hljs-params">(Qureg qureg, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> targetQubit)</span> 
-</span>{
-    <span class="hljs-keyword">int</span> threadsPerCUDABlock, CUDABlocks;
-    threadsPerCUDABlock = <span class="hljs-number">128</span>;
-    CUDABlocks = <span class="hljs-built_in">ceil</span>((qreal)(qureg.numAmpsPerChunk&gt;&gt;<span class="hljs-number">1</span>)/threadsPerCUDABlock);
+void statevec_hadamard(Qureg qureg, const int targetQubit) 
+{
+    int threadsPerCUDABlock, CUDABlocks;
+    threadsPerCUDABlock = 128;
+    CUDABlocks = ceil((qreal)(qureg.numAmpsPerChunk&gt;&gt;1)/threadsPerCUDABlock);
     statevec_hadamardKernel&lt;&lt;&lt;CUDABlocks, threadsPerCUDABlock&gt;&gt;&gt;(qureg, targetQubit);
 }
 </code></pre>
-<h4 id="pauli-xyz-gate">Pauli-X/Y/Z gate</h4>
-<p>The Pauli-X gate acts on a single qubit. It is the quantum equivalent of the <a href="http://victoryang00.cn/picture/https://en.wikipedia.org/wiki/NOT_gate" target="_blank">NOT gate</a> for classical computers (with respect to the standard basis <img src="http://victoryang00.cn/picture/ed066a3ad158da0ad6d6a421a606b1c8a35eb95b.svg" alt="|0\rangle ">, <img src="http://victoryang00.cn/picture/2f53021ca18e77477ee5bd3c1523e5830189ec5c.svg" alt="|1\rangle ">, which distinguishes the <em>Z</em>-direction.<img src="http://victoryang00.cn/picture/image-20200206190608424.png" alt="image-20200206190608424"></p>
-<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pauliX</span><span class="hljs-params">(Qureg qureg, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> targetQubit)</span> </span>{
+<h4 id="pauli-xyz-gate"><a class="header" href="#pauli-xyz-gate">Pauli-X/Y/Z gate</a></h4>
+<p>The Pauli-X gate acts on a single qubit. It is the quantum equivalent of the <a href="https://en.wikipedia.org/wiki/NOT_gate">NOT gate</a> for classical computers (with respect to the standard basis <a href="http://victoryang00.cn/picture/ed066a3ad158da0ad6d6a421a606b1c8a35eb95b.svg">|0\rangle </a>, <a href="http://victoryang00.cn/picture/2f53021ca18e77477ee5bd3c1523e5830189ec5c.svg">|1\rangle </a>, which distinguishes the <em>Z</em>-direction.<a href="http://victoryang00.cn/picture/image-20200206190608424.png">image-20200206190608424</a></p>
+<pre><code class="language-cpp">void pauliX(Qureg qureg, const int targetQubit) {
     validateTarget(qureg, targetQubit, __func__);
-
+    
     statevec_pauliX(qureg, targetQubit);
-    <span class="hljs-keyword">if</span> (qureg.isDensityMatrix) {
+    if (qureg.isDensityMatrix) {
         statevec_pauliX(qureg, targetQubit+qureg.numQubitsRepresented);
     }
-
+    
     qasm_recordGate(qureg, GATE_SIGMA_X, targetQubit);
 }
 </code></pre>
 <p>the real computing part</p>
-<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">statevec_pauliXLocal</span><span class="hljs-params">(Qureg qureg, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> targetQubit)</span>
-</span>{
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> sizeBlock, sizeHalfBlock;
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> thisBlock, <span class="hljs-comment">// current block</span>
-         indexUp,indexLo;    <span class="hljs-comment">// current index and corresponding index in lower half block</span>
+<pre><code class="language-cpp">void statevec_pauliXLocal(Qureg qureg, const int targetQubit)
+{
+    long long int sizeBlock, sizeHalfBlock;
+    long long int thisBlock, // current block
+         indexUp,indexLo;    // current index and corresponding index in lower half block
 
     qreal stateRealUp,stateImagUp;
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> thisTask;         
-    <span class="hljs-keyword">const</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> numTasks=qureg.numAmpsPerChunk&gt;&gt;<span class="hljs-number">1</span>;
+    long long int thisTask;         
+    const long long int numTasks=qureg.numAmpsPerChunk&gt;&gt;1;
 
-    <span class="hljs-comment">// set dimensions</span>
-    sizeHalfBlock = <span class="hljs-number">1L</span>L &lt;&lt; targetQubit;  
-    sizeBlock     = <span class="hljs-number">2L</span>L * sizeHalfBlock; 
+    // set dimensions
+    sizeHalfBlock = 1LL &lt;&lt; targetQubit;  
+    sizeBlock     = 2LL * sizeHalfBlock; 
 
-    <span class="hljs-comment">// Can&apos;t use qureg.stateVec as a private OMP var</span>
+    // Can't use qureg.stateVec as a private OMP var
     qreal *stateVecReal = qureg.stateVec.real;
     qreal *stateVecImag = qureg.stateVec.imag;
 
-<span class="hljs-meta"># <span class="hljs-meta-keyword">ifdef</span> _OPENMP</span>
-<span class="hljs-meta"># <span class="hljs-meta-keyword">pragma</span> omp parallel \
+# ifdef _OPENMP
+# pragma omp parallel \
     default  (none) \
     shared   (sizeBlock,sizeHalfBlock, stateVecReal,stateVecImag) \
-    private  (thisTask,thisBlock ,indexUp,indexLo, stateRealUp,stateImagUp) </span>
-<span class="hljs-meta"># <span class="hljs-meta-keyword">endif</span></span>
+    private  (thisTask,thisBlock ,indexUp,indexLo, stateRealUp,stateImagUp) 
+# endif
     {
-<span class="hljs-meta"># <span class="hljs-meta-keyword">ifdef</span> _OPENMP</span>
-<span class="hljs-meta"># <span class="hljs-meta-keyword">pragma</span> omp for schedule (static)</span>
-<span class="hljs-meta"># <span class="hljs-meta-keyword">endif</span></span>
-        <span class="hljs-keyword">for</span> (thisTask=<span class="hljs-number">0</span>; thisTask&lt;numTasks; thisTask++) {
+# ifdef _OPENMP
+# pragma omp for schedule (static)
+# endif
+        for (thisTask=0; thisTask&lt;numTasks; thisTask++) {
             thisBlock   = thisTask / sizeHalfBlock;
             indexUp     = thisBlock*sizeBlock + thisTask%sizeHalfBlock;
             indexLo     = indexUp + sizeHalfBlock;
@@ -920,68 +337,68 @@
 
 }
 
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">statevec_pauliXDistributed</span> <span class="hljs-params">(Qureg qureg,
+void statevec_pauliXDistributed (Qureg qureg,
         ComplexArray stateVecIn,
-        ComplexArray stateVecOut)</span>
-</span>{
+        ComplexArray stateVecOut)
+{
 
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> thisTask;  
-    <span class="hljs-keyword">const</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> numTasks=qureg.numAmpsPerChunk;
+    long long int thisTask;  
+    const long long int numTasks=qureg.numAmpsPerChunk;
 
     qreal *stateVecRealIn=stateVecIn.real, *stateVecImagIn=stateVecIn.imag;
     qreal *stateVecRealOut=stateVecOut.real, *stateVecImagOut=stateVecOut.imag;
 
-<span class="hljs-meta"># <span class="hljs-meta-keyword">ifdef</span> _OPENMP</span>
-<span class="hljs-meta"># <span class="hljs-meta-keyword">pragma</span> omp parallel \
+# ifdef _OPENMP
+# pragma omp parallel \
     default  (none) \
     shared   (stateVecRealIn,stateVecImagIn,stateVecRealOut,stateVecImagOut) \
-    private  (thisTask)</span>
-<span class="hljs-meta"># <span class="hljs-meta-keyword">endif</span></span>
+    private  (thisTask)
+# endif
     {
-<span class="hljs-meta"># <span class="hljs-meta-keyword">ifdef</span> _OPENMP</span>
-<span class="hljs-meta"># <span class="hljs-meta-keyword">pragma</span> omp for schedule (static)</span>
-<span class="hljs-meta"># <span class="hljs-meta-keyword">endif</span></span>
-        <span class="hljs-keyword">for</span> (thisTask=<span class="hljs-number">0</span>; thisTask&lt;numTasks; thisTask++) {
+# ifdef _OPENMP
+# pragma omp for schedule (static)
+# endif
+        for (thisTask=0; thisTask&lt;numTasks; thisTask++) {
             stateVecRealOut[thisTask] = stateVecRealIn[thisTask];
             stateVecImagOut[thisTask] = stateVecImagIn[thisTask];
         }
     }
-}
+} 
 </code></pre>
-<pre><code class="lang-cpp">__<span class="hljs-function">global__ <span class="hljs-keyword">void</span> <span class="hljs-title">statevec_pauliXKernel</span><span class="hljs-params">(Qureg qureg, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> targetQubit)</span></span>{
-    <span class="hljs-comment">// ----- sizes</span>
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> sizeBlock,                                           <span class="hljs-comment">// size of blocks</span>
-         sizeHalfBlock;                                       <span class="hljs-comment">// size of blocks halved</span>
-    <span class="hljs-comment">// ----- indices</span>
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> thisBlock,                                           <span class="hljs-comment">// current block</span>
-         indexUp,indexLo;                                     <span class="hljs-comment">// current index and corresponding index in lower half block</span>
+<pre><code class="language-cpp">__global__ void statevec_pauliXKernel(Qureg qureg, const int targetQubit){
+    // ----- sizes
+    long long int sizeBlock,                                           // size of blocks
+         sizeHalfBlock;                                       // size of blocks halved
+    // ----- indices
+    long long int thisBlock,                                           // current block
+         indexUp,indexLo;                                     // current index and corresponding index in lower half block
 
-    <span class="hljs-comment">// ----- temp variables</span>
-    qreal   stateRealUp,                             <span class="hljs-comment">// storage for previous state values</span>
-           stateImagUp;                             <span class="hljs-comment">// (used in updates)</span>
-    <span class="hljs-comment">// ----- temp variables</span>
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> thisTask;                                   <span class="hljs-comment">// task based approach for expose loop with small granularity</span>
-    <span class="hljs-keyword">const</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> numTasks=qureg.numAmpsPerChunk&gt;&gt;<span class="hljs-number">1</span>;
+    // ----- temp variables
+    qreal   stateRealUp,                             // storage for previous state values
+           stateImagUp;                             // (used in updates)
+    // ----- temp variables
+    long long int thisTask;                                   // task based approach for expose loop with small granularity
+    const long long int numTasks=qureg.numAmpsPerChunk&gt;&gt;1;
 
-    sizeHalfBlock = <span class="hljs-number">1L</span>L &lt;&lt; targetQubit;                               <span class="hljs-comment">// size of blocks halved</span>
-    sizeBlock     = <span class="hljs-number">2L</span>L * sizeHalfBlock;                           <span class="hljs-comment">// size of blocks</span>
+    sizeHalfBlock = 1LL &lt;&lt; targetQubit;                               // size of blocks halved
+    sizeBlock     = 2LL * sizeHalfBlock;                           // size of blocks
 
-    <span class="hljs-comment">// ---------------------------------------------------------------- //</span>
-    <span class="hljs-comment">//            rotate                                                //</span>
-    <span class="hljs-comment">// ---------------------------------------------------------------- //</span>
+    // ---------------------------------------------------------------- //
+    //            rotate                                                //
+    // ---------------------------------------------------------------- //
 
-    <span class="hljs-comment">//! fix -- no necessary for GPU version</span>
+    //! fix -- no necessary for GPU version
     qreal *stateVecReal = qureg.deviceStateVec.real;
     qreal *stateVecImag = qureg.deviceStateVec.imag;
 
     thisTask = blockIdx.x*blockDim.x + threadIdx.x;
-    <span class="hljs-keyword">if</span> (thisTask&gt;=numTasks) <span class="hljs-keyword">return</span>;
+    if (thisTask&gt;=numTasks) return;
 
     thisBlock   = thisTask / sizeHalfBlock;
     indexUp     = thisBlock*sizeBlock + thisTask%sizeHalfBlock;
     indexLo     = indexUp + sizeHalfBlock;
 
-    <span class="hljs-comment">// store current state vector values in temp variables</span>
+    // store current state vector values in temp variables
     stateRealUp = stateVecReal[indexUp];
     stateImagUp = stateVecImag[indexUp];
 
@@ -992,72 +409,69 @@
     stateVecImag[indexLo] = stateImagUp;
 }
 
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">statevec_pauliX</span><span class="hljs-params">(Qureg qureg, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> targetQubit)</span> 
-</span>{
-    <span class="hljs-keyword">int</span> threadsPerCUDABlock, CUDABlocks;
-    threadsPerCUDABlock = <span class="hljs-number">128</span>;
-    CUDABlocks = <span class="hljs-built_in">ceil</span>((qreal)(qureg.numAmpsPerChunk&gt;&gt;<span class="hljs-number">1</span>)/threadsPerCUDABlock);
+void statevec_pauliX(Qureg qureg, const int targetQubit) 
+{
+    int threadsPerCUDABlock, CUDABlocks;
+    threadsPerCUDABlock = 128;
+    CUDABlocks = ceil((qreal)(qureg.numAmpsPerChunk&gt;&gt;1)/threadsPerCUDABlock);
     statevec_pauliXKernel&lt;&lt;&lt;CUDABlocks, threadsPerCUDABlock&gt;&gt;&gt;(qureg, targetQubit);
 }
 </code></pre>
-<h2 id="source-code-analysis">source code analysis</h2>
-<h4 id="tree">tree</h4>
+<h2 id="source-code-analysis"><a class="header" href="#source-code-analysis">source code analysis</a></h2>
+<h4 id="tree"><a class="header" href="#tree">tree</a></h4>
 <p>.
-&#x251C;&#x2500;&#x2500; CMakeLists.txt
-&#x251C;&#x2500;&#x2500; include
-&#x2502;   &#x251C;&#x2500;&#x2500; QuEST_complex.h                 //determine to use native external cpp support or c complex support.
-&#x2502;   &#x251C;&#x2500;&#x2500; QuEST.h                                  //main func claim
-&#x2502;   &#x2514;&#x2500;&#x2500; QuEST_precision.h                //define the precision
-&#x2514;&#x2500;&#x2500; src
-    &#x251C;&#x2500;&#x2500; CMakeLists.txt
-    &#x251C;&#x2500;&#x2500; CPU
-    &#x2502;   &#x251C;&#x2500;&#x2500; CMakeLists.txt
-    &#x2502;   &#x251C;&#x2500;&#x2500; QuEST_cpu.c
-    &#x2502;   &#x251C;&#x2500;&#x2500; QuEST_cpu_distributed.c    //distributed activator and implementation
-    &#x2502;   &#x251C;&#x2500;&#x2500; QuEST_cpu_internal.h         //other cpu related headers here
-    &#x2502;   &#x2514;&#x2500;&#x2500; QuEST_cpu_local.c               //only cpu implementation
-    &#x251C;&#x2500;&#x2500; GPU
-    &#x2502;   &#x251C;&#x2500;&#x2500; CMakeLists.txt
-    &#x2502;   &#x2514;&#x2500;&#x2500; QuEST_gpu.cu                      //gpu counterpart
-    &#x251C;&#x2500;&#x2500; mt19937ar.c                              //&#x6885;&#x68EE;&#x65CB;&#x8F49;&#x7B97;&#x6CD5;-&#x4F2A;&#x968F;&#x673A;&#x6570;&#x77E9;&#x9635;&#x751F;&#x6210;
-    &#x251C;&#x2500;&#x2500; mt19937ar.h
-    &#x251C;&#x2500;&#x2500; QuEST.c                                        //main func definition
-    &#x251C;&#x2500;&#x2500; QuEST_common.c                      //func activator defined here
-    &#x251C;&#x2500;&#x2500; QuEST_debug.h                          //debug information here
-    &#x251C;&#x2500;&#x2500; QuEST_internal.h
-    &#x251C;&#x2500;&#x2500; QuEST_qasm.c                            //is a quantum record standard, defined qasm assertion here.
-    &#x251C;&#x2500;&#x2500; QuEST_qasm.h
-    &#x251C;&#x2500;&#x2500; QuEST_validation.c                    //assert number of qubit here
-    &#x2514;&#x2500;&#x2500; QuEST_validation.h</p>
-<p><a href="https://www.quantum-inspire.com/kbase/introduction-to-quantum-computing" target="_blank">https://www.quantum-inspire.com/kbase/introduction-to-quantum-computing</a></p>
-<h2 id="testcase-analysis">testcase analysis</h2>
+├── CMakeLists.txt
+├── include
+│   ├── QuEST_complex.h				 //determine to use native external cpp support or c complex support.
+│   ├── QuEST.h								  //main func claim
+│   └── QuEST_precision.h				//define the precision
+└── src
+├── CMakeLists.txt
+├── CPU
+│   ├── CMakeLists.txt
+│   ├── QuEST_cpu.c
+│   ├── QuEST_cpu_distributed.c	//distributed activator and implementation
+│   ├── QuEST_cpu_internal.h		 //other cpu related headers here
+│   └── QuEST_cpu_local.c			   //only cpu implementation
+├── GPU
+│   ├── CMakeLists.txt
+│   └── QuEST_gpu.cu 					 //gpu counterpart
+├── mt19937ar.c							  //梅森旋轉算法-伪随机数矩阵生成
+├── mt19937ar.h
+├── QuEST.c										//main func definition
+├── QuEST_common.c					  //func activator defined here
+├── QuEST_debug.h						  //debug information here
+├── QuEST_internal.h
+├── QuEST_qasm.c							//is a quantum record standard, defined qasm assertion here.
+├── QuEST_qasm.h
+├── QuEST_validation.c					//assert number of qubit here
+└── QuEST_validation.h</p>
+<p>https://www.quantum-inspire.com/kbase/introduction-to-quantum-computing</p>
+<h2 id="testcase-analysis"><a class="header" href="#testcase-analysis">testcase analysis</a></h2>
 <p><code>mytimer.hpp</code></p>
-<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;time.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/time.h&gt;</span></span>
-
- <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">get_wall_time</span><span class="hljs-params">()</span></span>{
- <span class="hljs-comment">/* A time value that is accurate to the nearest
-   microsecond but also has a range of years.  */</span>
-   <span class="hljs-keyword">struct</span> timeval time;
- <span class="hljs-comment">// __time_t tv_sec;        /* Seconds.  */</span>
- <span class="hljs-comment">// __suseconds_t tv_usec;    /* Microseconds.  */</span>
-   <span class="hljs-keyword">if</span> (gettimeofday(&amp;time,<span class="hljs-literal">NULL</span>)){
-     <span class="hljs-comment">// Handle error</span>
-     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+<pre><code class="language-cpp">#include &lt;time.h&gt;
+#include &lt;sys/time.h&gt;
+ 
+ double get_wall_time(){
+ /* A time value that is accurate to the nearest
+   microsecond but also has a range of years.  */
+   struct timeval time;
+ // __time_t tv_sec;		/* Seconds.  */
+ // __suseconds_t tv_usec;	/* Microseconds.  */
+   if (gettimeofday(&amp;time,NULL)){
+     // Handle error
+     return 0;
    }
-
-   <span class="hljs-keyword">return</span> (<span class="hljs-keyword">double</span>)time.tv_sec + (<span class="hljs-keyword">double</span>)time.tv_usec * <span class="hljs-number">.000001</span>;
+ 
+   return (double)time.tv_sec + (double)time.tv_usec * .000001;
  }
-
- <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">get_cpu_time</span><span class="hljs-params">()</span></span>{
-   <span class="hljs-keyword">return</span> (<span class="hljs-keyword">double</span>)clock() / CLOCKS_PER_SEC;<span class="hljs-comment">//directly read clock from cpu, and return with clock times cloacks per sec.</span>
- }
+ 
+ double get_cpu_time(){
+   return (double)clock() / CLOCKS_PER_SEC;//directly read clock from cpu, and return with clock times cloacks per sec.
+ }```
 </code></pre>
-<pre><code>
-`random.c` - random manipulation
-
-```cpp
-// total number of qubit: 30
+<p><code>random.c</code> - random manipulation</p>
+<pre><code class="language-cpp">// total number of qubit: 30
 // total number of qubit operatations: 667
 // estimated time: 3783.9266747315614 second.
 #include &quot;QuEST.h&quot;
@@ -1084,7 +498,7 @@ int main(int narg, char *argv[])
 
     Qureg q =  createQureg(30, Env);//define qubits registers
 
-    float q_measure[30];// defined q&apos;s size
+    float q_measure[30];// defined q's size
    // possible execution.
     tGate(q, 25);
     controlledNot(q, 28, 21);
@@ -1094,8 +508,8 @@ int main(int narg, char *argv[])
     rotateY(q, 8, 4.959946047271496);
     rotateZ(q, 5, 1.0427019597472071);
     pauliZ(q, 0);
-    ...
-
+	...
+        
     printf(&quot;\n&quot;);
     for (long long int i = 0; i &lt; 30; ++i) {
         q_measure[i] = calcProbOfOutcome(q, i, 1);
@@ -1119,206 +533,193 @@ int main(int narg, char *argv[])
 
     return 0;
 }
-</code></pre><p><code>GHZ_QFT.c</code> - only controlled manipulation</p>
-<pre><code class="lang-cpp"><span class="hljs-comment">/* GHZ quantum circuit */</span>
-    hadamard(q, <span class="hljs-number">0</span>);
-    controlledNot(q, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
-    controlledNot(q, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
-    controlledNot(q, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
-    controlledNot(q, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>);
-    controlledNot(q, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>);
-    controlledNot(q, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>);
-    controlledNot(q, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>);
-    controlledNot(q, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>);
-    controlledNot(q, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>);
-    controlledNot(q, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>);
-    controlledNot(q, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>);
-    controlledNot(q, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>);
-    controlledNot(q, <span class="hljs-number">12</span>, <span class="hljs-number">13</span>);
-    controlledNot(q, <span class="hljs-number">13</span>, <span class="hljs-number">14</span>);
-    controlledNot(q, <span class="hljs-number">14</span>, <span class="hljs-number">15</span>);
-    controlledNot(q, <span class="hljs-number">15</span>, <span class="hljs-number">16</span>);
-    controlledNot(q, <span class="hljs-number">16</span>, <span class="hljs-number">17</span>);
-    controlledNot(q, <span class="hljs-number">17</span>, <span class="hljs-number">18</span>);
-    controlledNot(q, <span class="hljs-number">18</span>, <span class="hljs-number">19</span>);
-    controlledNot(q, <span class="hljs-number">19</span>, <span class="hljs-number">20</span>);
-    controlledNot(q, <span class="hljs-number">20</span>, <span class="hljs-number">21</span>);
-    controlledNot(q, <span class="hljs-number">21</span>, <span class="hljs-number">22</span>);
-    controlledNot(q, <span class="hljs-number">22</span>, <span class="hljs-number">23</span>);
-    controlledNot(q, <span class="hljs-number">23</span>, <span class="hljs-number">24</span>);
-    controlledNot(q, <span class="hljs-number">24</span>, <span class="hljs-number">25</span>);
-    controlledNot(q, <span class="hljs-number">25</span>, <span class="hljs-number">26</span>);
-    controlledNot(q, <span class="hljs-number">26</span>, <span class="hljs-number">27</span>);
-    controlledNot(q, <span class="hljs-number">27</span>, <span class="hljs-number">28</span>);
-    controlledNot(q, <span class="hljs-number">28</span>, <span class="hljs-number">29</span>);
-    <span class="hljs-comment">/* end of GHZ circuit */</span>
+</code></pre>
+<p><code>GHZ_QFT.c</code> - only controlled manipulation</p>
+<pre><code class="language-cpp">/* GHZ quantum circuit */
+    hadamard(q, 0);
+    controlledNot(q, 0, 1);
+    controlledNot(q, 1, 2);
+    controlledNot(q, 2, 3);
+    controlledNot(q, 3, 4);
+    controlledNot(q, 4, 5);
+    controlledNot(q, 5, 6);
+    controlledNot(q, 6, 7);
+    controlledNot(q, 7, 8);
+    controlledNot(q, 8, 9);
+    controlledNot(q, 9, 10);
+    controlledNot(q, 10, 11);
+    controlledNot(q, 11, 12);
+    controlledNot(q, 12, 13);
+    controlledNot(q, 13, 14);
+    controlledNot(q, 14, 15);
+    controlledNot(q, 15, 16);
+    controlledNot(q, 16, 17);
+    controlledNot(q, 17, 18);
+    controlledNot(q, 18, 19);
+    controlledNot(q, 19, 20);
+    controlledNot(q, 20, 21);
+    controlledNot(q, 21, 22);
+    controlledNot(q, 22, 23);
+    controlledNot(q, 23, 24);
+    controlledNot(q, 24, 25);
+    controlledNot(q, 25, 26);
+    controlledNot(q, 26, 27);
+    controlledNot(q, 27, 28);
+    controlledNot(q, 28, 29);
+	/* end of GHZ circuit */
 
-    <span class="hljs-comment">/* QFT starts */</span>
-    hadamard(q, <span class="hljs-number">0</span>);
-    controlledRotateZ(q, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1.5708</span>);
-    hadamard(q, <span class="hljs-number">1</span>);
-    controlledRotateZ(q, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0.785398</span>);
-    controlledRotateZ(q, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1.5708</span>);
-    hadamard(q, <span class="hljs-number">2</span>);
-    controlledRotateZ(q, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">0.392699</span>);
-    controlledRotateZ(q, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">0.785398</span>);
-    controlledRotateZ(q, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1.5708</span>);
+	/* QFT starts */
+    hadamard(q, 0);
+    controlledRotateZ(q, 0, 1, 1.5708);
+    hadamard(q, 1);
+    controlledRotateZ(q, 0, 2, 0.785398);
+    controlledRotateZ(q, 1, 2, 1.5708);
+    hadamard(q, 2);
+    controlledRotateZ(q, 0, 3, 0.392699);
+    controlledRotateZ(q, 1, 3, 0.785398);
+    controlledRotateZ(q, 2, 3, 1.5708);
     ...
 </code></pre>
-<h2 id="available-test-machine">available test machine</h2>
+<h2 id="available-test-machine"><a class="header" href="#available-test-machine">available test machine</a></h2>
 <ol>
-<li>2node 16core each <code>mpi:omp=2:16</code></li>
-</ol>
-<pre><code class="lang-bash">   <span class="hljs-comment">#!/bin/sh</span>
-   module purge
-   spack load intel <span class="hljs-comment">##openmpi@3.1.5/3.1.2</span>
-   <span class="hljs-built_in">export</span> PRECISION=4 <span class="hljs-comment">##1/2/4</span>
-   CC=icc CXX=icpc cmake -DGPUACCELERATED=0 -DDISTRIBUTED=1 ..
-   make
-   <span class="hljs-built_in">export</span> OMP_NUM_THREADS=16
-   <span class="hljs-built_in">export</span> FI_PROVIDER=tcp
-   mpirun -machinefile mac -np 2 ./demo
-</code></pre>
-<p>   profiling result</p>
-<p>   <img src="http://victoryang00.cn/picture/image-20200206174728724.png" alt="image-20200206174728724"></p>
-<p>   <img src="http://victoryang00.cn/picture/image-20200206174748013.png" alt="image-20200206174748013"></p>
-<p>   the most time-consuming part is statevec_compactUnitaryLocal</p>
-<ol>
-<li><p>2node 16core each <code>mpi:omp=1:32</code></p>
-<p><img src="http://victoryang00.cn/picture/image-20200206180552841.png" alt="image-20200206180552841" style="zoom:33%;"></p>
-</li>
-<li><p>1node 1tesla v100</p>
-<p>script</p>
-<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/sh</span>
+<li>
+<p>2node 16core each <code>mpi:omp=2:16</code></p>
+<pre><code class="language-bash">#!/bin/sh
 module purge
-spack load gcc@6
-spack load cuda@10.1 <span class="hljs-comment">## 10.2</span>
-<span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:/usr/<span class="hljs-built_in">local</span>/cuda/bin
-<span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-variable">$LD_LIBRARY_PATH</span>:/usr/<span class="hljs-built_in">local</span>/cuda/lib64
-<span class="hljs-built_in">export</span> LIBRARY_PATH=<span class="hljs-variable">$LIBRARY_PATH</span>:/usr/<span class="hljs-built_in">local</span>/cuda/lib64
-
-<span class="hljs-built_in">export</span> PRECISION=2 <span class="hljs-comment">##1/2</span>
-CC=gcc CXX=g++ cmake -DGPUACCELERATED=1 -DGPU_COMPUTE_CAPABILIty=70 ..
+spack load intel ##openmpi@3.1.5/3.1.2
+export PRECISION=4 ##1/2/4
+CC=icc CXX=icpc cmake -DGPUACCELERATED=0 -DDISTRIBUTED=1 ..
 make
-./demo
+export OMP_NUM_THREADS=16
+export FI_PROVIDER=tcp
+mpirun -machinefile mac -np 2 ./demo 
 </code></pre>
 <p>profiling result</p>
-<p><img src="http://victoryang00.cn/picture/image-20200206200505308.png" alt="image-20200206200505308"></p>
+<p><a href="http://victoryang00.cn/picture/image-20200206174728724.png">image-20200206174728724</a></p>
+<p><a href="http://victoryang00.cn/picture/image-20200206174748013.png">image-20200206174748013</a></p>
+<p>the most time-consuming part is statevec_compactUnitaryLocal</p>
+</li>
+<li>
+<p>2node 16core each <code>mpi:omp=1:32</code></p>
+<img src="http://victoryang00.cn/picture/image-20200206180552841.png" alt="image-20200206180552841" style="zoom:33%;" />
+</li>
+<li>
+<p>1node 1tesla v100</p>
+<p>script</p>
+<pre><code class="language-bash">#!/bin/sh
+module purge
+spack load gcc@6
+spack load cuda@10.1 ## 10.2
+export PATH=$PATH:/usr/local/cuda/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda/lib64
+
+export PRECISION=2 ##1/2
+CC=gcc CXX=g++ cmake -DGPUACCELERATED=1 -DGPU_COMPUTE_CAPABILIty=70 ..
+make
+./demo 
+</code></pre>
+<p>profiling result</p>
+<p><a href="http://victoryang00.cn/picture/image-20200206200505308.png">image-20200206200505308</a></p>
 </li>
 </ol>
 <p>summary</p>
-<p><img src="http://victoryang00.cn/picture/image-20200206200701826.png" alt="image-20200206200701826" style="zoom:50%;"></p>
-<p><img src="http://victoryang00.cn/picture/image-20200206202701475.png" alt="image-20200206202701475"></p>
+<img src="http://victoryang00.cn/picture/image-20200206200701826.png" alt="image-20200206200701826" style="zoom:50%;" />
+<p><a href="http://victoryang00.cn/picture/image-20200206202701475.png">image-20200206202701475</a></p>
 <p>the summary for profiling of both cpu and gpu, the most time is consumed on computing the real kernel which I think the computing power is fully utilized. </p>
-<p>Accelerated percentage of single node over omp+mpi is 319.799/220.807=1.448319120317744&#x202C;&#x202C;</p>
+<p>Accelerated percentage of single node over omp+mpi is 319.799/220.807=1.448319120317744‬‬</p>
 <p>Accelerated percentage of single node over single gpu is 319.799/19.328=16.54627720533642</p>
-<p>power consumption: over cpu:<img src="http://victoryang00.cn/picture/image-20200206203642478.png" alt="image-20200206203642478" style="zoom:25%;"></p>
-<p>&#x200B;                                    over gpu: 111W on average</p>
+<p>power consumption: over cpu:<img src="http://victoryang00.cn/picture/image-20200206203642478.png" alt="image-20200206203642478" style="zoom:25%;" /></p>
+<p>​									over gpu: 111W on average</p>
 <p>Our future plan: </p>
 <ol>
 <li>deploy the gpu code on multigpu using nccl.</li>
 <li>solve the global memory store and load efficiency.</li>
 </ol>
-<h2 id="misc">misc</h2>
+<h2 id="misc"><a class="header" href="#misc">misc</a></h2>
 <p>Loves from Github</p>
 <ol>
-<li><a href="https://github.com/QuEST-Kit/QuEST/issues/220" target="_blank">https://github.com/QuEST-Kit/QuEST/issues/220</a>
-<img src="http://victoryang00.cn/picture/image-20200206203018990.png" alt="image-20200206203018990">
-```
-Hi Jiachen,</li>
+<li>https://github.com/QuEST-Kit/QuEST/issues/220
+<a href="http://victoryang00.cn/picture/image-20200206203018990.png">image-20200206203018990</a></li>
 </ol>
-<p>There are no plans currently to combine distribution with GPU-acceleration. Note there are a few ways this can be done, and I suspect none really align with QuEST&apos;s design philosophy, nor are practical due to memory overheads. I&apos;ve wanted to pen these thoughts for a while, so read on below if interested! :)</p>
-<p>Firstly, QuEST uses its hardware to accelerate the simulation of a single quantum register at a time. While I think there are good uses of multi-GPU to speedup simultaneous simulation of multiple registers, this would be a totally new pattern to QuEST&apos;s simulation style. So let&apos;s consider using multi-GPU to accelerate a single register.</p>
-<p>There are a few ways you can have &quot;multiple GPUs&quot;:</p>
-<p>multiple NVlinked GPUs
-This is when you have multiple GPUs tightly connected with a high-bandwidth fabric (e.g. this). The bandwidth is enough that you sort of can imagine it as a single big GPU, and hence it would be worthwhile for accelerating single-register simulation. However, this only exists right now as NVLink and NVSwitch, compatible only with IBM&apos;s POWER architecture - you could argue this is still esoteric, and not worth a big refactor. Note it wouldn&apos;t actually be very hard to refactor QuEST for this platform - indeed QuEST works out-of-the-box with POWER8. But it&apos;s not something on our TODO list currently.</p>
-<p>multiple local GPUs
+<pre><code>Hi Jiachen,
+
+There are no plans currently to combine distribution with GPU-acceleration. Note there are a few ways this can be done, and I suspect none really align with QuEST's design philosophy, nor are practical due to memory overheads. I've wanted to pen these thoughts for a while, so read on below if interested! :)
+
+Firstly, QuEST uses its hardware to accelerate the simulation of a single quantum register at a time. While I think there are good uses of multi-GPU to speedup simultaneous simulation of multiple registers, this would be a totally new pattern to QuEST's simulation style. So let's consider using multi-GPU to accelerate a single register.
+
+There are a few ways you can have &quot;multiple GPUs&quot;:
+
+multiple NVlinked GPUs
+This is when you have multiple GPUs tightly connected with a high-bandwidth fabric (e.g. this). The bandwidth is enough that you sort of can imagine it as a single big GPU, and hence it would be worthwhile for accelerating single-register simulation. However, this only exists right now as NVLink and NVSwitch, compatible only with IBM's POWER architecture - you could argue this is still esoteric, and not worth a big refactor. Note it wouldn't actually be very hard to refactor QuEST for this platform - indeed QuEST works out-of-the-box with POWER8. But it's not something on our TODO list currently.
+
+multiple local GPUs
 This is when you have multiple GPUs on the same machine, but maybe on different sockets and hence with a much lower bandwidth between them. The most common case is two GPUs - is it worthwhile using two GPUs over one to speedup single register simulation? Often, no!
 In big QC simulation, having to move memory around is often the big killer, and should be avoided where possible. Unfortunately, simulating unitaries on registers often requires moving memory. If all the memory stays in the GPU (very high &quot;internal bandwidth&quot;), this is ok, but copying memory to the other GPU (across the socket) will introduce a huge per-gate overhead!
 Hence, using two GPUs to simulate the same register size can be slower than using just one, especially as the simulation size grows and saturates the sockets!
-There&apos;s hardly a benefit from the extra VRAM too, because doubling the memory enables simulation of one additional qubit. This is not worth the slowdown, or the hardware!
-Even with more than two GPUs, the connections are likely hierarchical and so even more prone to saturation.</p>
-<p>distributed GPUs
-This is when you have a GPU(s) on each distributed node of a cluster. In this circumstance, simulating a unitary gate which requires data exchange not only costs us a VRAM to RAM overhead (similar to before), but a networking overhead to talk to the other nodes! This can be somewhat improved by having a direct GPU to network-card connection (and MPI abstraction), but I believe that&apos;s pretty cutting-edge.
-Let&apos;s say you have n nodes, each with a GPU and a multicore CPU, and you&apos;re resolved to a distributed simulation. When is it worthwhile to pay the extra memory overhead locally copying from RAM to VRAM (and use the GPU), over using just the CPUs? This is now the same trade-off to consider in the previous cases. So may or may not be worthwhile.</p>
-<p>TL-DR: besides the somewhat esoteric case of having multiple tightly-connected GPUs, multi-GPU simulation introduces a new memory overhead that doesn&apos;t exist in single-GPU simulation. This overhead is almost always way longer than the time the GPU spends simulating the gate. As to whether the whole simulation is sped up by the use of multi-GPU is system and simulation specific.</p>
-<pre><code>2. https://github.com/NVIDIA/nccl/pull/316
-This is a PR for people to review and provide feedback on the p2p branch (issue [#212](https://github.com/NVIDIA/nccl/issues/212)).
-</code></pre><p>Looking forward to applying the P2P function to increase the power of my project!
-```</p>
+There's hardly a benefit from the extra VRAM too, because doubling the memory enables simulation of one additional qubit. This is not worth the slowdown, or the hardware!
+Even with more than two GPUs, the connections are likely hierarchical and so even more prone to saturation.
 
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
+distributed GPUs
+This is when you have a GPU(s) on each distributed node of a cluster. In this circumstance, simulating a unitary gate which requires data exchange not only costs us a VRAM to RAM overhead (similar to before), but a networking overhead to talk to the other nodes! This can be somewhat improved by having a direct GPU to network-card connection (and MPI abstraction), but I believe that's pretty cutting-edge.
+Let's say you have n nodes, each with a GPU and a multicore CPU, and you're resolved to a distributed simulation. When is it worthwhile to pay the extra memory overhead locally copying from RAM to VRAM (and use the GPU), over using just the CPUs? This is now the same trade-off to consider in the previous cases. So may or may not be worthwhile.
 
-                        </div>
-                    </div>
-                
+TL-DR: besides the somewhat esoteric case of having multiple tightly-connected GPUs, multi-GPU simulation introduces a new memory overhead that doesn't exist in single-GPU simulation. This overhead is almost always way longer than the time the GPU spends simulating the gate. As to whether the whole simulation is sped up by the use of multi-GPU is system and simulation specific.
+</code></pre>
+<ol start="2">
+<li>https://github.com/NVIDIA/nccl/pull/316
+This is a PR for people to review and provide feedback on the p2p branch (issue <a href="https://github.com/NVIDIA/nccl/issues/212">#212</a>).</li>
+</ol>
+<pre><code>Looking forward to applying the P2P function to increase the power of my project!
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../../../Apps/ASC/asc-20/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../../../Apps/ISC/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
             </div>
 
-            
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../../../Apps/ASC/asc-20/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
-                
-                <a href="../../ISC/" class="navigation navigation-next navigation-unique" aria-label="Next page: ISC">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
-    </div>
+                                    <a rel="next" href="../../../Apps/ISC/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
 
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Quest","level":"1.3.1.2.1","depth":4,"next":{"title":"ISC","level":"1.3.2","depth":2,"path":"Apps/ISC/README.md","ref":"Apps/ISC/README.md","articles":[{"title":"ISC 21","level":"1.3.2.1","depth":3,"path":"Apps/ISC/ISC-21/README.md","ref":"Apps/ISC/ISC-21/README.md","articles":[{"title":"Code Challenge","level":"1.3.2.1.1","depth":4,"path":"Apps/ISC/ISC-21/CodeChallenge.md","ref":"Apps/ISC/ISC-21/CodeChallenge.md","articles":[]},{"title":"WRF","level":"1.3.2.1.2","depth":4,"path":"Apps/ISC/ISC-21/WRF.md","ref":"Apps/ISC/ISC-21/WRF.md","articles":[]}]}]},"previous":{"title":"Asc 20","level":"1.3.1.2","depth":3,"ref":"","articles":[{"title":"Quest","level":"1.3.1.2.1","depth":4,"path":"Apps/ASC/asc-20/quest.md","ref":"Apps/ASC/asc-20/quest.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Apps/ASC/asc-20/quest.md","mtime":"2021-07-22T11:35:46.246Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-22T11:36:34.752Z"},"basePath":"../../..","book":{"language":""}});
-        });
-    </script>
-</div>
+        </div>
 
         
-    <script src="../../../gitbook/gitbook.js"></script>
-    <script src="../../../gitbook/theme.js"></script>
-    
         
-        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
-    
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
         
-        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
         
-    
+                <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
         
-        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
 
+        <!-- Custom JS scripts -->
+        
+        
     </body>
 </html>
-

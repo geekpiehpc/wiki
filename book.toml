@@ -1,0 +1,17 @@
+[book]
+authors = ["GeekPie_HPC"]
+language = "cn"
+multilingual = false
+src = "."
+title = "GeekPie_HPC Wiki"
+
+[build]
+create-missing = false
+
+[output.html]
+git-repository-url = "https://github.com/geekpiehpc/wiki"
+site-url = "/wiki/"
+
+[output.linkcheck]
+follow-web-links = true
+traverse-parent-directories = false

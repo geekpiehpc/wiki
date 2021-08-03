@@ -1,991 +1,391 @@
-
 <!DOCTYPE HTML>
-<html lang="" >
+<html lang="cn" class="sidebar-visible no-js light">
     <head>
+        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
+        <title>Cluster Setup - GeekPie_HPC Wiki</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Cluster Setup · GitBook</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        
-        
-        
-    
-    <link rel="stylesheet" href="../gitbook/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
 
-    
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
         
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
-    
-
-    
+        <!-- Custom theme stylesheets -->
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="environment-installation.html" />
-    
-    
-
-    </head>
+            </head>
     <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
-            
-                <nav role="navigation">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../Algorithm/index.html"><strong aria-hidden="true">1.</strong> Algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Algorithm/dgemm.html"><strong aria-hidden="true">1.1.</strong> Dgemm</a></li><li class="chapter-item expanded "><a href="../Algorithm/kmer.html"><strong aria-hidden="true">1.2.</strong> Kmer</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/index.html"><strong aria-hidden="true">2.</strong> Apps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/index.html"><strong aria-hidden="true">2.1.</strong> ASC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-19/index.html"><strong aria-hidden="true">2.1.1.</strong> Asc 19</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-19/cesm.html"><strong aria-hidden="true">2.1.1.1.</strong> Cesm</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/ASC/asc-20/index.html"><strong aria-hidden="true">2.1.2.</strong> Asc 20</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-20/quest.html"><strong aria-hidden="true">2.1.2.1.</strong> Quest</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Apps/ISC/index.html"><strong aria-hidden="true">2.2.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/index.html"><strong aria-hidden="true">2.2.1.</strong> ISC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/CodeChallenge.html"><strong aria-hidden="true">2.2.1.1.</strong> Code Challenge</a></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/WRF.html"><strong aria-hidden="true">2.2.1.2.</strong> WRF</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Apps/SC/index.html"><strong aria-hidden="true">2.3.</strong> SC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/SC/SC20.html"><strong aria-hidden="true">2.3.1.</strong> SC 20</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Benchmark/index.html"><strong aria-hidden="true">3.</strong> Benchmark</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Benchmark/hpcg-dat.html"><strong aria-hidden="true">3.1.</strong> Hpcg Dat</a></li><li class="chapter-item expanded "><a href="../Benchmark/hpl-dat.html"><strong aria-hidden="true">3.2.</strong> Hpl Dat</a></li></ol></li><li class="chapter-item expanded "><a href="../DevOps/index.html"><strong aria-hidden="true">4.</strong> Dev Ops</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../DevOps/LDAP.html"><strong aria-hidden="true">4.1.</strong> LDAP</a></li><li class="chapter-item expanded "><a href="../DevOps/SaltStack.html"><strong aria-hidden="true">4.2.</strong> Salt Stack</a></li><li class="chapter-item expanded "><a href="../DevOps/Schduler.html"><strong aria-hidden="true">4.3.</strong> Schduler</a></li><li class="chapter-item expanded "><a href="../DevOps/Singularity.html"><strong aria-hidden="true">4.4.</strong> Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="../Language/index.html"><strong aria-hidden="true">5.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Language/Chisel.html"><strong aria-hidden="true">5.1.</strong> Chisel</a></li><li class="chapter-item expanded "><a href="../Language/Go.html"><strong aria-hidden="true">5.2.</strong> Go</a></li><li class="chapter-item expanded "><a href="../Language/Rust.html"><strong aria-hidden="true">5.3.</strong> Rust</a></li></ol></li><li class="chapter-item expanded "><a href="../Libs/index.html"><strong aria-hidden="true">6.</strong> Libs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Libs/Boost.html"><strong aria-hidden="true">6.1.</strong> Boost</a></li></ol></li><li class="chapter-item expanded "><a href="../Profiling/index.html"><strong aria-hidden="true">7.</strong> Profiling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Profiling/ArmForge.html"><strong aria-hidden="true">7.1.</strong> Arm Forge</a></li><li class="chapter-item expanded "><a href="../Profiling/uProf.html"><strong aria-hidden="true">7.2.</strong> U Prof</a></li><li class="chapter-item expanded "><a href="../Profiling/Vtune.html"><strong aria-hidden="true">7.3.</strong> Vtune</a></li></ol></li><li class="chapter-item expanded "><a href="../Sysadmin/index.html"><strong aria-hidden="true">8.</strong> Sysadmin</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Sysadmin/cluster-setup.html" class="active"><strong aria-hidden="true">8.1.</strong> Cluster Setup</a></li><li class="chapter-item expanded "><a href="../Sysadmin/environment-installation.html"><strong aria-hidden="true">8.2.</strong> Environment Installation</a></li><li class="chapter-item expanded "><a href="../Sysadmin/environment-modules.html"><strong aria-hidden="true">8.3.</strong> Environment Modules</a></li><li class="chapter-item expanded "><a href="../Sysadmin/machine.html"><strong aria-hidden="true">8.4.</strong> Machine</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
                 
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
 
+                    <h1 class="menu-title">GeekPie_HPC Wiki</h1>
 
-<ul class="summary">
-    
-    
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/geekpiehpc/wiki" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
 
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../">
-            
-                <a href="../">
-            
-                    
-                    Introduction
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="../Algorithm/">
-            
-                <a href="../Algorithm/">
-            
-                    
-                    Algorithm
-            
-                </a>
-            
-
-            
-            <ul class="articles">
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
                 
-    
-        <li class="chapter " data-level="1.2.1" data-path="../Algorithm/dgemm.html">
-            
-                <a href="../Algorithm/dgemm.html">
-            
-                    
-                    Dgemm
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../Algorithm/kmer.html">
-            
-                <a href="../Algorithm/kmer.html">
-            
-                    
-                    Kmer
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="../Apps/">
-            
-                <a href="../Apps/">
-            
-                    
-                    Apps
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" >
-            
-                <span>
-            
-                    
-                    ASC
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1.1" >
-            
-                <span>
-            
-                    
-                    Asc 19
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1.1.1" data-path="../Apps/ASC/asc-19/cesm.html">
-            
-                <a href="../Apps/ASC/asc-19/cesm.html">
-            
-                    
-                    Cesm
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.1.2" >
-            
-                <span>
-            
-                    
-                    Asc 20
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1.2.1" data-path="../Apps/ASC/asc-20/quest.html">
-            
-                <a href="../Apps/ASC/asc-20/quest.html">
-            
-                    
-                    Quest
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2" data-path="../Apps/ISC/">
-            
-                <a href="../Apps/ISC/">
-            
-                    
-                    ISC
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.2.1" data-path="../Apps/ISC/ISC-21/">
-            
-                <a href="../Apps/ISC/ISC-21/">
-            
-                    
-                    ISC 21
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.2.1.1" data-path="../Apps/ISC/ISC-21/CodeChallenge.html">
-            
-                <a href="../Apps/ISC/ISC-21/CodeChallenge.html">
-            
-                    
-                    Code Challenge
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2.1.2" data-path="../Apps/ISC/ISC-21/WRF.html">
-            
-                <a href="../Apps/ISC/ISC-21/WRF.html">
-            
-                    
-                    WRF
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" >
-            
-                <span>
-            
-                    
-                    SC
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.3.1" >
-            
-                <span>
-            
-                    
-                    SC 21
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.3.1.1" data-path="../Apps/SC/SC21/ramBLe.html">
-            
-                <a href="../Apps/SC/SC21/ramBLe.html">
-            
-                    
-                    Ram B Le
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3.2" data-path="../Apps/SC/SC20.html">
-            
-                <a href="../Apps/SC/SC20.html">
-            
-                    
-                    SC 20
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="../Benchmark/">
-            
-                <a href="../Benchmark/">
-            
-                    
-                    Benchmark
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.4.1" data-path="../Benchmark/hpcg-dat.html">
-            
-                <a href="../Benchmark/hpcg-dat.html">
-            
-                    
-                    Hpcg Dat
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.2" data-path="../Benchmark/hpl-dat.html">
-            
-                <a href="../Benchmark/hpl-dat.html">
-            
-                    
-                    Hpl Dat
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="../DevOps/">
-            
-                <a href="../DevOps/">
-            
-                    
-                    Dev Ops
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.5.1" data-path="../DevOps/LDAP.html">
-            
-                <a href="../DevOps/LDAP.html">
-            
-                    
-                    LDAP
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.2" data-path="../DevOps/Schduler.html">
-            
-                <a href="../DevOps/Schduler.html">
-            
-                    
-                    Schduler
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.3" data-path="../DevOps/Singularity.html">
-            
-                <a href="../DevOps/Singularity.html">
-            
-                    
-                    Singularity
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="../Language/">
-            
-                <a href="../Language/">
-            
-                    
-                    Language
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1" data-path="../Language/Chisel.html">
-            
-                <a href="../Language/Chisel.html">
-            
-                    
-                    Chisel
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.2" data-path="../Language/Go.html">
-            
-                <a href="../Language/Go.html">
-            
-                    
-                    Go
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3" data-path="../Language/Rust.html">
-            
-                <a href="../Language/Rust.html">
-            
-                    
-                    Rust
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="../Libs/">
-            
-                <a href="../Libs/">
-            
-                    
-                    Libs
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.7.1" data-path="../Libs/Boost.html">
-            
-                <a href="../Libs/Boost.html">
-            
-                    
-                    Boost
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8" >
-            
-                <span>
-            
-                    
-                    Profiling
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1" data-path="../Profiling/ArmForce.html">
-            
-                <a href="../Profiling/ArmForce.html">
-            
-                    
-                    Arm Force
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.2" data-path="../Profiling/Vtune.html">
-            
-                <a href="../Profiling/Vtune.html">
-            
-                    
-                    Vtune
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9" >
-            
-                <span>
-            
-                    
-                    Sysadmin
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter active" data-level="1.9.1" data-path="cluster-setup.html">
-            
-                <a href="cluster-setup.html">
-            
-                    
-                    Cluster Setup
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.2" data-path="environment-installation.html">
-            
-                <a href="environment-installation.html">
-            
-                    
-                    Environment Installation
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.3" data-path="environment-modules.html">
-            
-                <a href="environment-modules.html">
-            
-                    
-                    Environment Modules
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.4" data-path="machine.html">
-            
-                <a href="machine.html">
-            
-                    
-                    Machine
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Cluster Setup</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <!-- TITLE: Cluster Setup -->
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- TITLE: Cluster Setup -->
 <!-- SUBTITLE: Cluster setup procedure -->
-<h1 id="cluster-setup-&#x6D41;&#x7A0B;">Cluster Setup &#x6D41;&#x7A0B;</h1>
-<p>&#x5B8C;&#x6574;&#x6D41;&#x7A0B; &amp; &#x8E29;&#x5751;&#x7B14;&#x5F55;</p>
-<h2 id="&#x673A;&#x5668;&#x4FE1;&#x606F;--&#x786C;&#x4EF6;&#x51C6;&#x5907;">&#x673A;&#x5668;&#x4FE1;&#x606F; &amp; &#x786C;&#x4EF6;&#x51C6;&#x5907;</h2>
+<h1 id="cluster-setup-流程"><a class="header" href="#cluster-setup-流程">Cluster Setup 流程</a></h1>
+<p>完整流程 &amp; 踩坑笔录</p>
+<h2 id="机器信息--硬件准备"><a class="header" href="#机器信息--硬件准备">机器信息 &amp; 硬件准备</a></h2>
 <ul>
-<li>&#x8282;&#x70B9;&#xFF1A;4 &#x8282;&#x70B9; &#xFF08;node1~4&#xFF0C;node1 &#x4E3A; <em>&#x4E3B;&#x8282;&#x70B9;</em>&#xFF09;</li>
-<li>&#x7F51;&#x7EDC;&#xFF1A;Ethernet&#xFF08;<code>192.168.&lt;A&gt;.x</code>&#xFF09;&#x4E0E; IB&#xFF08;<code>192.168.&lt;B&gt;.x</code>&#xFF09;<ul>
-<li>&#x661F;&#x72B6;&#x62D3;&#x6251;</li>
-<li>Setup &#x65F6;&#x4E3B;&#x8282;&#x70B9;&#x9700;&#x8FDE;&#x63A5;&#x5916;&#x7F51;</li>
+<li>节点：4 节点 （node1~4，node1 为 <em>主节点</em>）</li>
+<li>网络：Ethernet（<code>192.168.&lt;A&gt;.x</code>）与 IB（<code>192.168.&lt;B&gt;.x</code>）
+<ul>
+<li>星状拓扑</li>
+<li>Setup 时主节点需连接外网</li>
 </ul>
 </li>
-<li>&#x786C;&#x76D8;&#xFF1A;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4E00;&#x5757;&#x7CFB;&#x7EDF;&#x76D8;&#xFF0C;&#x4E3B;&#x8282;&#x70B9;&#x989D;&#x5916;&#x6302;&#x4E00;&#x5757; SSD &#x4F5C;&#x4E3A;&#x5171;&#x4EAB;&#x5B58;&#x50A8;</li>
-<li>Clonezilla &#x955C;&#x50CF; U &#x76D8; * 1&#xFF08;&#x955C;&#x50CF;&#x76F4;&#x63A5;&#x89E3;&#x538B;&#x5373;&#x53EF;&#xFF0C;&#x6545;&#x4E0B;&#x8FF0;&#x5B89;&#x88C5;&#x65F6;&#x9700;&#x8981; BIOS &#x8BBE;&#x7F6E;&#x4E3A; UEFI &#x6A21;&#x5F0F;&#xFF09;</li>
-<li>Clean Minimal CentOS7 &#x955C;&#x50CF; U &#x76D8; * 1&#xFF08;&#x540C;&#x4E0A;&#xFF09;</li>
+<li>硬盘：每个节点一块系统盘，主节点额外挂一块 SSD 作为共享存储</li>
+<li>Clonezilla 镜像 U 盘 * 1（镜像直接解压即可，故下述安装时需要 BIOS 设置为 UEFI 模式）</li>
+<li>Clean Minimal CentOS7 镜像 U 盘 * 1（同上）</li>
 </ul>
-<h2 id="centos-&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5B89;&#x88C5;">CentOS &#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5B89;&#x88C5;</h2>
-<p>&#x4E0B;&#x8F7D; <strong>CentOS-7 Minimal &#x955C;&#x50CF;</strong>&#xFF0C;&#x5730;&#x5740;&#xFF1A;<a href="http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso" target="_blank">http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso</a> &#x4E8E; U &#x76D8;&#xFF0C;&#x63D2;&#x4E8E;&#x4E3B;&#x8282;&#x70B9;</p>
+<h2 id="centos-操作系统安装"><a class="header" href="#centos-操作系统安装">CentOS 操作系统安装</a></h2>
+<p>下载 <strong>CentOS-7 Minimal 镜像</strong> 于 U 盘，插于主节点</p>
 <blockquote>
-<p>&#x5982;&#x679C;&#x4E3B;&#x677F; BIOS &#x542F;&#x52A8;&#x6A21;&#x5F0F;&#x4E0D;&#x662F; UEFI &#x5219;&#x52FF;&#x5FD8;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x4FEE;&#x6539; ;(
-&#x4E3B;&#x8282;&#x70B9;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5916;&#x7F6E; Clonezilla &#x955C;&#x50CF; U &#x76D8;&#xFF0C;&#x6545;&#x4E5F;&#x628A; U &#x76D8;&#x542F;&#x52A8;&#x987A;&#x5E8F;&#x7F6E;&#x524D;</p>
+<p>如果主板 BIOS 启动模式不是 UEFI 则勿忘在启动时修改 ;(
+主节点需要使用外置 Clonezilla 镜像 U 盘，故也把 U 盘启动顺序置前</p>
 </blockquote>
-<p>&#x4E3B;&#x8282;&#x70B9;&#x5F00;&#x673A; &#x201C;install CentOS 7&#x201D;</p>
+<p>主节点开机 “install CentOS 7”</p>
 <blockquote>
-<p>&#x5982;&#x679C; Install &#x540E;&#x89E6;&#x53D1;&#x4E86; <code>dracut-init... timeout</code>&#xFF0C;&#x5728;&#x4E4B;&#x540E;&#x4F1A;&#x8DF3;&#x5165; <code>dracut</code> &#x547D;&#x4EE4;&#x884C;&#xFF0C;&#x8F93;&#x5165; <code>lsblk</code> &#x540E;&#x627E;&#x5230; U &#x76D8;&#x8BBE;&#x5907;&#xFF0C;&#x8BB0;&#x4E0B; <code>LABEL=AAA</code> &#x7684;&#x503C;&#xFF0C;&#x800C;&#x540E; <code>reboot</code>&#xFF1B;&#x7136;&#x540E;&#x5728;&#x9009;&#x62E9;&#x754C;&#x9762;&#x6309; <code>e</code>&#xFF0C;&#x4FEE;&#x6539;&#x7B2C;&#x4E8C;&#x884C;&#x4E2D;&#x7684; <code>LABEL=BBB</code> &#x7684;&#x7B2C;&#x4E00;&#x6BB5; &#x4E3A; <code>AAA</code>&#xFF0C;&#x7136;&#x540E; <code>ctrl+x</code> &#x5373;&#x53EF;
-&#x53E6;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x5C06;LABEL=CentOS\x207\x20x\86_64&#x4FEE;&#x6539;&#x4E3A;LABEL=CentOS\x207\x20x\8
-<a href="https://blog.csdn.net/qq_36937234/article/details/82996998" target="_blank">https://blog.csdn.net/qq_36937234/article/details/82996998</a>
-<a href="https://access.redhat.com/solutions/2515741" target="_blank">https://access.redhat.com/solutions/2515741</a></p>
+<p>如果 Install 后触发了 <code>dracut-init... timeout</code>，在之后会跳入 <code>dracut</code> 命令行，输入 <code>lsblk</code> 后找到 U 盘设备，记下 <code>LABEL=AAA</code> 的值，而后 <code>reboot</code>；然后在选择界面按 <code>e</code>，修改第二行中的 <code>LABEL=BBB</code> 的第一段 为 <code>AAA</code>，然后 <code>ctrl+x</code> 即可
+另一种方法是将LABEL=CentOS\x207\x20x\86_64修改为LABEL=CentOS\x207\x20x\8
+https://blog.csdn.net/qq_36937234/article/details/82996998
+https://access.redhat.com/solutions/2515741</p>
 </blockquote>
-<p>&#x9700;&#x8C03;&#x6574;&#x9879;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>需调整项如下：</p>
 <ul>
-<li>&#x78C1;&#x76D8;&#x5206;&#x533A; <code>/</code> + <code>/boot</code> &#x5373;&#x53EF;&#xFF0C;&#x6839;&#x76EE;&#x5F55;&#x5404;&#x5B50;&#x76EE;&#x5F55;&#x4E0D;&#x5206;&#x6563;&#x5206;&#x533A;&#xFF0C;&#x683C;&#x4E3A;ext4</li>
-<li>&#x4E3B;&#x673A;&#x540D; Hostname &#x8BBE;&#x4E3A; <code>node1</code></li>
+<li>磁盘分区 <code>/</code> + <code>/boot</code> 即可，根目录各子目录不分散分区，格为ext4</li>
+<li>主机名 Hostname 设为 <code>node1</code></li>
 </ul>
-<p>&#x5F85;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#xFF0C;&#x4EE5; <code>root</code> &#x7528;&#x6237;&#x53EF;&#x6B63;&#x5E38;&#x767B;&#x9646;</p>
-<p><strong>&#x5173;&#x95ED; SELinux</strong>&#xFF1A;&#x4FEE;&#x6539; <code>/etc/selinux/config</code>&#xFF0C;&#x8BBE;&#x7F6E; <code>SELINUX=disabled</code></p>
-<p><strong>&#x5173;&#x95ED; Firewall &#x9632;&#x706B;&#x5899;</strong>&#xFF1A;</p>
-<pre><code class="lang-bash">systemctl stop firewalld.service
-systemctl <span class="hljs-built_in">disable</span> firewalld.service
+<p>待安装完成，以 <code>root</code> 用户可正常登陆</p>
+<p><strong>关闭 SELinux</strong>：修改 <code>/etc/selinux/config</code>，设置 <code>SELINUX=disabled</code></p>
+<p><strong>关闭 Firewall 防火墙</strong>：</p>
+<pre><code class="language-bash">systemctl stop firewalld.service
+systemctl disable firewalld.service
 </code></pre>
 <blockquote>
-<p>&#x5F88;&#x591A;&#x95EE;&#x9898;&#x90FD;&#x4F1A;&#x7531;&#x4E0A;&#x8FF0;&#x4E24;&#x4E2A;&#x5B89;&#x5168;&#x670D;&#x52A1;&#x5F15;&#x8D77;&#xFF0C;&#x5728;&#x8D85;&#x7B97;&#x6BD4;&#x8D5B;&#x5185;&#x7F51;&#x73AF;&#x5883;&#x4E0B;&#x65E0;&#x7528;&#xFF0C;&#x5148;&#x5168;&#x5173;&#x95ED;</p>
+<p>很多问题都会由上述两个安全服务引起，在超算比赛内网环境下无用，先全关闭</p>
 </blockquote>
-<h2 id="&#x4EE5;&#x592A;&#x7F51;&#x8FDE;&#x63A5;&#x914D;&#x7F6E;">&#x4EE5;&#x592A;&#x7F51;&#x8FDE;&#x63A5;&#x914D;&#x7F6E;</h2>
-<p>&#x5148;&#x914D;&#x7F6E;&#x4E3B;&#x8282;&#x70B9;&#x8FDE;&#x63A5;&#x5916;&#x7F51;&#xFF0C;&#x518D;&#x5C06;&#x5404;&#x8282;&#x70B9;&#x5185;&#x7F51;&#x8FDE;&#x63A5;</p>
-<h3 id="ethernet-&#x5916;&#x7F51;">Ethernet &#x5916;&#x7F51;</h3>
-<p>&#x8FDE;&#x63A5;&#x5916;&#x7F51;&#x4EE5;&#x592A;&#x7F51;&#x7EBF;&#xFF08;&#x8BB0;&#x4F4F;&#x5BF9;&#x5E94;&#x7F51;&#x53E3; <code>&lt;INTERFACE&gt;</code>&#xFF0C;e.g. <code>eno2</code>&#xFF09;</p>
-<p>&#x4F7F;&#x7528; <code>ip</code> &#x6307;&#x4EE4;&#x68C0;&#x67E5; DNS &#x5730;&#x5740;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x800C;&#x540E;&#x5728;&#x8F93;&#x5165; <code>nmtui</code> &#x8FDB;&#x5165; GUI &#x7F51;&#x7EDC;&#x8BBE;&#x7F6E;&#x754C;&#x9762;&#xFF0C;&#x8BBE;&#x7F6E;&#x5916;&#x7F51;&#x8FDE;&#x63A5;&#x4E3A; DHCP &#x6A21;&#x5F0F;&#xFF0C;&#x586B;&#x5165; 
-DNS &#x670D;&#x52A1;&#x5668;&#x5730;&#x5740;&#xFF0C;&#x800C;&#x540E;&#x4F7F;&#x7528; <code>curl</code> &#x8FDB;&#x884C;&#x6821;&#x7F51;&#x767B;&#x5F55;&#xFF1A;</p>
-<pre><code class="lang-bash">$ dhclient -v &lt;INTERFACE&gt;
-$ curl -X POST --data &#x201C;userName=&lt;USERNAME&gt;&amp;password=&lt;PASSWD&gt;&amp;hasValidateCode=<span class="hljs-literal">false</span>&amp;authLan=zh_CN&#x201D; https://10.15.44.172:8445/PortalServer//Webauth/webAuthAction\!login.action
+<h2 id="以太网连接配置"><a class="header" href="#以太网连接配置">以太网连接配置</a></h2>
+<p>先配置主节点连接外网，再将各节点内网连接</p>
+<h3 id="ethernet-外网"><a class="header" href="#ethernet-外网">Ethernet 外网</a></h3>
+<p>连接外网以太网线（记住对应网口 <code>&lt;INTERFACE&gt;</code>，e.g. <code>eno2</code>）</p>
+<p>使用 <code>ip</code> 指令检查 DNS 地址等信息，而后在输入 <code>nmtui</code> 进入 GUI 网络设置界面，设置外网连接为 DHCP 模式，填入 
+DNS 服务器地址，而后使用 <code>curl</code> 进行校网登录：</p>
+<pre><code class="language-bash">$ dhclient -v &lt;INTERFACE&gt;
+$ curl -X POST --data “userName=&lt;USERNAME&gt;&amp;password=&lt;PASSWD&gt;&amp;hasValidateCode=false&amp;authLan=zh_CN” https://10.15.44.172:8445/PortalServer//Webauth/webAuthAction\!login.action
 </code></pre>
-<p>&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x8FDE;&#x63A5;&#x5916;&#x7F51;&#xFF0C;&#x9700;&#x8981;&#x8BB0;&#x5F55;&#x4E0B;&#x672C;&#x673A; ip &#x5730;&#x5740;&#x4EE5;&#x4FBF;&#x8FDC;&#x7A0B;&#x8FDE;&#x63A5;&#xFF08;&#x6821;&#x7F51;&#x4E2D;&#x9014;&#x4E0D;&#x5173;&#x673A;&#x5219; DHCP ip &#x5730;&#x5740;&#x5E94;&#x8BE5;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#xFF09;&#xFF1B;<code>curl &lt;URL&gt;</code> &#x68C0;&#x67E5;&#x5916;&#x7F51;&#x8FDE;&#x63A5;</p>
-<h3 id="ethernet-&#x5185;&#x7F51;">Ethernet &#x5185;&#x7F51;</h3>
-<p>&#x540C;&#x6837;&#x4F7F;&#x7528; <code>ip</code> &#x5DE5;&#x5177;&#x770B;&#x5230;&#x7F51;&#x5173;&#x5730;&#x5740;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x4F7F;&#x7528; <code>nmtui</code> GUI &#x5DE5;&#x5177;&#x5BF9;&#x5185;&#x7F51;&#x7F51;&#x53E3;&#xFF08;e.g. <code>eno1</code>&#xFF09;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#xFF0C;e.g. &#x4E3B;&#x8282;&#x70B9; <code>192.168.&lt;A&gt;.1</code></p>
-<h2 id="&#x9A71;&#x52A8;&#x4E0B;&#x8F7D;--&#x5B89;&#x88C5;">&#x9A71;&#x52A8;&#x4E0B;&#x8F7D; &amp; &#x5B89;&#x88C5;</h2>
-<p>IB &#x9A71;&#x52A8; &amp; Nvidia &#x9A71;&#x52A8;&#xFF0C;&#x5B89;&#x88C5;&#x5728;&#x9ED8;&#x8BA4;&#x4F4D;&#x7F6E;&#xFF08;&#x56E0;&#x4E3A;&#x5171;&#x4EAB;&#x76D8;&#x8FD8;&#x672A;&#x914D;&#x7F6E;&#xFF09;&#xFF0C;&#x6545;&#x5728;&#x62F7;&#x76D8;&#x524D;&#x505A;&#x597D;</p>
-<h3 id="ib-&#x9A71;&#x52A8;&#x548C;&#x914D;&#x7F6E;">IB &#x9A71;&#x52A8;&#x548C;&#x914D;&#x7F6E;</h3>
-<p>[TODO] <a href="https://blog.csdn.net/oPrinceme/article/details/51001849" target="_blank">https://blog.csdn.net/oPrinceme/article/details/51001849</a></p>
-<h3 id="nvidia-&#x9A71;&#x52A8;">Nvidia &#x9A71;&#x52A8;</h3>
-<p><code>yum install kernel-dev epel-release dkms</code> &#x6765;&#x6DFB;&#x52A0; <code>Redhat</code> &#x6E90; &#x53CA; &#x5176;&#x4ED6; Nvidia &#x9A71;&#x52A8;&#x4F9D;&#x8D56;</p>
-<p>&#x5173;&#x95ED;&#x9ED8;&#x8BA4; <code>nouveau</code> &#x663E;&#x5361;&#x9A71;&#x52A8;&#xFF1A;</p>
-<pre><code class="lang-bash">$ vi /etc/default/grub    <span class="hljs-comment"># `GRUB_CMDLINE_LINUX` &#x9009;&#x9879;&#x4E2D;&#x6DFB;&#x52A0; `nouveau.modeset=0`</span>
+<p>此时可以连接外网，需要记录下本机 ip 地址以便远程连接（校网中途不关机则 DHCP ip 地址应该不会改变）；<code>curl &lt;URL&gt;</code> 检查外网连接</p>
+<h3 id="ethernet-内网"><a class="header" href="#ethernet-内网">Ethernet 内网</a></h3>
+<p>同样使用 <code>ip</code> 工具看到网关地址等信息，使用 <code>nmtui</code> GUI 工具对内网网口（e.g. <code>eno1</code>）进行配置，e.g. 主节点 <code>192.168.&lt;A&gt;.1</code></p>
+<h2 id="驱动下载--安装"><a class="header" href="#驱动下载--安装">驱动下载 &amp; 安装</a></h2>
+<p>IB 驱动 &amp; Nvidia 驱动，安装在默认位置（因为共享盘还未配置），故在拷盘前做好</p>
+<h3 id="ib-驱动和配置"><a class="header" href="#ib-驱动和配置">IB 驱动和配置</a></h3>
+<p><a href="https://blog.csdn.net/oPrinceme/article/details/51001849">IB 驱动</a></p>
+<h3 id="nvidia-驱动"><a class="header" href="#nvidia-驱动">Nvidia 驱动</a></h3>
+<p><code>yum install kernel-dev epel-release dkms</code> 来添加 <code>Redhat</code> 源 及 其他 Nvidia 驱动依赖</p>
+<p>关闭默认 <code>nouveau</code> 显卡驱动：</p>
+<pre><code class="language-bash">$ vi /etc/default/grub    # `GRUB_CMDLINE_LINUX` 选项中添加 `nouveau.modeset=0`
 $ grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 $ reboot
 </code></pre>
 <blockquote>
-<p>&#x4E0D;&#x8981;&#x7528;&#x5B98;&#x7F51;&#x7684; rpm &#x5305;&#x5B89;&#x88C5;&#x9A71;&#x52A8; ;(</p>
+<p>不要用官网的 rpm 包安装驱动 ;(</p>
 </blockquote>
-<p>&#x91CD;&#x542F;&#x540E;&#xFF0C;&#x5728;&#x5B98;&#x7F51;&#x67E5;&#x8BE2;&#x6240;&#x7528;&#x5361;&#x5BF9;&#x5E94;&#x7684;&#x6700;&#x65B0;&#x9A71;&#x52A8;&#x7248;&#x672C; <code>&lt;VER.SUB&gt;</code>&#xFF08;e.g. V100 &#x76EE;&#x524D;&#x6700;&#x65B0;&#x4E3A; <code>410.79</code>&#xFF09;&#xFF0C;&#x83B7;&#x53D6;&#x5B89;&#x88C5;&#x811A;&#x672C;&#x5E76;&#x5B89;&#x88C5;&#xFF1A;</p>
-<pre><code class="lang-bash">$ wget http://us.download.nvidia.com/XFree86/Linux-x86_64/&lt;VER.SUB&gt;/NVIDIA-Linux-x86_64-&lt;VER.SUB&gt;.run
-$ bash NVIDIA-Linux-x86_64-&lt;VER.SUB&gt;.run --kernel-source-path /usr/src/kernels/xxx    <span class="hljs-comment"># &#x82E5;&#x62A5;&#x9519;&#x52A0;&#x6B64;&#x9009;&#x9879;&#x5B89;&#x88C5;&#x8BD5;&#x8BD5;</span>
+<p>重启后，在官网查询所用卡对应的最新驱动版本 <code>&lt;VER.SUB&gt;</code>（e.g. V100 目前最新为 <code>410.79</code>），获取安装脚本并安装：</p>
+<pre><code class="language-bash">$ wget http://us.download.nvidia.com/XFree86/Linux-x86_64/&lt;VER.SUB&gt;/NVIDIA-Linux-x86_64-&lt;VER.SUB&gt;.run
+$ bash NVIDIA-Linux-x86_64-&lt;VER.SUB&gt;.run --kernel-source-path /usr/src/kernels/xxx    # 若报错加此选项安装试试
 </code></pre>
-<p>&#x8BD5; <code>nvidia-smi</code> &#x6307;&#x4EE4;&#x770B;&#x80FD;&#x5426;&#x83B7;&#x53D6;&#x5230;&#x663E;&#x5361;&#x4FE1;&#x606F;</p>
-<h2 id="&#x514B;&#x9686;&#x521B;&#x5EFA;&#x5B50;&#x8282;&#x70B9;">&#x514B;&#x9686;&#x521B;&#x5EFA;&#x5B50;&#x8282;&#x70B9;</h2>
-<p>&#x5148;&#x5B89;&#x88C5;&#x5FC5;&#x8981;&#x7684;&#x57FA;&#x672C;&#x5DE5;&#x5177;&#x4EE5;&#x51CF;&#x5C11;&#x91CD;&#x590D;&#x5DE5;&#x4F5C;&#xFF1A;<code>yum -y install &lt;TOOL-NAME&gt;</code>&#xFF1A;</p>
+<p>试 <code>nvidia-smi</code> 指令看能否获取到显卡信息</p>
+<h2 id="克隆创建子节点"><a class="header" href="#克隆创建子节点">克隆创建子节点</a></h2>
+<p>先安装必要的基本工具以减少重复工作：<code>yum -y install &lt;TOOL-NAME&gt;</code>：</p>
 <ul>
-<li>NFS&#xFF1A;<code>nfs-utils rpcbind</code></li>
-<li>Lmod&#xFF1A;<code>environment-modules</code></li>
-<li>&#x5176;&#x4ED6;&#xFF1A;<code>gcc gcc-c++ perl wget</code>&#xFF08;&#x901A;&#x8FC7; <code>yum</code> &#x9884;&#x5B89;&#x88C5; gcc &#x7528;&#x4E8E;&#x5E76;&#x884C;&#x5E93;&#x5DE5;&#x5177;&#x7B49;&#x7684;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;&#xFF09;</li>
+<li>NFS：<code>nfs-utils rpcbind</code></li>
+<li>Lmod：<code>environment-modules</code></li>
+<li>其他：<code>gcc gcc-c++ perl wget</code>（通过 <code>yum</code> 预安装 gcc 用于并行库工具等的编译安装）</li>
 </ul>
-<p>&#x4E3B;&#x8282;&#x70B9;&#x5173;&#x673A;&#xFF0C;&#x63D2;&#x5165; <em>Clonezilla</em> &#x5DE5;&#x5177;&#x76D8;&#xFF0C;&#x4ECE;&#x5B83;&#x542F;&#x52A8;&#xFF0C;&#x5C06;&#x4E3B;&#x8282;&#x70B9;&#x7CFB;&#x7EDF;&#x76D8;&#x514B;&#x9686;&#x81F3;&#x5B50;&#x8282;&#x70B9;&#x7CFB;&#x7EDF;&#x76D8;&#x5185;&#xFF08;&#x52FF;&#x641E;&#x9519;&#x62F7;&#x8D1D; Source &amp; Target &#x76D8;&#x65B9;&#x5411;&#xFF09;&#xFF1A;<a href="https://www.tecmint.com/linux-centos-ubuntu-disk-cloning-backup-using-clonezilla" target="_blank">https://www.tecmint.com/linux-centos-ubuntu-disk-cloning-backup-using-clonezilla</a></p>
-<p>&#x5B50;&#x8282;&#x70B9;&#x63D2;&#x5165;&#x7CFB;&#x7EDF;&#x76D8;&#x540E;&#xFF0C;&#x5206;&#x522B;&#x767B;&#x9646;&#x5404;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x4FEE;&#x6539;&#x4E3B;&#x673A;&#x540D;&#x548C;&#x9759;&#x6001; ip &#x5730;&#x5740;&#xFF08;&#x5185;&#x7F51;&#x7F51;&#x53E3;&#xFF09;&#xFF0C;&#x4EE5;&#x4FBF;&#x4E92;&#x8054;&#x8BC6;&#x522B;&#x8EAB;&#x4EFD;&#xFF0C;&#x6CE8;&#x610F; <strong>4 &#x8282;&#x70B9; ip &#x548C; &#x4E3B;&#x673A;&#x540D; &#x4E92;&#x4E0D;&#x76F8;&#x540C;</strong>&#xFF1A;</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># e.g. node2 &#x8282;&#x70B9;</span>
-$ hostnamectl <span class="hljs-built_in">set</span>-hostname node2
-$ vi /etc/sysconfig/network-scripts/ifcfg-&lt;INTERFACE&gt;   <span class="hljs-comment">#&#x4FEE;&#x6539; IPADDR=192.168.&lt;A&gt;.2</span>
+<p>主节点关机，插入 <em>Clonezilla</em> 工具盘，从它启动，将主节点系统盘克隆至子节点系统盘内（勿搞错拷贝 Source &amp; Target 盘方向）：<a href="https://www.tecmint.com/linux-centos-ubuntu-disk-cloning-backup-using-clonezilla">https://www.tecmint.com/linux-centos-ubuntu-disk-cloning-backup-using-clonezilla</a></p>
+<p>子节点插入系统盘后，分别登陆各子节点，修改主机名和静态 ip 地址（内网网口），以便互联识别身份，注意 <strong>4 节点 ip 和 主机名 互不相同</strong>：</p>
+<pre><code class="language-bash"># e.g. node2 节点
+$ hostnamectl set-hostname node2
+$ vi /etc/sysconfig/network-scripts/ifcfg-&lt;INTERFACE&gt;   #修改 IPADDR=192.168.&lt;A&gt;.2
 </code></pre>
-<h2 id="&#x6570;&#x636E;&#x76D8;-nfs-&#x5171;&#x4EAB;&#xFF08;over-ib-rdma&#xFF09;">&#x6570;&#x636E;&#x76D8; NFS &#x5171;&#x4EAB;&#xFF08;over IB RDMA&#xFF09;</h2>
-<p>[TODO] <a href="https://community.mellanox.com/s/article/howto-configure-nfs-over-rdma--roce-x" target="_blank">https://community.mellanox.com/s/article/howto-configure-nfs-over-rdma--roce-x</a></p>
+<h2 id="数据盘-nfs-共享over-ib-rdma"><a class="header" href="#数据盘-nfs-共享over-ib-rdma">数据盘 NFS 共享（over IB RDMA）</a></h2>
+<p><a href="https://developer.nvidia.com/blog/doubling-network-file-system-performance-with-rdma-enabled-networking/">howto-configure-nfs-over-rdma--roce-x</a></p>
 <p>Maybe useful according to teacher Zhang</p>
 <pre><code>opensmd
 openibd
-</code></pre><h2 id="&#x6570;&#x636E;&#x76D8;-nfs-&#x5171;&#x4EAB;&#xFF08;over-tcp&#xFF09;&#x5907;&#x9009;">&#x6570;&#x636E;&#x76D8; NFS &#x5171;&#x4EAB;&#xFF08;over TCP&#xFF09;[&#x5907;&#x9009;]</h2>
-<p>&#x4E3B;&#x8282;&#x70B9;&#x63D2;&#x4E0A;&#x7528;&#x4F5C;&#x5171;&#x4EAB;&#x76D8;&#x7684;&#x786C;&#x76D8;&#xFF0C;<code>lsblk</code> &#x67E5;&#x770B;&#x65B0;&#x786C;&#x76D8;&#x5DF2;&#x63D2;&#x4E0A;&#x53CA;&#x540D;&#x79F0;&#xFF0C;&#x53EF;&#x770B;&#x5230;&#x51FA;&#x73B0; e.g. <code>sdb1</code> &#x76D8;&#xFF08;&#x6839;&#x636E;&#x5927;&#x5C0F;&#x5224;&#x65AD;&#x90A3;&#x4E2A;&#x4E3A;&#x5171;&#x4EAB;&#x76D8;&#xFF0C;&#x52FF;&#x641E;&#x9519;&#xFF09;</p>
+</code></pre>
+<h2 id="数据盘-nfs-共享over-tcp备选"><a class="header" href="#数据盘-nfs-共享over-tcp备选">数据盘 NFS 共享（over TCP）备选</a></h2>
+<p>主节点插上用作共享盘的硬盘，<code>lsblk</code> 查看新硬盘已插上及名称，可看到出现 e.g. <code>sdb1</code> 盘（根据大小判断那个为共享盘，勿搞错）</p>
 <blockquote>
-<p>&#x683C;&#x5F0F;&#x5316;&#x78C1;&#x76D8;&#x6D41;&#x7A0B;&#x5907;&#x5FD8;&#xFF1A;</p>
+<p>格式化磁盘流程备忘：</p>
 <p><code>$ fdisk /dev/sdb1</code>
-<code>$     n                     # &#x65B0;&#x5EFA;&#x5206;&#x533A;</code>
-<code>$     p 1 [Enter] [Enter]   # &#x6574;&#x4E2A;&#x76D8;&#x5EFA;&#x7ACB;&#x4E3A;&#x4E00;&#x4E2A;&#x5927;&#x4E3B;&#x5206;&#x533A;</code></p>
+<code>$     n                     # 新建分区</code>
+<code>$     p 1 [Enter] [Enter]   # 整个盘建立为一个大主分区</code></p>
 </blockquote>
-<p>&#x6302;&#x8F7D;&#x8BE5;&#x78C1;&#x76D8;&#x5E76;&#x5728;&#x5176;&#x4E2D;&#x5EFA;&#x7ACB;&#x6B32;&#x5171;&#x4EAB;&#x7684;&#x76EE;&#x5F55;&#xFF08;<code>/home</code> &#x548C; <code>/opt</code>&#xFF09;:</p>
-<pre><code class="lang-bash">$ mount /dev/nvme0n1 /mnt/nfs
+<p>挂载该磁盘并在其中建立欲共享的目录（<code>/home</code> 和 <code>/opt</code>）:</p>
+<pre><code class="language-bash">$ mount /dev/nvme0n1 /mnt/nfs
 $ mkdir /mnt/nfs/home
 $ mkdir /mnt/nfs/opt
 </code></pre>
-<p>&#x4E3B;&#x8282;&#x70B9;&#x542F;&#x52A8; NFS server&#xFF0C;&#x7F16;&#x8F91;&#x5171;&#x4EAB;&#x76EE;&#x5F55;&#x914D;&#x7F6E; <code>/etc/exports</code>&#xFF0C;&#x6DFB;&#x52A0;&#x6761;&#x76EE;&#xFF08;<em>&#x6CE8;&#x610F;&#x4E0D;&#x591A;&#x52A0;&#x7A7A;&#x683C;</em>&#xFF09;&#xFF1A;</p>
+<p>主节点启动 NFS server，编辑共享目录配置 <code>/etc/exports</code>，添加条目（<em>注意不多加空格</em>）：</p>
 <pre><code>/mnt/nfs/home 192.168.&lt;A&gt;.0/24(rw,no_root_squash,no_all_squash,sync)
 /mnt/nfs/opt  192.168.&lt;A&gt;.0/24(rw,no_root_squash,no_all_squash,sync)
-</code></pre><p>&#x53C2;&#x6570;&#x89E3;&#x91CA;&#xFF1A;</p>
+</code></pre>
+<p>参数解释：</p>
 <ul>
-<li><code>rw</code>&#xFF1A;&#x53EF;&#x8BFB;&#x5199;</li>
-<li><code>no_*_squash</code>&#xFF1A;&#x5BA2;&#x6237;&#x8282;&#x70B9;&#x4EE5; * &#x8EAB;&#x4EFD;&#x4F7F;&#x7528;&#x65F6;&#x4E0D;&#x964D;&#x7EA7;&#x4E3A;&#x533F;&#x540D;&#x666E;&#x901A;&#x7528;&#x6237;</li>
-<li><code>sync</code>&#xFF1A;&#x5404;&#x7AEF;&#x7684;&#x5199;&#x64CD;&#x4F5C;&#x540C;&#x6B65;&#x81F3;&#x78C1;&#x76D8;</li>
+<li><code>rw</code>：可读写</li>
+<li><code>no_*_squash</code>：客户节点以 * 身份使用时不降级为匿名普通用户</li>
+<li><code>sync</code>：各端的写操作同步至磁盘</li>
 </ul>
-<p>&#x5F00;&#x542F;&#x670D;&#x52A1;&#x5E76;&#x8BBE;&#x7F6E;&#x5F00;&#x673A;&#x81EA;&#x542F;&#xFF1A;</p>
-<pre><code class="lang-bash">$ exportfs -r
+<p>开启服务并设置开机自启：</p>
+<pre><code class="language-bash">$ exportfs -r
 $ service rpcbind start
 $ service nfs start
 $ chkconfig rpcbind on
 $ chkconfig nfs on
 </code></pre>
-<p>&#x8BBE;&#x7F6E;&#x4E3B;&#x8282;&#x70B9;&#x9632;&#x706B;&#x5899;&#x5141;&#x8BB8; NFS &#x8BBF;&#x95EE;&#x8BF7;&#x6C42;&#xFF1A;</p>
-<pre><code class="lang-bash">$ firewall-cmd --permanent --add-service=mountd
+<p>设置主节点防火墙允许 NFS 访问请求：</p>
+<pre><code class="language-bash">$ firewall-cmd --permanent --add-service=mountd
 $ firewall-cmd --permanent --add-service=nfs
 $ firewall-cmd --permanent --add-service=rpc-bind
 $ firewall-cmd --reload
 </code></pre>
-<p>&#x4FEE;&#x6539; <code>/etc/fstab</code>&#xFF0C;&#x4F7F;&#x4E3B;&#x8282;&#x70B9;&#x5C06;&#x5171;&#x4EAB;&#x76EE;&#x5F55; <em>bind mount</em> &#xFF08;&#x76EE;&#x5F55;&#x6811;&#x5230;&#x76EE;&#x5F55;&#x6811;&#x6302;&#x8F7D;&#xFF09; &#x5230; <code>/home</code> <code>/opt</code>&#xFF0C;&#x5B50;&#x8282;&#x70B9;&#x7531; NFS &#x5C06;&#x4E3B;&#x8282;&#x70B9;&#x76EE;&#x5F55;&#x6302;&#x8F7D;&#xFF1A;</p>
-<pre><code># On node1&#xFF0C;&#x5728; /etc/fstab &#x6587;&#x4EF6;&#x672B;&#x5C3E;&#x6DFB;&#x52A0;
+<p>修改 <code>/etc/fstab</code>，使主节点将共享目录 <em>bind mount</em> （目录树到目录树挂载） 到 <code>/home</code> <code>/opt</code>，子节点由 NFS 将主节点目录挂载：</p>
+<pre><code># On node1，在 /etc/fstab 文件末尾添加
 /dev/nvme0n1    /mnt/nfs    ext4    rw,user,exec,suid,dev,auto,async
 /mnt/nfs/home   /home       none    rw,user,exec,suid,dev,auto,async,bind
 /mnt/nfs/opt    /opt        none    rw,user,exec,suid,dev,auto,async,bind
 
-# On node2~4&#xFF0C;&#x5728; /etc/fstab &#x6587;&#x4EF6;&#x672B;&#x5C3E;&#x6DFB;&#x52A0;
+# On node2~4，在 /etc/fstab 文件末尾添加
 node1:/mnt/nfs/home    /home   nfs     rw,user,exec,suid,dev,auto,async
 node1:/mnt/nfs/home    /opt    nfs     rw,user,exec,suid,dev,auto,async
-</code></pre><p>&#x800C;&#x540E;&#x6BCF;&#x6B21;&#x5F00;&#x673A;&#x540E;&#xFF0C;&#x5404;&#x8282;&#x70B9;&#x5747;&#x767B;&#x5165; root &#x7528;&#x6237;&#xFF0C;<strong>&#x5148;&#x5728;&#x4E3B;&#x8282;&#x70B9;</strong> <code>mount -a</code>&#xFF0C;<strong>&#x540E;&#x5728;&#x5404;&#x5B50;&#x8282;&#x70B9;</strong> <code>mount -a</code> &#x5373;&#x53EF;&#x6210;&#x529F;&#x6302;&#x8F7D;&#x5171;&#x4EAB;&#x76EE;&#x5F55;</p>
+</code></pre>
+<p>而后每次开机后，各节点均登入 root 用户，<strong>先在主节点</strong> <code>mount -a</code>，<strong>后在各子节点</strong> <code>mount -a</code> 即可成功挂载共享目录</p>
 <blockquote>
-<p>&#x5168;&#x624B;&#x52A8;&#x6302;&#x8F7D;&#x65B9;&#x5F0F;&#x5907;&#x5FD8;&#xFF0C;&#x5F00;&#x673A;&#x540E;&#x9996;&#x5148;&#x5728;&#x4E3B;&#x8282;&#x70B9;&#xFF1A;</p>
+<p>全手动挂载方式备忘，开机后首先在主节点：</p>
 <p><code>$ mount /dev/nvme0n1 /mnt/nfs</code>
 <code>$ mount --bind /mnt/nfs/home /home</code>
 <code>$ mount --bind /mnt/nfs/opt /opt</code></p>
-<p>&#x800C;&#x540E;&#x5728;&#x5404;&#x5B50;&#x8282;&#x70B9;&#xFF1A;</p>
-<p><code>$ showmount -e node1     # &#x68C0;&#x6D4B;&#x662F;&#x5426;&#x6709;&#x6765;&#x81EA;&#x4E3B;&#x8282;&#x70B9;&#x7684; nfs &#x5171;&#x4EAB;</code>
+<p>而后在各子节点：</p>
+<p><code>$ showmount -e node1     # 检测是否有来自主节点的 nfs 共享</code>
 <code>$ mount -t nfs node1:/mnt/nfs/home /home</code>
 <code>$ mount -t nfs node1:/mnt/nfs/opt  /opt</code></p>
-<p>&#x51FA;&#x73B0; &#x201C;Stale file handle&#x201D; &#x95EE;&#x9898; / &#x201C;Access denied&#x201D; &#x95EE;&#x9898;&#xFF0C;&#x5728;&#x4E3B;&#x8282;&#x70B9;&#x91CD;&#x542F; NFS&#xFF1A;<code>systemctl restart nfs</code> &#x540E;&#x518D;&#x6302;&#x8F7D;&#x4E00;&#x904D;&#x5373;&#x53EF;</p>
 </blockquote>
-<h2 id="ssh-&#x514D;&#x5BC6;&#x7801;&#x767B;&#x5F55;&#x914D;&#x7F6E;">SSH &#x514D;&#x5BC6;&#x7801;&#x767B;&#x5F55;&#x914D;&#x7F6E;</h2>
-<p>&#x9996;&#x5148;&#x914D;&#x7F6E; root &#x7528;&#x6237;&#x76F8;&#x4E92; <em>ssh</em> &#x514D;&#x5BC6;&#x767B;&#x9646;&#xFF0C;<strong>&#x6240;&#x6709;&#x8282;&#x70B9;&#x5BF9;&#x4E4B;&#x95F4;&#x5747;&#x9700;&#x914D;&#x7F6E;</strong>&#xFF0C;e.g. &#x5728;&#x4E3B;&#x8282;&#x70B9; <code>/root</code> &#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-bash">$ ssh-keygen            <span class="hljs-comment"># &#x4F4D;&#x7F6E;&#x540D;&#x79F0;&#x9ED8;&#x8BA4;</span>
-$ ssh-copy-id node1    <span class="hljs-comment"># &#x81EA;&#x8EAB;&#x8282;&#x70B9;&#x4E5F;&#x9700;&#x62F7;&#x8D1D;</span>
+<blockquote>
+<p>出现 “Stale file handle” 问题 / “Access denied” 问题，在主节点重启 NFS：<code>systemctl restart nfs</code> 后再挂载一遍即可</p>
+</blockquote>
+<h2 id="ssh-免密码登录配置"><a class="header" href="#ssh-免密码登录配置">SSH 免密码登录配置</a></h2>
+<p>首先配置 root 用户相互 <em>ssh</em> 免密登陆，<strong>所有节点对之间均需配置</strong>，e.g. 在主节点 <code>/root</code> 下：</p>
+<pre><code class="language-bash">$ ssh-keygen            # 位置名称默认
+$ ssh-copy-id node1    # 自身节点也需拷贝
 $ ...
 $ ssh-copy-id node4
 </code></pre>
-<p>&#x800C;&#x540E;&#x5728;&#x5404;&#x81EA;&#x8282;&#x70B9; <em>&#x5747;</em> &#x521B;&#x5EFA;&#x666E;&#x901A;&#x7528;&#x6237;&#xFF0C;&#x6CE8;&#x610F; <strong>&#x76F8;&#x540C;&#x540D;&#x79F0;</strong> &amp; <strong>&#x76F8;&#x540C; uid</strong> &amp; <strong>&#x76F8;&#x540C; group (gid)</strong> &amp; <strong>&#x76F8;&#x540C;&#x5BC6;&#x7801;</strong>&#xFF1A;</p>
-<pre><code class="lang-bash">$ useradd &lt;USERNAME&gt; -m
+<p>而后在各自节点 <em>均</em> 创建普通用户，注意 <strong>相同名称</strong> &amp; <strong>相同 uid</strong> &amp; <strong>相同 group (gid)</strong> &amp; <strong>相同密码</strong>：</p>
+<pre><code class="language-bash">$ useradd &lt;USERNAME&gt; -m
 $ passwd &lt;USERNAME&gt;
-$     [Type new PASSWORD] [Type again]    <span class="hljs-comment"># &#x8BBE;&#x7F6E;&#x5BC6;&#x7801;&#xFF0C;&#x4E0D;&#x8981;&#x901A;&#x8FC7; useradd &#x7684; -p &#x9009;&#x9879;&#xFF0C;&#x5BC6;&#x7801;&#x4E0D;&#x89C4;&#x8303;&#x65F6;&#x4F1A;&#x5931;&#x8D25;</span>
+$     [Type new PASSWORD] [Type again]    # 设置密码，不要通过 useradd 的 -p 选项，密码不规范时会失败
 </code></pre>
 <blockquote>
-<p>&#x5BC6;&#x7801;&#x901A;&#x8FC7; <code>passwd</code> &#x6307;&#x4EE4;&#x8BBE;&#x7F6E;&#xFF0C;&#x5426;&#x5219;&#x5BC6;&#x7801;&#x4E0D;&#x89C4;&#x8303;&#x65F6; <code>-p</code> &#x9009;&#x9879;&#x53EF;&#x80FD;&#x5931;&#x8D25;&#x4E14;&#x4E0D;&#x4F1A;&#x7ED9;&#x51FA;&#x63D0;&#x793A;
-&#x6309;&#x76F8;&#x540C;&#x987A;&#x5E8F;&#x521B;&#x5EFA;&#x5373;&#x662F;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>cat /etc/passwd</code> &#x68C0;&#x67E5;</p>
+<p>密码通过 <code>passwd</code> 指令设置，否则密码不规范时 <code>-p</code> 选项可能失败且不会给出提示
+按相同顺序创建即是，可以通过 <code>cat /etc/passwd</code> 检查</p>
 </blockquote>
-<p>&#x4EFB;&#x610F;&#x8282;&#x70B9;&#x8FDB;&#x5165;&#x666E;&#x901A;&#x7528;&#x6237;&#xFF0C;&#x751F;&#x6210;&#x5E76;&#x62F7;&#x8D1D;&#x5BC6;&#x94A5;&#xFF08;&#x6CE8;&#x610F;&#x666E;&#x901A;&#x7528;&#x6237; Home &#x76EE;&#x5F55;&#x5171;&#x4EAB;&#xFF09;&#xFF1A;</p>
-<pre><code class="lang-bash">$ su testuser
-$ <span class="hljs-built_in">cd</span>
+<p>任意节点进入普通用户，生成并拷贝密钥（注意普通用户 Home 目录共享）：</p>
+<pre><code class="language-bash">$ su testuser
+$ cd
 $ ssh-keygen
       [Enter] [Enter] [Enter]
 $ ssh-copy-id localhost
 </code></pre>
-<h2 id="&#x7F16;&#x8BD1;&#x5668;&#x3001;&#x5E76;&#x884C;&#x5E93;&#x548C;&#x73AF;&#x5883;&#x7684;&#x5B89;&#x88C5;">&#x7F16;&#x8BD1;&#x5668;&#x3001;&#x5E76;&#x884C;&#x5E93;&#x548C;&#x73AF;&#x5883;&#x7684;&#x5B89;&#x88C5;</h2>
-<p>&#x73AF;&#x5883;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x6587;&#x4EF6;&#x6811;&#x653E;&#x7F6E;&#x4E8E; <code>/opt</code> &#x4E0B;</p>
+<h2 id="编译器并行库和环境的安装"><a class="header" href="#编译器并行库和环境的安装">编译器、并行库和环境的安装</a></h2>
+<p>环境安装目录文件树放置于 <code>/opt</code> 下</p>
 <blockquote>
-<p>&#x6240;&#x9700;&#x73AF;&#x5883;&#x53CA;&#x5B89;&#x88C5;&#x6D41;&#x7A0B; - &#x89C1; &#x201C;<a href="../hpc/sysadmin/environment-installation">Environment Installation</a>&#x201D;</p>
+<p>所需环境及安装流程 - 见 “<a href="environment-installation.html">Environment Installation</a>”</p>
 </blockquote>
-<h2 id="&#x73AF;&#x5883;-environment-modules-&#x914D;&#x7F6E;">&#x73AF;&#x5883; Environment Modules &#x914D;&#x7F6E;</h2>
-<p>&#x524D;&#x9762;&#x5DF2;&#x4E0B;&#x8F7D;&#x8FC7; Lmod &#x5DE5;&#x5177;&#xFF1B;&#x5171;&#x4EAB;&#x76D8;&#x4E2D; <code>mkdir /opt/modulefiles</code> &#x4F5C;&#x4E3A; modulefile &#x5B58;&#x50A8;&#x4F4D;&#x7F6E;&#xFF0C;&#x800C;&#x540E;&#x5728; <strong>&#x6BCF;&#x4E2A;</strong> &#x8282;&#x70B9;&#x56FA;&#x5B9A; modulefile &#x641C;&#x7D22;&#x8DEF;&#x5F84;&#xFF0C;&#x4E8E; <code>/etc/environment</code> &#x4E2D;&#x6DFB;&#x52A0;&#x884C;&#xFF1A;</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">export</span> MODULEPATH=/opt/modulefiles
+<h2 id="环境-environment-modules-配置"><a class="header" href="#环境-environment-modules-配置">环境 Environment Modules 配置</a></h2>
+<p>前面已下载过 Lmod 工具；共享盘中 <code>mkdir /opt/modulefiles</code> 作为 modulefile 存储位置，而后在 <strong>每个</strong> 节点固定 modulefile 搜索路径，于 <code>/etc/environment</code> 中添加行：</p>
+<pre><code class="language-bash">export MODULEPATH=/opt/modulefiles
 </code></pre>
 <blockquote>
-<p>&#x52FF;&#x5FD8; <code>source /etc/environment</code></p>
-<p>&#x66FE;&#x7528; modulefile &#x6587;&#x4EF6; - &#x89C1; &#x201C;<a href="../hpc/sysadmin/environment-modules">Modulefile Records</a>&#x201D;</p>
+<p>勿忘 <code>source /etc/environment</code></p>
+</blockquote>
+<blockquote>
+<p>曾用 modulefile 文件 - 见 “<a href="environment-modules.html">Modulefile Records</a>”</p>
 </blockquote>
 
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
+                    </main>
 
-                        </div>
-                    </div>
-                
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../Sysadmin/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../Sysadmin/environment-installation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
             </div>
 
-            
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../Sysadmin/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
-                
-                <a href="environment-installation.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Environment Installation">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
-    </div>
+                                    <a rel="next" href="../Sysadmin/environment-installation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
 
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cluster Setup","level":"1.9.1","depth":2,"next":{"title":"Environment Installation","level":"1.9.2","depth":2,"path":"Sysadmin/environment-installation.md","ref":"Sysadmin/environment-installation.md","articles":[]},"previous":{"title":"Sysadmin","level":"1.9","depth":1,"ref":"","articles":[{"title":"Cluster Setup","level":"1.9.1","depth":2,"path":"Sysadmin/cluster-setup.md","ref":"Sysadmin/cluster-setup.md","articles":[]},{"title":"Environment Installation","level":"1.9.2","depth":2,"path":"Sysadmin/environment-installation.md","ref":"Sysadmin/environment-installation.md","articles":[]},{"title":"Environment Modules","level":"1.9.3","depth":2,"path":"Sysadmin/environment-modules.md","ref":"Sysadmin/environment-modules.md","articles":[]},{"title":"Machine","level":"1.9.4","depth":2,"path":"Sysadmin/machine.md","ref":"Sysadmin/machine.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Sysadmin/cluster-setup.md","mtime":"2021-07-22T11:35:46.250Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-22T11:36:34.752Z"},"basePath":"..","book":{"language":""}});
-        });
-    </script>
-</div>
+        </div>
 
         
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
-    
         
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
-    
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
         
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
         
-    
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
+        <!-- Custom JS scripts -->
+        
+        
     </body>
 </html>
-
