@@ -176,7 +176,7 @@ void statevec_hadamard(Qureg qureg, const int targetQubit)
 
 #### Pauli-X/Y/Z gate
 
-The Pauli-X gate acts on a single qubit. It is the quantum equivalent of the [NOT gate](http://victoryang00.cn/picture/https://en.wikipedia.org/wiki/NOT_gate) for classical computers (with respect to the standard basis [|0\rangle ](http://victoryang00.cn/picture/ed066a3ad158da0ad6d6a421a606b1c8a35eb95b.svg), [|1\rangle ](http://victoryang00.cn/picture/2f53021ca18e77477ee5bd3c1523e5830189ec5c.svg), which distinguishes the *Z*-direction.[image-20200206190608424](http://victoryang00.cn/picture/image-20200206190608424.png)
+The Pauli-X gate acts on a single qubit. It is the quantum equivalent of the [NOT gate](https://en.wikipedia.org/wiki/NOT_gate) for classical computers (with respect to the standard basis [|0\rangle ](http://victoryang00.cn/picture/ed066a3ad158da0ad6d6a421a606b1c8a35eb95b.svg), [|1\rangle ](http://victoryang00.cn/picture/2f53021ca18e77477ee5bd3c1523e5830189ec5c.svg), which distinguishes the *Z*-direction.[image-20200206190608424](http://victoryang00.cn/picture/image-20200206190608424.png)
 
 ```cpp
 void pauliX(Qureg qureg, const int targetQubit) {

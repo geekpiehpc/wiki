@@ -17,7 +17,7 @@
 
 ## CentOS 操作系统安装
 
-下载 **CentOS-7 Minimal 镜像**，地址：[http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso](http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso) 于 U 盘，插于主节点
+下载 **CentOS-7 Minimal 镜像** 于 U 盘，插于主节点
 
 > 如果主板 BIOS 启动模式不是 UEFI 则勿忘在启动时修改 ;(
 > 主节点需要使用外置 Clonezilla 镜像 U 盘，故也把 U 盘启动顺序置前
@@ -75,7 +75,7 @@ IB 驱动 & Nvidia 驱动，安装在默认位置（因为共享盘还未配置�
 
 ### IB 驱动和配置
 
-[TODO] [https://blog.csdn.net/oPrinceme/article/details/51001849](https://blog.csdn.net/oPrinceme/article/details/51001849)
+[IB 驱动](https://blog.csdn.net/oPrinceme/article/details/51001849)
 
 ### Nvidia 驱动
 
@@ -120,7 +120,7 @@ $ vi /etc/sysconfig/network-scripts/ifcfg-<INTERFACE>   #修改 IPADDR=192.168.<
 
 ## 数据盘 NFS 共享（over IB RDMA）
 
-[TODO] [https://community.mellanox.com/s/article/howto-configure-nfs-over-rdma--roce-x](https://community.mellanox.com/s/article/howto-configure-nfs-over-rdma--roce-x)
+[howto-configure-nfs-over-rdma--roce-x](https://community.mellanox.com/s/article/howto-configure-nfs-over-rdma--roce-x)
 
 Maybe useful according to teacher Zhang
 ```
@@ -243,7 +243,7 @@ $ ssh-copy-id localhost
 
 环境安装目录文件树放置于 `/opt` 下
 
-> 所需环境及安装流程 - 见 “[Environment Installation](Sysadmin/environment-installation.md)”
+> 所需环境及安装流程 - 见 “[Environment Installation](environment-installation.md)”
 
 ## 环境 Environment Modules 配置
 
@@ -255,4 +255,4 @@ export MODULEPATH=/opt/modulefiles
 
 > 勿忘 `source /etc/environment`
 
-> 曾用 modulefile 文件 - 见 “[Modulefile Records](Sysadmin/environment-modules.md)”
+> 曾用 modulefile 文件 - 见 “[Modulefile Records](environment-modules.md)”

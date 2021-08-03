@@ -61,9 +61,9 @@
 
 1. **gcc** (包含 **gfortran**) - Version 7.4 + 5.5 + 4.9.4 + 4.4.7
     - `CentOS` 自带的gcc版本过老，可以使用 `scl enable devtoolset-9 bash`以支持最新gcc特性。
-    - 7.4：[ftp://ftp.gnu.org/gnu/gcc/gcc-7.4.0/gcc-7.4.0.tar.gz](ftp://ftp.gnu.org/gnu/gcc/gcc-7.4.0/gcc-7.4.0.tar.gz)
-    - 5.5：[ftp://ftp.gnu.org/gnu/gcc/gcc-5.5.0/gcc-5.5.0.tar.gz](ftp://ftp.gnu.org/gnu/gcc/gcc-5.5.0/gcc-5.5.0.tar.gz)
-    - 4.4.7：[ftp://ftp.gnu.org/gnu/gcc/gcc-4.4.7/gcc-4.4.7.tar.gz](ftp://ftp.gnu.org/gnu/gcc/gcc-4.4.7/gcc-4.4.7.tar.gz)
+    - 7.4：[gcc-7.4.0.tar.gz](ftp://ftp.gnu.org/gnu/gcc/gcc-7.4.0/gcc-7.4.0.tar.gz)
+    - 5.5：[gcc-5.5.0.tar.gz](ftp://ftp.gnu.org/gnu/gcc/gcc-5.5.0/gcc-5.5.0.tar.gz)
+    - 4.4.7：[gcc-4.4.7.tar.gz](ftp://ftp.gnu.org/gnu/gcc/gcc-4.4.7/gcc-4.4.7.tar.gz)
 2. **icc** & **ifort**：包含于 *Intel Parallel Studio XE* 中
 
 ## Intel Parallel Studio XE 全家桶
@@ -71,7 +71,7 @@
 **Parallel Studio XE**：按照 [This Procedure](https://www.slothparadise.com/how-to-setup-the-intel-compilers-on-a-cluster) 获取和安装，19-20 授权如下
 
 - 序列号 S4ZD-MMZJXJ96 (若失效，可以前往英特尔官网申请，在下方register center，若为spack 安装只需在安装过程中输入即可)
-- URL：[http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15088/parallel_studio_xe_2019_update2_cluster_edition.tgz](http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15088/parallel_studio_xe_2019_update2_cluster_edition.tgz)
+- URL：[parallel_studio_xe_2019_update2_cluster_edition.tgz](http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15088/parallel_studio_xe_2019_update2_cluster_edition.tgz)
 - LICENSE：官网 Registration Center 下载后传至 Server
 
 > `icc` `ifort` `mkl` `IntelMPI` 均包含于 Parallel Studio XE 中
@@ -81,13 +81,13 @@
 ## MPI
 
 1. **OpenMPI** - Version 4.0 + 3.1 + 3.0 + 2.1
-    - 4.0：[https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.0.tar.gz](https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.0.tar.gz)
-    - 3.1：[https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz](https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz)
-    - 3.0：[https://download.open-mpi.org/release/open-mpi/v3.0/openmpi-3.0.3.tar.gz](https://download.open-mpi.org/release/open-mpi/v3.0/openmpi-3.0.3.tar.gz)
-    - 2.1：[https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz](https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz)
+    - 4.0：[openmpi-4.0.0.tar.gz](https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.0.tar.gz)
+    - 3.1：[openmpi-3.1.3.tar.gz](https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz)
+    - 3.0：[openmpi-3.0.3.tar.gz](https://download.open-mpi.org/release/open-mpi/v3.0/openmpi-3.0.3.tar.gz)
+    - 2.1：[openmpi-2.1.6.tar.gz](https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz)
 2. **MPICH** - Version 3.3 + 3.2.1
-    - 3.3：[http://www.mpich.org/static/downloads/3.3/mpich-3.3.tar.gz](http://www.mpich.org/static/downloads/3.3/mpich-3.3.tar.gz)
-    - 3.2.1：[http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz](http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz)
+    - 3.3：[mpich-3.3.tar.gz](http://www.mpich.org/static/downloads/3.3/mpich-3.3.tar.gz)
+    - 3.2.1：[mpich-3.2.1.tar.gz](http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz)
 3. **IntelMPI**：包含于 *Intel Parallel Studio XE* 中
 
 ## Nvidia CUDA
