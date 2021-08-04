@@ -151,16 +151,18 @@
                     <main>
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <p>首先，欢迎大家加入<code>GeekPie_HPC</code>，这是一个技术中立，立志和清华比肩的比赛队伍。我们重视输赢的同时，更着重培养的是大家的实践（对各种工具的熟练应用）能力，交流（擅长画饼，接锅和再造血）能力。如果你需要花绝大多数的时间卷 GPA，本社不欢迎你，由于比赛几乎所有时间都落在期中期末考试左右，我们希望的是 YOLO 的精神。</p>
+<p>有关如何做一个<a href="https://coolshell.cn/articles/17497.html">好的技术分享官</a>，无论是学术、科研，都是在和别人 brain storm 的同时产生价值。你做的工作，只有对别人产生了价值，别人才会 value 你，光做一个技术强者是毫无作用的。希望大家珍惜与优秀的人共事的机会，在 slack、周会上看看别人是怎么做的，然后自己也贡献些力所能及的事。</p>
 <p>这里是<code>GeekPie_HPC</code>托管在<code>github pages</code>的第三个wiki，有一部分在geekpie的<code>wiki.js</code>里，还有一小部分在geekpie校内服务器的conference上，为了避免有一天运维删库跑路，所以先放github上，使用<code>github actions</code>自动生成<code>gitbook</code>。</p>
 <p>需要新加文档请直接在<code>main</code> branch上提交<code>markdown</code>文件，在半分钟之后<a href="http://hpc.geekpie.club/wiki/">wiki</a>就会得到更新。</p>
 <h2 id="目前wiki维护"><a class="header" href="#目前wiki维护">目前wiki维护</a></h2>
 <p>murez 可以在白裙和HPC群找到。命名采用小端大写法。需要push即可。</p>
-<h2 id="有关招新"><a class="header" href="#有关招新">有关招新</a></h2>
-<p><a href="https://hpc.geekpie.club/archives/">招新公告</a>，<a href="https://geekpiehpc.slack.com">slack</a>用上科大邮箱可以注册。</p>
+<h2 id="有关出入口"><a class="header" href="#有关出入口">有关出入口</a></h2>
+<p><a href="https://hpc.geekpie.club/archives/">招新公告</a>，<a href="https://geekpiehpc.slack.com">slack</a>用上科大邮箱可以注册，暑期想实习、磕盐可以在黑裙里找到相关信息。校内不定期邀请外校同学和同事和共事者演讲。</p>
+<p><em>Generated <a href="http://hpc.geekpie.club/wiki/">GitHub Pages</a> is powered by <a href="https://github.com/rust-lang/mdBook">mdBook</a>.</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="algorithm"><a class="header" href="#algorithm">Algorithm</a></h1>
 <p>这里放置有关应用和测试中常见的算法。</p>
 <div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="applications"><a class="header" href="#applications">Applications</a></h1>
-<p>这里放置<code>GeekPie_HPC</code>参与过各个竞赛中的应用的经历和经验</p>
+<p>这里放置<code>GeekPie_HPC</code>参与过各个竞赛中的应用的经历和经验。</p>
 <div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><!-- TITLE: CESM -->
 <!-- SUBTITLE: CESM summary -->
 <h1 id="cesm"><a class="header" href="#cesm">CESM</a></h1>
@@ -764,8 +766,8 @@ This is a PR for people to review and provide feedback on the p2p branch (issue 
 <h2 id="命题"><a class="header" href="#命题">命题</a></h2>
 <p>HPL等benchmark和其他4项应用以及一道神秘赛题。</p>
 <div style="break-before: page; page-break-before: always;"></div><p>失败了</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id=""><a class="header" href="#"></a></h1>
-<h2 id="autotuning-就是一个简单oi题"><a class="header" href="#autotuning-就是一个简单oi题">AutoTuning 就是一个简单OI题</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="autotuning-就是一个简单oi题"><a class="header" href="#autotuning-就是一个简单oi题">AutoTuning 就是一个简单OI题</a></h2>
+<p>题目要求根据不同 rank 之间的数据交换能力，做简单的调优，而整个</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="wrf"><a class="header" href="#wrf">WRF</a></h1>
 <blockquote>
 <p>傻逼Fortran，2021年了，居然还有人用Fortran</p>
@@ -952,9 +954,10 @@ export IPM_LOG=full
 <code>mpirun -np 4096 ./neb.x -ni 8 -nk 2 -nt 4 -nd 144 -i my.input</code> This executes a NEB calculation on 4096 processors, 8 images (points in the configuration space in this case) at the same time, each of which is distributed across 512 processors. k-points are distributed across 2 pools of 256 processors each, 3D FFT is performed using 4 task groups (64 processors each, so the 3D real-space grid is cut into 64 slices), and the diagonalization of the subspace Hamiltonian is distributed to a square grid of 144 processors (12x12).</p>
 <p><code>mpirun -np 24 -x PATH --oversubscribe -x OMP_NUM_THREADS=4 -x LD_LIBRARY_PATH=/opt/nonspack/ucx-1.10.0-gcc/lib --allow-run-as-root /home/qe/q-e/bin/pw.x &lt; ./ausurf.in</code></p>
 <p>First run with 24 processes and 4 thread each: </p>
-<p><a href="Apps/SC/SC21/./quantum-espresso.png">img</a></p>
+<p><img src="Apps/SC/SC21/./quantum-espresso.png" alt="" /></p>
 <p>Problem: OMP threads can only use up to 200% CPU per process even with 256 threads per process. </p>
 <h3 id="analyze"><a class="header" href="#analyze">Analyze</a></h3>
+<h4 id="static-analysis"><a class="header" href="#static-analysis">Static Analysis</a></h4>
 <p>Using lizard</p>
 <p>Fortran: </p>
 <pre><code>Total nloc  Avg.NLOC  AvgCCN  Avg.token  Fun Cnt  Warning cnt  Fun Rt  nloc Rt
@@ -968,6 +971,188 @@ export IPM_LOG=full
 <pre><code>Total nloc  Avg.NLOC  AvgCCN  Avg.token  Fun Cnt  Warning cnt  Fun Rt  nloc Rt
 8864        18.3      5.0     146.0      298      21           0.07    0.26
 </code></pre>
+<h4 id="profiling-result"><a class="header" href="#profiling-result">Profiling result</a></h4>
+<p>All the GPU versionn test case seems to have IEEE underflow, trigger by the FFTlib, which should be fixed. Since the developing team of this project still aggressively develop the application to tailor to GPU. </p>
+<p>We chose to use a case called si.scf.david.in to profile on single GPU. And here's the profiling result.</p>
+<pre><code class="language-bash">=117847== Profiling application: /home/qe/bin/pw.x -i ./si.scf.david.in
+==117847== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:    8.72%  22.118ms       140  157.98us  157.82us  159.81us  usnldiag_collinear_79_gpu
+                    6.46%  16.390ms      1360  12.051us  11.840us  189.41us  init_us_2_base_gpu_216_gpu
+                    5.29%  13.411ms        10  1.3411ms  1.3407ms  1.3417ms  rotate_wfc_k_gpu_146_gpu
+                    4.24%  10.763ms       370  29.090us  28.704us  32.928us  ylmr2_gpum_ylmr2_gpu_kernel_
+                    3.71%  9.4250ms      1127  8.3620us  6.5280us  17.664us  volta_zgemm_32x32_nn
+                    3.23%  8.1880ms      1224  6.6890us  6.5920us  7.1040us  init_us_2_base_gpu_220_gpu
+                    2.68%  6.8026ms       680  10.003us  9.8560us  10.784us  init_us_2_base_gpu_185_gpu
+                    2.67%  6.7818ms       340  19.946us  19.744us  21.280us  init_us_2_base_gpu_206_gpu
+                    2.61%  6.6090ms       340  19.438us  19.295us  21.504us  init_us_2_base_gpu_158_gpu
+                    2.46%  6.2396ms       689  9.0560us  7.2000us  14.432us  void zgemm_largek_warp&lt;bool=1, bool=0, bool=1, bool=0, int=3, int=3, int=4, int=3, int=2, int=2, int=9&gt;(double2*, double2 const *, double2 const *, int, int, int, int, int, int, double2 const *, double2 const *, double2, double2, int, int, int*, int*)
+                    2.28%  5.7953ms       159  36.448us  19.392us  43.200us  cegterg_gpu_493_gpu
+                    2.20%  5.5704ms      1104  5.0450us  4.1600us  11.488us  void composite_2way_fft&lt;unsigned int=20, unsigned int=4, unsigned int=32, padding_t=0, twiddle_t=0, loadstore_modifier_t=2, unsigned int=5, layout_t=1, unsigned int, double&gt;(kernel_arguments_t&lt;unsigned int&gt;)
+                    2.17%  5.4956ms       478  11.497us  11.359us  12.864us  add_vuspsi_k_gpu_242_gpu
+                    1.98%  5.0265ms       239  21.031us  10.208us  40.384us  vloc_psi_k_gpu_464_gpu
+                    1.86%  4.7254ms       219  21.577us  12.319us  33.824us  void sytd2_upper_cta&lt;double2, double, int=4&gt;(int, double2*, unsigned long, double*, double*, double2*)
+                    1.71%  4.3307ms       219  19.774us  19.743us  20.960us  laxlib_cdiaghg_gpu_349_gpu
+                    1.64%  4.1660ms       239  17.430us  17.248us  19.488us  vloc_psi_k_gpu_477_gpu
+                    1.48%  3.7585ms         1  3.7585ms  3.7585ms  3.7585ms  force_corr_gpu_103_gpu
+                    1.45%  3.6914ms       239  15.444us  15.264us  16.704us  vloc_psi_k_gpu_456_gpu
+                    1.40%  3.5579ms      2320  1.5330us  1.4080us  13.056us  [CUDA memcpy DtoH]
+                    1.36%  3.4570ms       219  15.785us  15.712us  16.352us  laxlib_cdiaghg_gpu_317_gpu
+                    1.34%  3.4099ms       159  21.445us  21.280us  23.136us  g_psi_gpu_53_gpu
+                    1.28%  3.2424ms      1979  1.6380us  1.2160us  13.120us  [CUDA memcpy HtoD]
+                    1.22%  3.0915ms       552  5.6000us  4.2880us  9.0560us  void composite_2way_fft&lt;unsigned int=20, unsigned int=4, unsigned int=16, padding_t=0, twiddle_t=0, loadstore_modifier_t=2, unsigned int=5, layout_t=0, unsigned int, double&gt;(kernel_arguments_t&lt;unsigned int&gt;)
+                    1.19%  3.0239ms       239  12.652us  10.816us  14.240us  h_psi__gpu_158_gpu
+                    1.14%  2.8893ms       219  13.193us  9.2160us  20.192us  void trsm_ln_up_kernel&lt;double2, unsigned int=32, unsigned int=32, unsigned int=4, bool=0&gt;(int, int, double2 const *, int, double2*, int, double2, double2 const *, int, int*)
+                    1.12%  2.8463ms      1095  2.5990us  2.4960us  3.2640us  copy_info_kernel(int, int*)
+                    1.06%  2.6975ms       170  15.867us  15.647us  16.544us  init_us_2_base_gpu_119_gpu
+                    1.02%  2.5845ms        40  64.612us  64.320us  72.960us  stres_us_k_gpu_702_gpu
+                    1.01%  2.5699ms       159  16.162us  16.096us  16.704us  reorder_evals_cevecs_707_gpu
+                    0.99%  2.5005ms        40  62.512us  62.240us  70.656us  stres_us_k_gpu_817_gpu
+                    0.97%  2.4644ms       159  15.499us  15.232us  16.576us  cegterg_gpu_427_gpu
+                    0.96%  2.4360ms        70  34.799us  34.720us  35.424us  cegterg_gpu_265_gpu
+                    0.89%  2.2453ms        40  56.131us  55.840us  63.040us  stres_knl_gpu_100_gpu
+                    0.86%  2.1855ms        40  54.636us  54.463us  56.832us  stres_us_k_gpu_543_gpu
+                    0.82%  2.0773ms       243  8.5480us  7.2320us  11.904us  fft_scalar_cufft_cfft3d_gpu_586_gpu
+                    0.82%  2.0749ms       280  7.4100us  7.3280us  7.8720us  get_rho_gpu_954_gpu
+                    0.80%  2.0350ms       212  9.5990us  9.4080us  10.016us  dp_dev_memcpy_c2d_770_gpu
+                    0.71%  1.7922ms       689  2.6010us  2.4960us  3.7440us  void scal_kernel&lt;double2, double2, int=1, bool=1, int=5, int=4, int=4, int=4&gt;(cublasTransposeParams&lt;double2&gt;, double2 const *, double2*, double2 const *)
+                    0.70%  1.7640ms       159  11.094us  10.912us  11.744us  cegterg_gpu_376_gpu
+                    0.67%  1.7032ms       508  3.3520us  3.1670us  4.4480us  void reduce_1Block_kernel&lt;double, int=128, int=7, cublasGemvTensorStridedBatched&lt;double&gt;, cublasGemvTensorStridedBatched&lt;double&gt;, cublasGemvTensorStridedBatched&lt;double&gt;&gt;(double const *, double, double, int, double const *, double, cublasGemvTensorStridedBatched&lt;double&gt;, cublasGemvTensorStridedBatched&lt;double&gt;, cublasPointerMode_t, cublasLtEpilogue_t, cublasGemvTensorStridedBatched&lt;biasType&lt;cublasGemvTensorStridedBatched&lt;double&gt;::value_type, double&gt;::type const &gt;)
+                    0.67%  1.7000ms       508  3.3460us  3.1680us  4.8640us  void dot_kernel&lt;double, int=128, int=0, cublasDotParams&lt;cublasGemvTensor&lt;double const &gt;, cublasGemvTensorStridedBatched&lt;double&gt;&gt;&gt;(double const )
+                    0.66%  1.6738ms        40  41.843us  41.760us  42.944us  stres_us_k_gpu_617_gpu
+                    0.66%  1.6658ms       159  10.476us  10.432us  11.136us  reorder_evals_cevecs_700_gpu
+                    0.54%  1.3789ms       219  6.2960us  5.1840us  8.9280us  void potrf_alg2_cta_upper&lt;double2, double, int=32&gt;(int, int, double2*, unsigned long, int*)
+                    0.53%  1.3506ms       170  7.9440us  7.8400us  8.6080us  init_us_2_base_gpu_134_gpu
+                    0.53%  1.3341ms       438  3.0450us  2.4960us  188.80us  void lapack_identity_kernel&lt;double, int=8&gt;(int, int, double*, int)
+                    0.52%  1.3279ms       219  6.0630us  5.0880us  8.6400us  void trsm_right_kernel&lt;double2, int=256, int=4, bool=0, bool=0, bool=0, bool=1, bool=0&gt;(cublasTrsmParams&lt;double2&gt;, double2, double2 const *, int)
+                    0.52%  1.3185ms       219  6.0200us  4.3200us  8.2880us  void ormql_cta_kernel&lt;double2, int=4, int=1&gt;(int, int, int, double2 const *, unsigned long, double2 const *, double2*, unsigned long, int, int, int, int)
+                    0.52%  1.3185ms        90  14.649us  14.496us  15.072us  dylmr2_gpu_78_gpu
+                    0.51%  1.2925ms       209  6.1840us  6.1440us  6.4640us  dp_dev_memcpy_r1d_270_gpu
+                    0.50%  1.2803ms        71  18.033us  17.983us  18.687us  cegterg_gpu_615_gpu
+                    0.50%  1.2592ms       438  2.8740us  2.7200us  3.8720us  void kernel_extract_uplo_A&lt;double2, int=5, int=3&gt;(int, double2 const *, unsigned long, double2*, unsigned long, int)
+                    0.50%  1.2586ms       163  7.7210us  7.5840us  8.0000us  dp_dev_memset_c2d_1851_gpu
+                    0.47%  1.1830ms       408  2.8990us  2.4960us  3.7440us  __pgi_dev_cumemset_16n
+                    0.47%  1.1818ms        80  14.772us  14.496us  17.216us  g2_kin_gpu_40_gpu
+                    0.44%  1.1150ms       169  6.5970us  5.6960us  9.1200us  void trsm_left_kernel&lt;double2, int=256, int=4, bool=0, bool=1, bool=1, bool=1, bool=0&gt;(cublasTrsmParams&lt;double2&gt;, double2, double2 const *, int)
+                    0.42%  1.0619ms        52  20.420us  18.944us  27.136us  volta_zgemm_32x32_cn
+                    0.42%  1.0610ms        70  15.157us  15.104us  16.032us  sum_band_k_gpu_837_gpu
+                    0.40%  1.0224ms       219  4.6680us  4.2240us  5.4720us  void lansy_M_stage1&lt;double2, double, int=8&gt;(int, double2 const *, unsigned long, double*, int)
+                    0.40%  1.0046ms        90  11.162us  11.040us  11.488us  dylmr2_gpu_90_gpu
+                    0.39%  984.57us        80  12.307us  12.223us  12.928us  atomic_wfc___gpu_396_gpu
+                    0.37%  946.72us        80  11.833us  11.744us  12.224us  compute_deff_gpu_41_gpu
+                    0.36%  909.82us       689  1.3200us  1.2480us  2.0160us  [CUDA memset]
+                    0.34%  856.35us       219  3.9100us  3.8080us  5.6000us  void batch_symmetrize_kernel&lt;double2, int=5, int=3&gt;(int, double2*, unsigned long, __int64, int, int)
+                    0.34%  855.00us        30  28.500us  28.352us  29.568us  gen_us_dy_gpu_229_gpu
+                    0.33%  842.37us        90  9.3590us  9.2480us  9.8240us  dylmr2_gpu_101_gpu
+                    0.33%  827.00us        90  9.1880us  9.0230us  10.048us  dylmr2_gpu_60_gpu
+                    0.30%  772.22us       219  3.5260us  3.4870us  4.8000us  void lansy_M_stage2&lt;double, int=8&gt;(int, double*)
+                    0.29%  745.95us        30  24.865us  24.831us  25.120us  gen_us_dy_gpu_198_gpu
+                    0.28%  703.80us        30  23.460us  23.423us  24.128us  gen_us_dy_gpu_146_gpu
+                    0.27%  690.78us       219  3.1540us  3.0720us  3.7120us  void lapack_lacpy_kernel&lt;double, int=8&gt;(int, int, double const *, int, double*, int, int, int)
+                    0.27%  685.82us       219  3.1310us  3.0390us  3.6480us  void laed0_phase1_kernel&lt;double, int=8&gt;(int, double const *, int, int const *, double*, int, int, int)
+                    0.25%  644.64us       219  2.9430us  2.8800us  3.9040us  void stedcx_convert_kernel&lt;double2, double, int=8&gt;(int, int, double const *, int, double2*, int)
+                    0.25%  642.30us       219  2.9320us  2.8800us  3.2960us  void lacpy_kernel&lt;double2, double2, int=5, int=3&gt;(int, int, double2 const *, unsigned long, double2*, unsigned long, int, int)
+                    0.25%  623.36us       219  2.8460us  2.8150us  3.2000us  potrf_alg2_reset_info(int*)
+                    0.24%  598.37us       219  2.7320us  2.6880us  2.8800us  dtrsv_init_up(int*, int)
+                    0.24%  596.93us       219  2.7250us  2.6880us  3.2320us  potrf_alg2_set_info(int, int, int*)
+                    0.22%  558.62us        30  18.620us  18.432us  18.911us  gen_us_dy_gpu_85_gpu
+                    0.21%  525.28us        70  7.5030us  7.4560us  7.6160us  diag_bands_k_693_gpu
+                    0.18%  457.21us        30  15.240us  15.136us  15.968us  force_us_gpu_104_gpu
+                    0.18%  456.89us        50  9.1370us  8.9910us  14.144us  void trsm_lt_up_kernel&lt;double2, unsigned int=32, unsigned int=32, unsigned int=4, bool=0, bool=1&gt;(int, int, double2 const *, int, double2*, int, double2, double2 const *, int, int*)
+                    0.18%  454.24us        30  15.141us  15.040us  17.024us  gen_us_dy_gpu_185_gpu
+                    0.18%  453.47us        70  6.4780us  6.4320us  6.7520us  dp_dev_memset_r2d_1431_gpu
+                    0.17%  437.12us        20  21.856us  21.632us  23.712us  atomic_wfc_gpu_108_gpu
+                    0.17%  427.58us        20  21.379us  20.992us  23.104us  interp_atwfc_gpu_30_gpu
+                    0.15%  381.34us        30  12.711us  12.608us  13.184us  gen_us_dy_gpu_102_gpu
+                    0.14%  362.69us        60  6.0440us  5.9510us  6.2720us  gen_us_dy_gpu_220_gpu
+                    0.13%  334.53us        78  4.2880us  3.9040us  5.5360us  void gemv2N_kernel&lt;int, int, double2, double2, double2, double2, int=128, int=16, int=4, int=4, int=1, bool=0, cublasGemvParams&lt;cublasGemvTensorStridedBatched&lt;double2 const &gt;, cublasGemvTensorStridedBatched&lt;double2 const &gt;, cublasGemvTensorStridedBatched&lt;double2&gt;, double2&gt;&gt;(double2 const )
+                    0.12%  298.91us         1  298.91us  298.91us  298.91us  compute_dvloc_gpum_compute_dvloc_gpu_
+                    0.10%  255.07us        10  25.507us  25.280us  27.392us  gen_us_dj_gpu_206_gpu
+                    0.10%  248.74us        10  24.873us  24.800us  25.216us  gen_us_dj_gpu_173_gpu
+                    0.10%  243.93us        10  24.393us  24.256us  25.440us  gen_us_dj_gpu_119_gpu
+                    0.08%  204.67us        30  6.8220us  6.7520us  6.9760us  gen_us_dy_gpu_112_gpu
+                    0.08%  198.24us        52  3.8120us  3.5520us  4.9280us  void splitKreduce_kernel&lt;double2, double2, double2, double2&gt;(cublasSplitKParams&lt;double2&gt;, double2 const *, double2 const *, double2*, double2 const *, double2 const *, double2 const *)
+                    0.08%  197.82us        52  3.8040us  3.6480us  4.7040us  void gemvNSP_kernel&lt;double2, double2, double2, double2, int=1, int=32, int=4, int=1024, cublasGemvParams&lt;cublasGemvTensorStridedBatched&lt;double2 const &gt;, cublasGemvTensorStridedBatched&lt;double2 const &gt;, cublasGemvTensorStridedBatched&lt;double2&gt;, double2&gt;&gt;(double2 const )
+                    0.08%  194.37us        10  19.436us  19.072us  20.832us  init_wfc_gpu_295_gpu
+                    0.07%  186.46us        10  18.646us  18.592us  18.816us  gen_us_dj_gpu_73_gpu
+                    0.07%  182.18us        10  18.217us  18.176us  18.399us  stres_knl_gpu_84_gpu
+                    0.07%  173.02us        20  8.6510us  8.6400us  8.8320us  cegterg_gpu_288_gpu
+                    0.07%  172.42us        20  8.6200us  8.5120us  9.0560us  stres_us_gpu_131_gpu
+                    0.07%  171.01us        10  17.100us  17.024us  17.376us  atomic_wfc_gpu_70_gpu
+                    0.06%  152.13us        10  15.212us  15.071us  16.384us  gen_us_dj_gpu_160_gpu
+                    0.05%  137.73us        50  2.7540us  2.7200us  2.9760us  dtrsv_init(int*)
+                    0.05%  135.39us         2  67.695us  64.959us  70.432us  force_corr_gpu_124_gpu
+                    0.05%  123.78us        20  6.1880us  5.8880us  6.7520us  void gemv2T_kernel_val&lt;int, int, double2, double2, double2, double2, int=128, int=16, int=4, int=4, bool=1, bool=0, cublasGemvParams&lt;cublasGemvTensorStridedBatched&lt;double2 const &gt;, cublasGemvTensorStridedBatched&lt;double2 const &gt;, cublasGemvTensorStridedBatched&lt;double2&gt;, double2&gt;&gt;(double2 const , double2, double2)
+                    0.05%  120.93us        20  6.0460us  5.9520us  6.3680us  gen_us_dj_gpu_197_gpu
+                    0.04%  103.62us        10  10.361us  10.304us  10.848us  stres_us_gpu_91_gpu
+                    0.04%  96.448us         7  13.778us  13.568us  14.176us  dfunct_gpum_newd_gpu_311_gpu
+                    0.04%  94.400us         1  94.400us  94.400us  94.400us  stres_ewa_gpu_155_gpu
+                    0.03%  72.992us        10  7.2990us  7.1360us  8.4160us  init_wfc_gpu_391_gpu
+                    0.03%  72.800us         2  36.400us  34.432us  38.368us  force_lc_gpu_119_gpu
+                    0.03%  72.768us         1  72.768us  72.768us  72.768us  stres_har_gpu_77_gpu
+                    0.03%  69.888us        10  6.9880us  6.8480us  7.4240us  atomic_wfc_gpu_85_gpu
+                    0.03%  67.520us         1  67.520us  67.520us  67.520us  stres_loc_gpu_155_gpu
+                    0.02%  59.712us        10  5.9710us  5.8880us  6.2080us  rotate_wfc_k_gpu_132_gpu
+                    0.01%  24.384us         6  4.0640us  3.7760us  4.9600us  void reduce_1Block_kernel&lt;double2, int=64, int=6, cublasGemvTensorStridedBatched&lt;double2&gt;, cublasGemvTensorStridedBatched&lt;double2 const &gt;, cublasGemvTensorStridedBatched&lt;double2&gt;&gt;(double2 const *, double2, double2, int, double2 const *, double2, cublasGemvTensorStridedBatched&lt;double2&gt;, double2 const , cublasPointerMode_t, cublasLtEpilogue_t, cublasGemvTensorStridedBatched&lt;biasType&lt;double2 const value_type, double2&gt;::type const &gt;)
+                    0.01%  24.224us         6  4.0370us  3.7760us  4.8960us  void dot_kernel&lt;double2, int=64, int=1, cublasDotParams&lt;cublasGemvTensorStridedBatched&lt;double2 const &gt;, cublasGemvTensorStridedBatched&lt;double2&gt;&gt;&gt;(double2 const )
+                    0.01%  21.568us         1  21.568us  21.568us  21.568us  stres_loc_gpu_98_gpu
+                    0.01%  15.264us         6  2.5440us  2.4640us  2.8160us  __pgi_dev_cumemset_4n
+                    0.00%  9.7280us         1  9.7280us  9.7280us  9.7280us  dvloc_of_g_gpu_184_gpu
+      API calls:   56.54%  877.99ms      1715  511.95us     489ns  409.99ms  cudaFree
+                   19.84%  308.14ms       900  342.37us  1.4400us  295.87ms  cudaDeviceSynchronize
+                    7.03%  109.13ms     20152  5.4150us  4.5100us  310.44us  cudaLaunchKernel
+                    4.31%  66.931ms      1542  43.405us  4.6000us  3.8148ms  cudaMemcpy
+                    2.19%  34.061ms      2479  13.739us  3.8100us  180.48us  cudaMemcpyAsync
+                    2.12%  32.959ms      2557  12.889us  4.6510us  239.27us  cudaEventSynchronize
+                    1.43%  22.244ms        20  1.1122ms  822.92us  2.3907ms  cuDeviceTotalMem
+                    1.11%  17.296ms      6645  2.6020us     749ns  186.38us  cudaEventRecord
+                    0.93%  14.380ms      1744  8.2450us  1.8290us  1.3001ms  cudaMalloc
+                    0.75%  11.621ms      1977  5.8780us     149ns  1.6835ms  cuDeviceGetAttribute
+                    0.57%  8.8800ms     20143     440ns     330ns  287.69us  cudaDeviceGetAttribute
+                    0.49%  7.6111ms      1656  4.5960us  4.0700us  31.689us  cuLaunchKernel
+                    0.33%  5.1501ms     10579     486ns     330ns  239.62us  cudaGetDevice
+                    0.29%  4.4656ms         6  744.27us  448.31us  2.1013ms  cudaGetDeviceProperties
+                    0.28%  4.4199ms     10835     407ns     150ns  2.2176ms  cudaGetLastError
+                    0.25%  3.8660ms      1384  2.7930us  1.8200us  8.4200us  cudaStreamSynchronize
+                    0.20%  3.1513ms       689  4.5730us  3.3890us  20.390us  cudaMemsetAsync
+                    0.19%  3.0171ms      2557  1.1790us  1.0100us  11.680us  cudaEventElapsedTime
+                    0.15%  2.3771ms       256  9.2850us  1.9900us  152.75us  cudaSetDevice
+                    0.15%  2.2786ms      1524  1.4950us     780ns  12.790us  cudaEventQuery
+                    0.14%  2.1870ms       145  15.083us  7.2200us  21.080us  cudaMemcpy2D
+                    0.11%  1.7847ms       147  12.140us  4.5000us  738.97us  cudaMallocHost
+                    0.11%  1.7611ms      2336     753ns     469ns  12.960us  cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags
+                    0.09%  1.3806ms        20  69.028us  41.230us  387.93us  cuDeviceGetName
+                    0.09%  1.3584ms       133  10.213us  4.9500us  107.07us  cudaMemcpyToSymbol
+                    0.09%  1.3446ms       508  2.6460us  2.2900us  14.350us  cudaFuncGetAttributes
+                    0.05%  771.33us       146  5.2830us  3.7500us  20.409us  cudaFreeHost
+                    0.04%  625.29us        44  14.211us  1.3800us  205.11us  cudaStreamCreate
+                    0.02%  380.08us       552     688ns     510ns  3.6400us  cudaStreamIsCapturing
+                    0.02%  359.66us        44  8.1740us  3.8090us  92.571us  cudaStreamDestroy
+                    0.01%  195.34us       267     731ns     620ns  15.100us  cudaEventCreate
+                    0.01%  170.44us       562     303ns     200ns  1.2400us  cuCtxPushCurrent
+                    0.01%  158.23us       562     281ns     200ns     810ns  cuCtxPopCurrent
+                    0.01%  116.94us       146     800ns     480ns  2.9910us  cudaPointerGetAttributes
+                    0.00%  54.041us        90     600ns     460ns  2.8110us  cudaEventCreateWithFlags
+                    0.00%  40.090us         3  13.363us  2.4000us  32.530us  cudaStreamCreateWithFlags
+                    0.00%  20.707us        24     862ns     250ns  6.3000us  cuDeviceGet
+                    0.00%  18.040us         4  4.5100us  1.8300us  9.0200us  cuDeviceGetPCIBusId
+                    0.00%  17.489us         4  4.3720us  2.5690us  9.3200us  cuInit
+                    0.00%  16.104us        45     357ns     180ns  1.9900us  cudaGetFuncBySymbol
+                    0.00%  13.147us         8  1.6430us  1.3110us  3.2490us  cudaEventDestroy
+                    0.00%  5.2070us        20     260ns     150ns     580ns  cuDeviceGetUuid
+                    0.00%  3.3580us         7     479ns     230ns     940ns  cuDeviceGetCount
+                    0.00%  2.6790us        10     267ns     180ns     360ns  cuCtxGetCurrent
+                    0.00%  1.2700us         2     635ns     190ns  1.0800us  cudaGetDeviceCount
+                    0.00%  1.1300us         4     282ns     240ns     380ns  cuDriverGetVersion
+                    0.00%     920ns         5     184ns     170ns     200ns  cuCtxGetDevice
+                    0.00%     309ns         1     309ns     309ns     309ns  cudaDriverGetVersion
+                    0.00%     200ns         1     200ns     200ns     200ns  cudaRuntimeGetVersion
+</code></pre>
+<p><img src="Apps/SC/SC21/func-util.png" alt="" />
+<img src="Apps/SC/SC21/gpu-utilization.png" alt="" />
+<img src="Apps/SC/SC21/kernel-profile.png" alt="" />
+<img src="Apps/SC/SC21/memory.png" alt="" />
+<img src="Apps/SC/SC21/stall-reason.png" alt="" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ramble"><a class="header" href="#ramble">ramBLe</a></h1>
 <h2 id="install-1"><a class="header" href="#install-1">Install</a></h2>
 <h3 id="lib"><a class="header" href="#lib">Lib</a></h3>
@@ -977,7 +1162,7 @@ export IPM_LOG=full
 cppPaths.append(&quot;/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/boost-1.70.0-m4ttgcfqixwe22z5kz7bpp7mbqdspdbg/include&quot;)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="benchmark"><a class="header" href="#benchmark">Benchmark</a></h1>
-<p>这里放置HPC竞赛中Benchmark有关资料。</p>
+<p>这里放置HPC竞赛中 Benchmark 有关资料，文档部分用于对新生的培训。</p>
 <div style="break-before: page; page-break-before: always;"></div><!-- TITLE: Hpcg Dat -->
 <!-- SUBTITLE: A quick summary of Hpcg Dat -->
 <h1 id="dat-specs"><a class="header" href="#dat-specs">.dat Specs</a></h1>
@@ -1118,7 +1303,7 @@ spack install boost
 <p>Intel Compiler 在编译 broadwell 以上架构优化时主要做了三件对性能影响很大的事情：</p>
 <ol>
 <li>激进的跨 basic block 优化 + Vectorization + Loop Unroll</li>
-<li>Load 和 Store 在满足 TSO 条件下的激进的重排，同时激进的整合数据，支持 store buffer bypass，movnt。同时也是 icc 后端 Bug 的主要来源。也是大厂不太实用他的原因。除 HPC 外，大家一般照 gcc 标准。</li>
+<li>Load 和 Store 在满足 TSO 条件下的激进的重排，同时激进的整合数据，支持 store buffer bypass，movnt。同时也是 icc 后端 Bug 的主要来源。也是大厂不太用他的原因。除 HPC 外，大家一般照 gcc 标准。</li>
 <li>自己维护的 TBB 线程池（非常快），自己维护的 malloc_align，自己维护的相关库。</li>
 </ol>
 <p>有关如何更好的适配 Intel 的CPU，可以参考 Lammps 的 <a href="https://t.co/6DUtP6Falq?amp=1">Intel Package</a>。其使用访问者模式对 Intel processor的寄存器资源。</p>
@@ -1426,10 +1611,10 @@ $ bash</p>
 <p>用于ASC19 的IO500题目中。</p>
 <div style="break-before: page; page-break-before: always;"></div><!-- TITLE: Environment Modules -->
 <!-- SUBTITLE: Environment Module Management & Backups -->
-<h1 id="modulefile-记录"><a class="header" href="#modulefile-记录">Modulefile 记录</a></h1>
+<h1 id="modulefile--spack-记录"><a class="header" href="#modulefile--spack-记录">Modulefile &amp; Spack 记录</a></h1>
 <p>Environment Module: Modulefiles 目录树结构 + 备份</p>
-<h2 id="modulefiles-目录树结构"><a class="header" href="#modulefiles-目录树结构">Modulefiles 目录树结构</a></h2>
-<pre><code>|- /opt/modulefiles    # 路径并非完全按照冲突关系组织，modulefile 中冲突关系要注意
+<h2 id="modulefiles-目录树结构-deprecated"><a class="header" href="#modulefiles-目录树结构-deprecated">Modulefiles 目录树结构 （Deprecated）</a></h2>
+<pre><code class="language-bash">|- /opt/modulefiles    # 路径并非完全按照冲突关系组织，modulefile 中冲突关系要注意
     |- mpi/
         |- openmpi/
             |- 4.0
@@ -1452,8 +1637,282 @@ $ bash</p>
         |- netcdf-c/
         |- netcdf-fort/
 </code></pre>
-<h2 id="备份记录"><a class="header" href="#备份记录">备份记录</a></h2>
+<h2 id="spack-简单教程"><a class="header" href="#spack-简单教程">Spack 简单教程</a></h2>
+<pre><code class="language-c">❯ spack info gcc
+AutotoolsPackage:   gcc
+
+Description:
+    The GNU Compiler Collection includes front ends for C, C++, Objective-C,
+    Fortran, Ada, and Go, as well as libraries for these languages.
+
+Homepage: https://gcc.gnu.org
+
+Maintainers: @michaelkuhn @alalazo
+
+Externally Detectable:
+    True (version, variants)
+
+Tags:
+    None
+
+Preferred version:
+    11.2.0    https://ftpmirror.gnu.org/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz
+
+Safe versions:
+    master    [git] git://gcc.gnu.org/git/gcc.git on branch master
+    11.2.0    https://ftpmirror.gnu.org/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz
+    11.1.0    https://ftpmirror.gnu.org/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz
+    10.3.0    https://ftpmirror.gnu.org/gcc/gcc-10.3.0/gcc-10.3.0.tar.xz
+    10.2.0    https://ftpmirror.gnu.org/gcc/gcc-10.2.0/gcc-10.2.0.tar.xz
+    10.1.0    https://ftpmirror.gnu.org/gcc/gcc-10.1.0/gcc-10.1.0.tar.xz
+    9.4.0     https://ftpmirror.gnu.org/gcc/gcc-9.4.0/gcc-9.4.0.tar.xz
+    9.3.0     https://ftpmirror.gnu.org/gcc/gcc-9.3.0/gcc-9.3.0.tar.xz
+    9.2.0     https://ftpmirror.gnu.org/gcc/gcc-9.2.0/gcc-9.2.0.tar.xz
+    9.1.0     https://ftpmirror.gnu.org/gcc/gcc-9.1.0/gcc-9.1.0.tar.xz
+    8.5.0     https://ftpmirror.gnu.org/gcc/gcc-8.5.0/gcc-8.5.0.tar.xz
+    8.4.0     https://ftpmirror.gnu.org/gcc/gcc-8.4.0/gcc-8.4.0.tar.xz
+    8.3.0     https://ftpmirror.gnu.org/gcc/gcc-8.3.0/gcc-8.3.0.tar.xz
+    8.2.0     https://ftpmirror.gnu.org/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
+    8.1.0     https://ftpmirror.gnu.org/gcc/gcc-8.1.0/gcc-8.1.0.tar.xz
+    7.5.0     https://ftpmirror.gnu.org/gcc/gcc-7.5.0/gcc-7.5.0.tar.xz
+    7.4.0     https://ftpmirror.gnu.org/gcc/gcc-7.4.0/gcc-7.4.0.tar.xz
+    7.3.0     https://ftpmirror.gnu.org/gcc/gcc-7.3.0/gcc-7.3.0.tar.xz
+    7.2.0     https://ftpmirror.gnu.org/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz
+    7.1.0     https://ftpmirror.gnu.org/gcc/gcc-7.1.0/gcc-7.1.0.tar.bz2
+    6.5.0     https://ftpmirror.gnu.org/gcc/gcc-6.5.0/gcc-6.5.0.tar.bz2
+    6.4.0     https://ftpmirror.gnu.org/gcc/gcc-6.4.0/gcc-6.4.0.tar.bz2
+    6.3.0     https://ftpmirror.gnu.org/gcc/gcc-6.3.0/gcc-6.3.0.tar.bz2
+    6.2.0     https://ftpmirror.gnu.org/gcc/gcc-6.2.0/gcc-6.2.0.tar.bz2
+    6.1.0     https://ftpmirror.gnu.org/gcc/gcc-6.1.0/gcc-6.1.0.tar.bz2
+    5.5.0     https://ftpmirror.gnu.org/gcc/gcc-5.5.0/gcc-5.5.0.tar.bz2
+    5.4.0     https://ftpmirror.gnu.org/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2
+    5.3.0     https://ftpmirror.gnu.org/gcc/gcc-5.3.0/gcc-5.3.0.tar.bz2
+    5.2.0     https://ftpmirror.gnu.org/gcc/gcc-5.2.0/gcc-5.2.0.tar.bz2
+    5.1.0     https://ftpmirror.gnu.org/gcc/gcc-5.1.0/gcc-5.1.0.tar.bz2
+    4.9.4     https://ftpmirror.gnu.org/gcc/gcc-4.9.4/gcc-4.9.4.tar.bz2
+    4.9.3     https://ftpmirror.gnu.org/gcc/gcc-4.9.3/gcc-4.9.3.tar.bz2
+    4.9.2     https://ftpmirror.gnu.org/gcc/gcc-4.9.2/gcc-4.9.2.tar.bz2
+    4.9.1     https://ftpmirror.gnu.org/gcc/gcc-4.9.1/gcc-4.9.1.tar.bz2
+    4.8.5     https://ftpmirror.gnu.org/gcc/gcc-4.8.5/gcc-4.8.5.tar.bz2
+    4.8.4     https://ftpmirror.gnu.org/gcc/gcc-4.8.4/gcc-4.8.4.tar.bz2
+    4.7.4     https://ftpmirror.gnu.org/gcc/gcc-4.7.4/gcc-4.7.4.tar.bz2
+    4.6.4     https://ftpmirror.gnu.org/gcc/gcc-4.6.4/gcc-4.6.4.tar.bz2
+    4.5.4     https://ftpmirror.gnu.org/gcc/gcc-4.5.4/gcc-4.5.4.tar.bz2
+
+Variants:
+    Name [Default]               Allowed values          Description
+    =========================    ====================    ===================================================
+
+    binutils [off]               on, off                 Build via binutils
+    bootstrap [on]               on, off                 Enable 3-stage bootstrap
+    graphite [off]               on, off                 Enable Graphite loop optimizations (requires ISL)
+    languages [c,c++,fortran]    ada, brig, c, c++,      Compilers and runtime libraries to build
+                                 fortran, go, java,
+                                 jit, lto, objc,
+                                 obj-c++
+    nvptx [off]                  on, off                 Target nvptx offloading to NVIDIA GPUs
+    piclibs [off]                on, off                 Build PIC versions of libgfortran.a and libstdc++.a
+    strip [off]                  on, off                 Strip executables to reduce installation size
+
+Installation Phases:
+    autoreconf    configure    build    install
+
+Build Dependencies:
+    binutils  cuda  diffutils  flex  gmp  gnat  iconv  isl  mpc  mpfr  zip  zlib  zstd
+
+Link Dependencies:
+    binutils  cuda  gmp  gnat  iconv  isl  mpc  mpfr  zlib  zstd
+
+Run Dependencies:
+    binutils
+
+Virtual Packages:
+    gcc@7: languages=go provides golang@:1.8
+    gcc@6: languages=go provides golang@:1.6.1
+    gcc@5: languages=go provides golang@:1.4
+    gcc@4.9: languages=go provides golang@:1.2
+    gcc@4.8.2: languages=go provides golang@:1.1.2
+    gcc@4.8: languages=go provides golang@:1.1
+    gcc@4.7.1: languages=go provides golang@:1
+    gcc@4.6: languages=go provides golang
+</code></pre>
+<p>得到相关依赖，可以查看你现在如果安装 spack 提供的依赖</p>
+<pre><code class="language-c">❯ spack spec gcc  
+Input spec
+--------------------------------
+gcc
+
+Concretized
+--------------------------------
+gcc@11.2.0%apple-clang@12.0.5~binutils+bootstrap~graphite~nvptx~piclibs~strip languages=c,c++,fortran patches=ecc5ac43951b34cbc5db15f585b4e704c42e2e487f9ed4c24fadef3f3857930b arch=darwin-bigsur-skylake
+    ^diffutils@2.8.1%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+    ^gmp@6.2.1%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+        ^autoconf@2.71%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+        ^automake@1.16.4%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+        ^libtool@2.4.6%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+        ^m4@1.4.6%apple-clang@12.0.5+sigsegv patches=c0a408fbffb7255fcc75e26bd8edab116fc81d216bfd18b473668b7739a4158e arch=darwin-bigsur-skylake
+    ^libiconv@1.16%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+    ^mpc@1.1.0%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+        ^mpfr@4.1.0%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+            ^autoconf-archive@2019.01.06%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+            ^texinfo@4.8%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+    ^zlib@1.2.11%apple-clang@12.0.5+optimize+pic+shared arch=darwin-bigsur-skylake
+    ^zstd@1.5.0%apple-clang@12.0.5~ipo~legacy~lz4~lzma~multithread+programs+shared+static~zlib build_type=RelWithDebInfo arch=darwin-bigsur-skylake
+        ^cmake@3.21.1%apple-clang@12.0.5~doc+ncurses+openssl+ownlibs~qt build_type=Release arch=darwin-bigsur-skylake
+</code></pre>
+<p>如果想使用特定依赖或者依赖系统的包，会在 <code>~/.spack/package</code> 下得到，其使用方法可见 <a href="https://developer.amd.com/spack/build-customization/">AMD</a></p>
+<pre><code class="language-c">❯ spack external find
+
+❯ cat ~/.spack/package.json
+       │ File: /Users/victoryang/.spack/packages.yaml
+───────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1   │ packages:
+   2   │   autoconf:
+   3   │     externals:
+   4   │     - spec: autoconf@2.71
+   5   │       prefix: /usr/local
+   6   │   automake:
+   7   │     externals:
+   8   │     - spec: automake@1.16.4
+   9   │       prefix: /usr/local
+  10   │   bash:
+  11   │     externals:
+  12   │     - spec: bash@3.2.57
+  13   │       prefix: /
+  14   │   bazel:
+  15   │     externals:
+  16   │     - spec: bazel@4.1.0
+  17   │       prefix: /usr/local
+  18   │   bison:
+  19   │     externals:
+  20   │     - spec: bison@2.3
+  21   │       prefix: /usr
+  22   │   bzip2:
+  23   │     externals:
+  24   │     - spec: bzip2@1.0.6
+  25   │       prefix: /usr
+  26   │   cmake:
+  27   │     externals:
+  28   │     - spec: cmake@3.21.1
+  29   │       prefix: /usr/local
+  30   │   diffutils:
+  31   │     externals:
+  32   │     - spec: diffutils@2.8.1
+  33   │       prefix: /usr
+...
+</code></pre>
+<p>安装后的参数大致需要的有几个，<code>-j N</code> 是 job 个数，<code>--no-checksum</code> 不检查文件 md5，<code>--editable</code> 为在修改过的文件后继续编译，一般在 <code>/tmp/root/spack-stage/spack-stage-amdscalapack-3.0-qwvyrumhsizxiaujwdsppcovijr5k5ri/spack-src/</code>. 有些包有 cflags cxxflags fcflags。 有些有 cuda_arch。碰到新的软件可以把所有需要的参数 append 到里面。</p>
+<pre><code class="language-c">❯ spack install -j 8 --no-checksum llvm+mlir+flang+all_targets+python+shared_libs cflags=&quot;-O3&quot; cxxflags=&quot;-O3&quot;
+[+] /usr/local (external cmake-3.21.1-cdhzbrts4k5ylrvlpspfl75zgeht4swi)
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/libiconv-1.16-ropgshv657ooz7kfzojv4s6srscgimnw
+[+] /usr/local (external pkg-config-0.29.2-4nv7fo7lbjybt2u3xzb2vxzvgvaz5xmw)
+[+] /usr/local (external xz-5.2.5-p37wr6fna4ysoh2xn2wnmmzttm3bi37o)
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/zlib-1.2.11-lci2s4zd6x77rmexa3uuarbl5cvneskw
+[+] /usr (external perl-5.30.2-4zkfgqml35km4ly7xmxn7ooz44dxtgqp)
+[+] /usr/local (external python-3.9.6-shbb7dthsqe4lu26jugddyi2k7pl3jbl)
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/pcre-8.44-g4df4jqpudoxhjsrubrqhv3uwxajofet
+[+] /usr/local (external z3-4.8.12-hvhfxnxuachtpi524zf55znqn55vanod)
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/ncurses-6.2-xilcz3bhw4otebvysduddyldezxhxvy6
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/libxml2-2.9.10-mlrnjcbnjt3w7635xrietes7terwhko6
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/perl-data-dumper-2.173-cv4kwshixb7tmk6p7icxrqpicppkx5gr
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/py-setuptools-50.3.2-hwyhyijgi3yjokddm67tb6aulefteudx
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/swig-4.0.2-vajpijk4isacr52dzgk2gqbvyunadwkc
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/libedit-3.1-20210216-6h4xokftdnxe2h3o7tie2cnbzbhfrr4h
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/hwloc-2.5.0-z2brjfcvnend5gorjmeqqgirccqerdwd
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/py-six-1.15.0-c63zkkdjpvegqai2f4jjg4mutsuchoov
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/llvm-12.0.1-n6c5z7sqfo7olnaqswu7jqhcdkyyk6nh
+</code></pre>
+<p>以依赖 nvhpc 编译器的 hdf5 为例。笔者碰到的问题有给定 mpi 找不到对应 wrapper 的 nvc 以及 nvfortran。在手动编译的时候会在 PATH 里面找 cc，或者直接找 CC，FC，CXX。这时候需要定义一个 FC。</p>
+<pre><code class="language-c">if spec.compiler.fc=&quot;nvfortran&quot;:
+   env.set(&quot;FC&quot;,&quot;/path/to/mpifort wrapper&quot;)
+   args.append((&quot;CMAKE_Fortran_COMPILER&quot;,spec.complier.mpifort))
+</code></pre>
+<p>在超算上的 spack 有两个 upstream，你觉得重要可以直接给原 repo PR，一般我们备份到学校内部的 gitlab。</p>
+<h4 id="spack-与-modules"><a class="header" href="#spack-与-modules">Spack 与 Modules</a></h4>
+<p>当系统有 Modules 时，会自动把 Module file 的目录加到 MANPATH 下，也即立即可以使用 <code>module load</code></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="机器简介"><a class="header" href="#机器简介">机器简介</a></h1>
+<pre><code class="language-bash">Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+Address sizes:       43 bits physical, 48 bits virtual
+CPU(s):              256
+On-line CPU(s) list: 0-255
+Thread(s) per core:  2
+Core(s) per socket:  64
+Socket(s):           2
+NUMA node(s):        2
+Vendor ID:           AuthenticAMD
+CPU family:          23
+Model:               49
+Model name:          AMD EPYC 7742 64-Core Processor
+Stepping:            0
+CPU MHz:             2997.123
+CPU max MHz:         2250.0000
+CPU min MHz:         1500.0000
+BogoMIPS:            4499.77
+Virtualization:      AMD-V
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            512K
+L3 cache:            16384K
+NUMA node0 CPU(s):   0-63,128-191
+NUMA node1 CPU(s):   64-127,192-255
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate sme ssbd sev ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif umip rdpid overflow_recov succor smca
+</code></pre>
+<pre><code class="language-bash">+-----------------------------------------------------------------------------+
+| NVIDIA-SMI 465.19.01    Driver Version: 465.19.01    CUDA Version: 11.3     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA Tesla V1...  On   | 00000000:01:00.0 Off |                    0 |
+| N/A   38C    P0    44W / 250W |  26730MiB / 32510MiB |    100%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA Tesla V1...  On   | 00000000:61:00.0 Off |                    0 |
+| N/A   40C    P0    46W / 250W |  17711MiB / 32510MiB |     14%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   2  NVIDIA Tesla V1...  On   | 00000000:A1:00.0 Off |                    0 |
+| N/A   47C    P0    53W / 250W |   7825MiB / 32510MiB |     74%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   3  NVIDIA Tesla V1...  On   | 00000000:C1:00.0 Off |                    0 |
+| N/A   33C    P0    40W / 250W |   1255MiB / 32510MiB |    100%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A     47300      C   python                          25475MiB |
+|    0   N/A  N/A    243387      C   ...ang2/anaconda3/bin/python     1251MiB |
+|    1   N/A  N/A    102972      C   python                          17707MiB |
+|    2   N/A  N/A    209376      C   python                           7821MiB |
+|    3   N/A  N/A    243388      C   ...ang2/anaconda3/bin/python     1251MiB |
++-----------------------------------------------------------------------------+
+</code></pre>
+<pre><code class="language-bash">CA 'mlx5_0'
+	CA type: MT4119
+	Number of ports: 1
+	Firmware version: 16.29.2002
+	Hardware version: 0
+	Node GUID: 0xb8599f0300e66b78
+	System image GUID: 0xb8599f0300e66b78
+	Port 1:
+		State: Active
+		Physical state: LinkUp
+		Rate: 100
+		Base lid: 1
+		LMC: 0
+		SM lid: 6
+		Capability mask: 0x2651e84a
+		Port GUID: 0xb8599f0300e66b78
+		Link layer: InfiniBand
+</code></pre>
 
                     </main>
 
