@@ -17,6 +17,7 @@
     - [SC 21](Apps/SC/SC21/README.md)
       * [Quantum Espresso](Apps/SC/SC21/quantum-espresso.md)
       * [Ram B Le](Apps/SC/SC21/ramBLe.md)
+      * [Cardioid](Apps/SC/SC21/cardioid.md)
     - [SC 20](Apps/SC/SC20.md)
 - [Benchmark](Benchmark/README.md)
   * [Hpcg Dat](Benchmark/hpcg-dat.md)
