@@ -38,7 +38,7 @@
   * [Boost](Libs/Boost.md)
 - [Profiling](Profiling/README.md)
   * [Arm Forge](Profiling/ArmForge.md)
-  * [Uprof](Profiling/uprof.md)
+  * [Uprof](Profiling/uProf.md)
   * [Vtune](Profiling/Vtune.md)
 - [Sysadmin](Sysadmin/README.md)
   * [Cluster Setup](Sysadmin/cluster-setup.md)
