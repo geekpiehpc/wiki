@@ -8,7 +8,7 @@ X86 需要支持的 perf 参数比较有限，linux从kprobe，uprobe这些官�
 
 Intel Compiler 在编译 broadwell 以上架构优化时主要做了三件对性能影响很大的事情：
 1. 激进的跨 basic block 优化 + Vectorization + Loop Unroll
-2. Load 和 Store 在满足 TSO 条件下的激进的重排，同时激进的整合数据，支持 store buffer bypass，movnt。同时也是 icc 后端 Bug 的主要来源。也是大厂不太实用他的原因。除 HPC 外，大家一般照 gcc 标准。
+2. Load 和 Store 在满足 TSO 条件下的激进的重排，同时激进的整合数据，支持 store buffer bypass，movnt。同时也是 icc 后端 Bug 的主要来源。也是大厂不太用他的原因。除 HPC 外，大家一般照 gcc 标准。
 3. 自己维护的 TBB 线程池（非常快），自己维护的 malloc_align，自己维护的相关库。
 
 有关如何更好的适配 Intel 的CPU，可以参考 Lammps 的 [Intel Package](https://t.co/6DUtP6Falq?amp=1)。其使用访问者模式对 Intel processor的寄存器资源。
