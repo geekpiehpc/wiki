@@ -204,7 +204,7 @@ gcc@11.2.0%apple-clang@12.0.5~binutils+bootstrap~graphite~nvptx~piclibs~strip la
 ...
 ```
 
-安装后的参数大致需要的有几个，`-j N` 是 job 个数，`--no-checksum` 不检查文件 md5，`--editable` 为在修改过的文件后继续编译，一般在 `/tmp/root/spack-stage/spack-stage-amdscalapack-3.0-qwvyrumhsizxiaujwdsppcovijr5k5ri/spack-src/`. 有些包有 cflags cxxflags fcflags。 有些有 cuda_arch。碰到新的软件可以把所有需要的参数 append 到里面。
+安装后的参数大致需要的有几个，`-j N` 是 job 个数，`--no-checksum` 不检查文件 md5，`--no-restage` 为在修改过的文件后继续编译，一般在 `/tmp/root/spack-stage/spack-stage-amdscalapack-3.0-qwvyrumhsizxiaujwdsppcovijr5k5ri/spack-src/`. 有些包有 cflags cxxflags fcflags。 有些有 cuda_arch。碰到新的软件可以把所有需要的参数 append 到里面。
 
 ```c
 ❯ spack install -j 8 --no-checksum llvm+mlir+flang+all_targets+python+shared_libs cflags="-O3" cxxflags="-O3"
