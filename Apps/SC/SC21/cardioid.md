@@ -4,8 +4,7 @@ Repo: <https://github.com/LLNL/cardioid>
 
 ## 编译
 
-编译时cmake会卡死，原因是在elec/CMakeLists.txt中有一个他自定义的函数 `get_recursive_list` 会递归的去寻找各个子项目的 include path，这时候相同的依赖会被多次 include，又 spack 环境中的 include path很长，会生成超极长的 include path（指数级），导致 cmake 卡死。
-解决方法请见下方的「问题解决」部分。
+编译时可能会卡死，解决方法和原因请见下方的「问题解决」部分。
 
 ### 使用 Spack 手动编译
 
