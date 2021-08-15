@@ -149,7 +149,94 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="cardioid"><a class="header" href="#cardioid">Cardioid</a></h1>
-<p>https://github.com/LLNL/cardioid</p>
+<p>Repo: <a href="https://github.com/LLNL/cardioid">https://github.com/LLNL/cardioid</a></p>
+<h2 id="编译"><a class="header" href="#编译">编译</a></h2>
+<p>编译时cmake会卡死，原因是在elec/CMakeLists.txt中有一个他自定义的函数 <code>get_recursive_list</code> 会递归的去寻找各个子项目的 include path，这时候相同的依赖会被多次 include，又 spack 环境中的 include path很长，会生成超极长的 include path（指数级），导致 cmake 卡死。
+解决方法请见下方的「问题解决」部分。</p>
+<h3 id="使用-spack-手动编译"><a class="header" href="#使用-spack-手动编译">使用 Spack 手动编译</a></h3>
+<p>以 fish shell 为例。</p>
+<pre><code class="language-fish">source /opt/spack/share/spack/setup-env.fish
+spack stage cardioid+cuda
+spack cd cardioid+cuda
+spack build-env cardioid+cuda fish
+spack -d install -v cardioid+cuda
+</code></pre>
+<blockquote>
+<p>如果使用 mfem，可能需要手动指定其路径。</p>
+</blockquote>
+<h2 id="问题解决"><a class="header" href="#问题解决">问题解决</a></h2>
+<h3 id="调试-cmake-项目"><a class="header" href="#调试-cmake-项目">调试 CMake 项目</a></h3>
+<p>To debug a CMake project:</p>
+<ol>
+<li>Find cmake command from spack's log</li>
+<li>Create a new directory to save build files</li>
+<li><code>cd</code> to the path and run cmake command</li>
+<li>append <code>--trace-source=[path to CMakeLists.txt]</code> to the cmake command</li>
+</ol>
+<p>Use <code>message</code> command to print a middle result. For more information see <a href="https://cmake.org/cmake/help/latest/command/message.html">CMake doc</a>.</p>
+<h3 id="spack-install-安装时间太久"><a class="header" href="#spack-install-安装时间太久">Spack install 安装时间太久</a></h3>
+<p>使用 <code>spack -d install -v [package name]</code> 输出调试日志。 </p>
+<p>如果问题出现在 cmake 期间，可能是函数 <code>interface_link_libraries</code> 的问题。
+该函数会递归的去寻找各个子项目的 include path，这时候相同的依赖会被多次 include。又因为 spack 环境中的 include path 很长，会生成超极长的include path（指数级），导致 cmake 卡死。</p>
+<h4 id="解决方式-1"><a class="header" href="#解决方式-1">解决方式 1</a></h4>
+<p>在他递归生成时加入检查</p>
+<pre><code class="language-cmake">foreach(lib ${libs})
+    list(FIND searched ${lib} lib_has_been_searched)    
+    #message(SEND_ERROR &quot;+++ ${lib} ${lib_has_been_searched}&quot;)
+    if (lib_has_been_searched EQUAL -1)
+      get_recursive_list(recursive_val ${lib} ${prop} ${searched})
+      foreach(val ${retval})
+        if(NOT recursive_val)
+          list(APPEND val ${recursive_val})
+        else()
+          if (val IN_LIST recursive_val)
+            #message(&quot;Duplicate val!&quot;)
+          else()
+            list(APPEND val ${recursive_val})
+          endif()
+        endif()
+      endforeach()
+    endif()
+endforeach()
+</code></pre>
+<h4 id="解决方式-2"><a class="header" href="#解决方式-2">解决方式 2</a></h4>
+<p>使用以下补丁，在递归后删除重复项。</p>
+<pre><code class="language-patch">diff --git a/elec/CMakeLists.txt b/elec/CMakeLists.txt
+index 4a526cb..ca92d2d 100644
+--- a/elec/CMakeLists.txt
++++ b/elec/CMakeLists.txt
+@@ -271,7 +271,7 @@ function(get_recursive_list retvar target prop)
+   list(APPEND searched ${target})
+   #message(SEND_ERROR &quot;=== ${target} ${prop} ${searched}&quot;)
+
+-  set(${retval} &quot;&quot;)
++  set(retval &quot;&quot;)
+   get_property(propval TARGET ${target} PROPERTY ${prop} SET)
+   if (propval)
+     get_target_property(propval ${target} ${prop})
+@@ -288,6 +288,10 @@ function(get_recursive_list retvar target prop)
+     endif()
+   endforeach()
+
++  if(NOT retval)
++    list(REMOVE_DUPLICATES retval)
++  endif()
++
+   set(${retvar} ${retval} PARENT_SCOPE)
+   #message(SEND_ERROR &quot;--- ${target} ${prop} ${retval}&quot;)
+ endfunction()
+</code></pre>
+<h3 id="无法连接上国际互联网"><a class="header" href="#无法连接上国际互联网">无法连接上国际互联网</a></h3>
+<p>Set http proxy to <code>192.168.100.5:1082</code>, or use</p>
+<pre><code class="language-sh">proxychains -q [command]
+</code></pre>
+<h4 id="config-proxy-for-git"><a class="header" href="#config-proxy-for-git">Config proxy for git</a></h4>
+<p>Set proxy</p>
+<pre><code class="language-sh">git config --global http.proxy http://192.168.100.5:1082
+</code></pre>
+<p>Unset proxy</p>
+<pre><code class="language-sh">git config --global --unset http.proxy
+</code></pre>
 
                     </main>
 

@@ -340,7 +340,7 @@ gcc@11.2.0%apple-clang@12.0.5~binutils+bootstrap~graphite~nvptx~piclibs~strip la
   33   │       prefix: /usr
 ...
 </code></pre>
-<p>安装后的参数大致需要的有几个，<code>-j N</code> 是 job 个数，<code>--no-checksum</code> 不检查文件 md5，<code>--editable</code> 为在修改过的文件后继续编译，一般在 <code>/tmp/root/spack-stage/spack-stage-amdscalapack-3.0-qwvyrumhsizxiaujwdsppcovijr5k5ri/spack-src/</code>. 有些包有 cflags cxxflags fcflags。 有些有 cuda_arch。碰到新的软件可以把所有需要的参数 append 到里面。</p>
+<p>安装后的参数大致需要的有几个，<code>-j N</code> 是 job 个数，<code>--no-checksum</code> 不检查文件 md5，<code>--no-restage</code> 为在修改过的文件后继续编译，一般在 <code>/tmp/root/spack-stage/spack-stage-amdscalapack-3.0-qwvyrumhsizxiaujwdsppcovijr5k5ri/spack-src/</code>. 有些包有 cflags cxxflags fcflags。 有些有 cuda_arch。碰到新的软件可以把所有需要的参数 append 到里面。</p>
 <pre><code class="language-c">❯ spack install -j 8 --no-checksum llvm+mlir+flang+all_targets+python+shared_libs cflags=&quot;-O3&quot; cxxflags=&quot;-O3&quot;
 [+] /usr/local (external cmake-3.21.1-cdhzbrts4k5ylrvlpspfl75zgeht4swi)
 [+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/libiconv-1.16-ropgshv657ooz7kfzojv4s6srscgimnw

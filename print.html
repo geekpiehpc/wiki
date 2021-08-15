@@ -1176,7 +1176,94 @@ export IPM_LOG=full
 cppPaths.append(&quot;/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/boost-1.70.0-m4ttgcfqixwe22z5kz7bpp7mbqdspdbg/include&quot;)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cardioid"><a class="header" href="#cardioid">Cardioid</a></h1>
-<p>https://github.com/LLNL/cardioid</p>
+<p>Repo: <a href="https://github.com/LLNL/cardioid">https://github.com/LLNL/cardioid</a></p>
+<h2 id="编译"><a class="header" href="#编译">编译</a></h2>
+<p>编译时cmake会卡死，原因是在elec/CMakeLists.txt中有一个他自定义的函数 <code>get_recursive_list</code> 会递归的去寻找各个子项目的 include path，这时候相同的依赖会被多次 include，又 spack 环境中的 include path很长，会生成超极长的 include path（指数级），导致 cmake 卡死。
+解决方法请见下方的「问题解决」部分。</p>
+<h3 id="使用-spack-手动编译"><a class="header" href="#使用-spack-手动编译">使用 Spack 手动编译</a></h3>
+<p>以 fish shell 为例。</p>
+<pre><code class="language-fish">source /opt/spack/share/spack/setup-env.fish
+spack stage cardioid+cuda
+spack cd cardioid+cuda
+spack build-env cardioid+cuda fish
+spack -d install -v cardioid+cuda
+</code></pre>
+<blockquote>
+<p>如果使用 mfem，可能需要手动指定其路径。</p>
+</blockquote>
+<h2 id="问题解决"><a class="header" href="#问题解决">问题解决</a></h2>
+<h3 id="调试-cmake-项目"><a class="header" href="#调试-cmake-项目">调试 CMake 项目</a></h3>
+<p>To debug a CMake project:</p>
+<ol>
+<li>Find cmake command from spack's log</li>
+<li>Create a new directory to save build files</li>
+<li><code>cd</code> to the path and run cmake command</li>
+<li>append <code>--trace-source=[path to CMakeLists.txt]</code> to the cmake command</li>
+</ol>
+<p>Use <code>message</code> command to print a middle result. For more information see <a href="https://cmake.org/cmake/help/latest/command/message.html">CMake doc</a>.</p>
+<h3 id="spack-install-安装时间太久"><a class="header" href="#spack-install-安装时间太久">Spack install 安装时间太久</a></h3>
+<p>使用 <code>spack -d install -v [package name]</code> 输出调试日志。 </p>
+<p>如果问题出现在 cmake 期间，可能是函数 <code>interface_link_libraries</code> 的问题。
+该函数会递归的去寻找各个子项目的 include path，这时候相同的依赖会被多次 include。又因为 spack 环境中的 include path 很长，会生成超极长的include path（指数级），导致 cmake 卡死。</p>
+<h4 id="解决方式-1"><a class="header" href="#解决方式-1">解决方式 1</a></h4>
+<p>在他递归生成时加入检查</p>
+<pre><code class="language-cmake">foreach(lib ${libs})
+    list(FIND searched ${lib} lib_has_been_searched)    
+    #message(SEND_ERROR &quot;+++ ${lib} ${lib_has_been_searched}&quot;)
+    if (lib_has_been_searched EQUAL -1)
+      get_recursive_list(recursive_val ${lib} ${prop} ${searched})
+      foreach(val ${retval})
+        if(NOT recursive_val)
+          list(APPEND val ${recursive_val})
+        else()
+          if (val IN_LIST recursive_val)
+            #message(&quot;Duplicate val!&quot;)
+          else()
+            list(APPEND val ${recursive_val})
+          endif()
+        endif()
+      endforeach()
+    endif()
+endforeach()
+</code></pre>
+<h4 id="解决方式-2"><a class="header" href="#解决方式-2">解决方式 2</a></h4>
+<p>使用以下补丁，在递归后删除重复项。</p>
+<pre><code class="language-patch">diff --git a/elec/CMakeLists.txt b/elec/CMakeLists.txt
+index 4a526cb..ca92d2d 100644
+--- a/elec/CMakeLists.txt
++++ b/elec/CMakeLists.txt
+@@ -271,7 +271,7 @@ function(get_recursive_list retvar target prop)
+   list(APPEND searched ${target})
+   #message(SEND_ERROR &quot;=== ${target} ${prop} ${searched}&quot;)
+
+-  set(${retval} &quot;&quot;)
++  set(retval &quot;&quot;)
+   get_property(propval TARGET ${target} PROPERTY ${prop} SET)
+   if (propval)
+     get_target_property(propval ${target} ${prop})
+@@ -288,6 +288,10 @@ function(get_recursive_list retvar target prop)
+     endif()
+   endforeach()
+
++  if(NOT retval)
++    list(REMOVE_DUPLICATES retval)
++  endif()
++
+   set(${retvar} ${retval} PARENT_SCOPE)
+   #message(SEND_ERROR &quot;--- ${target} ${prop} ${retval}&quot;)
+ endfunction()
+</code></pre>
+<h3 id="无法连接上国际互联网"><a class="header" href="#无法连接上国际互联网">无法连接上国际互联网</a></h3>
+<p>Set http proxy to <code>192.168.100.5:1082</code>, or use</p>
+<pre><code class="language-sh">proxychains -q [command]
+</code></pre>
+<h4 id="config-proxy-for-git"><a class="header" href="#config-proxy-for-git">Config proxy for git</a></h4>
+<p>Set proxy</p>
+<pre><code class="language-sh">git config --global http.proxy http://192.168.100.5:1082
+</code></pre>
+<p>Unset proxy</p>
+<pre><code class="language-sh">git config --global --unset http.proxy
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="benchmark"><a class="header" href="#benchmark">Benchmark</a></h1>
 <p>这里放置HPC竞赛中 Benchmark 有关资料，文档部分用于对新生的培训。</p>
 <div style="break-before: page; page-break-before: always;"></div><!-- TITLE: Hpcg Dat -->
@@ -1272,7 +1359,57 @@ HPL.out      output file name (if any)
 <p>伯克利出品的一个用户态放 docker 的地方。</p>
 <div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="chisel"><a class="header" href="#chisel">Chisel</a></h1>
 <p>有关我们是否有必要学习一门逻辑电路描述语言去实现一个 CPU 或者一个路由器？ 我认为是十分必要的，这让大家可以从底往上看你的 Data 和 Instruction 的变动。</p>
-<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="go"><a class="header" href="#go">Go</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fortran"><a class="header" href="#fortran">Fortran</a></h1>
+<p>这个语言简直伤天害理，但确是笔者前老板最爱的语言，而且是f77，天灭fortran。可超算比赛 fortran 的上镜次数还挺多的，之前做天气应用的时候没敢改，现在既然有个小于 15w 行的程序，笔者尝试着修改。</p>
+<p>PGI 编译器是一个商用编译器。后被 NV 收购，加了很多 fortran 可用的 cuda DSL。这无疑让 fortran 续命了不少。NVHPC 中的 Nvfortran 有很多编译器优化的 log 可以看。</p>
+<p><a href="http://micro.ustc.edu.cn/Fortran/ZJDing/">基本语法</a>：
+module 相当于 c 中的struct。
+program(main)/function(normal function) 相当于 对function 的定义</p>
+<pre><code class="language-fortran">real function square(x)
+    implicit none
+    real, intent(in) :: x
+    square = x * x
+    return
+end function square
+program main
+  integer :: n, i, errs, argcount
+  real, dimension(:), allocatable :: a, b, r, e
+  n = 1000000 
+  call square(n)
+end program
+</code></pre>
+<p>subroutine 相当于trait，需要有generic function 来实现</p>
+<h2 id="openacc"><a class="header" href="#openacc">OpenACC</a></h2>
+<p>一个简单的加法</p>
+<pre><code>module mpoint
+type point
+    real :: x, y, z
+end type
+type(point) :: base(1000)
+end module
+
+subroutine vecaddgpu( r, n )
+ use mpoint
+ type(point) :: r(:)
+ integer :: n
+ !$acc parallel loop present(base) copyout(r(:))
+ do i = 1, n
+  r(i)%x = base(i)%x
+  r(i)%y = sqrt( base(i)%y*base(i)%y + base(i)%z*base(i)%z )
+  r(i)%z = 0
+ enddo
+end subroutine
+</code></pre>
+<pre><code>#pragma acc loop gang
+    for (j = 0; j &lt; n1 * n2; j += n2) {
+        k = 0;
+        #pragma acc loop vector reduction(+:k)
+            for (i = 0; i &lt; n2; i++)
+                k = k + a[j + i];
+            atomicAdd(x, k);
+</code></pre>
+<h3 id="效率对比"><a class="header" href="#效率对比">效率对比</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="go"><a class="header" href="#go">Go</a></h1>
 <p>此语言是个非常简单上手的语言，同时由于大厂使用过多，市面上开源的工具都非常可用。笔者在实习的时候学习的，<code>module</code> 等包管理工具在并行文件系统上面的 <code>channel</code> + <code>context</code> 重新实现非常快，那个代码也就数十行处理一些并行质询的状态机即可，也用其写过一些 eBPF 的代码用于更好的获得文件 IO 的实时性能。</p>
 <h2 id="一些小工具"><a class="header" href="#一些小工具">一些小工具</a></h2>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="rust"><a class="header" href="#rust">Rust</a></h1>
@@ -1819,7 +1956,7 @@ gcc@11.2.0%apple-clang@12.0.5~binutils+bootstrap~graphite~nvptx~piclibs~strip la
   33   │       prefix: /usr
 ...
 </code></pre>
-<p>安装后的参数大致需要的有几个，<code>-j N</code> 是 job 个数，<code>--no-checksum</code> 不检查文件 md5，<code>--editable</code> 为在修改过的文件后继续编译，一般在 <code>/tmp/root/spack-stage/spack-stage-amdscalapack-3.0-qwvyrumhsizxiaujwdsppcovijr5k5ri/spack-src/</code>. 有些包有 cflags cxxflags fcflags。 有些有 cuda_arch。碰到新的软件可以把所有需要的参数 append 到里面。</p>
+<p>安装后的参数大致需要的有几个，<code>-j N</code> 是 job 个数，<code>--no-checksum</code> 不检查文件 md5，<code>--no-restage</code> 为在修改过的文件后继续编译，一般在 <code>/tmp/root/spack-stage/spack-stage-amdscalapack-3.0-qwvyrumhsizxiaujwdsppcovijr5k5ri/spack-src/</code>. 有些包有 cflags cxxflags fcflags。 有些有 cuda_arch。碰到新的软件可以把所有需要的参数 append 到里面。</p>
 <pre><code class="language-c">❯ spack install -j 8 --no-checksum llvm+mlir+flang+all_targets+python+shared_libs cflags=&quot;-O3&quot; cxxflags=&quot;-O3&quot;
 [+] /usr/local (external cmake-3.21.1-cdhzbrts4k5ylrvlpspfl75zgeht4swi)
 [+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/libiconv-1.16-ropgshv657ooz7kfzojv4s6srscgimnw
