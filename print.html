@@ -1178,8 +1178,7 @@ cppPaths.append(&quot;/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/boost-
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cardioid"><a class="header" href="#cardioid">Cardioid</a></h1>
 <p>Repo: <a href="https://github.com/LLNL/cardioid">https://github.com/LLNL/cardioid</a></p>
 <h2 id="编译"><a class="header" href="#编译">编译</a></h2>
-<p>编译时cmake会卡死，原因是在elec/CMakeLists.txt中有一个他自定义的函数 <code>get_recursive_list</code> 会递归的去寻找各个子项目的 include path，这时候相同的依赖会被多次 include，又 spack 环境中的 include path很长，会生成超极长的 include path（指数级），导致 cmake 卡死。
-解决方法请见下方的「问题解决」部分。</p>
+<p>编译时可能会卡死，解决方法和原因请见下方的「问题解决」部分。</p>
 <h3 id="使用-spack-手动编译"><a class="header" href="#使用-spack-手动编译">使用 Spack 手动编译</a></h3>
 <p>以 fish shell 为例。</p>
 <pre><code class="language-fish">source /opt/spack/share/spack/setup-env.fish
