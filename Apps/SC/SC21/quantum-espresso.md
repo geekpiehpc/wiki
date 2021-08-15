@@ -259,3 +259,27 @@ We chose to use a case called si.scf.david.in to profile on single GPU. And here
 ![](kernel-profile.png)
 ![](memory.png)
 ![](stall-reason.png)
+
+### Compile with ICC
+
+Compiling with intel icc with fftw library.
+
+`spack load intel-oneapi-compilers@2021.1.2`
+
+`spack load intel-parallel-studio@cluster-2020.2`
+
+`spack load netlib-lapack@3.9.1/nbc`
+
+`spack load openmpi@4.1.1/jip`
+
+ `./configure --prefix=/home/qe/fftw-3.3.9 F77=ifort CC=icc CFLAGS="-O3 -g -march=native" FFLAGS="-O3 -g" -enable-openmp`
+
+`make -j 128 all`
+
+If the option `-march=native` is added in FFLAGS, ifort will throw an error 
+
+`ifort: error #10106: Fatal error in /opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-oneapi-compilers-2021.1.2-7ah54yk3newzc6hdcs3glm63clwyzgs7/compiler/2021.1.2/linux/bin/intel64/../../bin/intel64/fortcom, terminated by segmentation violation`
+
+Tuning with different number of MPI processes and OpenMP threads on one node, 32 processes with 8 threads each got the best performance in testcase AUSURF112.
+
+​     PWSCF        :  37m 3.31s CPU   4m46.48s WALL
