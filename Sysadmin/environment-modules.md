@@ -240,3 +240,12 @@ if spec.compiler.fc="nvfortran":
 
 #### Spack 与 Modules
 当系统有 Modules 时，会自动把 Module file 的目录加到 MANPATH 下，也即立即可以使用 `module load`
+
+#### 有关Spack错误记录
+
+```bash
+$ spack load boost@1.70
+==> Error: No compilers for operating system debian10 satisfy spec gcc@10.2.0
+```
+
+当出现这种错误时，可以检查一下 `.spack/linux/compilers.yaml` 是否包含了spack中的所有compiler。
