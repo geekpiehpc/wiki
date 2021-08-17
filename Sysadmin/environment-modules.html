@@ -369,6 +369,11 @@ gcc@11.2.0%apple-clang@12.0.5~binutils+bootstrap~graphite~nvptx~piclibs~strip la
 <p>在超算上的 spack 有两个 upstream，你觉得重要可以直接给原 repo PR，一般我们备份到学校内部的 gitlab。</p>
 <h4 id="spack-与-modules"><a class="header" href="#spack-与-modules">Spack 与 Modules</a></h4>
 <p>当系统有 Modules 时，会自动把 Module file 的目录加到 MANPATH 下，也即立即可以使用 <code>module load</code></p>
+<h4 id="有关spack错误记录"><a class="header" href="#有关spack错误记录">有关Spack错误记录</a></h4>
+<pre><code class="language-bash">$ spack load boost@1.70
+==&gt; Error: No compilers for operating system debian10 satisfy spec gcc@10.2.0
+</code></pre>
+<p>当出现这种错误时，可以检查一下 <code>.spack/linux/compilers.yaml</code> 是否包含了spack中的所有compiler。</p>
 
                     </main>
 
