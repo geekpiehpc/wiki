@@ -283,3 +283,88 @@ If the option `-march=native` is added in FFLAGS, ifort will throw an error
 Tuning with different number of MPI processes and OpenMP threads on one node, 32 processes with 8 threads each got the best performance in testcase AUSURF112.
 
 ​     PWSCF        :  37m 3.31s CPU   4m46.48s WALL
+
+### Misc
+
+The library used in Q-E compiled by intel compiler:
+
+BLAS_LIBS=  -lmkl_intel_lp64  -lmkl_sequential -lmkl_core
+
+SCALAPACK_LIBS=-lmkl_scalapack_lp64 -lmkl_blacs_openmpi_lp64
+
+FFT_LIBS= fftw-3.3.9
+
+     init_run     :    158.19s CPU     21.00s WALL (       1 calls)
+     electrons    :   2063.54s CPU    264.73s WALL (       1 calls)
+    
+     Called by init_run:
+     wfcinit      :    148.40s CPU     19.08s WALL (       1 calls)
+     potinit      :      1.84s CPU      0.24s WALL (       1 calls)
+     hinit0       :      2.63s CPU      0.50s WALL (       1 calls)
+    
+     Called by electrons:
+     c_bands      :   1937.22s CPU    247.62s WALL (       3 calls)
+     sum_band     :    116.01s CPU     15.64s WALL (       3 calls)
+     v_of_rho     :      2.32s CPU      0.30s WALL (       3 calls)
+     newd         :     12.90s CPU      1.87s WALL (       3 calls)
+     mix_rho      :      0.29s CPU      0.04s WALL (       3 calls)
+    
+     Called by c_bands:
+     init_us_2    :      1.41s CPU      0.29s WALL (      14 calls)
+     cegterg      :   1931.14s CPU    246.85s WALL (       6 calls)
+    
+     Called by *egterg:
+     cdiaghg      :    304.65s CPU     38.94s WALL (      81 calls)
+     h_psi        :    656.99s CPU     84.10s WALL (      85 calls)
+     s_psi        :    145.97s CPU     18.38s WALL (      85 calls)
+     g_psi        :      0.31s CPU      0.05s WALL (      77 calls)
+    
+     Called by h_psi:
+     h_psi:calbec :    183.87s CPU     23.70s WALL (      85 calls)
+     vloc_psi     :    321.07s CPU     41.10s WALL (      85 calls)
+     add_vuspsi   :    150.67s CPU     19.07s WALL (      85 calls)
+    
+     General routines
+     calbec       :    232.51s CPU     30.03s WALL (      91 calls)
+     fft          :      3.38s CPU      0.44s WALL (      40 calls)
+     ffts         :      0.93s CPU      0.15s WALL (       6 calls)
+     fftw         :    348.65s CPU     44.30s WALL (   37782 calls)
+     interpolate  :      0.26s CPU      0.03s WALL (       3 calls)
+     davcio       :      0.04s CPU      0.27s WALL (       6 calls)
+
+compiler option --march=native has no significant effect on speed
+
+Try to run on two nodes, but failed
+
+`spack load intel-parallel-studio@cluster-2020.2`
+
+`spack load openmpi@4.1.1/jip`
+
+`spack load ucx/gji`
+
+`mpirun --prefix /opt/spack/opt/spack/linux-debian10-zen2/intel-2021.1.2/openmpi-4.1.1-jipfb67ngxddcblg4rcsjuu47pskabrs/  -np 64 -hostfile ./hostfile  -mca pml ucx -x UCX_TLS=rc_x,sm,self -x UCX_NET_DEVICES=mlx5_0:1 -x PATH -x LD_LIBRARY_PATH  --oversubscribe   /home/qe/q-e/bin/pw.x  < ./ausurf.in`
+
+Set up the remote node when login non-interactively
+
+add to .bashrc
+
+ `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/nonspack/ucx-1.10.0-gcc/lib
+. /opt/spack/share/spack/setup-env.sh
+spack load intel-parallel-studio@cluster-2020.2
+spack load openmpi@4.1.1/jip
+spack load ucx/gji`
+
+A requested component was not found, or was unable to be opened.  This
+means that this component is either not installed or is unable to be
+used on your system (e.g., sometimes this means that shared libraries
+that the component requires are unable to be found/loaded).  Note that
+Open MPI stopped checking at the first component that it did not find.
+
+Host:      epyc.node2
+Framework: pml
+Component: ucx
+
+
+
+Learning Fortran to optimize the cache performance of q-e (mainly core.f90, not finished)......
+
