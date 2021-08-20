@@ -30,7 +30,7 @@
   * [Schduler](DevOps/Schduler.md)
   * [Singularity](DevOps/Singularity.md)
 - [Language](Language/README.md)
-  * [C](Language/C++.md)
+  * [C++](Language/C++.md)
   * [Chisel](Language/Chisel.md)
   * [Fortran](Language/Fortran.md)
   * [Go](Language/Go.md)
