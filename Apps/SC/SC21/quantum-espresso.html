@@ -450,6 +450,154 @@ Open MPI stopped checking at the first component that it did not find.</p>
 Framework: pml
 Component: ucx</p>
 <p>Learning Fortran to optimize the cache performance of q-e (mainly core.f90, not finished)......</p>
+<h2 id="compile-option"><a class="header" href="#compile-option">Compile Option</a></h2>
+<h3 id="nvhpc"><a class="header" href="#nvhpc">NVHPC</a></h3>
+<pre><code class="language-bash"># LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/spack/linux-ubuntu20.04-skylake/gcc-9.3.0/nvhpc-21.5-qrsvxrpkmqhxy2coxes2qzcfhirsy5uv/Linux_x86_64/21.5/comm_libs/openmpi4/openmpi-4.0.5/lib
+spack load nvhpc@21.5/djb
+spack load /tyv #hdf5
+</code></pre>
+<h3 id="oneapi"><a class="header" href="#oneapi">OneAPI</a></h3>
+<pre><code class="language-bash">LD_LIBRARY_PATH=/opt/intel/oneapi/vpl/2021.4.0/lib:/opt/intel/oneapi/tbb/2021.3.0/env/../lib/intel64/gcc4.8:/opt/intel/oneapi/mpi/2021.3.1//libfabric/lib:/opt/intel/oneapi/mpi/2021.3.1//lib/release:/opt/intel/oneapi/mpi/2021.3.1//lib:/opt/intel/oneapi/mkl/2021.3.0/lib/intel64:/opt/intel/oneapi/itac/2021.3.0/slib:/opt/intel/oneapi/ipp/2021.3.0/lib/intel64:/opt/intel/oneapi/ippcp/2021.3.0/lib/intel64:/opt/intel/oneapi/ipp/2021.3.0/lib/intel64:/opt/intel/oneapi/dnnl/2021.3.0/cpu_dpcpp_gpu_dpcpp/lib:/opt/intel/oneapi/debugger/10.1.2/gdb/intel64/lib:/opt/intel/oneapi/debugger/10.1.2/libipt/intel64/lib:/opt/intel/oneapi/debugger/10.1.2/dep/lib:/opt/intel/oneapi/dal/2021.3.0/lib/intel64:/opt/intel/oneapi/compiler/2021.3.0/linux/lib:/opt/intel/oneapi/compiler/2021.3.0/linux/lib/x64:/opt/intel/oneapi/compiler/2021.3.0/linux/lib/emu:/opt/intel/oneapi/compiler/2021.3.0/linux/lib/oclfpga/host/linux64/lib:/opt/intel/oneapi/compiler/2021.3.0/linux/lib/oclfpga/linux64/lib:/opt/intel/oneapi/compiler/2021.3.0/linux/compiler/lib/intel64_lin:/opt/intel/oneapi/ccl/2021.3.0/lib/cpu_gpu_dpcpp:/media/victoryang/NetDisk/Documents/spack/opt/spack/linux-ubuntu20.04-skylake/gcc-9.3.0/nvhpc-21.5-qrsvxrpkmqhxy2coxes2qzcfhirsy5uv/Linux_x86_64/21.5/compilers/lib:/media/victoryang/NetDisk/Documents/spack/opt/spack/linux-ubuntu20.04-skylake/gcc-9.3.0/openssl-1.1.1k-v735mywfwhu5wwrc6rcppju7lxvoxegh/lib:/media/victoryang/NetDisk/Documents/spack/opt/spack/linux-ubuntu20.04-skylake/gcc-9.3.0/zlib-1.2.11-aim3z46oucbopx4jmsvi6rj23psecql5/lib:/media/victoryang/NetDisk/Documents/spack/opt/spack/linux-ubuntu20.04-skylake/gcc-9.3.0/ncurses-6.2-zdp3gdfsnlvphj7kpsgsfk3jvtxvuvz7/lib:/opt/intel/oneapi/mpi/2021.3.1//lib/release/
+</code></pre>
+<h3 id="pitfalls"><a class="header" href="#pitfalls">pitfalls</a></h3>
+<ol>
+<li>https://github.com/MPAS-Dev/MPAS-Model/issues/554</li>
+<li>https://forums.developer.nvidia.com/t/problem-with-nvfortran-and-r/155366</li>
+<li>LibGOMP not IMPLEMENTED: fftw/scalapack/hdf5/elpa is not dependent on the compiler's lib.</li>
+</ol>
+<h3 id="performance"><a class="header" href="#performance">performance</a></h3>
+<p>#if defined(__GPU_MPI)
+ierr = cudaDeviceSynchronize()  ! This syncs __GPU_MPI case
+CALL bcast_integer_gpu( msg_d, msglen, source, group )
+RETURN ! Sync done by MPI call (or inside bcast_xxx_gpu)```bash
+nvfortran 21.2-0 LLVM 64-bit target on x86-64 Linux -tp zen
+NVIDIA Compilers and Tools
+Copyright (c) 2020, NVIDIA CORPORATION.  All rights reserved.</p>
+<pre><code>1. GPU single thread 
+```bash
+real	1m51.316s
+user	51m9.972s
+sys	4m59.190s
+</code></pre>
+<ol start="2">
+<li>GPU 4 thread</li>
+</ol>
+<pre><code class="language-bash">real    1m34.486s
+user    2m12.550s
+</code></pre>
+<ol start="3">
+<li>4 GPU 4 threads</li>
+</ol>
+<pre><code class="language-bash">real	6m26.432s
+user	4h20m2.947s
+sys	4h24.789s
+</code></pre>
+<ol start="4">
+<li>8 GPU 2 node 4 threads</li>
+</ol>
+<pre><code class="language-bash">real	4m42.563s
+user	1h24m6.227s
+sys	2h0m4.267s
+</code></pre>
+<p>MPI + Cuda seems to call diffent routines of GPU implementation, which communication always hold the bounds.</p>
+<pre><code class="language-c">#pragma acc host_data use_device(s_buf) MPI_Send(s_buf,size,MPI_CHAR,1,tag,MPI_COMM_WORLD); 
+... 
+#pragma acc update host(s_buf[0:size] ) MPI_Send(s_buf,size,MPI_CHAR,1,tag,MPI_COMM_WORLD);
+</code></pre>
+<p>So we are going to try GPU direct MPI. </p>
+<pre><code class="language-c">#if defined(__GPU_MPI)
+        ierr = cudaDeviceSynchronize()  ! This syncs __GPU_MPI case
+        CALL bcast_integer_gpu( msg_d, msglen, source, group )
+        RETURN ! Sync done by MPI call (or inside bcast_xxx_gpu)
+</code></pre>
+<p>But CUBLAS and other GPU code is just fine for one thread.</p>
+<pre><code class="language-c">#if defined(__CUDA)
+      USE cudafor
+      USE cublas
+#endif
+      
+      IMPLICIT NONE
+
+      SAVE
+
+      PRIVATE
+
+      REAL(DP) :: one, zero, two, minus_one, minus_two
+      PARAMETER ( one = 1.0d0, zero = 0.0d0, two = 2.0d0, minus_one = -1.0d0 )
+      PARAMETER ( minus_two = -2.0d0 )
+      COMPLEX(DP) :: cone, czero, mcone
+      PARAMETER ( cone = (1.0d0, 0.0d0), czero = (0.0d0, 0.0d0) )
+      PARAMETER ( mcone = (-1.0d0, 0.0d0) )
+      REAL(DP) :: small = 1.0d-14
+      LOGICAL :: use_parallel_diag 
+
+      PUBLIC :: sigset
+      PUBLIC :: tauset
+      PUBLIC :: rhoset
+      PUBLIC :: ortho_iterate
+      PUBLIC :: updatc, calphi_bgrp
+      PUBLIC :: mesure_diag_perf, mesure_mmul_perf
+      PUBLIC :: use_parallel_diag
+      PUBLIC :: bec_bgrp2ortho
+
+      REAL(DP), ALLOCATABLE DEVICEATTR :: tmp1(:,:), tmp2(:,:), dd(:,:), tr1(:,:), tr2(:,:)
+      REAL(DP), ALLOCATABLE DEVICEATTR :: con(:,:), x1(:,:)
+
+CONTAINS
+
+   SUBROUTINE allocate_local_arrays(ldx)
+      INTEGER, INTENT(IN) :: ldx
+      IF( ALLOCATED( tr1 ) ) THEN
+         IF( SIZE( tr1, 1 ) /= ldx ) THEN
+            DEALLOCATE( tmp1, tmp2, dd, x1, con )
+            DEALLOCATE( tr1, tr2 )
+         END IF
+      END IF
+      IF( .NOT. ALLOCATED( tr1 ) ) THEN
+         ALLOCATE( tr1(ldx,ldx), tr2(ldx,ldx) )
+         ALLOCATE( tmp1(ldx,ldx), tmp2(ldx,ldx), dd(ldx,ldx), x1(ldx,ldx), con(ldx,ldx) )
+      END IF
+   END SUBROUTINE allocate_local_arrays
+
+   SUBROUTINE deallocate_local_arrays()
+      IF( ALLOCATED( tr1 ) ) DEALLOCATE( tr1 )
+      IF( ALLOCATED( tr2 ) ) DEALLOCATE( tr2 )
+      IF( ALLOCATED( tmp1 ) ) DEALLOCATE( tmp1 )
+      IF( ALLOCATED( tmp2 ) ) DEALLOCATE( tmp2 )
+      IF( ALLOCATED( dd ) ) DEALLOCATE( dd )
+      IF( ALLOCATED( x1 ) ) DEALLOCATE( x1 )
+      IF( ALLOCATED( con ) ) DEALLOCATE( con )
+   END SUBROUTINE deallocate_local_arrays
+
+   SUBROUTINE clear_unused_elements( x, idesc )
+      !
+      !  Clear elements not involved in the orthogonalization
+      !
+      IMPLICIT NONE
+      REAL(DP) DEVICEATTR :: x(:,:)
+      INTEGER, INTENT(IN) :: idesc(:)
+      INTEGER :: nr, nc, i, j
+      INCLUDE 'laxlib.fh'
+      IF( idesc(LAX_DESC_ACTIVE_NODE) &lt; 0 ) then
+         x = 0.0d0
+      ELSE
+         nr = idesc(LAX_DESC_NR)
+         nc = idesc(LAX_DESC_NC)
+!$cuf kernel do(2) &lt;&lt;&lt;*,*&gt;&gt;&gt;
+         do j = nc + 1, SIZE( x, 2 )
+            do i = 1, SIZE( x, 1 )
+               x( i, j ) = 0.0d0
+            end do
+         end do
+!$cuf kernel do(2) &lt;&lt;&lt;*,*&gt;&gt;&gt;
+         do j = 1, SIZE( x, 2 )
+            do i = nr + 1, SIZE( x, 1 )
+               x( i, j ) = 0.0d0
+            end do
+         end do
+      END IF
+   END SUBROUTINE
+</code></pre>
 
                     </main>
 
