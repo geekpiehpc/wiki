@@ -45,13 +45,72 @@ subroutine vecaddgpu( r, n )
 end subroutine
 ```
 
+Mind to use Makefile to see the Optimization info from the compiler. Also checkt the identifier loop present and copyout specify the gpu to run on.
+
+```bash
+nvfortran -MInfo -Mbounds
 ```
-#pragma acc loop gang
-    for (j = 0; j < n1 * n2; j += n2) {
-        k = 0;
-        #pragma acc loop vector reduction(+:k)
-            for (i = 0; i < n2; i++)
-                k = k + a[j + i];
-            atomicAdd(x, k);
+
+During the runtime, you can see the symbol and source file and using which GPU.
+
+```bash
+NVCOMPILER_ACC_NOTIFY=1 /root/yyw/cmake-openacc/cmake-build-debug-nvhpc/acc_test
+
+Let's compared with the Kernel version. Both option `-O0 -g`
 ```
+#include <iostream>
+#include <cassert>
+#include <cuda_runtime.h>
+
+__global__ void vecaddgpu(int **a, int **b, int **c, int i) {
+    *c[i] = *a[i] + *b[i];
+}
+
+int main(void) {
+    int n = 1000000000;
+
+    int *a = static_cast<int *>(malloc(n * sizeof(int)));
+    int *b = static_cast<int *>(malloc(n * sizeof(int)));
+    int *c = static_cast<int *>(malloc(n * sizeof(int))); // host copies of a, b, c
+    int *e = static_cast<int *>(malloc(n * sizeof(int))); // result
+    int **d_a, **d_b, **d_c;   // device copies of a, b, c
+    int size = sizeof(int);
+    int err = 0;
+
+    for (int i = 0; i < n; i++) {
+        a[i] = i;
+        b[i] = 1000 * i;
+        e[i] = a[i] + b[i];
+    }
+
+// Allocate space for device copies of a, b, c
+    cudaMalloc((void **) &d_a, size * n);
+    cudaMalloc((void **) &d_b, size * n);
+    cudaMalloc((void **) &d_c, size * n);
+
+    // Copy inputs to device
+    cudaMemcpy(d_a, reinterpret_cast<const void *>(a), size * n, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_b, reinterpret_cast<const void *>(b), size * n, cudaMemcpyHostToDevice);
+    // Launch vecaddgpu() kernel on GPU with N blocks
+    vecaddgpu<<<1, 1024>>>(d_a, d_b, d_c, n);
+    // Copy result back to host
+    cudaMemcpy(c, d_c, size * n, cudaMemcpyDeviceToHost);
+    // Cleanup
+    for (int i = 0; i < n; i++) {
+        if (c[i] != e[i])
+            err++;
+    }
+    free(a);
+    free(b);
+    free(c);
+    cudaFree(d_a);
+    cudaFree(d_b);
+    cudaFree(d_c);
+    return 0;
+}
+```
+
 ### 效率对比
+![](./openacc.png)
+
+pure cuda kernel is 1.5x faster.
