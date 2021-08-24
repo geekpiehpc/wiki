@@ -14,3 +14,10 @@ Intel Compiler 在编译 broadwell 以上架构优化时主要做了三件对性
 有关如何更好的适配 Intel 的CPU，可以参考 Lammps 的 [Intel Package](https://t.co/6DUtP6Falq?amp=1)。其使用访问者模式对 Intel processor的寄存器资源。
 
 有关对用户态文件系统的适配，Vtune 提供了对 PM 带宽的实时测试，这个 metrics 貌似很难拿到。
+
+## 在集群上如何使用
+
+```
+spack load intel-parallel-studio # choose the right version
+amplxe-cl 
+```
