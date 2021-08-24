@@ -4,9 +4,24 @@ Repo: <https://github.com/LLNL/cardioid>
 
 ## 编译
 
-编译时可能会卡死，解决方法和原因请见下方的「问题解决」部分。
+需要使用 Spack。
 
-### 使用 Spack 手动编译
+> 如果使用 mfem，可能需要手动指定其路径。
+
+### 自动编译
+
+由于上游的 cardioid 安装包存在编译时会卡死的问题，因此需要手动修补安装文件。
+
+首先运行 `spack edit cardioid` 命令，spack 将会启动文本编辑器。此后，在类 `class Cardioid(CMakePackage)` 的起始处加入以下内容
+
+```
+patch('https://gist.githubusercontent.com/KiruyaMomochi/cc4dfde7da51c3b11e45ab1079662693/raw/cardioid-cmake.patch',
+    sha256='27e2b01a2a181d7364cf786f9da31193407b1aa9c20d0175965a3c772cc7378b')
+```
+
+此后使用 `spack -d install -v cardioid` 继续编译。
+
+### 手动编译
 
 以 fish shell 为例。
 
@@ -15,10 +30,7 @@ source /opt/spack/share/spack/setup-env.fish
 spack stage cardioid+cuda
 spack cd cardioid+cuda
 spack build-env cardioid+cuda fish
-spack -d install -v cardioid+cuda
 ```
-
-> 如果使用 mfem，可能需要手动指定其路径。
 
 ## 问题解决
 
