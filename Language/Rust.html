@@ -156,6 +156,85 @@
 <li>Libra - 脸书维护的区块链数据库</li>
 <li>飞书 - Tokio 代码池</li>
 </ol>
+<h2 id="异步中的sync和-send"><a class="header" href="#异步中的sync和-send">异步中的<code>Sync</code>和 <code>Send</code></a></h2>
+<p>https://kaisery.github.io/trpl-zh-cn/ch16-04-extensible-concurrency-sync-and-send.html</p>
+<h3 id="send"><a class="header" href="#send"><code>Send</code></a></h3>
+<pre><pre class="playground"><code class="language-rust">use std::rc::Rc;
+use std::sync::Mutex;
+use std::thread;
+
+fn main() {
+    let num = Rc::new(Mutex::new(0));
+    let mut handlers = vec![];
+    for i in 1..10 {
+        let num_copy = num.clone();
+        let handle = thread::spawn(move || {
+            *num_copy.lock().unwrap() += 1;
+        });
+        handlers.push(handle);
+    }
+    for handler in handlers {
+        handler.join();
+    }
+    println!(&quot;{}&quot;, num.lock().unwrap());
+}
+</code></pre></pre>
+<p>这段代目不能通过编译, 原因是<code>num_copy</code>在<code>move</code>到线程中时，可能会多线程同时修改引用计数。所以在Rust中，<code>Rc</code>没有<code>Send</code> trait,因为它不允许在线程间转移所有权。</p>
+<pre><code>error[E0277]: `Rc&lt;Mutex&lt;i32&gt;&gt;` cannot be sent between threads safely
+   --&gt; src/main.rs:10:22
+    |
+10  |           let handle = thread::spawn(move || {
+    |  ______________________^^^^^^^^^^^^^_-
+    | |                      |
+    | |                      `Rc&lt;Mutex&lt;i32&gt;&gt;` cannot be sent between threads safely
+11  | |             *num_copy.lock().unwrap() += 1;
+12  | |         });
+    | |_________- within this `[closure@src/main.rs:10:36: 12:10]`
+    | 
+   ::: /home/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/thread/mod.rs:624:8
+    |
+624 |       F: Send + 'static,
+    |          ---- required by this bound in `spawn`
+    |
+    = help: within `[closure@src/main.rs:10:36: 12:10]`, the trait `Send` is not implemented for `Rc&lt;Mutex&lt;i32&gt;&gt;`
+    = note: required because it appears within the type `[closure@src/main.rs:10:36: 12:10]`
+</code></pre>
+<h3 id="sync"><a class="header" href="#sync"><code>Sync</code></a></h3>
+<pre><pre class="playground"><code class="language-rust">use std::cell::Cell;
+use std::thread;
+
+fn main() {
+    let num = Cell::new(0);
+    let mut handlers = vec![];
+    for i in 1..10 {
+        let handle = thread::spawn(|| {
+            num.set(i);
+        });
+        handlers.push(handle);
+    }
+    for h in handlers {
+        h.join();
+    }
+    println!(&quot;{}&quot;, num.get());
+}
+</code></pre></pre>
+<p>这段代目不能通过编译, 原因是<code>Cell&lt;T&gt;</code> 我们在多个线程中共享<code>&amp;Cell&lt;T&gt;</code>时, 多可线程可以并发地修改其内部的值，这并不安全。所以<code>Cell&lt;T&gt;</code> 实现了<code>!Sync</code> trait。</p>
+<pre><code>error[E0277]: `Cell&lt;i32&gt;` cannot be shared between threads safely
+   --&gt; src/main.rs:8:22
+    |
+8   |         let handle = thread::spawn(|| {
+    |                      ^^^^^^^^^^^^^ `Cell&lt;i32&gt;` cannot be shared between threads safely
+    | 
+   ::: /home/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/thread/mod.rs:624:8
+    |
+624 |     F: Send + 'static,
+    |        ---- required by this bound in `spawn`
+    |
+    = help: the trait `Sync` is not implemented for `Cell&lt;i32&gt;`
+    = note: required because of the requirements on the impl of `Send` for `&amp;Cell&lt;i32&gt;`
+    = note: required because it appears within the type `[closure@src/main.rs:8:36: 10:10]`
+
+</code></pre>
 
                     </main>
 
