@@ -55,9 +55,9 @@ During the runtime, you can see the symbol and source file and using which GPU.
 
 ```bash
 NVCOMPILER_ACC_NOTIFY=1 /root/yyw/cmake-openacc/cmake-build-debug-nvhpc/acc_test
-
-Let's compared with the Kernel version. Both option `-O0 -g`
 ```
+Let's compared with the Kernel version. Both option `-O0 -g`
+```c++
 #include <iostream>
 #include <cassert>
 #include <cuda_runtime.h>
@@ -83,7 +83,7 @@ int main(void) {
         e[i] = a[i] + b[i];
     }
 
-// Allocate space for device copies of a, b, c
+    // Allocate space for device copies of a, b, c
     cudaMalloc((void **) &d_a, size * n);
     cudaMalloc((void **) &d_b, size * n);
     cudaMalloc((void **) &d_c, size * n);
