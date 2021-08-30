@@ -33,7 +33,7 @@ void f(int m,double vla1[m],array<double>a1) {
 
 ## 编译选项
 ### LTO
-为了解决不同库或者跨语言之间调用的开销，这块使用的基本是 LLVM 的 libLTO 和 tblgen。这个是自动开启的，原理是把库都弄成 LLVM bitcode 统一链接，具体可以参考源码。
+为了解决不同库或者跨语言之间调用的开销，这块使用的基本是 LLVM 的 libLTO 和 tblgen。这个是自动开启的，原理是把库都弄成 LLVM bitcode 统一链接，其实并行版的 LTO 也不是很难实现，曾是前队长用 rust 写的并行计算的 project，具体可以参考源码。
 
 ![](https://www.keil.com/support/man/docs/armclang_intro/armclang_intro_mik1478713972921.png)
 
@@ -590,7 +590,6 @@ saxpy:                                  # @saxpy
         .section        ".note.GNU-stack","",@progbits
         .addrsig
 ```
-
 
 ## Ref
 1. https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2018/lecture-slides/MIT6_172F18_lec9.pdf
