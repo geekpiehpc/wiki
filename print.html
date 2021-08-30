@@ -1616,6 +1616,8 @@ void f(int m,double vla1[m],array&lt;double&gt;a1) {
 </code></pre>
 <h2 id="有关玄学"><a class="header" href="#有关玄学">有关玄学</a></h2>
 <p>所有编译器可能出现的segfault，很多时候换个 intel 小版本可以通过。</p>
+<h2 id="有关编译自闭的时候的想法"><a class="header" href="#有关编译自闭的时候的想法">有关编译自闭的时候的想法</a></h2>
+<h3 id="需要广泛运用好"><a class="header" href="#需要广泛运用好">需要广泛运用好</a></h3>
 <h2 id="编译选项"><a class="header" href="#编译选项">编译选项</a></h2>
 <h3 id="lto"><a class="header" href="#lto">LTO</a></h3>
 <p>为了解决不同库或者跨语言之间调用的开销，这块使用的基本是 LLVM 的 libLTO 和 tblgen。这个是自动开启的，原理是把库都弄成 LLVM bitcode 统一链接，其实并行版的 LTO 也不是很难实现，曾是前队长用 rust 写的并行计算的 project，具体可以参考源码。</p>
@@ -2164,6 +2166,8 @@ saxpy:                                  # @saxpy
 <h2 id="ref-1"><a class="header" href="#ref-1">Ref</a></h2>
 <ol>
 <li>https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2018/lecture-slides/MIT6_172F18_lec9.pdf</li>
+<li>程序员的自我修养</li>
+<li>不同编译器的编译行为比较</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chisel"><a class="header" href="#chisel">Chisel</a></h1>
 <p>有关我们是否有必要学习一门逻辑电路描述语言去实现一个 CPU 或者一个路由器？ 我认为是十分必要的，这让大家可以从底往上看你的 Data 和 Instruction 的变动。</p>
