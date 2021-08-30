@@ -31,6 +31,9 @@ void f(int m,double vla1[m],array<double>a1) {
 ## 有关玄学
 所有编译器可能出现的segfault，很多时候换个 intel 小版本可以通过。
 
+## 有关编译自闭的时候的想法
+### 需要广泛运用好
+
 ## 编译选项
 ### LTO
 为了解决不同库或者跨语言之间调用的开销，这块使用的基本是 LLVM 的 libLTO 和 tblgen。这个是自动开启的，原理是把库都弄成 LLVM bitcode 统一链接，其实并行版的 LTO 也不是很难实现，曾是前队长用 rust 写的并行计算的 project，具体可以参考源码。
@@ -593,3 +596,5 @@ saxpy:                                  # @saxpy
 
 ## Ref
 1. https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2018/lecture-slides/MIT6_172F18_lec9.pdf
+2. 程序员的自我修养
+3. 不同编译器的编译行为比较
