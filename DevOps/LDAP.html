@@ -148,7 +148,21 @@
 
                 <div id="content" class="content">
                     <main>
-                        
+                        <h1 id="linux-的秘密都在-pam-里"><a class="header" href="#linux-的秘密都在-pam-里">linux 的秘密都在 PAM 里</a></h1>
+<p>大家熟练使用 <code>journal -x</code> debug 各种系统用户认证的各种状态机的时候，抑或是 sshd 时，可以看到 PAM、xsecurity、sssd 这种字眼，这是用户认证协议。SSSD 就是一个 daemon，把系统的 NSS PAM 的机制和 LDAP 连接起来。（之前 20.04 gnome 被打也是这个协议被绕过的结果。</p>
+<p>熟悉了 PAM 之后，你也就知道为毛 <code>~/.ssh/id_*.pub</code> 需要 <code>r..</code>，这写死在 nss 用户目录协议里了。</p>
+<p>继续阅读：https://jia.je/software/2021/02/15/sssd-ldap/</p>
+<h2 id="ref"><a class="header" href="#ref">ref</a></h2>
+<ul>
+<li><a href="https://tools.ietf.org/html/rfc2307">RFC2307 An Approach for Using LDAP as a Network Information Service</a></li>
+<li><a href="https://tools.ietf.org/html/rfc3062">RFC3062 LDAP Password Modify Extended Operation</a></li>
+<li><a href="https://tools.ietf.org/html/rfc4511">RFC4511 Lightweight Directory Access Protocol (LDAP): The Protocol</a></li>
+<li><a href="https://tools.ietf.org/html/rfc4512">RFC4512 Lightweight Directory Access Protocol (LDAP): Directory Information Models</a></li>
+<li><a href="https://tools.ietf.org/html/rfc4513">RFC4513 Lightweight Directory Access Protocol (LDAP): Authentication Methods and Security Mechanisms</a></li>
+<li><a href="https://tools.ietf.org/html/rfc4517">RFC4517 Lightweight Directory Access Protocol (LDAP): Syntaxes and Matching Rules</a></li>
+<li><a href="https://tools.ietf.org/html/rfc4519">RFC4519 Lightweight Directory Access Protocol (LDAP): Schema for User Applications</a></li>
+</ul>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

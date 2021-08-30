@@ -179,7 +179,7 @@ void f(int m,double vla1[m],array&lt;double&gt;a1) {
 <p>所有编译器可能出现的segfault，很多时候换个 intel 小版本可以通过。</p>
 <h2 id="编译选项"><a class="header" href="#编译选项">编译选项</a></h2>
 <h3 id="lto"><a class="header" href="#lto">LTO</a></h3>
-<p>为了解决不同库或者跨语言之间调用的开销，这块使用的基本是 LLVM 的 libLTO 和 tblgen。这个是自动开启的，原理是把库都弄成 LLVM bitcode 统一链接，具体可以参考源码。</p>
+<p>为了解决不同库或者跨语言之间调用的开销，这块使用的基本是 LLVM 的 libLTO 和 tblgen。这个是自动开启的，原理是把库都弄成 LLVM bitcode 统一链接，其实并行版的 LTO 也不是很难实现，曾是前队长用 rust 写的并行计算的 project，具体可以参考源码。</p>
 <p><img src="https://www.keil.com/support/man/docs/armclang_intro/armclang_intro_mik1478713972921.png" alt="" /></p>
 <h3 id="pgo"><a class="header" href="#pgo">PGO</a></h3>
 <p>通过分析程序运行时的实际行为，将结果反馈给编译器，使得编译器可以重新安排代码以减少指令缓存问题和分支预测误判，从而获得性能的提升。性能分析引导优化通过实际执行代码统计出运行频率最高的部分，编译器通过这些信息可以更加针对地优化代码。</p>

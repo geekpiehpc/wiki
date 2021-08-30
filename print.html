@@ -1565,7 +1565,23 @@ HPL.out      output file name (if any)
 <p>这里放置有关HPC环境维护有关的资料。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="grafana"><a class="header" href="#grafana">Grafana</a></h1>
 <p>数据源：<a href="https://zhuanlan.zhihu.com/p/53376293">telegraf</a></p>
-<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="salt-stack"><a class="header" href="#salt-stack">Salt Stack</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linux-的秘密都在-pam-里"><a class="header" href="#linux-的秘密都在-pam-里">linux 的秘密都在 PAM 里</a></h1>
+<p>大家熟练使用 <code>journal -x</code> debug 各种系统用户认证的各种状态机的时候，抑或是 sshd 时，可以看到 PAM、xsecurity、sssd 这种字眼，这是用户认证协议。SSSD 就是一个 daemon，把系统的 NSS PAM 的机制和 LDAP 连接起来。（之前 20.04 gnome 被打也是这个协议被绕过的结果。</p>
+<p>熟悉了 PAM 之后，你也就知道为毛 <code>~/.ssh/id_*.pub</code> 需要 <code>r..</code>，这写死在 nss 用户目录协议里了。</p>
+<p>继续阅读：https://jia.je/software/2021/02/15/sssd-ldap/</p>
+<h2 id="ref"><a class="header" href="#ref">ref</a></h2>
+<ul>
+<li><a href="https://tools.ietf.org/html/rfc2307">RFC2307 An Approach for Using LDAP as a Network Information Service</a></li>
+<li><a href="https://tools.ietf.org/html/rfc3062">RFC3062 LDAP Password Modify Extended Operation</a></li>
+<li><a href="https://tools.ietf.org/html/rfc4511">RFC4511 Lightweight Directory Access Protocol (LDAP): The Protocol</a></li>
+<li><a href="https://tools.ietf.org/html/rfc4512">RFC4512 Lightweight Directory Access Protocol (LDAP): Directory Information Models</a></li>
+<li><a href="https://tools.ietf.org/html/rfc4513">RFC4513 Lightweight Directory Access Protocol (LDAP): Authentication Methods and Security Mechanisms</a></li>
+<li><a href="https://tools.ietf.org/html/rfc4517">RFC4517 Lightweight Directory Access Protocol (LDAP): Syntaxes and Matching Rules</a></li>
+<li><a href="https://tools.ietf.org/html/rfc4519">RFC4519 Lightweight Directory Access Protocol (LDAP): Schema for User Applications</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="salt-stack"><a class="header" href="#salt-stack">Salt Stack</a></h1>
+<p>salt 主要干的事就是快速配置文件。可也不止那么多，加上 jinja 和 LDAP 可以做一个私钥管理系统。</p>
+<p>由于前人维护者跑路了，只能有新来的同学接手了。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="pbs-1"><a class="header" href="#pbs-1">PBS</a></h1>
 <h1 id="slurm"><a class="header" href="#slurm">Slurm</a></h1>
 <p>本超算使用的是 Slurm，详细的配置可见 <a href="https://www.victoryang00.cn/wordpress/2021/01/31/pei-he-mou-xi-jing-shi-yong-de-slurm-cai-keng-ri-j/">配合某戏精使用的 slurm 踩坑日记</a>。</p>
@@ -1602,7 +1618,7 @@ void f(int m,double vla1[m],array&lt;double&gt;a1) {
 <p>所有编译器可能出现的segfault，很多时候换个 intel 小版本可以通过。</p>
 <h2 id="编译选项"><a class="header" href="#编译选项">编译选项</a></h2>
 <h3 id="lto"><a class="header" href="#lto">LTO</a></h3>
-<p>为了解决不同库或者跨语言之间调用的开销，这块使用的基本是 LLVM 的 libLTO 和 tblgen。这个是自动开启的，原理是把库都弄成 LLVM bitcode 统一链接，具体可以参考源码。</p>
+<p>为了解决不同库或者跨语言之间调用的开销，这块使用的基本是 LLVM 的 libLTO 和 tblgen。这个是自动开启的，原理是把库都弄成 LLVM bitcode 统一链接，其实并行版的 LTO 也不是很难实现，曾是前队长用 rust 写的并行计算的 project，具体可以参考源码。</p>
 <p><img src="https://www.keil.com/support/man/docs/armclang_intro/armclang_intro_mik1478713972921.png" alt="" /></p>
 <h3 id="pgo"><a class="header" href="#pgo">PGO</a></h3>
 <p>通过分析程序运行时的实际行为，将结果反馈给编译器，使得编译器可以重新安排代码以减少指令缓存问题和分支预测误判，从而获得性能的提升。性能分析引导优化通过实际执行代码统计出运行频率最高的部分，编译器通过这些信息可以更加针对地优化代码。</p>
@@ -2145,7 +2161,7 @@ saxpy:                                  # @saxpy
         .section        &quot;.note.GNU-stack&quot;,&quot;&quot;,@progbits
         .addrsig
 </code></pre>
-<h2 id="ref"><a class="header" href="#ref">Ref</a></h2>
+<h2 id="ref-1"><a class="header" href="#ref-1">Ref</a></h2>
 <ol>
 <li>https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2018/lecture-slides/MIT6_172F18_lec9.pdf</li>
 </ol>
