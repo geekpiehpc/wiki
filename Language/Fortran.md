@@ -114,3 +114,5 @@ int main(void) {
 ![](./openacc.png)
 
 pure cuda kernel is 1.5x faster.
+
+## The compiler option between different compiler

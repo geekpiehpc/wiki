@@ -36,6 +36,8 @@
   * [Go](Language/Go.md)
   * [Rust](Language/Rust.md)
 - [Libs](Libs/README.md)
+  * [Svml](Libs/Svml.md)
+  * [NumaCTL](Libs/NumaCTL.md)
   * [Boost](Libs/Boost.md)
 - [Profiling](Profiling/README.md)
   * [Arm Forge](Profiling/ArmForge.md)

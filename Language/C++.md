@@ -594,6 +594,453 @@ saxpy:                                  # @saxpy
         .addrsig
 ```
 
+Another test on NVHPC, actually you can hack the backend CPU part using AOCC with `nvc -march=zen2 -Mvect=simd:256 -Mcache_align -fma -S a.c`.
+```c
+; ModuleID = 'a.c'
+target datalayout = "e-p:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+define internal void @pgCplus_compiled.() noinline {
+L.entry:
+	ret void
+}
+
+
+define void @saxpy(i32 signext %n.arg, float %a.arg, float* %x.arg, float* %y.arg) #0 !dbg !17 {
+L.entry:
+	%n.addr = alloca i32, align 4
+	%a.addr = alloca float, align 4
+	%x.addr = alloca float*, align 8
+	%y.addr = alloca float*, align 8
+	%.ndi0002.addr = alloca i32, align 4
+	%.ndi0003.addr = alloca i32, align 4
+	%.vv0000.addr = alloca i8*, align 8
+	%.vv0001.addr = alloca i8*, align 8
+	%.vv0002.addr = alloca i8*, align 8
+	%.r1.0148.addr = alloca <8 x float>, align 4
+	%.lcr010001.addr = alloca i32, align 4
+
+	store i32 %n.arg, i32* %n.addr, align 4, !tbaa !29
+	store float %a.arg, float* %a.addr, align 4, !tbaa !29
+	store float* %x.arg, float** %x.addr, align 8, !tbaa !30
+	store float* %y.arg, float** %y.addr, align 8, !tbaa !30
+	%0 = load i32, i32* %n.addr, align 4, !tbaa !32, !dbg !23
+	%1 = icmp sle i32  %0, 0, !dbg !23
+	br i1  %1, label %L.B0005, label %L.B0014, !dbg !23
+L.B0014:
+	%2 = load float*, float** %y.addr, align 8, !tbaa !30, !dbg !23
+	%3 = bitcast float*  %2 to i8*, !dbg !23
+	%4 = load float*, float** %x.addr, align 8, !tbaa !30, !dbg !23
+	%5 = bitcast float*  %4 to i8*, !dbg !23
+	%6 = ptrtoint i8*  %5 to i64, !dbg !23
+	%7 = sub i64 0,  %6, !dbg !23
+	%8 = getelementptr i8, i8*  %3, i64  %7, !dbg !23
+	%9 = icmp ule i8*  %8,  null, !dbg !23
+	br i1  %9, label %L.B0008, label %L.B0015, !dbg !23
+L.B0015:
+	%10 = bitcast float*  %2 to i8*, !dbg !23
+	%11 = bitcast float*  %4 to i8*, !dbg !23
+	%12 = ptrtoint i8*  %11 to i64, !dbg !23
+	%13 = sub i64 0,  %12, !dbg !23
+	%14 = getelementptr i8, i8*  %10, i64  %13, !dbg !23
+	%15 = inttoptr i64 32 to i8*, !dbg !23
+	%16 = icmp ult i8*  %14,  %15, !dbg !23
+	br i1  %16, label %L.B0007, label %L.B0008, !dbg !23
+L.B0008:
+	store i32 0, i32* %.ndi0002.addr, align 4, !tbaa !32, !dbg !23
+	%17 = load i32, i32* %n.addr, align 4, !tbaa !32, !dbg !23
+	store i32  %17, i32* %.ndi0003.addr, align 4, !tbaa !32, !dbg !23
+	%18 = icmp slt i32  %17, 8, !dbg !23
+	br i1  %18, label %L.B0011, label %L.B0016, !dbg !23
+L.B0016:
+	store i8* null, i8** %.vv0000.addr, align 8, !tbaa !30, !dbg !23
+	%19 = load float*, float** %y.addr, align 8, !tbaa !30, !dbg !23
+	%20 = bitcast float*  %19 to i8*, !dbg !23
+	store i8*  %20, i8** %.vv0001.addr, align 8, !tbaa !30, !dbg !23
+	%21 = load float*, float** %x.addr, align 8, !tbaa !30, !dbg !23
+	%22 = bitcast float*  %21 to i8*, !dbg !23
+	store i8*  %22, i8** %.vv0002.addr, align 8, !tbaa !30, !dbg !23
+	%23 = sub i32  %17, 7, !dbg !23
+	store i32  %23, i32* %.ndi0003.addr, align 4, !tbaa !32, !dbg !23
+	%24 = load float, float* %a.addr, align 4, !tbaa !34, !dbg !23
+	%25 = insertelement <8 x float> undef, float  %24, i32 0, !dbg !23
+	%26 = shufflevector <8 x float>  %25, <8 x float> undef, <8 x i32> <i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0>, !dbg !23
+	store <8 x float>  %26, <8 x float>* %.r1.0148.addr, align 1, !tbaa !29, !dbg !23
+	br label %L.B0012
+L.B0012:
+	%27 = load <8 x float>, <8 x float>* %.r1.0148.addr, align 4, !tbaa !29, !dbg !23
+	%28 = load i8*, i8** %.vv0002.addr, align 8, !tbaa !30, !dbg !23
+	%29 = load i8*, i8** %.vv0000.addr, align 8, !tbaa !30, !dbg !23
+	%30 = ptrtoint i8*  %29 to i64, !dbg !23
+	%31 = getelementptr i8, i8*  %28, i64  %30, !dbg !23
+	%32 = bitcast i8*  %31 to <8 x float>*, !dbg !23
+	%33 = load <8 x float>, <8 x float>*  %32, align 4, !tbaa !29, !dbg !23
+	%34 = load i8*, i8** %.vv0001.addr, align 8, !tbaa !30, !dbg !23
+	%35 = getelementptr i8, i8*  %34, i64  %30, !dbg !23
+	%36 = bitcast i8*  %35 to <8 x float>*, !dbg !23
+	%37 = load <8 x float>, <8 x float>*  %36, align 4, !tbaa !29, !dbg !23
+	%38 = call <8 x float> @llvm.fma.v8f32 (<8 x float>  %27, <8 x float>  %33, <8 x float>  %37), !dbg !23
+	store <8 x float>  %38, <8 x float>*  %36, align 1, !tbaa !29, !dbg !23
+	%39 = getelementptr i8, i8*  %29, i64 32, !dbg !23
+	store i8*  %39, i8** %.vv0000.addr, align 8, !tbaa !30, !dbg !23
+	%40 = load i32, i32* %.ndi0003.addr, align 4, !tbaa !32, !dbg !23
+	%41 = sub i32  %40, 8, !dbg !23
+	store i32  %41, i32* %.ndi0003.addr, align 4, !tbaa !32, !dbg !23
+	%42 = icmp sgt i32  %41, 0, !dbg !23
+	br i1  %42, label %L.B0012, label %L.B0017, !llvm.loop !24, !dbg !23
+L.B0017:
+	%43 = load i32, i32* %.ndi0003.addr, align 4, !tbaa !32, !dbg !23
+	%44 = add i32  %43, 7, !dbg !23
+	store i32  %44, i32* %.ndi0003.addr, align 4, !tbaa !32, !dbg !23
+	%45 = icmp eq i32  %44, 0, !dbg !23
+	br i1  %45, label %L.B0013, label %L.B0018, !dbg !23
+L.B0018:
+	%46 = load i32, i32* %n.addr, align 4, !tbaa !32, !dbg !23
+	%47 = and i32  %46, -8, !dbg !23
+	store i32  %47, i32* %.ndi0002.addr, align 4, !tbaa !32, !dbg !23
+	br label %L.B0011
+L.B0011:
+	%48 = load i32, i32* %.ndi0002.addr, align 4, !tbaa !32, !dbg !23
+	%49 = sext i32  %48 to i64, !dbg !23
+	%50 = load float*, float** %y.addr, align 8, !tbaa !30, !dbg !23
+	%51 = getelementptr float, float*  %50, i64  %49, !dbg !23
+	%52 = load float, float*  %51, align 4, !tbaa !29, !dbg !23
+	%53 = load float, float* %a.addr, align 4, !tbaa !34, !dbg !23
+	%54 = load float*, float** %x.addr, align 8, !tbaa !30, !dbg !23
+	%55 = getelementptr float, float*  %54, i64  %49, !dbg !23
+	%56 = load float, float*  %55, align 4, !tbaa !29, !dbg !23
+	%57 = call float @llvm.fma.f32 (float  %53, float  %56, float  %52), !dbg !23
+	store float  %57, float*  %51, align 4, !tbaa !29, !dbg !23
+	%58 = add i32  %48, 1, !dbg !23
+	store i32  %58, i32* %.ndi0002.addr, align 4, !tbaa !32, !dbg !23
+	%59 = load i32, i32* %.ndi0003.addr, align 4, !tbaa !32, !dbg !23
+	%60 = sub i32  %59, 1, !dbg !23
+	store i32  %60, i32* %.ndi0003.addr, align 4, !tbaa !32, !dbg !23
+	%61 = icmp sgt i32  %60, 0, !dbg !23
+	br i1  %61, label %L.B0011, label %L.B0013, !llvm.loop !24, !dbg !23
+L.B0013:
+	br label %L.B0009, !dbg !23
+L.B0007:
+	store i32 0, i32* %.ndi0002.addr, align 4, !tbaa !32, !dbg !23
+	%62 = load i32, i32* %n.addr, align 4, !tbaa !32, !dbg !23
+	store i32  %62, i32* %.lcr010001.addr, align 4, !tbaa !32, !dbg !23
+	br label %L.B0010
+L.B0010:
+	%63 = load i32, i32* %.ndi0002.addr, align 4, !tbaa !32, !dbg !23
+	%64 = sext i32  %63 to i64, !dbg !23
+	%65 = load float*, float** %y.addr, align 8, !tbaa !30, !dbg !23
+	%66 = getelementptr float, float*  %65, i64  %64, !dbg !23
+	%67 = load float, float*  %66, align 4, !tbaa !29, !dbg !23
+	%68 = load float, float* %a.addr, align 4, !tbaa !34, !dbg !23
+	%69 = load float*, float** %x.addr, align 8, !tbaa !30, !dbg !23
+	%70 = getelementptr float, float*  %69, i64  %64, !dbg !23
+	%71 = load float, float*  %70, align 4, !tbaa !29, !dbg !23
+	%72 = call float @llvm.fma.f32 (float  %68, float  %71, float  %67), !dbg !23
+	store float  %72, float*  %66, align 4, !tbaa !29, !dbg !23
+	%73 = add i32  %63, 1, !dbg !23
+	store i32  %73, i32* %.ndi0002.addr, align 4, !tbaa !32, !dbg !23
+	%74 = load i32, i32* %.lcr010001.addr, align 4, !tbaa !32, !dbg !23
+	%75 = icmp slt i32  %73,  %74, !dbg !23
+	br i1  %75, label %L.B0010, label %L.B0009, !dbg !23
+L.B0009:
+	br label %L.B0005
+L.B0005:
+	ret void, !dbg !26
+}
+
+declare float @llvm.fma.f32(float, float, float)
+declare <8 x float> @llvm.fma.v8f32(<8 x float>, <8 x float>, <8 x float>)
+declare i32 @__gxx_personality_v0(...)
+
+; Named metadata
+!llvm.module.flags = !{ !1, !2 }
+!llvm.dbg.cu = !{ !10 }
+
+; Metadata
+!1 = !{ i32 2, !"Dwarf Version", i32 4 }
+!2 = !{ i32 2, !"Debug Info Version", i32 3 }
+!3 = !DIFile(filename: "a.c", directory: "/home/victoryang")
+; !4 = !DIFile(tag: DW_TAG_file_type, pair: !3)
+!4 = !{ i32 41, !3 }
+!5 = !{  }
+!6 = !{  }
+!7 = !{ !17 }
+!8 = !{  }
+!9 = !{  }
+!10 = distinct !DICompileUnit(file: !3, language: DW_LANG_C_plus_plus, producer: " NVC++ 21.5-0", enums: !5, retainedTypes: !6, globals: !8, emissionKind: FullDebug, imports: !9)
+!11 = !DIBasicType(tag: DW_TAG_base_type, name: "int", size: 32, align: 32, encoding: DW_ATE_signed)
+!12 = !DIBasicType(tag: DW_TAG_base_type, name: "float", size: 32, align: 32, encoding: DW_ATE_float)
+!13 = !DIDerivedType(tag: DW_TAG_pointer_type, size: 64, align: 64, baseType: !12)
+!14 = !{ null, !11, !12, !13, !13 }
+!15 = !DISubroutineType(types: !14)
+!16 = !{  }
+!17 = distinct !DISubprogram(file: !3, scope: !10, name: "saxpy", line: 2, type: !15, spFlags: 8, unit: !10, scopeLine: 2)
+!18 = !DILocation(line: 2, column: 1, scope: !17)
+!19 = !DILexicalBlock(file: !3, scope: !17, line: 2, column: 1)
+!20 = !DILocation(line: 2, column: 1, scope: !19)
+!21 = !DILexicalBlock(file: !3, scope: !19, line: 2, column: 1)
+!22 = !DILocation(line: 2, column: 1, scope: !21)
+!23 = !DILocation(line: 3, column: 1, scope: !21)
+!24 = !{ !24, !25 }
+!25 = !{ !"llvm.loop.vectorize.enable", i1 0 }
+!26 = !DILocation(line: 5, column: 1, scope: !19)
+!27 = !{ !"PGI C[++] TBAA" }
+!28 = !{ !"omnipotent char", !27, i64 0 }
+!29 = !{ !28, !28, i64 0 }
+!30 = !{ !"<T>*", !28, i64 0 }
+!31 = !{ !"int", !28, i64 0 }
+!32 = !{ !31, !31, i64 0 }
+!33 = !{ !"float", !28, i64 0 }
+!34 = !{ !33, !33, i64 0 }
+```
+and  
+```c++
+	.text
+	.file	"a.ll"
+	.globl	saxpy                           # -- Begin function saxpy
+	.p2align	4, 0x90
+	.type	saxpy,@function
+saxpy:                                  # @saxpy
+.Lfunc_begin0:
+	.file	1 "/home/victoryang/a.c"
+	.loc	1 2 0                           # a.c:2:0
+	.cfi_sections .debug_frame
+	.cfi_startproc
+# %bb.0:                                # %L.entry
+	.loc	1 3 1 prologue_end              # a.c:3:1
+	testl	%edi, %edi
+	jle	.LBB0_19
+# %bb.1:                                # %L.B0014
+	movq	%rdx, %rax
+	subq	%rsi, %rax
+	je	.LBB0_11
+# %bb.2:                                # %L.B0014
+	cmpq	$31, %rax
+	ja	.LBB0_11
+# %bb.3:                                # %L.B0010.preheader
+	movl	%edi, %eax
+	cmpl	$31, %edi
+	jbe	.LBB0_4
+# %bb.5:                                # %vector.memcheck
+	leaq	(%rsi,%rax,4), %rcx
+	cmpq	%rdx, %rcx
+	jbe	.LBB0_7
+# %bb.6:                                # %vector.memcheck
+	.loc	1 0 1 is_stmt 0                 # a.c:0:1
+	leaq	(%rdx,%rax,4), %rcx
+	.loc	1 3 1                           # a.c:3:1
+	cmpq	%rsi, %rcx
+	jbe	.LBB0_7
+.LBB0_4:
+	.loc	1 0 1                           # a.c:0:1
+	xorl	%ecx, %ecx
+	.p2align	4, 0x90
+.LBB0_10:                               # %L.B0010
+                                        # =>This Inner Loop Header: Depth=1
+	.loc	1 3 1                           # a.c:3:1
+	vmovss	(%rsi,%rcx,4), %xmm1            # xmm1 = mem[0],zero,zero,zero
+	vfmadd213ss	(%rdx,%rcx,4), %xmm0, %xmm1 # xmm1 = (xmm0 * xmm1) + mem
+	vmovss	%xmm1, (%rdx,%rcx,4)
+	incq	%rcx
+	cmpq	%rcx, %rax
+	jne	.LBB0_10
+	jmp	.LBB0_19
+.LBB0_11:                               # %L.B0008
+	.loc	1 0 1                           # a.c:0:1
+	xorl	%ecx, %ecx
+	.loc	1 3 1                           # a.c:3:1
+	cmpl	$8, %edi
+	jge	.LBB0_13
+# %bb.12:
+	.loc	1 0 1                           # a.c:0:1
+	movl	%edi, %eax
+	jmp	.LBB0_17
+.LBB0_13:                               # %L.B0016
+	.loc	1 3 1                           # a.c:3:1
+	vbroadcastss	%xmm0, %ymm1
+	xorl	%ecx, %ecx
+	movl	%edi, %eax
+	.p2align	4, 0x90
+.LBB0_14:                               # %L.B0012
+                                        # =>This Inner Loop Header: Depth=1
+	vmovups	(%rsi,%rcx), %ymm2
+	movl	%eax, %r8d
+	vfmadd213ps	(%rdx,%rcx), %ymm1, %ymm2 # ymm2 = (ymm1 * ymm2) + mem
+	leal	-8(%r8), %eax
+	addl	$-7, %r8d
+	vmovups	%ymm2, (%rdx,%rcx)
+	addq	$32, %rcx
+	cmpl	$8, %r8d
+	jg	.LBB0_14
+# %bb.15:                               # %L.B0017
+	testl	%eax, %eax
+	je	.LBB0_19
+# %bb.16:                               # %L.B0018
+	andl	$-8, %edi
+	movl	%edi, %ecx
+.LBB0_17:                               # %L.B0011.preheader
+	incl	%eax
+	.p2align	4, 0x90
+.LBB0_18:                               # %L.B0011
+                                        # =>This Inner Loop Header: Depth=1
+	movslq	%ecx, %rcx
+	decl	%eax
+	vmovss	(%rsi,%rcx,4), %xmm1            # xmm1 = mem[0],zero,zero,zero
+	vfmadd213ss	(%rdx,%rcx,4), %xmm0, %xmm1 # xmm1 = (xmm0 * xmm1) + mem
+	vmovss	%xmm1, (%rdx,%rcx,4)
+	incl	%ecx
+	cmpl	$1, %eax
+	jg	.LBB0_18
+.Ltmp0:
+.LBB0_19:                               # %L.B0005
+	.loc	1 5 1 is_stmt 1                 # a.c:5:1
+	vzeroupper
+	retq
+.LBB0_7:                                # %vector.ph
+.Ltmp1:
+	.loc	1 3 1                           # a.c:3:1
+	vbroadcastss	%xmm0, %ymm1
+	movl	%eax, %ecx
+	xorl	%edi, %edi
+	andl	$-32, %ecx
+	.p2align	4, 0x90
+.LBB0_8:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vmovups	(%rsi,%rdi,4), %ymm2
+	vmovups	32(%rsi,%rdi,4), %ymm3
+	vmovups	64(%rsi,%rdi,4), %ymm4
+	vmovups	96(%rsi,%rdi,4), %ymm5
+	vfmadd213ps	(%rdx,%rdi,4), %ymm1, %ymm2 # ymm2 = (ymm1 * ymm2) + mem
+	vfmadd213ps	32(%rdx,%rdi,4), %ymm1, %ymm3 # ymm3 = (ymm1 * ymm3) + mem
+	vfmadd213ps	64(%rdx,%rdi,4), %ymm1, %ymm4 # ymm4 = (ymm1 * ymm4) + mem
+	vfmadd213ps	96(%rdx,%rdi,4), %ymm1, %ymm5 # ymm5 = (ymm1 * ymm5) + mem
+	vmovups	%ymm2, (%rdx,%rdi,4)
+	vmovups	%ymm3, 32(%rdx,%rdi,4)
+	vmovups	%ymm4, 64(%rdx,%rdi,4)
+	vmovups	%ymm5, 96(%rdx,%rdi,4)
+	addq	$32, %rdi
+	cmpq	%rdi, %rcx
+	jne	.LBB0_8
+# %bb.9:                                # %middle.block
+	cmpq	%rax, %rcx
+	jne	.LBB0_10
+	jmp	.LBB0_19
+.Ltmp2:
+.Lfunc_end0:
+	.size	saxpy, .Lfunc_end0-saxpy
+	.cfi_endproc
+                                        # -- End function
+	.section	.debug_abbrev,"",@progbits
+	.byte	1                               # Abbreviation Code
+	.byte	17                              # DW_TAG_compile_unit
+	.byte	1                               # DW_CHILDREN_yes
+	.byte	37                              # DW_AT_producer
+	.byte	14                              # DW_FORM_strp
+	.byte	19                              # DW_AT_language
+	.byte	5                               # DW_FORM_data2
+	.byte	3                               # DW_AT_name
+	.byte	14                              # DW_FORM_strp
+	.byte	16                              # DW_AT_stmt_list
+	.byte	23                              # DW_FORM_sec_offset
+	.byte	27                              # DW_AT_comp_dir
+	.byte	14                              # DW_FORM_strp
+	.ascii	"\264B"                         # DW_AT_GNU_pubnames
+	.byte	25                              # DW_FORM_flag_present
+	.byte	17                              # DW_AT_low_pc
+	.byte	1                               # DW_FORM_addr
+	.byte	18                              # DW_AT_high_pc
+	.byte	6                               # DW_FORM_data4
+	.byte	0                               # EOM(1)
+	.byte	0                               # EOM(2)
+	.byte	2                               # Abbreviation Code
+	.byte	46                              # DW_TAG_subprogram
+	.byte	0                               # DW_CHILDREN_no
+	.byte	17                              # DW_AT_low_pc
+	.byte	1                               # DW_FORM_addr
+	.byte	18                              # DW_AT_high_pc
+	.byte	6                               # DW_FORM_data4
+	.byte	64                              # DW_AT_frame_base
+	.byte	24                              # DW_FORM_exprloc
+	.byte	3                               # DW_AT_name
+	.byte	14                              # DW_FORM_strp
+	.byte	58                              # DW_AT_decl_file
+	.byte	11                              # DW_FORM_data1
+	.byte	59                              # DW_AT_decl_line
+	.byte	11                              # DW_FORM_data1
+	.byte	63                              # DW_AT_external
+	.byte	25                              # DW_FORM_flag_present
+	.byte	0                               # EOM(1)
+	.byte	0                               # EOM(2)
+	.byte	0                               # EOM(3)
+	.section	.debug_info,"",@progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 # Length of Unit
+.Ldebug_info_start0:
+	.short	4                               # DWARF version number
+	.long	.debug_abbrev                   # Offset Into Abbrev. Section
+	.byte	8                               # Address Size (in bytes)
+	.byte	1                               # Abbrev [1] 0xb:0x35 DW_TAG_compile_unit
+	.long	.Linfo_string0                  # DW_AT_producer
+	.short	4                               # DW_AT_language
+	.long	.Linfo_string1                  # DW_AT_name
+	.long	.Lline_table_start0             # DW_AT_stmt_list
+	.long	.Linfo_string2                  # DW_AT_comp_dir
+                                        # DW_AT_GNU_pubnames
+	.quad	.Lfunc_begin0                   # DW_AT_low_pc
+	.long	.Lfunc_end0-.Lfunc_begin0       # DW_AT_high_pc
+	.byte	2                               # Abbrev [2] 0x2a:0x15 DW_TAG_subprogram
+	.quad	.Lfunc_begin0                   # DW_AT_low_pc
+	.long	.Lfunc_end0-.Lfunc_begin0       # DW_AT_high_pc
+	.byte	1                               # DW_AT_frame_base
+	.byte	87
+	.long	.Linfo_string3                  # DW_AT_name
+	.byte	1                               # DW_AT_decl_file
+	.byte	2                               # DW_AT_decl_line
+                                        # DW_AT_external
+	.byte	0                               # End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_str,"MS",@progbits,1
+.Linfo_string0:
+	.asciz	" NVC++ 21.5-0"                 # string offset=0
+.Linfo_string1:
+	.asciz	"a.c"                           # string offset=14
+.Linfo_string2:
+	.asciz	"/home/victoryang"              # string offset=18
+.Linfo_string3:
+	.asciz	"saxpy"                         # string offset=35
+	.section	.debug_pubnames,"",@progbits
+	.long	.LpubNames_end0-.LpubNames_begin0 # Length of Public Names Info
+.LpubNames_begin0:
+	.short	2                               # DWARF Version
+	.long	.Lcu_begin0                     # Offset of Compilation Unit Info
+	.long	64                              # Compilation Unit Length
+	.long	42                              # DIE offset
+	.asciz	"saxpy"                         # External Name
+	.long	0                               # End Mark
+.LpubNames_end0:
+	.section	.debug_pubtypes,"",@progbits
+	.long	.LpubTypes_end0-.LpubTypes_begin0 # Length of Public Types Info
+.LpubTypes_begin0:
+	.short	2                               # DWARF Version
+	.long	.Lcu_begin0                     # Offset of Compilation Unit Info
+	.long	64                              # Compilation Unit Length
+	.long	0                               # End Mark
+.LpubTypes_end0:
+	.section	".note.GNU-stack","",@progbits
+	.section	.debug_line,"",@progbits
+.Lline_table_start0:
+```
+## OpenMP
+The compiler support the openmp by default. The OpenMP standard for specifying threading in programming languages like C and Fortran is implemented in the compiler itself and as such is an integral part of the compiler in question. The OMP and POSIX thread library underneath can vary, but this is normally hidden from the user. OpenMP makes use of POSIX threads so both an OpenMP library and a POSIX thread library is needed. The POSIX thread library is normally supplied with the distribution (typically /usr/lib64/libpthread.so). 
+$$
+\begin{array}{|l|c|c|}
+\hline \text { Compiler } & \text { Flag to select OpenMP } & \text { OpenMP version supported } \\
+\hline \text { Intel compilers } & \text {-qopenmp } & \text { From } 17.0 \text { on : } 4.5 \\
+\hline \text { GNU compilers } & \text {-fopenmp } & \text { From GCC 6.1 on : 4.5 } \\
+\hline \text { PGI compilers } & -\mathrm{mp} & 4.5 \\
+\hline
+\end{array}
+$$
 ## Ref
 1. https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2018/lecture-slides/MIT6_172F18_lec9.pdf
 2. 程序员的自我修养
