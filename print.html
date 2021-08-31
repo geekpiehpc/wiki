@@ -1167,6 +1167,144 @@ export IPM_LOG=full
 <p><code>ifort: error #10106: Fatal error in /opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-oneapi-compilers-2021.1.2-7ah54yk3newzc6hdcs3glm63clwyzgs7/compiler/2021.1.2/linux/bin/intel64/../../bin/intel64/fortcom, terminated by segmentation violation</code></p>
 <p>Tuning with different number of MPI processes and OpenMP threads on one node, 32 processes with 8 threads each got the best performance in testcase AUSURF112.</p>
 <p>​     PWSCF        :  37m 3.31s CPU   4m46.48s WALL</p>
+<h3 id="compile-with-aocc"><a class="header" href="#compile-with-aocc">Compile with AOCC</a></h3>
+<pre><code>spack load aocc@3.0.0/46t
+spack load amdfftw@3.0
+spack load openmpi@4.1.1/nqq
+export F90=flang
+export F77=flang
+export FC=flang
+export CC=clang
+export CXX=clang++
+
+./configure --enable-parallel --enable-openmp CFLAGS=&quot;-O3 -g -march=znver2&quot; FFLAGS=&quot;-O3 -g -march=znver2&quot; FFT_LIBS=&quot;/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/amdfftw-3.0-di7xmgpsu564qqvfhajkazsnk5kknxwd/lib/libfftw3.a /opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/amdfftw-3.0-di7xmgpsu564qqvfhajkazsnk5kknxwd/lib/libfftw3_omp.a /opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/amdfftw-3.0-di7xmgpsu564qqvfhajkazsnk5kknxwd/lib/libfftw3_threads.a&quot; BLAS_LIBS=/opt/spack/opt/spack/linux-debian10-zen2/aocc-3.0.0/amdblis-3.0-avcgn4ja67j4wz5euv6usv4rt2okvytg/lib/libblis-mt.a LAPACK_LIBS=/opt/spack/opt/spack/linux-debian10-zen2/aocc-3.0.0/amdlibflame-3.0-6tev4j6setn6jmojmydlnz3qi4bn5qrs/lib/libflame.a  MPI_LIBS=&quot;-L/opt/spack/opt/spack/linux-debian10-zen2/aocc-3.0.0/openmpi-4.1.1-nqqearshseiwkncy5roqcqij5dieen3p/lib&quot; DFLAGS=&quot;-D__FFTW3 -D__MPI&quot; IFLAGS=&quot;-I/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/amdfftw-3.0-di7xmgpsu564qqvfhajkazsnk5kknxwd/include -I/opt/spack/opt/spack/linux-debian10-zen2/aocc-3.0.0/amdblis-3.0-avcgn4ja67j4wz5euv6usv4rt2okvytg/include -I/opt/spack/opt/spack/linux-debian10-zen2/aocc-3.0.0/amdlibflame-3.0-6tev4j6setn6jmojmydlnz3qi4bn5qrs/include -I/home/qe/q-e/include&quot; 
+</code></pre>
+<p>pitfall: qe configure does not recognize flang. Need to change F90=flang in make.inc manually.</p>
+<p>This version cannot pass the test and AUSURF112 benchmark does not converge. (Errors may be brought by the libraries)</p>
+<pre><code>All done. ERROR: only 166 out of 221 tests passed.
+Failed tests in:
+        /home/qe/q-e/test-suite/pw_b3lyp/
+        /home/qe/q-e/test-suite/pw_berry/
+        /home/qe/q-e/test-suite/pw_cluster/
+        /home/qe/q-e/test-suite/pw_electric/
+        /home/qe/q-e/test-suite/pw_lda+U/
+        /home/qe/q-e/test-suite/pw_lsda/
+        /home/qe/q-e/test-suite/pw_md/
+        /home/qe/q-e/test-suite/pw_metaGGA/
+        /home/qe/q-e/test-suite/pw_metal/
+        /home/qe/q-e/test-suite/pw_noncolin/
+        /home/qe/q-e/test-suite/pw_pawatom/
+        /home/qe/q-e/test-suite/pw_realspace/
+        /home/qe/q-e/test-suite/pw_relax/
+        /home/qe/q-e/test-suite/pw_scf/
+        /home/qe/q-e/test-suite/pw_spinorbit/
+        /home/qe/q-e/test-suite/pw_uspp/
+        /home/qe/q-e/test-suite/pw_vc-relax/
+        /home/qe/q-e/test-suite/pw_vdw/
+        /home/qe/q-e/test-suite/pw_workflow_relax_relax/
+        /home/qe/q-e/test-suite/pw_workflow_scf_dos/
+        /home/qe/q-e/test-suite/pw_workflow_vc-relax_dos/
+        /home/qe/q-e/test-suite/pw_workflow_vc-relax_scf/
+        
+
+     starting charge 1230.69946, renormalised to 1232.00000
+
+     negative rho (up, down):  3.043E+00 0.000E+00
+     Starting wfcs are 1008 randomized atomic wfcs
+[epyc.node1:216922] 127 more processes have sent help message help-btl-vader.txt / xpmem-make-failed
+[epyc.node1:216922] Set MCA parameter &quot;orte_base_help_aggregate&quot; to 0 to see all help / error messages
+[epyc.node1:216922] 127 more processes have sent help message help-btl-vader.txt / knem permission denied
+
+     total cpu time spent up to now is       22.9 secs
+
+     Self-consistent Calculation
+
+     iteration #  1     ecut=    25.00 Ry     beta= 0.70
+     Davidson diagonalization with overlap
+     ethr =  1.00E-02,  avg # of iterations =  5.0
+
+     Threshold (ethr) on eigenvalues was too large:
+     Diagonalizing with lowered threshold
+
+     Davidson diagonalization with overlap
+     ethr =  4.37E-04,  avg # of iterations = 18.5
+
+     negative rho (up, down):  2.992E+00 0.000E+00
+
+     total cpu time spent up to now is      430.1 secs
+
+     total energy              =  -11423.48971757 Ry
+     estimated scf accuracy    &lt;       6.31636318 Ry
+
+     iteration #  2     ecut=    25.00 Ry     beta= 0.70
+     Davidson diagonalization with overlap
+     ethr =  5.13E-04,  avg # of iterations = 15.5
+
+     negative rho (up, down):  2.993E+00 0.000E+00
+
+     total cpu time spent up to now is      795.7 secs
+
+     total energy              =  -11408.37987998 Ry
+     estimated scf accuracy    &lt;     196.19698446 Ry
+
+     End of self-consistent calculation
+
+     convergence NOT achieved after   2 iterations: stopping
+
+     Writing output data file ./ausurf.save/
+[epyc:216930:0:216930] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x7fc7000)
+==== backtrace (tid: 216930) ====
+ 0  /opt/spack/opt/spack/linux-debian10-zen2/gcc-10.3.0/ucx-1.10.1-xby34b5gbwxi5cknbevj4wlbs34hyri6/lib/libucs.so.0(ucs_handle_error+0x254) [0x7fd0b3b587d4]
+ 1  /opt/spack/opt/spack/linux-debian10-zen2/gcc-10.3.0/ucx-1.10.1-xby34b5gbwxi5cknbevj4wlbs34hyri6/lib/libucs.so.0(+0x269b7) [0x7fd0b3b589b7]
+ 2  /opt/spack/opt/spack/linux-debian10-zen2/gcc-10.3.0/ucx-1.10.1-xby34b5gbwxi5cknbevj4wlbs34hyri6/lib/libucs.so.0(+0x26c8e) [0x7fd0b3b58c8e]
+ 3  /lib/x86_64-linux-gnu/libpthread.so.0(+0x12730) [0x7fd0b4180730]
+ 4  /home/qe/q-e/bin/pw.x() [0x11e3890]
+ 5  /home/qe/q-e/bin/pw.x() [0x11e3e47]
+ 6  /home/qe/q-e/bin/pw.x() [0x11ef0ce]
+ 7  /home/qe/q-e/bin/pw.x() [0x117a124]
+ 8  /home/qe/q-e/bin/pw.x() [0x9087e0]
+ 9  /home/qe/q-e/bin/pw.x() [0x9085c7]
+10  /home/qe/q-e/bin/pw.x() [0x9084f7]
+11  /home/qe/q-e/bin/pw.x() [0x906c58]
+12  /home/qe/q-e/bin/pw.x() [0x920797]
+13  /home/qe/q-e/bin/pw.x() [0x682772]
+14  /home/qe/q-e/bin/pw.x() [0x67ca67]
+15  /home/qe/q-e/bin/pw.x() [0x6a889f]
+16  /home/qe/q-e/bin/pw.x() [0x4c8406]
+17  /home/qe/q-e/bin/pw.x() [0x18baa23]
+18  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xeb) [0x7fd0b3fd109b]
+19  /home/qe/q-e/bin/pw.x() [0x4c81da]
+=================================
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node epyc exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+</code></pre>
+<h3 id="compile-with-gcc"><a class="header" href="#compile-with-gcc">Compile with GCC</a></h3>
+<p>Specify the mkl libraries manually.</p>
+<pre><code>spack load gcc@10.2.0/3xz
+spack load openmpi@4.1.1/n46
+
+./configure --enable-parallel --with-scalapack=yes --enable-openmp CFLAGS=&quot;-O3 -g -march=znver2&quot; FFLAGS=&quot;-O3 -g -march=znver2 -fallow-argument-mismatch&quot; FFT_LIBS=&quot;/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/amdfftw-3.0-di7xmgpsu564qqvfhajkazsnk5kknxwd/lib/libfftw3.a \
+/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/amdfftw-3.0-di7xmgpsu564qqvfhajkazsnk5kknxwd/lib/libfftw3_omp.a \
+/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/amdfftw-3.0-di7xmgpsu564qqvfhajkazsnk5kknxwd/lib/libfftw3_threads.a&quot; \
+BLAS_LIBS=&quot;/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-parallel-studio-cluster-2020.2-wouhr4mlxyn4ye5a5hpoas3s5evum5o3/mkl/lib/intel64/libmkl_gf_lp64.a \
+/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-parallel-studio-cluster-2020.2-wouhr4mlxyn4ye5a5hpoas3s5evum5o3/mkl/lib/intel64/libmkl_sequential.a \
+/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-parallel-studio-cluster-2020.2-wouhr4mlxyn4ye5a5hpoas3s5evum5o3/mkl/lib/intel64/libmkl_core.a&quot; \
+LAPACK_LIBS=/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-parallel-studio-cluster-2020.2-wouhr4mlxyn4ye5a5hpoas3s5evum5o3/mkl/lib/intel64/libmkl_lapack95_lp64.a \
+SCALAPACK_LIBS=&quot;/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-parallel-studio-cluster-2020.2-wouhr4mlxyn4ye5a5hpoas3s5evum5o3/mkl/lib/intel64/libmkl_scalapack_ilp64.a \
+/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-parallel-studio-cluster-2020.2-wouhr4mlxyn4ye5a5hpoas3s5evum5o3/mkl/lib/intel64/libmkl_blacs_openmpi_lp64.a&quot; \
+MPI_LIBS=&quot;-L/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/openmpi-4.1.1-n46i3ctamj3tnmnd7qfzhabdweajbgsn/lib&quot; \
+DFLAGS=&quot;-D__FFTW3 -D__MPI -D__SCALAPACK&quot; \
+IFLAGS=&quot;-I/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/amdfftw-3.0-di7xmgpsu564qqvfhajkazsnk5kknxwd/include -I/opt/spack/opt/spack/linux-debian10-zen2/aocc-3.0.0/amdblis-3.0-avcgn4ja67j4wz5euv6usv4rt2okvytg/include -I/home/qe/q-e/include&quot; 
+</code></pre>
+<p>Error to be fixed:</p>
+<p>/usr/bin/ld: /opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-parallel-studio-cluster-2020.2-wouhr4mlxyn4ye5a5hpoas3s5evum5o3/mkl/lib/intel64/libmkl_core.a(mkl_memory_patched.o): undefined reference to symbol 'dlclose@@GLIBC_2.2.5'
+/usr/bin/ld: //lib/x86_64-linux-gnu/libdl.so.2: error adding symbols: DSO missing from command line
+collect2: error: ld returned 1 exit status</p>
 <h3 id="misc-1"><a class="header" href="#misc-1">Misc</a></h3>
 <p>The library used in Q-E compiled by intel compiler:</p>
 <p>BLAS_LIBS=  -lmkl_intel_lp64  -lmkl_sequential -lmkl_core</p>
@@ -1227,7 +1365,38 @@ Open MPI stopped checking at the first component that it did not find.</p>
 <p>Host:      epyc.node2
 Framework: pml
 Component: ucx</p>
-<p>Learning Fortran to optimize the cache performance of q-e (mainly core.f90, not finished)......</p>
+<h3 id="arm-forge-map-result"><a class="header" href="#arm-forge-map-result">Arm Forge MAP Result</a></h3>
+<p>Original code compiled by intel compiler with mkl. testcase AUSURF112.</p>
+<pre><code>Profiling                 : /home/qe/q-e/bin/pw.x -i ./ausurf.in
+Allinea sampler           : preload
+MPI implementation        : Auto-Detect (Open MPI)
+* MPI arguments           
+* number of processes     : 32
+* number of nodes         : 1
+* Allinea MPI wrapper     : preload (precompiled)
+Input file                : &lt;stdin&gt;
+Working directory         : /home/qe/benchmarks/sb/AUSURF112
+Number of OpenMP threads  : 8
+Queue enabled             : No
+System config file        : /home/qe/.allinea/system.config
+                          
+OMP_NUM_THREADS (env var) : 8
+Full target path          : /home/qe/q-e/PW/src/pw.x
+Launched from host        : epyc.node1
+                          
+Run started               : Sat Aug 28 07:04:24 2021
+Sampling started          : Sat Aug 28 07:04:24 2021
+Sampling stopped          : Sat Aug 28 07:09:39 2021
+Runtime                   : 354s
+Sampled runtime           : 315s
+</code></pre>
+<p>CPU floating-point: 38.2%</p>
+<p>CPU memory access: 15.9%</p>
+<p>CPU fp vector: 38.0%</p>
+<p>CPU branch: 7.4%</p>
+<p>Memory usage: 676MB</p>
+<p><img src="Apps/SC/SC21/./Arm-Forge.png" alt="" /></p>
+<p>pcegterg_IP_ functions took a lot of time in synchronization <code>mpi_barrier</code> which is even greater than the actual calculating time. </p>
 <h2 id="compile-option"><a class="header" href="#compile-option">Compile Option</a></h2>
 <h3 id="nvhpc"><a class="header" href="#nvhpc">NVHPC</a></h3>
 <pre><code class="language-bash"># LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/spack/linux-ubuntu20.04-skylake/gcc-9.3.0/nvhpc-21.5-qrsvxrpkmqhxy2coxes2qzcfhirsy5uv/Linux_x86_64/21.5/comm_libs/openmpi4/openmpi-4.0.5/lib
