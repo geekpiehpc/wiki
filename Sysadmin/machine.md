@@ -30,7 +30,7 @@ NUMA node1 CPU(s):   64-127,192-255
 Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate sme ssbd sev ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif umip rdpid overflow_recov succor smca
 ```
 
-$$
+\\(
 \begin{array}{|l|c|}
 \hline \text { Cache level/type } & \text { Size \&Information } \\
 \hline \text { L } 0 \mu \text { OP } & 4,096 \mu \text { OPs, 8-way set associative,64-sets, 8-$\mu$ OP line size } \\
@@ -57,7 +57,7 @@ $$
 \hline \text { TLB data } & 64 \text { entry L1 TLB, all page sizes, 1,532-entry L2 TLB, no 1G pages } \\
 \hline
 \end{array}
-$$
+\\)
 
 ![](https://en.wikichip.org/w/images/thumb/f/f2/zen_2_core_diagram.svg/1800px-zen_2_core_diagram.svg.png)
 
