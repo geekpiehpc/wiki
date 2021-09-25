@@ -48,3 +48,4 @@
   * [Environment Installation](Sysadmin/environment-installation.md)
   * [Environment Modules](Sysadmin/environment-modules.md)
   * [Machine](Sysadmin/machine.md)
+  * [It-Support Machine](Sysadmin/it-support-machine.md)
