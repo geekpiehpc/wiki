@@ -4,8 +4,6 @@ Repo: <https://github.com/LLNL/cardioid>
 
 ## 编译
 
-需要使用 Spack。
-
 > 如果使用 mfem，可能需要手动指定其路径。
 
 ### 自动编译
@@ -21,7 +19,7 @@ patch('https://gist.githubusercontent.com/KiruyaMomochi/cc4dfde7da51c3b11e45ab10
 
 此后使用 `spack -d install -v cardioid` 继续编译。
 
-### 手动编译
+### Spack 手动编译
 
 以 fish shell 为例。
 
@@ -32,7 +30,60 @@ spack cd cardioid+cuda
 spack build-env cardioid+cuda fish
 ```
 
+### 纯手动编译
+
+TODO
+
 ## 问题解决
+
+### Seg Fault with jemalloc
+
+Happens when -nd >= 4
+
+### SIGTERM after finishing the job with -np >= 60
+
+Some issue in the openmpi@4.1.1/jip
+​
+#### Use the Intel MPI
+​
+```
+spack load intel-oneapi-compilers@2021.1.2
+​
+export F90=ifort
+export F77=ifort
+export FC=ifort
+export CC=icc
+​
+export LD_LIBRARY_PATH=/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-oneapi-compilers-2021.1.2-7ah54yk3newzc6hdcs3glm63clwyzgs7/mkl/2021.2.0/lib/intel64:$LD_LIBRARY_PATH
+​
+export LD_LIBRARY_PATH=/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-oneapi-compilers-2021.1.2-7ah54yk3newzc6hdcs3glm63clwyzgs7/mpi/2021.2.0/lib:$LD_LIBRARY_PATH
+​
+export LIBRARY_PATH=/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-oneapi-compilers-2021.1.2-7ah54yk3newzc6hdcs3glm63clwyzgs7/mpi/2021.2.0/lib:$LIBRARY_PATH
+​
+export LD_LIBRARY_PATH=/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-oneapi-compilers-2021.1.2-7ah54yk3newzc6hdcs3glm63clwyzgs7/mpi/2021.2.0/lib/release_mt:$LD_LIBRARY_PATH
+​
+export LIBRARY_PATH=/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-oneapi-compilers-2021.1.2-7ah54yk3newzc6hdcs3glm63clwyzgs7/mpi/2021.2.0/lib/release_mt:$LIBRARY_PATH
+​
+export PATH=/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-oneapi-compilers-2021.1.2-7ah54yk3newzc6hdcs3glm63clwyzgs7/mpi/2021.2.0/bin:$PATH
+​
+export MPI_LIBS=-L/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-oneapi-compilers-2021.1.2-7ah54yk3newzc6hdcs3glm63clwyzgs7/mpi/2021.2.0/libc
+​
+./configure --enable-parallel --with-scalapack=yes --enable-openmp CFLAGS="-march=core-avx2 -fma -ftz -fomit-frame-pointer -g" FFLAGS="-O3 -march=core-avx2 -align array64byte -fma -ftz -fomit-frame-pointer -g" SCALAPACK_LIBS="-lmkl_scalapack_lp64 -lmkl_blacs_intelmpi_lp64 -mkl=parallel -lifcore" IFLAGS="-I/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-oneapi-compilers-2021.1.2-7ah54yk3newzc6hdcs3glm63clwyzgs7/mkl/2021.2.0/include -I/home/qe/q-e/include -I/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/intel-oneapi-compilers-2021.1.2-7ah54yk3newzc6hdcs3glm63clwyzgs7/mpi/2021.2.0/include" 
+```
+​
+This version is slower than before.
+​
+Observations about the testcase AUSURF112: Cannot utilize hyperthreading efficiently, with 128 processes bind to core with OMP=1, it is faster than any combinations of number of processes and OMP_NUM_THREADS that utilizes all the hyperthreads.
+​
+### About fftw
+
+When we specify FFT_LIBS to configure of quantum-espresso 6.6, fft related macro are not defined. If FFTW_INCLUDE is defined, __FFTW is defined. Changing to amdfftw does not influence the running time.
+​
+```
+export FFT_LIBS=-L/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/amdfftw-3.0-di7xmgpsu564qqvfhajkazsnk5kknxwd/lib
+​
+export FFTW_INCLUDE=/opt/spack/opt/spack/linux-debian10-zen2/gcc-10.2.0/amdfftw-3.0-di7xmgpsu564qqvfhajkazsnk5kknxwd/include
+```
 
 ### 调试 CMake 项目
 
