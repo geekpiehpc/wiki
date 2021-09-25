@@ -27,7 +27,7 @@
   * [Grafana](DevOps/Grafana.md)
   * [LDAP](DevOps/LDAP.md)
   * [Salt Stack](DevOps/SaltStack.md)
-  * [Schduler](DevOps/Schduler.md)
+  * [Scheduler](DevOps/Scheduler.md)
   * [Singularity](DevOps/Singularity.md)
 - [Language](Language/README.md)
   * [C++](Language/C++.md)
