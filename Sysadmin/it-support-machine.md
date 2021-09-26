@@ -29,7 +29,7 @@
 
 CPU 队列为 `GeekPie_HPC`，GPU 队列为 `GeekPie_GPU`。
 
-PBS 的具体使用方式请看 [DevOps/Scheduler](DevOps/Scheduler.md)。
+PBS 的具体使用方式请看 [DevOps/Scheduler](../DevOps/Scheduler.md)。
 
 ## 环境管理
 
