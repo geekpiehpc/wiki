@@ -49,3 +49,5 @@
   * [Environment Modules](Sysadmin/environment-modules.md)
   * [Machine](Sysadmin/machine.md)
   * [It-Support Machine](Sysadmin/it-support-machine.md)
+  * [Azure](Sysadmin/Azure/README.md)
+    - [CycleCloud](Sysadmin/Azure/cyclecloud.md)
