@@ -123,3 +123,5 @@ CA 'mlx5_0'
 		Port GUID: 0xb8599f0300e66b78
 		Link layer: InfiniBand
 ```
+- IB 卡的通讯协议 https://www.rdmamojo.com/2013/06/01/which-queue-pair-type-to-use/
+- OpenMPI 使用 http://scc.ustc.edu.cn/zlsc/user_doc/html/mpi-application/mpi-application.html
