@@ -8,9 +8,11 @@
 
 需要新加文档请直接在`main` branch上提交`markdown`文件，在半分钟之后[wiki](http://hpc.geekpie.club/wiki/)就会得到更新。
 
+文件命名采用小端大写法。
+
 ## 目前wiki维护
 
-murez 可以在白裙和HPC群找到。命名采用小端大写法。需要push即可。
+请向 murez 申请 wiki 的编辑权限，可以在 **GeekPie 科创工作室** 或 Slack 找到。
 
 ## 有关出入口
 
