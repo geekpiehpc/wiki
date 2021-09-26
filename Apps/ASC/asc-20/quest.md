@@ -91,7 +91,7 @@ the dense **matrix**:\\(\rho=\left(\begin{array}{cc}q_{0} & 0 \\ 0 & q_{1}\end{a
 
 so \\(\rho|0\rangle=\left(q_{0}|0\rangle\left\langle 0\left|+q_{1}\right| 1\right\rangle\langle 1|\right)|0\rangle=q_{0}|0\rangle\\)
 
-dot product (from normal bits to qubits):\\( |a b\rangle=|a\rangle \otimes|b\rangle=v_{00}|00\rangle+v_{01}|01\rangle+v_{10}|10\rangle \dashv v_{11}|11\rangle \rightarrow\left[\begin{array}{l}v_{00} \\ v_{01} \\ v_{10} \\ v_{11}\end{array}\right] \\)
+dot product (from normal bits to qubits):\\( |a b\rangle=|a\rangle \otimes|b\rangle=v_{00}|00\rangle+v_{01}|01\rangle+v_{10}|10\rangle \dashv v_{11}|11\rangle \rightarrow\left\[\begin{array}{l}v_{00} \\ v_{01} \\ v_{10} \\ v_{11}\end{array}\right\] \\)
 
 
 
