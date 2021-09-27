@@ -1869,6 +1869,9 @@ beegfs-setup-storage -p /geekpie/hpc/ -i 201 -m epyc.node2
 # setup client
 beegfs-setup-client -m epyc.node2
 </code></pre>
+<blockquote>
+<p>If you setuped more than once, please manually check configuration files since there may be some error.</p>
+</blockquote>
 <h3 id="step-4-service-setup"><a class="header" href="#step-4-service-setup">Step 4: Service Setup</a></h3>
 <p>With the same assumption as above, we can start the services on node1 and node2:</p>
 <pre><code class="language-bash"># node1
@@ -1888,6 +1891,9 @@ beegfs-net                # Displays connections the client is actually using
 beegfs-check-servers      # Displays possible connectivity of the services
 beegfs-df                 # Displays free space and inodes of storage and metadata targets
 </code></pre>
+<h2 id="check-configuration"><a class="header" href="#check-configuration">Check configuration</a></h2>
+<p>You can check the configuration by inspecting the config files, these files are located at <code>/etc/beegfs/</code>.</p>
+<p>Please notice that if you have setup BeeGFS twice, you may need to manually fix some configuration files, like <code>beegfs-storage.conf</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="grafana"><a class="header" href="#grafana">Grafana</a></h1>
 <p>数据源：<a href="https://zhuanlan.zhihu.com/p/53376293">telegraf</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="linux-的秘密都在-pam-里"><a class="header" href="#linux-的秘密都在-pam-里">linux 的秘密都在 PAM 里</a></h1>
