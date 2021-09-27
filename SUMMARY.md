@@ -24,6 +24,7 @@
   * [Hpl Dat](Benchmark/hpl-dat.md)
   * [Io 500](Benchmark/io500.md)
 - [Dev Ops](DevOps/README.md)
+  * [BeeGFS](DevOps/beegfs.md)
   * [Grafana](DevOps/Grafana.md)
   * [LDAP](DevOps/LDAP.md)
   * [Salt Stack](DevOps/SaltStack.md)
