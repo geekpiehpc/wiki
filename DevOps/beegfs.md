@@ -100,6 +100,8 @@ beegfs-setup-storage -p /geekpie/hpc/ -i 201 -m epyc.node2
 beegfs-setup-client -m epyc.node2
 ```
 
+> If you setuped more than once, please manually check configuration files since there may be some error.
+
 ### Step 4: Service Setup
 
 With the same assumption as above, we can start the services on node1 and node2:
@@ -128,3 +130,9 @@ beegfs-net                # Displays connections the client is actually using
 beegfs-check-servers      # Displays possible connectivity of the services
 beegfs-df                 # Displays free space and inodes of storage and metadata targets
 ```
+
+## Check configuration
+
+You can check the configuration by inspecting the config files, these files are located at `/etc/beegfs/`.
+
+Please notice that if you have setup BeeGFS twice, you may need to manually fix some configuration files, like `beegfs-storage.conf`.
