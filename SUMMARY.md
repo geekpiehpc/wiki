@@ -2,6 +2,7 @@
 - [Intro](README.md)
 - [Algorithm](Algorithm/README.md)
   * [Dgemm](Algorithm/dgemm.md)
+  * [fft](Algorithm/fft.md)
   * [Kmer](Algorithm/kmer.md)
 - [Apps](Apps/README.md)
   - [ASC](Apps/ASC/README.md)

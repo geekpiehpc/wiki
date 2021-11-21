@@ -1,0 +1,30 @@
+## 开机步骤
+ifconfig ib0 192.168.*
+
+~/.bashrc
+if [ -f /dev/ ]
+头节点
+eth .xxx ib() .xxx
+
+100 机器 nfs
+slurm 启动开始跑
+
+机器 one by one  任务 复用
+
+脚本allocate 起停 可以轮流睡觉 轮流slurm
+
+MIG 启动两套命令/ rmmod nvdia*
+
+
+## Performance
+```
+echo 2 > /proc/sys/vm/overcommit_memory
+ulimit -a ulimited
+echo performance > /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+[ -f "/shared/opt/home/q-e" ] sudo mount 10.0.0.8:/mnt/exports/shared/home /shared/home
+...
+```
+
+## Prometheus
+
+TODO - haotian

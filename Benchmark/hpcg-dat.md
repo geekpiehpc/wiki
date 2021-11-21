@@ -21,3 +21,12 @@ module load hpcx
 ```bash
 mpirun --allow-run-as-root --hostfile host2_gpu4 --mca pml_base_verbose 100     --mca btl_base_verbose 100     --mca pml ucx -x UCX_NET_DEVICES=mlx5_0:1     --mca orte_base_help_aggregate=0     -x xhpcg-3.1_cuda-11_ompi-4.0_sm_60_sm70_sm80 
 ```
+## SC21
+```
+HPCG benchmark input file
+Sandia National Laboratories; University of Tennessee, Knoxville
+256 256 512
+1800
+```
+### how to run
+see [binder.sh](hpl-dat.md#Binder)
