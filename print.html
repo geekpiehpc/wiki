@@ -4392,12 +4392,51 @@ IdentityFile ~/.ssh/id_rsa_epyc
 <div style="break-before: page; page-break-before: always;"></div><h1 id="azure"><a class="header" href="#azure">Azure</a></h1>
 <p>这里放置有关 <a href="https://azure.microsoft.com/">Azure 云服务器</a> 运维的信息。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cyclecloud"><a class="header" href="#cyclecloud">CycleCloud</a></h1>
-<p>Azure CycleCloud is a tool for deploying HPC clusters in Azure and managing their workloads. </p>
+<p>Azure CycleCloud is a tool for deploying HPC clusters in Azure and managing their workloads.</p>
 <p>For a detailed introduction to CycleCloud, see <a href="https://docs.microsoft.com/en-us/azure/cyclecloud">CycleCloud Introduction</a>.
 For a step-by-step guide to using CycleCloud, see <a href="https://docs.microsoft.com/en-us/learn/modules/azure-cyclecloud-high-performance-computing/">Create, customize and manage an HPC cluster in Azure with Azure CycleCloud</a>.</p>
+<p>虽然我不想说……但最好的方法还是先去看看官方文档，了解一下它的功能，还有他的模板怎么写……新概念可能比较多，可以一边操作一边学习。
+但请注意他的文档不全，或者有些内容过时了。如果你想确认最新的 CycleCloud 行为，用它开一台机器，把上面 <code>/opt/cycle</code> 的东西下下来，看里面的代码，是最直接的方法了。</p>
+<h2 id="introduction-so-what-is-cyclecloud"><a class="header" href="#introduction-so-what-is-cyclecloud">Introduction: ...So what is CycleCloud?</a></h2>
+<p>……想说请这个先讲点历史。</p>
+<p>CycleCloud 本来属于 <a href="https://en.wikipedia.org/wiki/Cycle_Computing">Cycle Computing</a>，后来被微软收购了。在被微软收购以前，CycleCloud 是可以在很多平台上使用的，包括 Amazon Web Services, Google Compute Engine 甚至是公司内部集群。</p>
+<p>它的作用就是帮你方便的管理一堆 HPC 资源，举个例子我现在想在 AWS 上开 15 台机器作为我的 HPC Cluster，正常情况下我可能是一台一台开，聪明点的人知道写个脚本，<strong>一次申请所有资源</strong>。</p>
+<p>不过就算这样你可能还要对每台机器做一些<strong>初始化</strong>，比如配置网卡、软件、用户等等。当然现在有一些高级工具比如 <a href="https://cloudinit.readthedocs.io/en/latest/">Cloud-Init</a> 可以让你更方便的完成这些初始化工作，不过用它配置一堆软件还是显得有些吃力。
+比较现代的解决方法是是用 <a href="https://www.ansible.com/">Ansible</a>，通过它和一个包含“节点内所有机器”的文件，它可以自动帮你去做各种奇奇怪怪的初始化工作（实际写起来有点像 GitHub Actions）。</p>
+<p>还有一件事情就是你需要<strong>监控</strong>这些机器是否正常，如果不正常可能要把一些机器移除。此外可能也要根据工作负载<strong>动态调节</strong>(autoscaling)你的机器数量。这些云服务不一定会帮你做，虽然说动态调节会让人想到 k8s，但用 k8s 跑 HPC 可能现在还是有点要命吧？</p>
+<p>说了这么多，<strong>CycleCloud 就是这么个工具，它帮你自动化的控制云上的 HPC 资源，让你只要点几下就可以建立一个<em>好用、稳定</em>的 HPC 集群。</strong></p>
+<blockquote>
+<p>……😢 实际上可能没有那么好用了，不过至少这应该是他们的愿景吧……。</p>
+</blockquote>
+<h2 id="prerequisites-what-do-i-need-to-know-to-learn-it"><a class="header" href="#prerequisites-what-do-i-need-to-know-to-learn-it">Prerequisites: What do I need to know to learn it?</a></h2>
+<h3 id="template"><a class="header" href="#template">Template</a></h3>
+<p>CycleCloud 最重要的概念是模板，它是一个包含了一个<strong>集群</strong>(Cluster)所有软硬件需求的文件。CycleCloud 将根据这个文件创建集群，而你点加号看到的那些 scheduler, filesystem, etc. 都是模板，你甚至可以在 Azure GitHub 里找到这些模板。</p>
+<p>模板使用的格式类似 <code>ini</code> 但又比 <code>ini</code> 高级。如果感觉难以下手的话，先去看看 <a href="https://github.com/toml-lang/toml">toml</a> 这个东西。</p>
+<h3 id="cluster-init-project"><a class="header" href="#cluster-init-project">Cluster-init? Project?</a></h3>
+<p>你会留意到它文档里会提到 <code>cluster-init</code> 或者 <code>project</code> 这种东西。这两个是同义词。<strong>注意不要和 <code>cloud-init</code> 搞混了</strong>，这个与我们现在说的的无关。为了避免混淆，我们之后都用 <code>project</code> 这个词。</p>
+<blockquote>
+<p><code>cloud-init</code> 和 <code>project</code> 都是初始化用的，但 <code>cloud-init</code> 更底层，由 Azure 负责。<code>project</code> 则由 CycleCloud 负责。
+换句话说，<code>cloud-init</code> 跑完以后，你的机器其实已经创建好了，这个时候在被 CycleCloud 做二次初始化，而二次初始化具体来说就是执行一系列的脚本和 Chef Cookbook。</p>
+</blockquote>
+<p>在学习 CycleCloud 的同时你最好去了解一下 <a href="https://downloads.chef.io/tools/infra-server">Chef Infra</a>，所有的 Project 你剥开以后就是 Chef Cookbooks，而 Chef Cookbooks 和 Ansible Playbooks 差不多，都是用来初始化机器的。
+学习 Chef 的时候你会发现你其实在学 Ruby……这也没有办法嘛。Ruby 的语法需要适应，尤其是之前没有接触过的话。另外尤其注意 CycleCloud 所使用的 Chef 版本（你可以在 <code>/opt/cycle/</code> 里找到它的二进制文件），避免用了旧版没有的东西。</p>
+<blockquote>
+<p><strong>小心</strong>
+CycleCloud Chef 所用的 Ruby 版本对一些 SSL 网站的支援存在问题，见 <a href="https://bugs.ruby-lang.org/issues/15594">https://bugs.ruby-lang.org/issues/15594</a>。如果要下载东西，可能要用 http 或者自己写个 Chef Resource，在其中调用 Ruby 的 <code>::URI.open</code>，并且设置 <code>ssl_verify_mode</code> 为 <code>OpenSSL::SSL::VERIFY_NONE</code>。</p>
+</blockquote>
 <h2 id="cyclecloud-cli"><a class="header" href="#cyclecloud-cli">CycleCloud CLI</a></h2>
 <p>Install cli from About page of CycleCloud dashboard.
 <img width="419" alt="image" src="https://user-images.githubusercontent.com/65301509/140474967-83bde5b7-9df4-4cc1-9b46-37b04adce16a.png"></p>
+<h2 id="custom-image"><a class="header" href="#custom-image">Custom image</a></h2>
+<p>There are more images available than CycleCloud built-in images.
+And to make GPU work, we must use image with Generation 2 support.</p>
+<p><a href="https://techcommunity.microsoft.com/t5/azure-compute-blog/azure-hpc-vm-images/ba-p/977094">Azure HPC VM Images</a> contains all images currently available.
+Choose one you need, and use it's urn to specify it.</p>
+<blockquote>
+<p><strong>Note</strong>
+Some images are incompatible with CycleCloud's built-in templates. For example, you can't use <code>microsoft-dsvm:ubuntu-hpc:2004:</code> with <a href="https://github.com/Azure/cyclecloud-slurm">Slurm Template</a>.
+We have a custom template to solve it.</p>
+</blockquote>
 <h3 id="note-install-on-windows"><a class="header" href="#note-install-on-windows">Note: Install on Windows</a></h3>
 <p>CycleCloud on Windows depends on cryptography package.
 So for install script to finish, we need to do this before running script</p>
@@ -4407,6 +4446,14 @@ choco install openssl -pre -y</li>
 <li>Append <code>C:\Program Files\OpenSSL-Win64\lib;</code> to environment variable <code>LIB</code></li>
 <li>Append <code>C:\Program Files\OpenSSL-Win64\include;</code> to environment variable <code>INCLUDE</code></li>
 </ol>
+<h2 id="useful-links"><a class="header" href="#useful-links">Useful links</a></h2>
+<ul>
+<li><a href="https://packages.microsoft.com/repos/cyclecloud/">CycleCloud debian repository</a>
+<ul>
+<li><a href="https://packages.microsoft.com/repos/cyclecloud-insiders/">Insiders version</a>) </li>
+</ul>
+</li>
+</ul>
 
                     </main>
 
