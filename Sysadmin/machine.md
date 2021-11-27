@@ -1,6 +1,11 @@
 # 机器简介
-## epyc 7742 introduction
-```bash
+
+## SuperMicro 4124GS-TNR
+
+https://www.supermicro.com/zh_tw/Aplus/system/4U/4124/AS-4124GS-TNR.cfm
+
+## CPU: Epyc 7742
+```
 Architecture:        x86_64
 CPU op-mode(s):      32-bit, 64-bit
 Byte Order:          Little Endian
@@ -125,3 +130,4 @@ CA 'mlx5_0'
 ```
 - IB 卡的通讯协议 https://www.rdmamojo.com/2013/06/01/which-queue-pair-type-to-use/
 - OpenMPI 使用 http://scc.ustc.edu.cn/zlsc/user_doc/html/mpi-application/mpi-application.html
+
