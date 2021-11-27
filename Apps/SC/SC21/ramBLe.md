@@ -103,7 +103,9 @@ mpirun -np 144 \
 ./ramble -f test/coronary.csv -s ',' -n 6 -m 1841 -d -o test/coronary.dot
 ```
 
+## Auto Run script
 
+[murez/SC21_SCript/ramble](https://github.com/murez/SC21_SCripts/tree/main/ramBLe)
 
 ## Gdrive
 
