@@ -152,6 +152,9 @@
 <p><strong><a href="https://www.beegfs.io/">BeeGFS</a></strong> is a hardware-independent POSIX parallel file system developed with a strong focus on performance and designed for ease of use, simple installation, and management. </p>
 <p><strong>Please have a look at <a href="https://doc.beegfs.io/latest/architecture/overview.html">BeeGFS Architecture overview</a> before continuing.</strong></p>
 <p><img src="./beegfs_architecture.png" alt="System Architecture Overview: Parallelism and Scale-Out" /></p>
+<h2 id="ℹ-note-for-linux-kernels-5x"><a class="header" href="#ℹ-note-for-linux-kernels-5x">ℹ️ Note: For linux kernels 5.x</a></h2>
+<p>Currently, the BeeGFS kernel module is not compatible with the Linux kernel 5.x. We need to patch it manually.</p>
+<p>Some work has been done by <a href="https://groups.google.com/g/fhgfs-user/c/he7kgI23j5Y">Build kernel module against kernel version 5.8.x</a> and <a href="https://github.com/tobydarling/beegfs-7.1.4-kernel-5.6.4/blob/master/beegfs-7.1.4.patch.txt">tobydarling/beegfs-7.1.4-kernel-5.6.4</a>.</p>
 <h2 id="insallation"><a class="header" href="#insallation">Insallation</a></h2>
 <p>Please follow the [Quick Start Guide]https://doc.beegfs.io/latest/quick_start_guide/quick_start_guide.html) to install. </p>
 <p>Here we will only give you additional notes, assuming the operating system is Debian 10.</p>
