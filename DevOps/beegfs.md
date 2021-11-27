@@ -6,6 +6,12 @@
 
 ![System Architecture Overview: Parallelism and Scale-Out](./beegfs_architecture.png)
 
+## ℹ️ Note: For linux kernels 5.x
+
+Currently, the BeeGFS kernel module is not compatible with the Linux kernel 5.x. We need to patch it manually.
+
+Some work has been done by [Build kernel module against kernel version 5.8.x](https://groups.google.com/g/fhgfs-user/c/he7kgI23j5Y) and [tobydarling/beegfs-7.1.4-kernel-5.6.4](https://github.com/tobydarling/beegfs-7.1.4-kernel-5.6.4/blob/master/beegfs-7.1.4.patch.txt).
+
 ## Insallation
 
 Please follow the [Quick Start Guide]https://doc.beegfs.io/latest/quick_start_guide/quick_start_guide.html) to install. 
