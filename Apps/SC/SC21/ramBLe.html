@@ -149,6 +149,78 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="ramble"><a class="header" href="#ramble">ramBLe</a></h1>
+<h2 id="turn-off-hyperthreading"><a class="header" href="#turn-off-hyperthreading">turn off hyperthreading</a></h2>
+<pre><code class="language-Bash">sudo su
+echo off &gt; /sys/devices/system/cpu/smt/control
+</code></pre>
+<p>/home/opc/ramBLe</p>
+<p>boost 1.70.0 &amp; mvapich2.3.3</p>
+<h2 id="turn-off-hyperthreading-1"><a class="header" href="#turn-off-hyperthreading-1">turn off hyperthreading</a></h2>
+<pre><code class="language-Bash">sudo su
+echo off &gt; /sys/devices/system/cpu/smt/control
+</code></pre>
+<h2 id="gdrive"><a class="header" href="#gdrive">Gdrive</a></h2>
+<pre><code class="language-YAML">wget https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_amd64.tar.gz
+tar -zxvf gdrive_2.1.1_linux_amd64.tar.gz
+
+wget https://forensics.cert.org/cert-forensics-tools-release-el7.rpm
+sudo rpm -Uvh cert-forensics-tools-release*rpm
+sudo yum --enablerepo=forensics install musl-libc -y
+
+</code></pre>
+<h2 id="init-env-values"><a class="header" href="#init-env-values">init env values</a></h2>
+<pre><code class="language-Bash">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/nfs/cluster/boost_1_70_0/stage/lib
+
+source /home/opc/ramBLe/env.sh
+</code></pre>
+<h2 id="mpi"><a class="header" href="#mpi">mpi</a></h2>
+<pre><code class="language-Bash">source /opt/hpcx-v2.8.1-gcc-MLNX_OFED_LINUX-5.2-2.2.0.0-redhat7.9-x86_64/hpcx-init.sh
+hpcx_load
+
+</code></pre>
+<pre><code class="language-Bash">mpirun -np 4 --display-map --map-by node -x MXM_RDMA_PORTS=mlx5_0:1 -mca btl_openib_if_include mlx5_0:1 
+</code></pre>
+<h2 id="run"><a class="header" href="#run">run</a></h2>
+<pre><code class="language-Bash">mpirun -np 144 --display-map --hostfile hostfiles  -x MXM_RDMA_PORTS=mlx5_0:1 -mca btl_openib_if_include mlx5_0:1  -x UCX_NET_DEVICES=mlx5_0:1  ./ramble -f test/coronary.csv -n 6 -m 1841 -d -o test/coronary.dot
+</code></pre>
+<pre><code class="language-Bash">[opc@inst-dahrf-splendid-walrus ramBLe]$ cat hostfiles
+hpc-node-1 slots=36
+hpc-node-2 slots=36
+hpc-node-3 slots=36
+hpc-node-4 slots=36
+</code></pre>
+<pre><code class="language-Bash">tab is $'\t'
+</code></pre>
+<h2 id="python-run-experinment"><a class="header" href="#python-run-experinment">python run experinment</a></h2>
+<p>at <code>/nfs/cluster/ramBle_hpcg</code></p>
+<pre><code class="language-Bash">python common/scripts/ramble_experiments.py \
+-p 16 -r 1 -a gs -d /nfs/scratch/C1_discretized.tsv -s '\t' -v \
+--results result\c1.csv
+</code></pre>
+<pre><code class="language-Bash">mpirun -np 144 --display-map --hostfile hostfiles  -x MXM_RDMA_PORTS=mlx5_0:1 -mca btl_openib_if_include mlx5_0:1  -x UCX_NET_DEVICES=mlx5_0:1  ./ramble -f /nfs/scratch/C1_discretized.tsv -m 29150 -n 5164  -s $'\t' -v -i -d -o test/c1.dot
+</code></pre>
+<pre><code class="language-Bash">mpirun -np 1 \
+--display-map \
+--hostfile hostfiles \
+-x MXM_RDMA_PORTS=mlx5_0:1 \
+-mca btl_openib_if_include mlx5_0:1 \
+-x UCX_NET_DEVICES=mlx5_0:1 \
+./ramble -f /nfs/scratch/C1_discretized.tsv -s $'\t' \
+-n 29150 -m 5164 \
+ -c -v -i -d -o test/c1_2.dot &gt;&gt; result/hp_1
+</code></pre>
+<pre><code class="language-Bash">mpirun -np 144 \
+--hostfile hostfiles \
+-x MXM_RDMA_PORTS=mlx5_0:1 \
+-mca btl_openib_if_include mlx5_0:1 \
+-x UCX_NET_DEVICES=mlx5_0:1 \
+./ramble -f test/coronary.csv -s ',' -n 6 -m 1841 -d -o test/coronary.dot
+</code></pre>
+<h2 id="gdrive-1"><a class="header" href="#gdrive-1">Gdrive</a></h2>
+<pre><code class="language-Bash">gdrive download 1UdrvrUPBQRjQafeOn5gHENz9wCrOrX-F    # ramBLe_hpcx.tar.gz
+gdrive download 1QmW1RF6mvnepQ3hawMNK46MoDRNq8YGx    # boost_1_70_0_compiled.tar.gz
+
+</code></pre>
 <h2 id="install"><a class="header" href="#install">Install</a></h2>
 <h3 id="lib"><a class="header" href="#lib">Lib</a></h3>
 <p><a href="../../../Libs/Boost.html">Boost</a></p>
