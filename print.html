@@ -4424,6 +4424,21 @@ For a step-by-step guide to using CycleCloud, see <a href="https://docs.microsof
 <p><strong>小心</strong>
 CycleCloud Chef 所用的 Ruby 版本对一些 SSL 网站的支援存在问题，见 <a href="https://bugs.ruby-lang.org/issues/15594">https://bugs.ruby-lang.org/issues/15594</a>。如果要下载东西，可能要用 http 或者自己写个 Chef Resource，在其中调用 Ruby 的 <code>::URI.open</code>，并且设置 <code>ssl_verify_mode</code> 为 <code>OpenSSL::SSL::VERIFY_NONE</code>。</p>
 </blockquote>
+<h2 id="cloud-init"><a class="header" href="#cloud-init">Cloud-Init</a></h2>
+<p>CycleCloud 支援 <a href="https://cloudinit.readthedocs.io/en/latest/">Cloud—Init</a>，但只支援一半。</p>
+<p>当你想用 <a href="https://cloudinit.readthedocs.io/en/latest/topics/format.html#mime-multi-part-archive">Mime Multi Part Archive</a> 时，你会失败。
+当你想用 <a href="https://cloudinit.readthedocs.io/en/latest/topics/instancedata.html#using-instance-data">Jinja Template</a> 时，你会失败。
+当你 Cluster 开到一半突然想改文件时，你会发现改完的东西好像不起作用……</p>
+<p>更要命的是，当你加载 CycleCloud Dashboard 或者使用 CLI 列出所有集群时，它似乎会把所有的 cloud-init 文件也作为配置的一部分返回给你。
+结果你会发现用了很多很长的 Cloud-Init 以后使用 CycleCloud 会变慢很多。</p>
+<p><strong>基于以上这些原因，建议使用 <a href="https://cloudinit.readthedocs.io/en/latest/topics/format.html#include-file">Include File</a> 格式，并将真正的 cloud-init 文件放在其他服务器上。</strong></p>
+<p>举个例子，我们的 cloud-init 可以这样写</p>
+<pre><code class="language-yaml">#include-once
+
+https://example.com/kyaru/base.yml
+https://example.com/kyaru/sb/head.yml
+</code></pre>
+<p>url 里的 cloud-init 你随便写，想用什么格式用什么格式。赢两次！</p>
 <h2 id="cyclecloud-cli"><a class="header" href="#cyclecloud-cli">CycleCloud CLI</a></h2>
 <p>Install cli from About page of CycleCloud dashboard.
 <img width="419" alt="image" src="https://user-images.githubusercontent.com/65301509/140474967-83bde5b7-9df4-4cc1-9b46-37b04adce16a.png"></p>
