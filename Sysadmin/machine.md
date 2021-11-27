@@ -131,3 +131,7 @@ CA 'mlx5_0'
 - IB 卡的通讯协议 https://www.rdmamojo.com/2013/06/01/which-queue-pair-type-to-use/
 - OpenMPI 使用 http://scc.ustc.edu.cn/zlsc/user_doc/html/mpi-application/mpi-application.html
 
+
+## RAID Controller
+
+SATA controller: Marvell Technology Group Ltd. 88SE9230 PCIe SATA 6Gb/s Controller (rev 11)
