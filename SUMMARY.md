@@ -49,8 +49,11 @@
   * [Cluster Setup](Sysadmin/cluster-setup.md)
   * [Environment Installation](Sysadmin/environment-installation.md)
   * [Environment Modules](Sysadmin/environment-modules.md)
-  * [Machine](Sysadmin/machine.md)
   * [It-Support Machine](Sysadmin/it-support-machine.md)
-  * [Tuning](Sysadmin/tuning.md)
   * [Azure](Sysadmin/Azure/README.md)
     - [CycleCloud](Sysadmin/Azure/cyclecloud.md)
+  * [GeekPie](Sysadmin/GeekPie/README.md)
+    - [Hardware](Sysadmin/GeekPie/hardware.md)
+    - [Software](Sysadmin/GeekPie/software.md)
+    - [Tuning](Sysadmin/GeekPie/tuning.md)
+
