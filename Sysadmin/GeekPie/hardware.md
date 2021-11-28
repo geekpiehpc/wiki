@@ -38,7 +38,7 @@ To configure RAID controller, the easiest way is press Ctrl+M during booting.
 
 If you want to boot a system on RAID, please use Legacy mode.
 If you switched to UEFI only, you can't find the controller even if you change it back later.
-To solve it, see [Supermicro FAQ Entry](https://www.supermicro.com/support/faqs/faq.cfm?faq=33907
+To solve it, see [Supermicro FAQ Entry](https://www.supermicro.com/support/faqs/faq.cfm?faq=33907)
 
 ### Firmware
 

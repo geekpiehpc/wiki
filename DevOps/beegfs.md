@@ -14,7 +14,7 @@ Some work has been done by [Build kernel module against kernel version 5.8.x](ht
 
 ## Insallation
 
-Please follow the [Quick Start Guide]https://doc.beegfs.io/latest/quick_start_guide/quick_start_guide.html) to install. 
+Please follow the [Quick Start Guide](https://doc.beegfs.io/latest/quick_start_guide/quick_start_guide.html) to install. 
 
 Here we will only give you additional notes, assuming the operating system is Debian 10.
 
