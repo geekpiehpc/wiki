@@ -155,10 +155,18 @@
 <p>To configure <code>systemd-boot</code>, use <code>bootctl</code>.
 To change kernel parameters, modify <code>/etc/kernel/postinst.d/zz-update-systemd-boot</code>.</p>
 <h2 id="network-netplan"><a class="header" href="#network-netplan">Network: <code>netplan</code></a></h2>
-<p>Ubuntu use <a href="https://netplan.io/">netplan</a> to configure network. It reads network configuration from <code>/etc/netplan/*.yaml</code>, then convert them to <a href="https://www.freedesktop.org/software/systemd/man/systemd.network.html">systemd-networkd</a> configuration. </p>
+<p>Ubuntu use <a href="https://netplan.io/">netplan</a> to configure network. It reads network configuration from <code>/etc/netplan/*.yaml</code>, then convert them to <a href="https://www.freedesktop.org/software/systemd/man/systemd.network.html">systemd-networkd</a> configuration.</p>
 <p>Netplan configuration examples: https://netplan.io/examples/.</p>
 <h2 id="ansible"><a class="header" href="#ansible">Ansible</a></h2>
 <p>To manage two server at the same time, it's easier to use <a href="https://www.ansible.com/">Ansible</a>.</p>
+<h2 id="other-tools"><a class="header" href="#other-tools">Other tools</a></h2>
+<h3 id="systemd-nspawn"><a class="header" href="#systemd-nspawn"><code>systemd-nspawn</code></a></h3>
+<p><a href="https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html"><em>systemd-nspawn</em></a> is like the chroot command, but it is a <em>chroot on steroids</em>. See <a href="https://wiki.archlinux.org/title/systemd-nspawn">systemd-nspawn - ArchWiki (archlinux.org)</a> and <a href="https://wiki.debian.org/nspawn">nspawn - Debian Wiki</a> for introduction.</p>
+<p>Despite using <code>debootstrap</code>, also try <a href="https://github.com/systemd/mkosi"><code>mkosi</code></a>.</p>
+<pre><code class="language-bash">python3 -m pip install --user git+git://github.com/systemd/mkosi.git
+sudo .local/bin/mkosi -d opensuse -t directory -p systemd-container --checksum --password password -o /var/lib/machines/opensuse-test
+</code></pre>
+<p>See Arch wiki for &quot;broken colors&quot; problem.</p>
 
                     </main>
 
