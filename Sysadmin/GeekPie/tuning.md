@@ -19,6 +19,6 @@ echo off > /sys/devices/system/cpu/smt/control
 
 ## CPU Isolation
 
-When kernel is booted with `nohz_full=1-127` set, CPU 1-127 are isolated. Refer [CPU Isolation – Nohz\_full – by SUSE Labs \(part 3\) \| SUSE Communities](https://www.suse.com/c/cpu-isolation-nohz_full-part-3/) for more details.
+When kernel is booted with `nohz_full=1-127` set, CPU 1-127 are isolated. Refer [CPU Isolation – Nohz\_full – by SUSE Labs \(part 3\) \| SUSE Communities](https://www.suse.com/c/cpu-isolation-nohz_full-part-3/) for more details. Also see [3\.13\. Isolating CPUs Using tuned\-profiles\-realtime Red Hat Enterprise Linux for Real Time 7 \| Red Hat Customer Portal](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_for_real_time/7/html/tuning_guide/isolating_cpus_using_tuned-profiles-realtime).
 
-A full list of kernel parameters is available at <https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html>.
+A full list of kernel parameters is available at [https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html](https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html).
