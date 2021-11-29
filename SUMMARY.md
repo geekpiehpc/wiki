@@ -56,4 +56,5 @@
     - [Hardware](Sysadmin/GeekPie/hardware.md)
     - [Software](Sysadmin/GeekPie/software.md)
     - [Tuning](Sysadmin/GeekPie/tuning.md)
+    - [Kernel](Sysadmin/GeekPie/kernel.md)
 
