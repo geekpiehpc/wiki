@@ -16,4 +16,4 @@ mathjax-support = true
 [output.linkcheck]
 follow-web-links = true
 traverse-parent-directories = false
-exclude = ['homeservershow.com', 'www.supermicro.com']
+exclude = ['homeservershow.com', 'www.supermicro.com', 'wikichip.org']
