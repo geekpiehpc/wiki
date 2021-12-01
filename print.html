@@ -4509,8 +4509,44 @@ To change kernel parameters, modify <code>/etc/kernel/postinst.d/zz-update-syste
 <h2 id="network-netplan"><a class="header" href="#network-netplan">Network: <code>netplan</code></a></h2>
 <p>Ubuntu use <a href="https://netplan.io/">netplan</a> to configure network. It reads network configuration from <code>/etc/netplan/*.yaml</code>, then convert them to <a href="https://www.freedesktop.org/software/systemd/man/systemd.network.html">systemd-networkd</a> configuration.</p>
 <p>Netplan configuration examples: https://netplan.io/examples/.</p>
+<h2 id="drivers"><a class="header" href="#drivers">Drivers</a></h2>
+<h3 id="infiniband"><a class="header" href="#infiniband">InfiniBand</a></h3>
+<ol>
+<li>Download drivers from <a href="https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed">Linux InfiniBand Drivers (mellanox.com)</a>.</li>
+<li><code>tar -xzf MLNX_OFED_LINUX-5.4-3.1.0.0-ubuntu20.04-x86_64.tgz</code></li>
+<li><code>cd</code> to the directory and</li>
+</ol>
+<pre><code class="language-bash">sudo ./mlnxofedinstall --add-kernel-support
+</code></pre>
+<h4 id="configure-ipoib"><a class="header" href="#configure-ipoib">Configure IPoIB</a></h4>
+<p>For RHEL/CentOS, see <a href="https://docs.mellanox.com/pages/viewpage.action?pageId=32413276">IP over InfiniBand (IPoIB) - MLNX_OFED v5.1-0.6.6.0 - Mellanox Docs</a>.</p>
+<p>For Ubuntu, create <code>/etc/netplan/10-infiniband.yaml</code> with:</p>
+<pre><code class="language-yaml">network:
+    version: 2
+    ethernets:
+        ibp161s0f0: # Name of the InfiniBand interface
+            addresses:
+                - 11.4.3.20/24 # Change to your IP address
+</code></pre>
+<p>You may need to change interface name and ip address to your own.</p>
 <h2 id="ansible"><a class="header" href="#ansible">Ansible</a></h2>
 <p>To manage two server at the same time, it's easier to use <a href="https://www.ansible.com/">Ansible</a>.</p>
+<h2 id="network-file-system-nfs"><a class="header" href="#network-file-system-nfs">Network File System (NFS)</a></h2>
+<p>NFS is exported from <code>node1</code>. Only NFS v4 is supported:</p>
+<pre><code>/srv/nfs4 *(rw,sync,fsid=0,crossmnt,no_subtree_check)
+/srv/nfs4/home *(rw,sync,no_subtree_check)
+</code></pre>
+<p>/proc/fs/nfsd/versions: <code>-2 -3 +4 +4.1 +4.2</code></p>
+<p>It is mounted on all nodes at <code>/mnt/nfs4</code> and <code>/mnt/home</code>:</p>
+<pre><code>node1:/ /mnt/nfs4 nfs rw,noauto,x-systemd.automount 0 0
+node1:/home /mnt/home nfs rw 0 0
+</code></pre>
+<p>You can use <code>/mnt/home/&lt;user&gt;</code> as your home directory:</p>
+<pre><code class="language-bash"># On node 1
+sudo mkdir /srv/nfs4/home/&lt;user&gt;
+# On all nodes
+sudo usermod -d /mnt/home/&lt;user&gt; &lt;user&gt;
+</code></pre>
 <h2 id="other-tools"><a class="header" href="#other-tools">Other tools</a></h2>
 <h3 id="systemd-nspawn"><a class="header" href="#systemd-nspawn"><code>systemd-nspawn</code></a></h3>
 <p><a href="https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html"><em>systemd-nspawn</em></a> is like the chroot command, but it is a <em>chroot on steroids</em>. See <a href="https://wiki.archlinux.org/title/systemd-nspawn">systemd-nspawn - ArchWiki (archlinux.org)</a> and <a href="https://wiki.debian.org/nspawn">nspawn - Debian Wiki</a> for introduction.</p>
