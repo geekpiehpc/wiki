@@ -11,6 +11,8 @@ To change kernel parameters, modify `/etc/kernel/postinst.d/zz-update-systemd-bo
 
 ## Network: `netplan`
 
+> Since Systemd v197, network interfaces use predictable naming schemes. See [systemd.net-naming-scheme (www.freedesktop.org)](https://www.freedesktop.org/software/systemd/man/systemd.net-naming-scheme.html) for detail.
+
 Ubuntu use [netplan](https://netplan.io/) to configure network. It reads network configuration from `/etc/netplan/*.yaml`, then convert them to [systemd-networkd](https://www.freedesktop.org/software/systemd/man/systemd.network.html) configuration.
 
 Netplan configuration examples: https://netplan.io/examples/.
