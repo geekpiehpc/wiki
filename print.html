@@ -4507,6 +4507,9 @@ https://www.supermicro.com/wdl/ISO_Extracted/CDR-A1-UP_1.01_for_Intel_A1_UP_plat
 <p>To configure <code>systemd-boot</code>, use <code>bootctl</code>.
 To change kernel parameters, modify <code>/etc/kernel/postinst.d/zz-update-systemd-boot</code>.</p>
 <h2 id="network-netplan"><a class="header" href="#network-netplan">Network: <code>netplan</code></a></h2>
+<blockquote>
+<p>Since Systemd v197, network interfaces use predictable naming schemes. See <a href="https://www.freedesktop.org/software/systemd/man/systemd.net-naming-scheme.html">systemd.net-naming-scheme (www.freedesktop.org)</a> for detail.</p>
+</blockquote>
 <p>Ubuntu use <a href="https://netplan.io/">netplan</a> to configure network. It reads network configuration from <code>/etc/netplan/*.yaml</code>, then convert them to <a href="https://www.freedesktop.org/software/systemd/man/systemd.network.html">systemd-networkd</a> configuration.</p>
 <p>Netplan configuration examples: https://netplan.io/examples/.</p>
 <h2 id="drivers"><a class="header" href="#drivers">Drivers</a></h2>
