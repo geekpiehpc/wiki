@@ -77,13 +77,4 @@ sudo usermod -d /mnt/home/<user> <user>
 
 ### `systemd-nspawn`
 
-[_systemd-nspawn_](https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html) is like the chroot command, but it is a _chroot on steroids_. See [systemd-nspawn - ArchWiki (archlinux.org)](https://wiki.archlinux.org/title/systemd-nspawn) and [nspawn - Debian Wiki](https://wiki.debian.org/nspawn) for introduction.
-
-Despite using `debootstrap`, also try [`mkosi`](https://github.com/systemd/mkosi).
-
-```bash
-python3 -m pip install --user git+git://github.com/systemd/mkosi.git
-sudo .local/bin/mkosi -d opensuse -t directory -p systemd-container --checksum --password password -o /var/lib/machines/opensuse-test
-```
-
-See Arch wiki for "broken colors" problem.
+See [systemd-nspawn](Sysadmin/GeekPie/systemd-nspawn.md)

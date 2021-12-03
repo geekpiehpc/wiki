@@ -57,6 +57,7 @@
     - [Software](Sysadmin/GeekPie/software.md)
     - [Tuning](Sysadmin/GeekPie/tuning.md)
     - [Kernel](Sysadmin/GeekPie/kernel.md)
+    - [systemd-nspawn](Sysadmin/GeekPie/systemd-nspawn.md)
 - [Architecture](Architecture/README.md)
   * [Memory Model](Architecture/MemoryModel.md)
 
