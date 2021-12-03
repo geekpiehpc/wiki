@@ -77,4 +77,4 @@ sudo usermod -d /mnt/home/<user> <user>
 
 ### `systemd-nspawn`
 
-See [systemd-nspawn](Sysadmin/GeekPie/systemd-nspawn.md)
+See [systemd-nspawn](./systemd-nspawn.md)
