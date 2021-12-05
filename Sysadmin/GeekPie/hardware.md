@@ -62,7 +62,11 @@ Installed with [https://www.asus.com/us/Motherboards-Components/Motherboards/Acc
 24:00.0 Non-Volatile memory controller [0108]: Samsung Electronics Co Ltd NVMe SSD Controller SM981/PM981/PM983 [144d:a808]
 ```
 
+⚠️ The PCIE socket of the NVME care must be configured as `4x4x4x4` so as to be recognized by the system correctly.
+
 The card may have problems. If you find it doesn't work correctly, ask in Slack.
+
+
 
 ## Other links
 
