@@ -62,7 +62,7 @@ Installed with [https://www.asus.com/us/Motherboards-Components/Motherboards/Acc
 24:00.0 Non-Volatile memory controller [0108]: Samsung Electronics Co Ltd NVMe SSD Controller SM981/PM981/PM983 [144d:a808]
 ```
 
-⚠️ The PCIE socket of the NVME care must be configured as `4x4x4x4` so as to be recognized by the system correctly.
+⚠️ The PCIE socket of the NVME cadd must be configured as `4x4x4x4` so as to be recognized by the system correctly.
 
 The card may have problems. If you find it doesn't work correctly, ask in Slack.
 
@@ -78,28 +78,28 @@ The card may have problems. If you find it doesn't work correctly, ask in Slack.
 
 #### MegaRAID
 
-https://www.supermicro.com/wdl/ISO\_Extracted/CDR-X8-O\_1.01\_for\_Intel\_X8\_O\_platform/MANUALS/LSI\_SAS\_EmbMRAID\_SWUG.pdf
-https://www.supermicro.com/wdl/driver/SAS/LSI/Documentation/2006%20-%20LSI\_SAS\_EmbMRAID\_SWUG.pdf
+[LSI\_SAS\_EmbMRAID\_SWUG.pdf](https://www.supermicro.com/wdl/ISO\_Extracted/CDR-X8-O\_1.01\_for\_Intel\_X8\_O\_platform/MANUALS/LSI\_SAS\_EmbMRAID\_SWUG.pdf)
+[2006 LSI\_SAS\_EmbMRAID\_SWUG.pdf](https://www.supermicro.com/wdl/driver/SAS/LSI/Documentation/2006%20-%20LSI\_SAS\_EmbMRAID\_SWUG.pdf)
 
 ### ASrock
 
-https://www.asrockrack.com/support/faq.asp?id=14
-https://www.asrockrack.com/support/faq.asp?k=Marvell9230
+[faq1](https://www.asrockrack.com/support/faq.asp?id=14)
+[faq2](https://www.asrockrack.com/support/faq.asp?k=Marvell9230)
 
 ### Win-Raid
 
-https://www.win-raid.com/u162-chinobino-messages-3.html
-https://www.win-raid.com/t5289f16-Help-Problem-to-flash-the-Marvel-SE-card-resolve.html
-https://www.win-raid.com/t8641f51-Syba-SI-PEX-PCIe-Card-with-Marvell-SATA-Controller-1.html
+[forum](https://www.win-raid.com/u162-chinobino-messages-3.html)
+[Help-Problem-to-flash-the-Marvel-SE-card-resolve](https://www.win-raid.com/t5289f16-Help-Problem-to-flash-the-Marvel-SE-card-resolve.html)
+[Syba-SI-PEX-PCIe-Card-with-Marvell-SATA-Controller](https://www.win-raid.com/t8641f51-Syba-SI-PEX-PCIe-Card-with-Marvell-SATA-Controller-1.html)
 
-https://www.supermicro.com/wdl/ISO\_Extracted/CDR-A1-UP\_1.01\_for\_Intel\_A1\_UP\_platform/Marvell/EEPROM\_update\_tool/firmware/92xx/UEFI\_MODE/UEFI/20151222\_shell2.10\_uefi64/
-https://www.supermicro.com/wdl/ISO\_Extracted/CDR-A1-UP\_1.01\_for\_Intel\_A1\_UP\_platform/Marvell/EEPROM\_update\_tool/firmware/92xx/DOS\_MODE/UEFI\_PG/CpuAHCI/9230/uefi64/
+[firmware UEFI](https://www.supermicro.com/wdl/ISO\_Extracted/CDR-A1-UP\_1.01\_for\_Intel\_A1\_UP\_platform/Marvell/EEPROM\_update\_tool/firmware/92xx/UEFI\_MODE/UEFI/20151222\_shell2.10\_uefi64/)
+[firmware DOS](https://www.supermicro.com/wdl/ISO\_Extracted/CDR-A1-UP\_1.01\_for\_Intel\_A1\_UP\_platform/Marvell/EEPROM\_update\_tool/firmware/92xx/DOS\_MODE/UEFI\_PG/CpuAHCI/9230/uefi64/)
 
 http://members.iinet.net.au/\~michaeldd/CDR-A1-UP\_1.01\_for\_Intel\_A1\_UP\_platform.zip
 
 ### Supermicro superserver bios change cause 960 nvme disappear
 
-https://tinkertry.com/supermicro-superserver-bios-change-can-cause-960-pro-and-evo-to-hide-heres-the-fix
+[supermicro-superserver-bios-change-can-cause-960-pro-and-evo-to-hide-heres-the-fix](https://tinkertry.com/supermicro-superserver-bios-change-can-cause-960-pro-and-evo-to-hide-heres-the-fix)
 
 ### Background knowlodge
 
