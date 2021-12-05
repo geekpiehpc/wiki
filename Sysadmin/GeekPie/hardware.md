@@ -103,7 +103,7 @@ http://members.iinet.net.au/\~michaeldd/CDR-A1-UP\_1.01\_for\_Intel\_A1\_UP\_pla
 
 ### Supermicro superserver bios change cause 960 nvme disappear
 
-[supermicro-superserver-bios-change-can-cause-960-pro-and-evo-to-hide-heres-the-fix](https://tinkertry.com/supermicro-superserver-bios-change-can-cause-960-pro-and-evo-to-hide-heres-the-fix)
+https://tinkertry.com/supermicro-superserver-bios-change-can-cause-960-pro-and-evo-to-hide-heres-the-fix
 
 ### Background knowlodge
 
