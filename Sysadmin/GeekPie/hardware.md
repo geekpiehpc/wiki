@@ -78,22 +78,26 @@ The card may have problems. If you find it doesn't work correctly, ask in Slack.
 
 #### MegaRAID
 
-[LSI\_SAS\_EmbMRAID\_SWUG.pdf](https://www.supermicro.com/wdl/ISO\_Extracted/CDR-X8-O\_1.01\_for\_Intel\_X8\_O\_platform/MANUALS/LSI\_SAS\_EmbMRAID\_SWUG.pdf)
-[2006 LSI\_SAS\_EmbMRAID\_SWUG.pdf](https://www.supermicro.com/wdl/driver/SAS/LSI/Documentation/2006%20-%20LSI\_SAS\_EmbMRAID\_SWUG.pdf)
+[LSI_SAS_EmbMRAID_SWUG.pdf](https://www.supermicro.com/wdl/ISO_Extracted/CDR-X8-O_1.01_for_Intel_X8_O_platform/MANUALS/LSI_SAS_EmbMRAID_SWUG.pdf)
+[2006 LSI_SAS_EmbMRAID_SWUG.pdf](https://www.supermicro.com/wdl/driver/SAS/LSI/Documentation/2006%20-%20LSI_SAS_EmbMRAID_SWUG.pdf)
 
 ### ASrock
 
 [faq1](https://www.asrockrack.com/support/faq.asp?id=14)
+
 [faq2](https://www.asrockrack.com/support/faq.asp?k=Marvell9230)
 
 ### Win-Raid
 
 [forum](https://www.win-raid.com/u162-chinobino-messages-3.html)
+
 [Help-Problem-to-flash-the-Marvel-SE-card-resolve](https://www.win-raid.com/t5289f16-Help-Problem-to-flash-the-Marvel-SE-card-resolve.html)
+
 [Syba-SI-PEX-PCIe-Card-with-Marvell-SATA-Controller](https://www.win-raid.com/t8641f51-Syba-SI-PEX-PCIe-Card-with-Marvell-SATA-Controller-1.html)
 
-[firmware UEFI](https://www.supermicro.com/wdl/ISO\_Extracted/CDR-A1-UP\_1.01\_for\_Intel\_A1\_UP\_platform/Marvell/EEPROM\_update\_tool/firmware/92xx/UEFI\_MODE/UEFI/20151222\_shell2.10\_uefi64/)
-[firmware DOS](https://www.supermicro.com/wdl/ISO\_Extracted/CDR-A1-UP\_1.01\_for\_Intel\_A1\_UP\_platform/Marvell/EEPROM\_update\_tool/firmware/92xx/DOS\_MODE/UEFI\_PG/CpuAHCI/9230/uefi64/)
+[firmware UEFI](https://www.supermicro.com/wdl/ISO_Extracted/CDR-A1-UP_1.01_for_Intel_A1_UP_platform/Marvell/EEPROM_update_tool/firmware/92xx/UEFI_MODE/UEFI/20151222_shell2.10_uefi64/)
+
+[firmware DOS](https://www.supermicro.com/wdl/ISO_Extracted/CDR-A1-UP_1.01_for_Intel_A1_UP_platform/Marvell/EEPROM_update_tool/firmware/92xx/DOS_MODE/UEFI_PG/CpuAHCI/9230/uefi64/)
 
 http://members.iinet.net.au/\~michaeldd/CDR-A1-UP\_1.01\_for\_Intel\_A1\_UP\_platform.zip
 
