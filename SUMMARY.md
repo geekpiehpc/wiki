@@ -14,6 +14,8 @@
     - [ISC 21](Apps/ISC/ISC-21/README.md)
       * [Code Challenge](Apps/ISC/ISC-21/CodeChallenge.md)
       * [WRF](Apps/ISC/ISC-21/WRF.md)
+    - [ISC 22](Apps/ISC/ISC-22/README.md)
+      * [Incompact3D](Apps/ISC/ISC-22/incompact3D.md)
   - [SC](Apps/SC/README.md)
     - [SC 21](Apps/SC/SC21/README.md)
       * [Quantum Espresso](Apps/SC/SC21/quantum-espresso.md)
