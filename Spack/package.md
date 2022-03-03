@@ -19,5 +19,5 @@ RUN apt-get update
 RUN apt-get install -y ca-certificates
 RUN sed -i "s/archive.ubuntu.com/mirrors.shanghaitech.edu.cn/g" /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get install -y python python3 gcc build-essential wget nano vim gfortran curl
+RUN apt-get install -y python python3 gcc build-essential wget nano vim gfortran curl less libnl-nf-3-200
 ```
