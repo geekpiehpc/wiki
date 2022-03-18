@@ -89,13 +89,10 @@ mode:
 
 ## iotest
 
-\(
+\\[
 \text{running number} / \text{iteration} = \text{minibatch} / \text{rank}\\
-
-
 \text{throughput} = \frac{\text{all running number}}{\text{runing time}}\\
 \text{throughput} = \frac{\text{running number} / \text{iteration}\times \text{iteration}}{\text{iteration}\times\text{average runing time}}\\
 =\frac{ \text{minibatch} / \text{rank}}{\text{average runing time}} \\
 =\frac{\text{minbatch}}{\text{rank}\times({\text{reading time + compute time})}} 
-\)
-
+\\]
