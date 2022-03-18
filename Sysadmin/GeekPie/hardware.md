@@ -1,6 +1,6 @@
 # 机器简介
 
-Currently we are using SuperMicro 4124GS-TNR server.
+Currently, we are using the SuperMicro 4124GS-TNR server.
 
 * [Product Spec](https://www.supermicro.com/en/Aplus/system/4U/4124/AS-4124GS-TNR.cfm)
 * [AS-4124GS-TNR User manual](https://www.supermicro.com/manuals/superserver/4U/MNL-2302.pdf)
@@ -9,7 +9,7 @@ Currently we are using SuperMicro 4124GS-TNR server.
 
 ## CPU: Epyc 7742
 
-AMD claim that theoretical floating point performance can be calculated as: Double Precision theoretical Floating Point performance $=$ #real\_cores $\* 8$ DP flop/clk $*$ core frequency. For a 2 socket system $=2 \* 64$ cores $* 8 \mathrm{DP}$ flops/ clk $\* 2.2 \mathrm{GHz}=2252.8$ Gflops. This includes counting FMA as two flops.
+AMD claim that theoretical floating point performance can be calculated as: Double Precision theoretical Floating Point performance = #real\_cores \* 8 DP flop/clk * core frequency. For a 2 socket system =2 \* 64 cores \* 8 DP flops/ clk \* 2.2 GHz=2252.8 Gflops. This includes counting FMA as two flops.
 
 ![](https://en.wikichip.org/w/images/thumb/f/f2/zen_2_core_diagram.svg/1800px-zen_2_core_diagram.svg.png)
 
@@ -34,7 +34,7 @@ e6:00.0 SATA controller [0106]: Marvell Technology Group Ltd. 88SE9230 PCIe SATA
 
 Official brief: https://www.marvell.com/content/dam/marvell/en/public-collateral/storage/marvell-storage-88se92xx-product-brief-2012-04.pdf
 
-To configure RAID controller, the easiest way is press Ctrl+M during booting.
+To configure the RAID controller, the easiest way is to press Ctrl+M during booting.
 
 If you want to boot a system on RAID, please use Legacy mode.
 If you switched to UEFI only, you can't find the controller even if you change it back later.

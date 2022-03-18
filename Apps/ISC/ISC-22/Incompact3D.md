@@ -26,4 +26,4 @@ int mkl_serv_intel_cpu_true() {
 2. FFTW3 migrate to CuFFT.
 
 ## Reference
-1. Incompact3d: A powerful tool to tackle turbulence problems with up to $O\left(10^{5}\right)$ computational cores
+1. Incompact3d: A powerful tool to tackle turbulence problems with up to \(O\left(10^{5}\right)\) computational cores

@@ -1,3 +1,12 @@
+<link href="./Mystery.css" rel="stylesheet">
+</link> 
+<script src="./Mystery.js">
+</script>
+
+## Rules
+
+<div id="my-crossword"></div>
+
 ## Install
 
 ```Bash
@@ -80,7 +89,7 @@ mode:
 
 ## iotest
 
-$$
+\(
 \text{running number} / \text{iteration} = \text{minibatch} / \text{rank}\\
 
 
@@ -88,5 +97,5 @@ $$
 \text{throughput} = \frac{\text{running number} / \text{iteration}\times \text{iteration}}{\text{iteration}\times\text{average runing time}}\\
 =\frac{ \text{minibatch} / \text{rank}}{\text{average runing time}} \\
 =\frac{\text{minbatch}}{\text{rank}\times({\text{reading time + compute time})}} 
-$$
+\)
 

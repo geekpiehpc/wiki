@@ -32,7 +32,9 @@ void f(int m,double vla1[m],array<double>a1) {
 所有编译器可能出现的segfault，很多时候换个 intel 小版本可以通过。
 
 ## 有关编译自闭的时候的想法
-### 需要广泛运用好
+建议若是 CMake 打开 `make -n`, configure 打开 `make VERBOSE=1`。如果需要与展开宏编译器，需要 CMake 开 -e 选项得到展开后的表达式。
+
+需要广泛运用好 man、--help。
 
 ## 编译选项
 ### LTO
@@ -1030,9 +1032,14 @@ saxpy:                                  # @saxpy
 	.section	.debug_line,"",@progbits
 .Lline_table_start0:
 ```
+
+### GCC arm SVE
+对于超算来说应该介绍
+
 ## OpenMP
 The compiler support the openmp by default. The OpenMP standard for specifying threading in programming languages like C and Fortran is implemented in the compiler itself and as such is an integral part of the compiler in question. The OMP and POSIX thread library underneath can vary, but this is normally hidden from the user. OpenMP makes use of POSIX threads so both an OpenMP library and a POSIX thread library is needed. The POSIX thread library is normally supplied with the distribution (typically /usr/lib64/libpthread.so). 
-\\(
+
+\(
 \begin{array}{|l|c|c|}
 \hline \text { Compiler } & \text { Flag to select OpenMP } & \text { OpenMP version supported } \\
 \hline \text { Intel compilers } & \text {-qopenmp } & \text { From } 17.0 \text { on : } 4.5 \\
@@ -1040,7 +1047,8 @@ The compiler support the openmp by default. The OpenMP standard for specifying t
 \hline \text { PGI compilers } & -\mathrm{mp} & 4.5 \\
 \hline
 \end{array}
-\\)
+\)
+
 ## Ref
 1. https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2018/lecture-slides/MIT6_172F18_lec9.pdf
 2. 程序员的自我修养
