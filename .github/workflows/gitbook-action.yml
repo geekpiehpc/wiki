@@ -12,8 +12,8 @@ jobs:
   build:
     name: Test and build
     env:
-      MDBOOK_VERSION: 0.4.10
-      MDBOOK_LINKCHECK_VERSION: 0.7.4
+      MDBOOK_VERSION: 0.4.15
+      MDBOOK_LINKCHECK_VERSION: 0.7.6
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
