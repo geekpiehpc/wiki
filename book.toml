@@ -8,6 +8,9 @@ title = "GeekPie_HPC Wiki"
 [build]
 create-missing = false
 
+[preprocessor.rmheader]
+command = "python3 .preprocessor/rmheader.py"
+
 [output.html]
 git-repository-url = "https://github.com/geekpiehpc/wiki"
 site-url = "/wiki/"
