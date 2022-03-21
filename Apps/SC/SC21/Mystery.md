@@ -1,3 +1,13 @@
+---
+title: Mystery
+description: 
+published: true
+date: 2022-03-21T03:12:48.600Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:23:12.832Z
+---
+
 <link href="./Mystery.css" rel="stylesheet">
 </link> 
 <script src="./Mystery.js">
@@ -90,9 +100,9 @@ mode:
 ## iotest
 
 \\[
-\text{running number} / \text{iteration} = \text{minibatch} / \text{rank}\\
-\text{throughput} = \frac{\text{all running number}}{\text{runing time}}\\
-\text{throughput} = \frac{\text{running number} / \text{iteration}\times \text{iteration}}{\text{iteration}\times\text{average runing time}}\\
-=\frac{ \text{minibatch} / \text{rank}}{\text{average runing time}} \\
-=\frac{\text{minbatch}}{\text{rank}\times({\text{reading time + compute time})}} 
+\\text{running number} / \\text{iteration} = \\text{minibatch} / \\text{rank}\\\\
+\\text{throughput} = \\frac{\\text{all running number}}{\\text{runing time}}\\\\
+\\text{throughput} = \\frac{\\text{running number} / \\text{iteration}\\times \\text{iteration}}{\\text{iteration}\\times\\text{average runing time}}\\\\
+=\\frac{ \\text{minibatch} / \\text{rank}}{\\text{average runing time}} \\\\
+=\\frac{\\text{minbatch}}{\\text{rank}\\times({\\text{reading time + compute time})}} 
 \\]
