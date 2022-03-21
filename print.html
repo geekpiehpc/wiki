@@ -1876,10 +1876,10 @@ mode:
 </code></pre>
 <h2 id="iotest"><a class="header" href="#iotest">iotest</a></h2>
 <p>\[
-\text{running number} / \text{iteration} = \text{minibatch} / \text{rank}\
-\text{throughput} = \frac{\text{all running number}}{\text{runing time}}\
-\text{throughput} = \frac{\text{running number} / \text{iteration}\times \text{iteration}}{\text{iteration}\times\text{average runing time}}\
-=\frac{ \text{minibatch} / \text{rank}}{\text{average runing time}} \
+\text{running number} / \text{iteration} = \text{minibatch} / \text{rank}\\
+\text{throughput} = \frac{\text{all running number}}{\text{runing time}}\\
+\text{throughput} = \frac{\text{running number} / \text{iteration}\times \text{iteration}}{\text{iteration}\times\text{average runing time}}\\
+=\frac{ \text{minibatch} / \text{rank}}{\text{average runing time}} \\
 =\frac{\text{minbatch}}{\text{rank}\times({\text{reading time + compute time})}} 
 \]</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sc-20"><a class="header" href="#sc-20">SC 20</a></h1>
@@ -3640,7 +3640,7 @@ saxpy:                                  # @saxpy
 <p>对于超算来说应该介绍</p>
 <h2 id="openmp"><a class="header" href="#openmp">OpenMP</a></h2>
 <p>The compiler support the openmp by default. The OpenMP standard for specifying threading in programming languages like C and Fortran is implemented in the compiler itself and as such is an integral part of the compiler in question. The OMP and POSIX thread library underneath can vary, but this is normally hidden from the user. OpenMP makes use of POSIX threads so both an OpenMP library and a POSIX thread library is needed. The POSIX thread library is normally supplied with the distribution (typically /usr/lib64/libpthread.so). </p>
-<p>[
+<p>\[
 \begin{array}{|l|c|c|}
 \hline \text { Compiler } &amp; \text { Flag to select OpenMP } &amp; \text { OpenMP version supported } \\
 \hline \text { Intel compilers } &amp; \text {-qopenmp } &amp; \text { From } 17.0 \text { on : } 4.5 \\
@@ -3648,7 +3648,7 @@ saxpy:                                  # @saxpy
 \hline \text { PGI compilers } &amp; -\mathrm{mp} &amp; 4.5 \\
 \hline
 \end{array}
-]</p>
+\]</p>
 <h2 id="ref-1"><a class="header" href="#ref-1">Ref</a></h2>
 <ol>
 <li>https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2018/lecture-slides/MIT6_172F18_lec9.pdf</li>
