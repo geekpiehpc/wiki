@@ -2,7 +2,7 @@
 title: C++
 description: 
 published: true
-date: 2022-03-21T02:58:36.338Z
+date: 2022-03-21T03:11:50.504Z
 tags: 
 editor: markdown
 dateCreated: 2022-03-21T02:20:24.803Z
@@ -1049,7 +1049,7 @@ saxpy:                                  # @saxpy
 ## OpenMP
 The compiler support the openmp by default. The OpenMP standard for specifying threading in programming languages like C and Fortran is implemented in the compiler itself and as such is an integral part of the compiler in question. The OMP and POSIX thread library underneath can vary, but this is normally hidden from the user. OpenMP makes use of POSIX threads so both an OpenMP library and a POSIX thread library is needed. The POSIX thread library is normally supplied with the distribution (typically /usr/lib64/libpthread.so). 
 
-\[
+\\[
 \\begin{array}{|l|c|c|}
 \\hline \\text { Compiler } & \\text { Flag to select OpenMP } & \\text { OpenMP version supported } \\\\
 \\hline \\text { Intel compilers } & \\text {-qopenmp } & \\text { From } 17.0 \\text { on : } 4.5 \\\\
@@ -1057,7 +1057,7 @@ The compiler support the openmp by default. The OpenMP standard for specifying t
 \\hline \\text { PGI compilers } & -\mathrm{mp} & 4.5 \\\\
 \\hline
 \\end{array}
-\]
+\\]
 
 ## Ref
 1. https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2018/lecture-slides/MIT6_172F18_lec9.pdf
