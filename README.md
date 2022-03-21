@@ -2,10 +2,10 @@
 title: README
 description: 
 published: true
-date: 2022-03-20T23:18:08.095Z
+date: 2022-03-21T03:01:44.443Z
 tags: 
 editor: markdown
-dateCreated: 2022-03-20T20:59:42.713Z
+dateCreated: 2022-03-21T02:19:10.237Z
 ---
 
 # Introduction
@@ -36,7 +36,7 @@ dateCreated: 2022-03-20T20:59:42.713Z
 
 1. 请向 murez 申请 Git 仓库的编辑权限，可以在 **GeekPie 科创工作室** 或 Slack 找到。
 
-2. 如果你的 GitHub 账号绑定了学校邮箱，可以直接在 [`wiki.js`](https://wiki.geekpie.club/) 编辑。否则，请在 Slack #general 频道寻求支援。
+2. 在学校内网，使用上科大邮箱可直接注册 [`wiki.js`](https://wiki.geekpie.club/)。如有困难，请到 Slack #general 频道寻求支援。
 
 ## 有关出入口
 
