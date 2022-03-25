@@ -2,7 +2,7 @@
 title: tuning
 description: 
 published: true
-date: 2022-03-25T10:42:28.847Z
+date: 2022-03-25T10:43:01.668Z
 tags: 
 editor: markdown
 dateCreated: 2022-03-21T02:22:27.080Z
@@ -40,12 +40,12 @@ A full list of kernel parameters is available at [https://www.kernel.org/doc/htm
 
 ## Set `kernel.yama.ptrace_scope` to 0
 
-Change `/etc/sysctl.d/10-ptrace.conf`
-
 For temporary applying, use the following command
 ```bash
 sudo sysctl -w kernel.yama.ptrace_scope=0
 ```
+
+For permanent, change `/etc/sysctl.d/10-ptrace.conf`.
 
 For documentation, see [The Linux kernel user’s and administrator’s guide » Linux Security Module Usage - Yama](https://www.kernel.org/doc/html/v4.16/admin-guide/LSM/Yama.html?msclkid=a4bbb405ac2711eca35edc9bacd46306).
 
