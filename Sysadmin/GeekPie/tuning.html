@@ -161,6 +161,12 @@ echo off &gt; /sys/devices/system/cpu/smt/control
 <li><a href="https://www.kernel.org/doc/Documentation/timers/NO_HZ.txt">NO_HZ: Reducing Scheduling-Clock Ticks</a></li>
 </ul>
 <p>A full list of kernel parameters is available at <a href="https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html">https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html</a>.</p>
+<h2 id="set-kernelyamaptrace_scope-to-0"><a class="header" href="#set-kernelyamaptrace_scope-to-0">Set <code>kernel.yama.ptrace_scope</code> to 0</a></h2>
+<p>For temporary applying, use the following command</p>
+<pre><code class="language-bash">sudo sysctl -w kernel.yama.ptrace_scope=0
+</code></pre>
+<p>For permanent, change <code>/etc/sysctl.d/10-ptrace.conf</code>.</p>
+<p>For documentation, see <a href="https://www.kernel.org/doc/html/v4.16/admin-guide/LSM/Yama.html?msclkid=a4bbb405ac2711eca35edc9bacd46306">The Linux kernel user’s and administrator’s guide » Linux Security Module Usage - Yama</a>.</p>
 
                     </main>
 
