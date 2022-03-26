@@ -17,6 +17,7 @@
     - [ISC 21](Apps/ISC/ISC-21/README.md)
       * [Code Challenge](Apps/ISC/ISC-21/CodeChallenge.md)
       * [LAMMPS](Apps/ISC/ISC-21/LAMMPS.md)
+      * [GPAW](Apps/ISC/ISC-21/GPAW.md)
       * [MHM2](Apps/ISC/ISC-21/MHM2.md)
       * [WRF](Apps/ISC/ISC-21/WRF.md)
     - [ISC 22](Apps/ISC/ISC-22/README.md)
