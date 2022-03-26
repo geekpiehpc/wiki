@@ -625,5 +625,5 @@ This is a PR for people to review and provide feedback on the p2p branch (issue 
 ```
 Looking forward to applying the P2P function to increase the power of my project!
 ```
-3. THU published their modified version as [ICS](https://onedrive.live.com/?authkey=%21AGlDshwqwawZlVw&cid=EB51140733E93918&id=EB51140733E93918%211254&parId=EB51140733E93918%211251&o=OneUp) [best paper](https://ics21.github.io/program)
+3. THU published their modified version as ICS [best paper](https://ics21.github.io/program)
 4. NUDT modified the code using memory offloading to main DRAM with GPU Memory.

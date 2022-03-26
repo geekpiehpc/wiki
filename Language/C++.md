@@ -1044,7 +1044,60 @@ saxpy:                                  # @saxpy
 ```
 
 ### GCC arm SVE
-对于超算来说应该介绍 Arm FX 64 的。
+对于超算来说应该介绍 Arm FX 64 的。但笔者觉得还是先科普一下 SVE 比较好，说不定下一次 ISC 就有了。
+
+saxpy with neon
+```llvm
+// x0 = &x[0], x1 = &y[0], x2 = &a, x3 = &n
+saxpy_:
+   ldrswx3, [x3] // x3=*n
+   movx4, #0     // x4=i=0
+   ldrd0, [x2]   // d0=*a
+   b     .latch
+.loop:
+   ldrd1, [x0, x4, lsl #3]// d1=x[i]
+   ldrd2, [x1, x4, lsl #3]// d2=y[i]
+   fmaddd2, d1, d0, d2.   // d2+=x[i]*a
+   strd2, [x1, x4, lsl #3]// y[i]=d2
+   addx4, x4, #1          // i+=1
+.latch:
+   cmpx4, x3  // i < n
+   b.lt  .loop// more to do?
+   ret
+```
+saxpy with sve
+```llvm
+// x0 = &x[0], x1 = &y[0], x2 = &a, x3 = &n
+saxpy_:
+   ldrswx3, [x3]        // x3=*n
+   movx4, #0            // x4=i=0
+   whileltp0.d, x4, x3  // p0=while(i++<n)
+   ld1rdz0.d, p0/z, [x2]// p0:z0=bcast(*a)
+.loop:
+   ld1dz1.d, p0/z, [x0, x4, lsl #3]// p0:z1=x[i]
+   ld1dz2.d, p0/z, [x1, x4, lsl #3]// p0:z2=y[i]
+   fmlaz2.d, p0/m, z1.d, z0.d      // p0?z2+=x[i]*a
+   st1dz2.d, p0, [x1, x4, lsl #3]  // p0?y[i]=z2
+   incdx4                          // i+=(VL/64)
+.latch:
+   whileltp0.d, x4, x3             // p0=while(i++<n)
+   b.first .loop                   // more to do?
+   ret
+```
+![](./sve_process.png)
+There is no overhead in instruction count for the SVE version when compared to the equivalent scalar code, which allows a compiler to opportunistically vectorize loops withan unknown trip count.
+
+1. 16个可伸缩预测寄存器(P0-P15）：普通的内存和算数操作的控制仅限于P0-P7。但是生成predicate的指令（向量比较）和依赖predicate的指令（逻辑操作）会使用全部寄存器P0-P15。通过分析编译和手动优化，这样的分配方案被验证有效并且减轻了predicate寄存器在其它架构上被观察到的压力
+2. mixed element尺寸控制：每个predicate寄存器允许将最低粒度降低到字节水平，所以每个bit位对应8blt的数据宽度。
+3. predicate条件：在SVE中产生predication的指令是复用NZCV条件码flags,这个NZCV有不同的解释
+![](./sve_condition.png)
+
+4. 隐式顺序：predicate有一个隐式地从最低到最高位元素顺序解释，对应于一个等效的序列顺序。我们引用与此顺序有关的第一个和最后一个predicate elements以及它们的关联条件。
+
+`whileltp0` is to predict before the last max alignment which may cause throughput drain. OoO may shot the last element with low occpancy which lead to waste of this shot, alternatively, it could shot lower other \(2^n\) aligned instruction.
+
+For hazard execution and speculation, you could easily doing gather load with z3 reg fault trap and reload.
+![](./sve_hazard.png)
 
 ## OpenMP
 The compiler support the openmp by default. The OpenMP standard for specifying threading in programming languages like C and Fortran is implemented in the compiler itself and as such is an integral part of the compiler in question. The OMP and POSIX thread library underneath can vary, but this is normally hidden from the user. OpenMP makes use of POSIX threads so both an OpenMP library and a POSIX thread library is needed. The POSIX thread library is normally supplied with the distribution (typically /usr/lib64/libpthread.so). 
@@ -1059,8 +1112,11 @@ The compiler support the openmp by default. The OpenMP standard for specifying t
 \\end{array}
 \\]
 
+You definitely need to watch [Fanrui](https://i-techx.github.io/iTechX/courses?course_code=CS121)'s PPT and understand the implementation of OpenMP in Clang.
+
 ## Ref
 1. https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2018/lecture-slides/MIT6_172F18_lec9.pdf
 2. 程序员的自我修养
 3. 不同编译器的编译行为比较
 4. [The ARM Scalable Vector Extension](https://arxiv.org/pdf/1803.06185.pdf)
+5. https://www.stonybrook.edu/commcms/ookami/support/_docs/1%20-%20Intro%20to%20A64FX.pdf
