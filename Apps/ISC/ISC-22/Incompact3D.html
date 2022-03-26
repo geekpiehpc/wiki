@@ -159,6 +159,27 @@
 <ol start="2">
 <li>FFTW3 migrate to CuFFT.</li>
 </ol>
+<h2 id="build-libnpc-with-spack"><a class="header" href="#build-libnpc-with-spack">Build <code>libnpc</code> with spack</a></h2>
+<p>I don't know why...it fails to build when <code>MPICXX</code> is set...</p>
+<p>Here is a quick hack</p>
+<pre><code class="language-diff">class Libnbc(AutotoolsPackage):
+    &quot;&quot;&quot;LibNBC is a prototypic implementation of a nonblocking
+    interface for MPI collective operations. Based on ANSI C and
+    MPI-1, it supports all MPI-1 collective operations in a
+    nonblocking manner. LibNBC is distributed under the BSD license.
+    &quot;&quot;&quot;
+    homepage = &quot;http://unixer.de/research/nbcoll/libnbc/&quot;
+    url      = &quot;http://unixer.de/research/nbcoll/libnbc/libNBC-1.1.1.tar.gz&quot;
+
+    version('1.1.1', sha256='63aa5f75f84c191da0688cb551ebd0e9e46928edfba350b2a534eb0c704dd9c3')
+
+    depends_on(&quot;mpi&quot;)
+
++   def configure_args(self):
++       args = []
++       args.append(&quot;MPICXX=&quot;)
++       return args
+</code></pre>
 <h2 id="reference"><a class="header" href="#reference">Reference</a></h2>
 <ol>
 <li>Incompact3d: A powerful tool to tackle turbulence problems with up to (O\left(10^{5}\right)) computational cores</li>
