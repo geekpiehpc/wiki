@@ -2,7 +2,7 @@
 title: CMake
 description: 
 published: true
-date: 2022-03-26T22:34:04.394Z
+date: 2022-03-26T22:34:32.871Z
 tags: 
 editor: markdown
 dateCreated: 2022-03-26T22:34:04.394Z
@@ -12,7 +12,7 @@ dateCreated: 2022-03-26T22:34:04.394Z
 ## Make a CMake wrapper
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env sh
 source /home/user/the_script_you_want_to_source # or whatever other script you want to have executed
 /usr/local/bin/cmake "$@"                       # don't forget to forward the passed parameters
 ```
