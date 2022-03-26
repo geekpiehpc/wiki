@@ -1044,7 +1044,7 @@ saxpy:                                  # @saxpy
 ```
 
 ### GCC arm SVE
-对于超算来说应该介绍
+对于超算来说应该介绍 Arm FX 64 的。
 
 ## OpenMP
 The compiler support the openmp by default. The OpenMP standard for specifying threading in programming languages like C and Fortran is implemented in the compiler itself and as such is an integral part of the compiler in question. The OMP and POSIX thread library underneath can vary, but this is normally hidden from the user. OpenMP makes use of POSIX threads so both an OpenMP library and a POSIX thread library is needed. The POSIX thread library is normally supplied with the distribution (typically /usr/lib64/libpthread.so). 
@@ -1063,3 +1063,4 @@ The compiler support the openmp by default. The OpenMP standard for specifying t
 1. https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2018/lecture-slides/MIT6_172F18_lec9.pdf
 2. 程序员的自我修养
 3. 不同编译器的编译行为比较
+4. [The ARM Scalable Vector Extension](https://arxiv.org/pdf/1803.06185.pdf)

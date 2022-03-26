@@ -8,14 +8,9 @@ editor: markdown
 dateCreated: 2022-03-21T02:23:12.832Z
 ---
 
-<link href="./Mystery.css" rel="stylesheet">
-</link> 
-<script src="./Mystery.js">
-</script>
-
 ## Rules
 
-<div id="my-crossword"></div>
+[Mystery App](./CosmicTagger-SCC21.pdf)
 
 ## Install
 
