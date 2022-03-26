@@ -539,7 +539,7 @@ int main(int narg, char *argv[])
 
 2. 2node 16core each `mpi:omp=1:32`
 
-   <img src="https://www.victoryang00.cn/picture/image-20200206180552841.png" alt="image-20200206180552841" style="zoom:33%;" />
+   <img src="./image-20200206180552841.png" alt="image-20200206180552841" style="zoom:33%;" />
 
 3. 1node 1tesla v100
 
@@ -566,7 +566,7 @@ int main(int narg, char *argv[])
 
 summary
 
-<img src="https://www.victoryang00.cn/picture/image-20200206200701826.png" alt="image-20200206200701826" style="zoom:50%;" />
+<img src="./image-20200206200701826.png" alt="image-20200206200701826" style="zoom:50%;" />
 
 
 
@@ -577,11 +577,11 @@ summary
 
 the summary for profiling of both cpu and gpu, the most time is consumed on computing the real kernel which I think the computing power is fully utilized. 
 
-Accelerated percentage of single node over omp+mpi is 319.799/220.807=1.448319120317744‬‬
+Accelerated percentage of single node over omp+mpi is 319.799/220.807=1.448319120317744
 
 Accelerated percentage of single node over single gpu is 319.799/19.328=16.54627720533642
 
-power consumption: over cpu:<img src="https://www.victoryang00.cn/picture/image-20200206203642478.png" alt="image-20200206203642478" style="zoom:25%;" />
+power consumption: over cpu:<img src="./image-20200206203642478.png" alt="image-20200206203642478" style="zoom:25%;" />
 
 ​									over gpu: 111W on average
 
@@ -625,3 +625,5 @@ This is a PR for people to review and provide feedback on the p2p branch (issue 
 ```
 Looking forward to applying the P2P function to increase the power of my project!
 ```
+3. THU published their modified version as [ICS](https://onedrive.live.com/?authkey=%21AGlDshwqwawZlVw&cid=EB51140733E93918&id=EB51140733E93918%211254&parId=EB51140733E93918%211251&o=OneUp) [best paper](https://ics21.github.io/program)
+4. NUDT modified the code using memory offloading to main DRAM with GPU Memory.

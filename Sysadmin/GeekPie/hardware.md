@@ -15,6 +15,8 @@ AMD claim that theoretical floating point performance can be calculated as: Doub
 
 ## GPU
 
+[Dissecting theNVIDIA VoltaGPU Architecture via Microbenchmarking](https://arxiv.org/pdf/1804.06826.pdf)
+
 ## RDMA
 
 ```
