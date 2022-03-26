@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html lang="cn" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Spack - GeekPie_HPC Wiki</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="../Algorithm/index.html"><strong aria-hidden="true">2.</strong> Algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Algorithm/dgemm.html"><strong aria-hidden="true">2.1.</strong> Dgemm</a></li><li class="chapter-item expanded "><a href="../Algorithm/fft.html"><strong aria-hidden="true">2.2.</strong> fft</a></li><li class="chapter-item expanded "><a href="../Algorithm/kmer.html"><strong aria-hidden="true">2.3.</strong> Kmer</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/index.html"><strong aria-hidden="true">3.</strong> Apps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/index.html"><strong aria-hidden="true">3.1.</strong> ASC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-19/index.html"><strong aria-hidden="true">3.1.1.</strong> Asc 19</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-19/cesm.html"><strong aria-hidden="true">3.1.1.1.</strong> Cesm</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/ASC/asc-20/index.html"><strong aria-hidden="true">3.1.2.</strong> Asc 20-21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-20/quest.html"><strong aria-hidden="true">3.1.2.1.</strong> Quest</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/ASC/asc-22/index.html"><strong aria-hidden="true">3.1.3.</strong> Asc 22</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-22/yuan.html"><strong aria-hidden="true">3.1.3.1.</strong> yuan</a></li><li class="chapter-item expanded "><a href="../Apps/ASC/asc-22/DeepMD.html"><strong aria-hidden="true">3.1.3.2.</strong> DeepMD</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Apps/ISC/index.html"><strong aria-hidden="true">3.2.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/index.html"><strong aria-hidden="true">3.2.1.</strong> ISC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/CodeChallenge.html"><strong aria-hidden="true">3.2.1.1.</strong> Code Challenge</a></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/LAMMPS.html"><strong aria-hidden="true">3.2.1.2.</strong> LAMMPS</a></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/MHM2.html"><strong aria-hidden="true">3.2.1.3.</strong> MHM2</a></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/WRF.html"><strong aria-hidden="true">3.2.1.4.</strong> WRF</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-22/index.html"><strong aria-hidden="true">3.2.2.</strong> ISC 22</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-22/Incompact3D.html"><strong aria-hidden="true">3.2.2.1.</strong> Incompact3D</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Apps/SC/index.html"><strong aria-hidden="true">3.3.</strong> SC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/SC/SC21/index.html"><strong aria-hidden="true">3.3.1.</strong> SC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/SC/SC21/quantum-espresso.html"><strong aria-hidden="true">3.3.1.1.</strong> Quantum Espresso</a></li><li class="chapter-item expanded "><a href="../Apps/SC/SC21/ramBLe.html"><strong aria-hidden="true">3.3.1.2.</strong> Ram B Le</a></li><li class="chapter-item expanded "><a href="../Apps/SC/SC21/cardioid.html"><strong aria-hidden="true">3.3.1.3.</strong> Cardioid</a></li><li class="chapter-item expanded "><a href="../Apps/SC/SC21/Mystery.html"><strong aria-hidden="true">3.3.1.4.</strong> Mystery</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/SC/SC20.html"><strong aria-hidden="true">3.3.2.</strong> SC 20</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Benchmark/index.html"><strong aria-hidden="true">4.</strong> Benchmark</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Benchmark/hpcg-dat.html"><strong aria-hidden="true">4.1.</strong> Hpcg Dat</a></li><li class="chapter-item expanded "><a href="../Benchmark/hpl-dat.html"><strong aria-hidden="true">4.2.</strong> Hpl Dat</a></li><li class="chapter-item expanded "><a href="../Benchmark/io500.html"><strong aria-hidden="true">4.3.</strong> Io 500</a></li></ol></li><li class="chapter-item expanded "><a href="../DevOps/index.html"><strong aria-hidden="true">5.</strong> Dev Ops</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../DevOps/beegfs.html"><strong aria-hidden="true">5.1.</strong> BeeGFS</a></li><li class="chapter-item expanded "><a href="../DevOps/Grafana.html"><strong aria-hidden="true">5.2.</strong> Grafana</a></li><li class="chapter-item expanded "><a href="../DevOps/LDAP.html"><strong aria-hidden="true">5.3.</strong> LDAP</a></li><li class="chapter-item expanded "><a href="../DevOps/SaltStack.html"><strong aria-hidden="true">5.4.</strong> Salt Stack</a></li><li class="chapter-item expanded "><a href="../DevOps/Scheduler.html"><strong aria-hidden="true">5.5.</strong> Scheduler</a></li><li class="chapter-item expanded "><a href="../DevOps/Singularity.html"><strong aria-hidden="true">5.6.</strong> Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="../Language/index.html"><strong aria-hidden="true">6.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Language/C++.html"><strong aria-hidden="true">6.1.</strong> C++</a></li><li class="chapter-item expanded "><a href="../Language/Chisel.html"><strong aria-hidden="true">6.2.</strong> Chisel</a></li><li class="chapter-item expanded "><a href="../Language/Fortran.html"><strong aria-hidden="true">6.3.</strong> Fortran</a></li><li class="chapter-item expanded "><a href="../Language/Go.html"><strong aria-hidden="true">6.4.</strong> Go</a></li><li class="chapter-item expanded "><a href="../Language/Rust.html"><strong aria-hidden="true">6.5.</strong> Rust</a></li></ol></li><li class="chapter-item expanded "><a href="../Libs/index.html"><strong aria-hidden="true">7.</strong> Libs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Libs/Svml.html"><strong aria-hidden="true">7.1.</strong> Svml</a></li><li class="chapter-item expanded "><a href="../Libs/NumaCTL.html"><strong aria-hidden="true">7.2.</strong> NumaCTL</a></li><li class="chapter-item expanded "><a href="../Libs/Boost.html"><strong aria-hidden="true">7.3.</strong> Boost</a></li></ol></li><li class="chapter-item expanded "><a href="../Profiling/index.html"><strong aria-hidden="true">8.</strong> Profiling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Profiling/ArmForge.html"><strong aria-hidden="true">8.1.</strong> Arm Forge</a></li><li class="chapter-item expanded "><a href="../Profiling/uProf.html"><strong aria-hidden="true">8.2.</strong> Uprof</a></li><li class="chapter-item expanded "><a href="../Profiling/Vtune.html"><strong aria-hidden="true">8.3.</strong> Vtune</a></li></ol></li><li class="chapter-item expanded "><a href="../Spack/handson.html" class="active"><strong aria-hidden="true">9.</strong> Spack</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Spack/package.html"><strong aria-hidden="true">9.1.</strong> package</a></li></ol></li><li class="chapter-item expanded "><a href="../Sysadmin/index.html"><strong aria-hidden="true">10.</strong> Sysadmin</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Sysadmin/cluster-setup.html"><strong aria-hidden="true">10.1.</strong> Cluster Setup</a></li><li class="chapter-item expanded "><a href="../Sysadmin/environment-installation.html"><strong aria-hidden="true">10.2.</strong> Environment Installation</a></li><li class="chapter-item expanded "><a href="../Sysadmin/environment-modules.html"><strong aria-hidden="true">10.3.</strong> Environment Modules</a></li><li class="chapter-item expanded "><a href="../Sysadmin/it-support-machine.html"><strong aria-hidden="true">10.4.</strong> It-Support Machine</a></li><li class="chapter-item expanded "><a href="../Sysadmin/bmc-reverse.html"><strong aria-hidden="true">10.5.</strong> BMC Reverse</a></li><li class="chapter-item expanded "><a href="../Sysadmin/Oracle/index.html"><strong aria-hidden="true">10.6.</strong> Oracle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Sysadmin/Oracle/ansible.html"><strong aria-hidden="true">10.6.1.</strong> Ansible</a></li><li class="chapter-item expanded "><a href="../Sysadmin/Oracle/grafana.html"><strong aria-hidden="true">10.6.2.</strong> Grafana</a></li></ol></li><li class="chapter-item expanded "><a href="../Sysadmin/ISC/index.html"><strong aria-hidden="true">10.7.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Sysadmin/ISC/NSCC.html"><strong aria-hidden="true">10.7.1.</strong> NSCC</a></li><li class="chapter-item expanded "><a href="../Sysadmin/ISC/Bridges.html"><strong aria-hidden="true">10.7.2.</strong> Bridges</a></li><li class="chapter-item expanded "><a href="../Sysadmin/ISC/Thor.html"><strong aria-hidden="true">10.7.3.</strong> Thor</a></li><li class="chapter-item expanded "><a href="../Sysadmin/ISC/Niagara.html"><strong aria-hidden="true">10.7.4.</strong> Niagara</a></li></ol></li><li class="chapter-item expanded "><a href="../Sysadmin/Azure/index.html"><strong aria-hidden="true">10.8.</strong> Azure</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Sysadmin/Azure/cyclecloud.html"><strong aria-hidden="true">10.8.1.</strong> CycleCloud</a></li><li class="chapter-item expanded "><a href="../Sysadmin/Azure/check-list.html"><strong aria-hidden="true">10.8.2.</strong> Check List</a></li></ol></li><li class="chapter-item expanded "><a href="../Sysadmin/GeekPie/index.html"><strong aria-hidden="true">10.9.</strong> GeekPie</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Sysadmin/GeekPie/hardware.html"><strong aria-hidden="true">10.9.1.</strong> Hardware</a></li><li class="chapter-item expanded "><a href="../Sysadmin/GeekPie/software.html"><strong aria-hidden="true">10.9.2.</strong> Software</a></li><li class="chapter-item expanded "><a href="../Sysadmin/GeekPie/tuning.html"><strong aria-hidden="true">10.9.3.</strong> Tuning</a></li><li class="chapter-item expanded "><a href="../Sysadmin/GeekPie/kernel.html"><strong aria-hidden="true">10.9.4.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="../Sysadmin/GeekPie/systemd-nspawn.html"><strong aria-hidden="true">10.9.5.</strong> systemd-nspawn</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Architecture/index.html"><strong aria-hidden="true">11.</strong> Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Architecture/MemoryModel.html"><strong aria-hidden="true">11.1.</strong> Memory Model</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">GeekPie_HPC Wiki</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/geekpiehpc/wiki" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="spack-简单教程"><a class="header" href="#spack-简单教程">Spack 简单教程</a></h2>
+<pre><code class="language-c">❯ spack info gcc
+AutotoolsPackage:   gcc
+
+Description:
+    The GNU Compiler Collection includes front ends for C, C++, Objective-C,
+    Fortran, Ada, and Go, as well as libraries for these languages.
+
+Homepage: https://gcc.gnu.org
+
+Maintainers: @michaelkuhn @alalazo
+
+Externally Detectable:
+    True (version, variants)
+
+Tags:
+    None
+
+Preferred version:
+    11.2.0    https://ftpmirror.gnu.org/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz
+
+Safe versions:
+    master    [git] git://gcc.gnu.org/git/gcc.git on branch master
+    11.2.0    https://ftpmirror.gnu.org/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz
+    11.1.0    https://ftpmirror.gnu.org/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz
+    10.3.0    https://ftpmirror.gnu.org/gcc/gcc-10.3.0/gcc-10.3.0.tar.xz
+    10.2.0    https://ftpmirror.gnu.org/gcc/gcc-10.2.0/gcc-10.2.0.tar.xz
+    10.1.0    https://ftpmirror.gnu.org/gcc/gcc-10.1.0/gcc-10.1.0.tar.xz
+    9.4.0     https://ftpmirror.gnu.org/gcc/gcc-9.4.0/gcc-9.4.0.tar.xz
+    9.3.0     https://ftpmirror.gnu.org/gcc/gcc-9.3.0/gcc-9.3.0.tar.xz
+    9.2.0     https://ftpmirror.gnu.org/gcc/gcc-9.2.0/gcc-9.2.0.tar.xz
+    9.1.0     https://ftpmirror.gnu.org/gcc/gcc-9.1.0/gcc-9.1.0.tar.xz
+    8.5.0     https://ftpmirror.gnu.org/gcc/gcc-8.5.0/gcc-8.5.0.tar.xz
+    8.4.0     https://ftpmirror.gnu.org/gcc/gcc-8.4.0/gcc-8.4.0.tar.xz
+    8.3.0     https://ftpmirror.gnu.org/gcc/gcc-8.3.0/gcc-8.3.0.tar.xz
+    8.2.0     https://ftpmirror.gnu.org/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
+    8.1.0     https://ftpmirror.gnu.org/gcc/gcc-8.1.0/gcc-8.1.0.tar.xz
+    7.5.0     https://ftpmirror.gnu.org/gcc/gcc-7.5.0/gcc-7.5.0.tar.xz
+    7.4.0     https://ftpmirror.gnu.org/gcc/gcc-7.4.0/gcc-7.4.0.tar.xz
+    7.3.0     https://ftpmirror.gnu.org/gcc/gcc-7.3.0/gcc-7.3.0.tar.xz
+    7.2.0     https://ftpmirror.gnu.org/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz
+    7.1.0     https://ftpmirror.gnu.org/gcc/gcc-7.1.0/gcc-7.1.0.tar.bz2
+    6.5.0     https://ftpmirror.gnu.org/gcc/gcc-6.5.0/gcc-6.5.0.tar.bz2
+    6.4.0     https://ftpmirror.gnu.org/gcc/gcc-6.4.0/gcc-6.4.0.tar.bz2
+    6.3.0     https://ftpmirror.gnu.org/gcc/gcc-6.3.0/gcc-6.3.0.tar.bz2
+    6.2.0     https://ftpmirror.gnu.org/gcc/gcc-6.2.0/gcc-6.2.0.tar.bz2
+    6.1.0     https://ftpmirror.gnu.org/gcc/gcc-6.1.0/gcc-6.1.0.tar.bz2
+    5.5.0     https://ftpmirror.gnu.org/gcc/gcc-5.5.0/gcc-5.5.0.tar.bz2
+    5.4.0     https://ftpmirror.gnu.org/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2
+    5.3.0     https://ftpmirror.gnu.org/gcc/gcc-5.3.0/gcc-5.3.0.tar.bz2
+    5.2.0     https://ftpmirror.gnu.org/gcc/gcc-5.2.0/gcc-5.2.0.tar.bz2
+    5.1.0     https://ftpmirror.gnu.org/gcc/gcc-5.1.0/gcc-5.1.0.tar.bz2
+    4.9.4     https://ftpmirror.gnu.org/gcc/gcc-4.9.4/gcc-4.9.4.tar.bz2
+    4.9.3     https://ftpmirror.gnu.org/gcc/gcc-4.9.3/gcc-4.9.3.tar.bz2
+    4.9.2     https://ftpmirror.gnu.org/gcc/gcc-4.9.2/gcc-4.9.2.tar.bz2
+    4.9.1     https://ftpmirror.gnu.org/gcc/gcc-4.9.1/gcc-4.9.1.tar.bz2
+    4.8.5     https://ftpmirror.gnu.org/gcc/gcc-4.8.5/gcc-4.8.5.tar.bz2
+    4.8.4     https://ftpmirror.gnu.org/gcc/gcc-4.8.4/gcc-4.8.4.tar.bz2
+    4.7.4     https://ftpmirror.gnu.org/gcc/gcc-4.7.4/gcc-4.7.4.tar.bz2
+    4.6.4     https://ftpmirror.gnu.org/gcc/gcc-4.6.4/gcc-4.6.4.tar.bz2
+    4.5.4     https://ftpmirror.gnu.org/gcc/gcc-4.5.4/gcc-4.5.4.tar.bz2
+
+Variants:
+    Name [Default]               Allowed values          Description
+    =========================    ====================    ===================================================
+
+    binutils [off]               on, off                 Build via binutils
+    bootstrap [on]               on, off                 Enable 3-stage bootstrap
+    graphite [off]               on, off                 Enable Graphite loop optimizations (requires ISL)
+    languages [c,c++,fortran]    ada, brig, c, c++,      Compilers and runtime libraries to build
+                                 fortran, go, java,
+                                 jit, lto, objc,
+                                 obj-c++
+    nvptx [off]                  on, off                 Target nvptx offloading to NVIDIA GPUs
+    piclibs [off]                on, off                 Build PIC versions of libgfortran.a and libstdc++.a
+    strip [off]                  on, off                 Strip executables to reduce installation size
+
+Installation Phases:
+    autoreconf    configure    build    install
+
+Build Dependencies:
+    binutils  cuda  diffutils  flex  gmp  gnat  iconv  isl  mpc  mpfr  zip  zlib  zstd
+
+Link Dependencies:
+    binutils  cuda  gmp  gnat  iconv  isl  mpc  mpfr  zlib  zstd
+
+Run Dependencies:
+    binutils
+
+Virtual Packages:
+    gcc@7: languages=go provides golang@:1.8
+    gcc@6: languages=go provides golang@:1.6.1
+    gcc@5: languages=go provides golang@:1.4
+    gcc@4.9: languages=go provides golang@:1.2
+    gcc@4.8.2: languages=go provides golang@:1.1.2
+    gcc@4.8: languages=go provides golang@:1.1
+    gcc@4.7.1: languages=go provides golang@:1
+    gcc@4.6: languages=go provides golang
+</code></pre>
+<p>得到相关依赖，可以查看你现在如果安装 spack 提供的依赖</p>
+<pre><code class="language-c">❯ spack spec gcc  
+Input spec
+--------------------------------
+gcc
+
+Concretized
+--------------------------------
+gcc@11.2.0%apple-clang@12.0.5~binutils+bootstrap~graphite~nvptx~piclibs~strip languages=c,c++,fortran patches=ecc5ac43951b34cbc5db15f585b4e704c42e2e487f9ed4c24fadef3f3857930b arch=darwin-bigsur-skylake
+    ^diffutils@2.8.1%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+    ^gmp@6.2.1%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+        ^autoconf@2.71%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+        ^automake@1.16.4%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+        ^libtool@2.4.6%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+        ^m4@1.4.6%apple-clang@12.0.5+sigsegv patches=c0a408fbffb7255fcc75e26bd8edab116fc81d216bfd18b473668b7739a4158e arch=darwin-bigsur-skylake
+    ^libiconv@1.16%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+    ^mpc@1.1.0%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+        ^mpfr@4.1.0%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+            ^autoconf-archive@2019.01.06%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+            ^texinfo@4.8%apple-clang@12.0.5 arch=darwin-bigsur-skylake
+    ^zlib@1.2.11%apple-clang@12.0.5+optimize+pic+shared arch=darwin-bigsur-skylake
+    ^zstd@1.5.0%apple-clang@12.0.5~ipo~legacy~lz4~lzma~multithread+programs+shared+static~zlib build_type=RelWithDebInfo arch=darwin-bigsur-skylake
+        ^cmake@3.21.1%apple-clang@12.0.5~doc+ncurses+openssl+ownlibs~qt build_type=Release arch=darwin-bigsur-skylake
+</code></pre>
+<p>如果想使用特定依赖或者依赖系统的包，会在 <code>~/.spack/package</code> 下得到，其使用方法可见 <a href="https://developer.amd.com/spack/build-customization/">AMD</a></p>
+<pre><code class="language-c">❯ spack external find
+
+❯ cat ~/.spack/package.json
+       │ File: /Users/victoryang/.spack/packages.yaml
+───────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1   │ packages:
+   2   │   autoconf:
+   3   │     externals:
+   4   │     - spec: autoconf@2.71
+   5   │       prefix: /usr/local
+   6   │   automake:
+   7   │     externals:
+   8   │     - spec: automake@1.16.4
+   9   │       prefix: /usr/local
+  10   │   bash:
+  11   │     externals:
+  12   │     - spec: bash@3.2.57
+  13   │       prefix: /
+  14   │   bazel:
+  15   │     externals:
+  16   │     - spec: bazel@4.1.0
+  17   │       prefix: /usr/local
+  18   │   bison:
+  19   │     externals:
+  20   │     - spec: bison@2.3
+  21   │       prefix: /usr
+  22   │   bzip2:
+  23   │     externals:
+  24   │     - spec: bzip2@1.0.6
+  25   │       prefix: /usr
+  26   │   cmake:
+  27   │     externals:
+  28   │     - spec: cmake@3.21.1
+  29   │       prefix: /usr/local
+  30   │   diffutils:
+  31   │     externals:
+  32   │     - spec: diffutils@2.8.1
+  33   │       prefix: /usr
+...
+</code></pre>
+<p>安装后的参数大致需要的有几个，<code>-j N</code> 是 job 个数，<code>--no-checksum</code> 不检查文件 md5，<code>--no-restage</code> 为在修改过的文件后继续编译，一般在 <code>/tmp/root/spack-stage/spack-stage-amdscalapack-3.0-qwvyrumhsizxiaujwdsppcovijr5k5ri/spack-src/</code>. 有些包有 cflags cxxflags fcflags。 有些有 cuda_arch。碰到新的软件可以把所有需要的参数 append 到里面。</p>
+<pre><code class="language-c">❯ spack install -j 8 --no-checksum llvm+mlir+flang+all_targets+python+shared_libs cflags=&quot;-O3&quot; cxxflags=&quot;-O3&quot;
+[+] /usr/local (external cmake-3.21.1-cdhzbrts4k5ylrvlpspfl75zgeht4swi)
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/libiconv-1.16-ropgshv657ooz7kfzojv4s6srscgimnw
+[+] /usr/local (external pkg-config-0.29.2-4nv7fo7lbjybt2u3xzb2vxzvgvaz5xmw)
+[+] /usr/local (external xz-5.2.5-p37wr6fna4ysoh2xn2wnmmzttm3bi37o)
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/zlib-1.2.11-lci2s4zd6x77rmexa3uuarbl5cvneskw
+[+] /usr (external perl-5.30.2-4zkfgqml35km4ly7xmxn7ooz44dxtgqp)
+[+] /usr/local (external python-3.9.6-shbb7dthsqe4lu26jugddyi2k7pl3jbl)
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/pcre-8.44-g4df4jqpudoxhjsrubrqhv3uwxajofet
+[+] /usr/local (external z3-4.8.12-hvhfxnxuachtpi524zf55znqn55vanod)
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/ncurses-6.2-xilcz3bhw4otebvysduddyldezxhxvy6
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/libxml2-2.9.10-mlrnjcbnjt3w7635xrietes7terwhko6
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/perl-data-dumper-2.173-cv4kwshixb7tmk6p7icxrqpicppkx5gr
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/py-setuptools-50.3.2-hwyhyijgi3yjokddm67tb6aulefteudx
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/swig-4.0.2-vajpijk4isacr52dzgk2gqbvyunadwkc
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/libedit-3.1-20210216-6h4xokftdnxe2h3o7tie2cnbzbhfrr4h
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/hwloc-2.5.0-z2brjfcvnend5gorjmeqqgirccqerdwd
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/py-six-1.15.0-c63zkkdjpvegqai2f4jjg4mutsuchoov
+[+] /Users/victoryang/spack/opt/spack/darwin-bigsur-skylake/apple-clang-12.0.5/llvm-12.0.1-n6c5z7sqfo7olnaqswu7jqhcdkyyk6nh
+</code></pre>
+<p>以依赖 nvhpc 编译器的 hdf5 为例。笔者碰到的问题有给定 mpi 找不到对应 wrapper 的 nvc 以及 nvfortran。在手动编译的时候会在 PATH 里面找 cc，或者直接找 CC，FC，CXX。这时候需要定义一个 FC。</p>
+<pre><code class="language-c">if spec.compiler.fc=&quot;nvfortran&quot;:
+   env.set(&quot;FC&quot;,&quot;/path/to/mpifort wrapper&quot;)
+   args.append((&quot;CMAKE_Fortran_COMPILER&quot;,spec.complier.mpifort))
+</code></pre>
+<p>在超算上的 spack 有两个 upstream，你觉得重要可以直接给原 repo PR，一般我们备份到学校内部的 gitlab。</p>
+<h4 id="spack-与-modules"><a class="header" href="#spack-与-modules">Spack 与 Modules</a></h4>
+<p>当系统有 Modules 时，会自动把 Module file 的目录加到 MANPATH 下，也即立即可以使用 <code>module load</code></p>
+<h4 id="有关spack错误记录"><a class="header" href="#有关spack错误记录">有关Spack错误记录</a></h4>
+<pre><code class="language-bash">$ spack load boost@1.70
+==&gt; Error: No compilers for operating system debian10 satisfy spec gcc@10.2.0
+</code></pre>
+<p>当出现这种错误时，可以检查一下 <code>.spack/linux/compilers.yaml</code> 是否包含了spack中的所有compiler。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Profiling/Vtune.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../Spack/package.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Profiling/Vtune.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../Spack/package.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
