@@ -1,3 +1,13 @@
+---
+title: dgemm
+description: 
+published: true
+date: 2022-03-27T00:08:09.499Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-26T16:14:08.563Z
+---
+
 ## DGemm
 An problem to resolve widely used in Convolution, HPL, HPCG.
 
