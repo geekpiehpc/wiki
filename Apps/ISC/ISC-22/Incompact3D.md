@@ -63,4 +63,4 @@ class Libnbc(AutotoolsPackage):
 
 
 ## Reference
-1. Incompact3d: A powerful tool to tackle turbulence problems with up to \(O\left(10^{5}\right)\) computational cores
+1. Incompact3d: A powerful tool to tackle turbulence problems with up to \\(O\left(10^{5}\right)\\) computational cores

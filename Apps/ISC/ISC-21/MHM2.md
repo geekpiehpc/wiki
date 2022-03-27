@@ -21,7 +21,6 @@ The code is written in UPC++
 
 \\[
 \begin{array}{llrrrr} 
-
 Conduit & Build Type & Report & System CPU & User CPU & nodes \\
 \hline \textcolor{red}{mpi} & \textcolor{red}{Release} & \textcolor{red}{37.36} & \textcolor{red}{02: 54.9} & \textcolor{red}{1: 35: 15} & \textcolor{red}{4} \\
 \hline mpi & Release & 60.74 & 01: 37.4 & 1: 19: 27 & 2 \\
@@ -32,7 +31,6 @@ mpi & Debug & 134.4 & 06: 11.6 & 5: 57: 13 & 4 \\
 mpi & Release & 37.79 & 07: 31.1 & 1: 39: 17 & 4 \\
 mpi & Release & 545.35 & 1: 18: 27 & 18: 15: 26 & 4 \\
 mpi & Release & 104.88 & 02: 54.6 & 1: 08: 33 & 1
-
 \end{array}
 \\]
 

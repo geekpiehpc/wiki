@@ -64,7 +64,7 @@ BLAS implementations are usually optimized for calculation speed for specific ma
 As the amount of data continues to increase, the size of matrices that need to be calculated in numerical calculations increases. People have proposed to use multiple batches to accelerate matrix multiplication calculations, because multi-batch matrix multiplication can better utilize the computing resources of hardware calculation accelerators. The sub-matrix in each batch in the calculation has a stride address offset and has the same size. Calculated as follows:
 
 \\[
-C\left[i *\right. stride \left._{c}\right] \leftarrow \alpha * o p\left(A\left[i *\right.\right. stride \left.\left._{a}\right]\right) * op \left(B\left[i *\right.\right. stride \left.\left._{b}\right]\right)+\beta * C\left[i *\right. stride \left._{c}\right] i \in\left[0\right. ,\text{batch count} - 1]
+C[i * stride _{c}] \leftarrow \alpha * o p(A[i * stride _{a}]) * op (B[i * stride _{b}])+\beta * C[i * stride _{c}] i \in[0. ,\text{batch count} - 1]
 \\]
 
 In order to further improve the calculation efficiency of the matrix, batch and strided calculation strategies are introduced on the basis of the original matrix multiplication. In order to make full use of the performance advantages of the GPU-like heterogeneous accelerator used in the cluster in this calculation method, the function implementation needs to be further optimized.
