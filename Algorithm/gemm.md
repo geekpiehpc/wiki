@@ -2,7 +2,7 @@
 title: dgemm
 description: 
 published: true
-date: 2022-03-27T00:08:09.499Z
+date: 2022-03-27T00:08:32.337Z
 tags: 
 editor: markdown
 dateCreated: 2022-03-26T16:14:08.563Z
