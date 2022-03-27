@@ -181,12 +181,12 @@ https://wiki.geekpie.club/</li>
 <p>\[
 C \leftarrow \alpha \ op(A)\ op(B) + \beta \ C
 \]</p>
-<p>Among them, (op(X)) represents matrix X, or transposed (X^{T}) of matrix X, or conjugate transposed (X^{H}) of matrix X, α and β are scalars, matrix A, m rows and k columns, matrix B, k rows and n columns, Matrix C, m rows and n columns.</p>
+<p>Among them, \(op(X)\) represents matrix X, or transposed \(X^{T}\) of matrix X, or conjugate transposed \(X^{H}\) of matrix X, α and β are scalars, matrix A, m rows and k columns, matrix B, k rows and n columns, Matrix C, m rows and n columns.</p>
 <p>There are two possible combinations of different numerical types and precisions in mixed precision:</p>
 <ol>
 <li>All scalar parameters and output parameters (scalar or array) are double precision, and at least one array is single precision. Then the type of combination is as follows: (S = Singlereal, D = Doublereal, C = Singlecomplex, Z = Doublecomplex)</li>
 </ol>
-<table><thead><tr><th>(\alpha)</th><th>A</th><th>B</th><th>(\beta)</th><th>C</th></tr></thead><tbody>
+<table><thead><tr><th>\(\alpha\)</th><th>A</th><th>B</th><th>\(\beta\)</th><th>C</th></tr></thead><tbody>
 <tr><td>D</td><td>S</td><td>S</td><td>D</td><td>D</td></tr>
 <tr><td>D</td><td>S</td><td>D</td><td>D</td><td>D</td></tr>
 <tr><td>D</td><td>D</td><td>S</td><td>D</td><td>D</td></tr>
@@ -197,7 +197,7 @@ C \leftarrow \alpha \ op(A)\ op(B) + \beta \ C
 <ol start="2">
 <li>The precision of all floating-point parameters must be all single precision or all double precision. All scalar parameters and output parameters (scalars or arrays) are complex numbers (unless due to mathematical calculations, all scalar parameters must be real numbers, such as the sum in HERK). The types of combination are as follows:</li>
 </ol>
-<table><thead><tr><th>(\alpha)</th><th>A</th><th>B</th><th>(\beta)</th><th>C</th></tr></thead><tbody>
+<table><thead><tr><th>\(\alpha\)</th><th>A</th><th>B</th><th>\(\beta\)</th><th>C</th></tr></thead><tbody>
 <tr><td>C</td><td>S</td><td>S</td><td>C</td><td>C</td></tr>
 <tr><td>C</td><td>S</td><td>C</td><td>C</td><td>C</td></tr>
 <tr><td>C</td><td>C</td><td>S</td><td>C</td><td>C</td></tr>
@@ -4367,7 +4367,7 @@ spack install boost
 <div style="break-before: page; page-break-before: always;"></div><h1 id="uprof"><a class="header" href="#uprof">uProf</a></h1>
 <p>AMD 出品的一款 perf 工具，增加了一些 X86 超集的 metrics，但 UI 比较丑。</p>
 <h2 id="x86-subset"><a class="header" href="#x86-subset">x86 subset</a></h2>
-<p>You can refer to the P state/ E state set tuning on <a href="https://github.com/geekpiehpc/ZenStates-Linux">ZenStates-Linux</a>. The perf subset could be found in the linux perf  tools.</p>
+<p>You can refer to the <code>CONFIG_X86_AMD_PSTATE</code> tuning on <a href="https://github.com/geekpiehpc/ZenStates-Linux">ZenStates-Linux</a>. The perf subset could be found in the linux perf tools. Also check <code>/sys/devices/system/cpu/cpu*/cpufreq/scaling_driver</code> to see if the governor is available. The feature is switched on from Linux 5.17 (Ubuntu 22.04).</p>
 <h2 id="reference-2"><a class="header" href="#reference-2">Reference</a></h2>
 <ol>
 <li>https://faculty.sites.uci.edu/zhouli/files/2022/01/oakland22.pdf</li>

@@ -142,7 +142,7 @@
                         <h1 id="uprof"><a class="header" href="#uprof">uProf</a></h1>
 <p>AMD 出品的一款 perf 工具，增加了一些 X86 超集的 metrics，但 UI 比较丑。</p>
 <h2 id="x86-subset"><a class="header" href="#x86-subset">x86 subset</a></h2>
-<p>You can refer to the P state/ E state set tuning on <a href="https://github.com/geekpiehpc/ZenStates-Linux">ZenStates-Linux</a>. The perf subset could be found in the linux perf  tools.</p>
+<p>You can refer to the <code>CONFIG_X86_AMD_PSTATE</code> tuning on <a href="https://github.com/geekpiehpc/ZenStates-Linux">ZenStates-Linux</a>. The perf subset could be found in the linux perf tools. Also check <code>/sys/devices/system/cpu/cpu*/cpufreq/scaling_driver</code> to see if the governor is available. The feature is switched on from Linux 5.17 (Ubuntu 22.04).</p>
 <h2 id="reference"><a class="header" href="#reference">Reference</a></h2>
 <ol>
 <li>https://faculty.sites.uci.edu/zhouli/files/2022/01/oakland22.pdf</li>
