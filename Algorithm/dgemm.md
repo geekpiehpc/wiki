@@ -24,10 +24,10 @@ With the continuous development of the BLAS benchmark library, it has been able 
 For decades, General Matrix-Matrix Multiplication (GEMM) has been the standard benchmark for computing performance. GEMM is the most commonly used type of computing model in high-performance computing. Whether in the HPC field, such as FFT, convolution, correlation, filtering, etc., or in the field of DeepLearning, such as convolution layers, fully connected layers, etc., its core algorithms can be directly or indirectly converted into matrix multiplication operations. The GEMM calculation formula is as follows:
 
 \\[
-    C \leftarrow \alpha \ op(A)\ op(B) + \beta \ C
+C \leftarrow \alpha \ op(A)\ op(B) + \beta \ C
 \\]
 
-Among them, \(op(X)\) represents matrix X, or transposed \(X^{T}\) of matrix X, or conjugate transposed \(X^{H}\) of matrix X, α and β are scalars, matrix A, m rows and k columns, matrix B, k rows and n columns, Matrix C, m rows and n columns.
+Among them, \\(op(X)\\) represents matrix X, or transposed \\(X^{T}\\) of matrix X, or conjugate transposed \\(X^{H}\\) of matrix X, α and β are scalars, matrix A, m rows and k columns, matrix B, k rows and n columns, Matrix C, m rows and n columns.
 
 There are two possible combinations of different numerical types and precisions in mixed precision:
 
@@ -35,7 +35,7 @@ There are two possible combinations of different numerical types and precisions 
 
 
 
-| \(\alpha\) | A    | B    | \(\beta\) | C    |
+| \\(\alpha\\) | A    | B    | \\(\beta\\) | C    |
 | -------- | ---- | ---- | ------- | ---- |
 | D        | S    | S    | D       | D    |
 | D        | S    | D    | D       | D    |
@@ -50,7 +50,7 @@ There are two possible combinations of different numerical types and precisions 
 
 
 
-| \(\alpha\) | A    | B    | \(\beta\) | C    |
+| \\(\alpha\\) | A    | B    | \\(\beta\\) | C    |
 | -------- | ---- | ---- | ------- | ---- |
 | C        | S    | S    | C       | C    |
 | C        | S    | C    | C       | C    |
