@@ -2,7 +2,7 @@
 title: SUMMARY
 description: 
 published: true
-date: 2022-03-27T00:01:39.552Z
+date: 2022-03-27T00:07:47.454Z
 tags: 
 editor: markdown
 dateCreated: 2022-03-21T02:19:14.876Z
@@ -11,7 +11,7 @@ dateCreated: 2022-03-21T02:19:14.876Z
 # Summary
 - [Intro](README.md)
 - [Algorithm](Algorithm/README.md)
-  * [Dgemm](Algorithm/dgemm.md)
+  * [gemm](Algorithm/gemm.md)
   * [fft](Algorithm/fft.md)
   * [Kmer](Algorithm/kmer.md)
 - [Apps](Apps/README.md)
