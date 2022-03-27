@@ -1,7 +1,17 @@
+---
+title: SUMMARY
+description: 
+published: true
+date: 2022-03-27T00:01:39.552Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:19:14.876Z
+---
+
 # Summary
 - [Intro](README.md)
 - [Algorithm](Algorithm/README.md)
-  * [Gemm](Algorithm/gemm.md)
+  * [Dgemm](Algorithm/dgemm.md)
   * [fft](Algorithm/fft.md)
   * [Kmer](Algorithm/kmer.md)
 - [Apps](Apps/README.md)
@@ -57,6 +67,8 @@
   * [Vtune](Profiling/Vtune.md)
 - [Spack](Spack/handson.md)
   * [package](Spack/package.md)
+  * [handson](Spack/handson.md)
+  * [debug](Spack/debug.md)
 - [Sysadmin](Sysadmin/README.md)
   * [Cluster Setup](Sysadmin/cluster-setup.md)
   * [Environment Installation](Sysadmin/environment-installation.md)
@@ -82,4 +94,4 @@
     - [systemd-nspawn](Sysadmin/GeekPie/systemd-nspawn.md)
 - [Architecture](Architecture/README.md)
   * [Memory Model](Architecture/MemoryModel.md)
-  * [SVE](Architecture/SVE.md)
+
