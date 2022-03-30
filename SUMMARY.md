@@ -95,4 +95,5 @@ dateCreated: 2022-03-21T02:19:14.876Z
     - [systemd-nspawn](Sysadmin/GeekPie/systemd-nspawn.md)
 - [Architecture](Architecture/README.md)
   * [Memory Model](Architecture/MemoryModel.md)
+  * [SVE](Architecture/SVE.md)
 

@@ -1120,3 +1120,4 @@ You definitely need to watch [Fanrui](https://i-techx.github.io/iTechX/courses?c
 3. 不同编译器的编译行为比较
 4. [The ARM Scalable Vector Extension](https://arxiv.org/pdf/1803.06185.pdf)
 5. https://www.stonybrook.edu/commcms/ookami/support/_docs/1%20-%20Intro%20to%20A64FX.pdf
+6. https://llvm.org/devmtg/2017-10/slides/Ferguson-Enabling%20Parallel%20Computing%20in%20Chapel.pdf
