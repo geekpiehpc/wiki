@@ -1,3 +1,13 @@
+---
+title: software
+description: 
+published: true
+date: 2022-03-31T03:46:07.979Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:22:18.396Z
+---
+
 # Software
 
 Currently we are using [Ubuntu Server 20.04.3 LTS](https://releases.ubuntu.com/20.04/).
@@ -8,6 +18,7 @@ We have replaced `grub` with `systemd-boot`. For introduction, see [systemd-boot
 
 To configure `systemd-boot`, use `bootctl`.
 To change kernel parameters, modify `/etc/kernel/postinst.d/zz-update-systemd-boot`.
+GitHub backup: https://gist.github.com/KiruyaMomochi/9df313c2abc55c1736d457d48abc0f54
 
 ## Network: `netplan`
 
