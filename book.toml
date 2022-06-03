@@ -17,6 +17,6 @@ mathjax-support = true
 site-url = "/wiki/"
 
 [output.linkcheck]
-exclude = ['homeservershow.com', 'www.supermicro.com', 'wikichip.org', 'geekpie.club', 'www.asrockrack.com', 'winraid.level1techs.com']
+exclude = ['homeservershow.com', 'www.supermicro.com', 'wikichip.org', 'geekpie.club', 'www.asrockrack.com', 'level1techs.com', 'www.station-drivers.com']
 follow-web-links = true
 traverse-parent-directories = false
