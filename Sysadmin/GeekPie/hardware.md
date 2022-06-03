@@ -91,8 +91,6 @@ The card may have problems. If you find it doesn't work correctly, ask in Slack.
 
 ### Win-Raid
 
-[forum](https://www.win-raid.com/u162-chinobino-messages-3.html)
-
 [Help-Problem-to-flash-the-Marvel-SE-card-resolve](https://www.win-raid.com/t5289f16-Help-Problem-to-flash-the-Marvel-SE-card-resolve.html)
 
 [Syba-SI-PEX-PCIe-Card-with-Marvell-SATA-Controller](https://www.win-raid.com/t8641f51-Syba-SI-PEX-PCIe-Card-with-Marvell-SATA-Controller-1.html)
