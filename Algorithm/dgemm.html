@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html lang="cn" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>dgemm - GeekPie_HPC Wiki</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Summary</li><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="../Algorithm/index.html"><strong aria-hidden="true">2.</strong> Algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Algorithm/dgemm.html" class="active"><strong aria-hidden="true">2.1.</strong> dgemm</a></li><li class="chapter-item expanded "><a href="../Algorithm/fft.html"><strong aria-hidden="true">2.2.</strong> fft</a></li><li class="chapter-item expanded "><a href="../Algorithm/kmer.html"><strong aria-hidden="true">2.3.</strong> Kmer</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/index.html"><strong aria-hidden="true">3.</strong> Apps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/index.html"><strong aria-hidden="true">3.1.</strong> ASC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-19/index.html"><strong aria-hidden="true">3.1.1.</strong> Asc 19</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-19/cesm.html"><strong aria-hidden="true">3.1.1.1.</strong> Cesm</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/ASC/asc-20/index.html"><strong aria-hidden="true">3.1.2.</strong> Asc 20-21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-20/quest.html"><strong aria-hidden="true">3.1.2.1.</strong> Quest</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/ASC/asc-22/index.html"><strong aria-hidden="true">3.1.3.</strong> Asc 22</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ASC/asc-22/yuan.html"><strong aria-hidden="true">3.1.3.1.</strong> yuan</a></li><li class="chapter-item expanded "><a href="../Apps/ASC/asc-22/DeepMD.html"><strong aria-hidden="true">3.1.3.2.</strong> DeepMD</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Apps/ISC/index.html"><strong aria-hidden="true">3.2.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/index.html"><strong aria-hidden="true">3.2.1.</strong> ISC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/CodeChallenge.html"><strong aria-hidden="true">3.2.1.1.</strong> Code Challenge</a></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/LAMMPS.html"><strong aria-hidden="true">3.2.1.2.</strong> LAMMPS</a></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/GPAW.html"><strong aria-hidden="true">3.2.1.3.</strong> GPAW</a></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/MHM2.html"><strong aria-hidden="true">3.2.1.4.</strong> MHM2</a></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-21/WRF.html"><strong aria-hidden="true">3.2.1.5.</strong> WRF</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-22/index.html"><strong aria-hidden="true">3.2.2.</strong> ISC 22</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-22/Incompact3D.html"><strong aria-hidden="true">3.2.2.1.</strong> Incompact3D</a></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-22/NWChem.html"><strong aria-hidden="true">3.2.2.2.</strong> NWChem</a></li><li class="chapter-item expanded "><a href="../Apps/ISC/ISC-22/ICON.html"><strong aria-hidden="true">3.2.2.3.</strong> ICON</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Apps/SC/index.html"><strong aria-hidden="true">3.3.</strong> SC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/SC/SC21/index.html"><strong aria-hidden="true">3.3.1.</strong> SC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Apps/SC/SC21/quantum-espresso.html"><strong aria-hidden="true">3.3.1.1.</strong> Quantum Espresso</a></li><li class="chapter-item expanded "><a href="../Apps/SC/SC21/ramBLe.html"><strong aria-hidden="true">3.3.1.2.</strong> Ram B Le</a></li><li class="chapter-item expanded "><a href="../Apps/SC/SC21/cardioid.html"><strong aria-hidden="true">3.3.1.3.</strong> Cardioid</a></li><li class="chapter-item expanded "><a href="../Apps/SC/SC21/Mystery.html"><strong aria-hidden="true">3.3.1.4.</strong> Mystery</a></li></ol></li><li class="chapter-item expanded "><a href="../Apps/SC/SC20.html"><strong aria-hidden="true">3.3.2.</strong> SC 20</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Benchmark/index.html"><strong aria-hidden="true">4.</strong> Benchmark</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Benchmark/hpcg-dat.html"><strong aria-hidden="true">4.1.</strong> Hpcg Dat</a></li><li class="chapter-item expanded "><a href="../Benchmark/hpl-dat.html"><strong aria-hidden="true">4.2.</strong> Hpl Dat</a></li><li class="chapter-item expanded "><a href="../Benchmark/io500.html"><strong aria-hidden="true">4.3.</strong> Io 500</a></li></ol></li><li class="chapter-item expanded "><a href="../DevOps/index.html"><strong aria-hidden="true">5.</strong> Dev Ops</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../DevOps/beegfs.html"><strong aria-hidden="true">5.1.</strong> BeeGFS</a></li><li class="chapter-item expanded "><a href="../DevOps/Grafana.html"><strong aria-hidden="true">5.2.</strong> Grafana</a></li><li class="chapter-item expanded "><a href="../DevOps/LDAP.html"><strong aria-hidden="true">5.3.</strong> LDAP</a></li><li class="chapter-item expanded "><a href="../DevOps/SaltStack.html"><strong aria-hidden="true">5.4.</strong> Salt Stack</a></li><li class="chapter-item expanded "><a href="../DevOps/Scheduler.html"><strong aria-hidden="true">5.5.</strong> Scheduler</a></li><li class="chapter-item expanded "><a href="../DevOps/Singularity.html"><strong aria-hidden="true">5.6.</strong> Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="../Language/index.html"><strong aria-hidden="true">6.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Language/C++.html"><strong aria-hidden="true">6.1.</strong> C++</a></li><li class="chapter-item expanded "><a href="../Language/Chisel.html"><strong aria-hidden="true">6.2.</strong> Chisel</a></li><li class="chapter-item expanded "><a href="../Language/Fortran.html"><strong aria-hidden="true">6.3.</strong> Fortran</a></li><li class="chapter-item expanded "><a href="../Language/Go.html"><strong aria-hidden="true">6.4.</strong> Go</a></li><li class="chapter-item expanded "><a href="../Language/Rust.html"><strong aria-hidden="true">6.5.</strong> Rust</a></li></ol></li><li class="chapter-item expanded "><a href="../Libs/index.html"><strong aria-hidden="true">7.</strong> Libs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Libs/Svml.html"><strong aria-hidden="true">7.1.</strong> Svml</a></li><li class="chapter-item expanded "><a href="../Libs/NumaCTL.html"><strong aria-hidden="true">7.2.</strong> NumaCTL</a></li><li class="chapter-item expanded "><a href="../Libs/Boost.html"><strong aria-hidden="true">7.3.</strong> Boost</a></li></ol></li><li class="chapter-item expanded "><a href="../Profiling/index.html"><strong aria-hidden="true">8.</strong> Profiling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Profiling/ArmForge.html"><strong aria-hidden="true">8.1.</strong> Arm Forge</a></li><li class="chapter-item expanded "><a href="../Profiling/uProf.html"><strong aria-hidden="true">8.2.</strong> Uprof</a></li><li class="chapter-item expanded "><a href="../Profiling/Vtune.html"><strong aria-hidden="true">8.3.</strong> Vtune</a></li></ol></li><li class="chapter-item expanded "><a href="../Spack/handson.html"><strong aria-hidden="true">9.</strong> Spack</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Spack/package.html"><strong aria-hidden="true">9.1.</strong> package</a></li><li class="chapter-item expanded "><a href="../Spack/handson.html"><strong aria-hidden="true">9.2.</strong> handson</a></li><li class="chapter-item expanded "><a href="../Spack/debug.html"><strong aria-hidden="true">9.3.</strong> debug</a></li></ol></li><li class="chapter-item expanded "><a href="../Sysadmin/index.html"><strong aria-hidden="true">10.</strong> Sysadmin</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Sysadmin/cluster-setup.html"><strong aria-hidden="true">10.1.</strong> Cluster Setup</a></li><li class="chapter-item expanded "><a href="../Sysadmin/environment-installation.html"><strong aria-hidden="true">10.2.</strong> Environment Installation</a></li><li class="chapter-item expanded "><a href="../Sysadmin/environment-modules.html"><strong aria-hidden="true">10.3.</strong> Environment Modules</a></li><li class="chapter-item expanded "><a href="../Sysadmin/it-support-machine.html"><strong aria-hidden="true">10.4.</strong> It-Support Machine</a></li><li class="chapter-item expanded "><a href="../Sysadmin/bmc-reverse.html"><strong aria-hidden="true">10.5.</strong> BMC Reverse</a></li><li class="chapter-item expanded "><a href="../Sysadmin/Oracle/index.html"><strong aria-hidden="true">10.6.</strong> Oracle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Sysadmin/Oracle/ansible.html"><strong aria-hidden="true">10.6.1.</strong> Ansible</a></li><li class="chapter-item expanded "><a href="../Sysadmin/Oracle/grafana.html"><strong aria-hidden="true">10.6.2.</strong> Grafana</a></li></ol></li><li class="chapter-item expanded "><a href="../Sysadmin/ISC/index.html"><strong aria-hidden="true">10.7.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Sysadmin/ISC/NSCC.html"><strong aria-hidden="true">10.7.1.</strong> NSCC</a></li><li class="chapter-item expanded "><a href="../Sysadmin/ISC/Bridges.html"><strong aria-hidden="true">10.7.2.</strong> Bridges</a></li><li class="chapter-item expanded "><a href="../Sysadmin/ISC/Thor.html"><strong aria-hidden="true">10.7.3.</strong> Thor</a></li><li class="chapter-item expanded "><a href="../Sysadmin/ISC/Niagara.html"><strong aria-hidden="true">10.7.4.</strong> Niagara</a></li></ol></li><li class="chapter-item expanded "><a href="../Sysadmin/Azure/index.html"><strong aria-hidden="true">10.8.</strong> Azure</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Sysadmin/Azure/cyclecloud.html"><strong aria-hidden="true">10.8.1.</strong> CycleCloud</a></li><li class="chapter-item expanded "><a href="../Sysadmin/Azure/check-list.html"><strong aria-hidden="true">10.8.2.</strong> Check List</a></li></ol></li><li class="chapter-item expanded "><a href="../Sysadmin/GeekPie/index.html"><strong aria-hidden="true">10.9.</strong> GeekPie</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Sysadmin/GeekPie/hardware.html"><strong aria-hidden="true">10.9.1.</strong> Hardware</a></li><li class="chapter-item expanded "><a href="../Sysadmin/GeekPie/software.html"><strong aria-hidden="true">10.9.2.</strong> Software</a></li><li class="chapter-item expanded "><a href="../Sysadmin/GeekPie/tuning.html"><strong aria-hidden="true">10.9.3.</strong> Tuning</a></li><li class="chapter-item expanded "><a href="../Sysadmin/GeekPie/kernel.html"><strong aria-hidden="true">10.9.4.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="../Sysadmin/GeekPie/systemd-nspawn.html"><strong aria-hidden="true">10.9.5.</strong> systemd-nspawn</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../Architecture/index.html"><strong aria-hidden="true">11.</strong> Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Architecture/MemoryModel.html"><strong aria-hidden="true">11.1.</strong> Memory Model</a></li><li class="chapter-item expanded "><a href="../Architecture/SVE.html"><strong aria-hidden="true">11.2.</strong> SVE</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">GeekPie_HPC Wiki</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/geekpiehpc/wiki" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="dgemm"><a class="header" href="#dgemm">DGemm</a></h2>
+<p>An problem to resolve widely used in Convolution, HPL, HPCG.</p>
+<p>https://zhuanlan.zhihu.com/p/464740681</p>
+<h2 id="spmv"><a class="header" href="#spmv">SPMV</a></h2>
+<p>Numerical linear algebra is a basic calculation module in scientific computing. The calculation of solving linear equations, linear least squares problems, eigenvalues ​​and singular values ​​is the most computationally intensive part of scientific computing. With the advent of numerical programming, it is very effective to use complex subroutine libraries to solve such problems. When we write program code that involves linear algebra operations, we usually decompose calculations into basic subroutines such as point multiplication or matrix vector multiplication. As a result, structured programming came into being, specifying basic building blocks and using unique mnemonic names to identify these operations, and in order to improve the efficiency of the algorithmic use of these algebra programs, the names and parameter lists of some of the basic operations were uniformly planned.</p>
+<p>From 1973 to 1977, the first &quot;level&quot; Basic Linear Algebra Subprograms (BLAS) identified some kernel operations, mainly Fortran specifications and implementations of subroutines for scalar and vector operations [1]. With the advent of vectors, hierarchical storage, and parallel shared memory machines, 1984-1988 successively improved the second &quot;level&quot; BLAS of matrix vector operations and the third &quot;level&quot; BLAS [2,3] of operations between matrices. Specification. The three &quot;levels&quot; of BLAS are not only the division of its development process, but also a measure of the complexity of the algorithm [4]. In order to further develop the BLAS library, a BLAS technical forum meeting was started at the University of Tennessee symposium in 1995 to discuss the overall functions of BLAS, sparse BLAS, dense BLAS with distributed memory, extended BLAS calculation accuracy, and mixed BLAS calculation accuracy, interval BLAS and extensions to existing BLAS.</p>
+<p>With the continuous development of the BLAS benchmark library, it has been able to be applied to many hardware platforms and serves programs related to numerical calculation in various industries. Among them, GeneralMatrix-matrixMultiplication (GEMM) is scientific computing (high-performance computing, machine learning). For basic operations in engineering and data applications, people have been aiming for different computing platforms, trying to find corresponding optimization methods to make their calculations faster.</p>
+<h3 id="problem-description"><a class="header" href="#problem-description">Problem description</a></h3>
+<p>For decades, General Matrix-Matrix Multiplication (GEMM) has been the standard benchmark for computing performance. GEMM is the most commonly used type of computing model in high-performance computing. Whether in the HPC field, such as FFT, convolution, correlation, filtering, etc., or in the field of DeepLearning, such as convolution layers, fully connected layers, etc., its core algorithms can be directly or indirectly converted into matrix multiplication operations. The GEMM calculation formula is as follows:</p>
+<p>\[
+C \leftarrow \alpha \ op(A)\ op(B) + \beta \ C
+\]</p>
+<p>Among them, \(op(X)\) represents matrix X, or transposed \(X^{T}\) of matrix X, or conjugate transposed \(X^{H}\) of matrix X, α and β are scalars, matrix A, m rows and k columns, matrix B, k rows and n columns, Matrix C, m rows and n columns.</p>
+<p>There are two possible combinations of different numerical types and precisions in mixed precision:</p>
+<ol>
+<li>All scalar parameters and output parameters (scalar or array) are double precision, and at least one array is single precision. Then the type of combination is as follows: (S = Singlereal, D = Doublereal, C = Singlecomplex, Z = Doublecomplex)</li>
+</ol>
+<table><thead><tr><th>\(\alpha\)</th><th>A</th><th>B</th><th>\(\beta\)</th><th>C</th></tr></thead><tbody>
+<tr><td>D</td><td>S</td><td>S</td><td>D</td><td>D</td></tr>
+<tr><td>D</td><td>S</td><td>D</td><td>D</td><td>D</td></tr>
+<tr><td>D</td><td>D</td><td>S</td><td>D</td><td>D</td></tr>
+<tr><td>Z</td><td>C</td><td>C</td><td>Z</td><td>Z</td></tr>
+<tr><td>Z</td><td>C</td><td>Z</td><td>Z</td><td>Z</td></tr>
+<tr><td>Z</td><td>Z</td><td>C</td><td>Z</td><td>Z</td></tr>
+</tbody></table>
+<ol start="2">
+<li>The precision of all floating-point parameters must be all single precision or all double precision. All scalar parameters and output parameters (scalars or arrays) are complex numbers (unless due to mathematical calculations, all scalar parameters must be real numbers, such as the sum in HERK). The types of combination are as follows:</li>
+</ol>
+<table><thead><tr><th>\(\alpha\)</th><th>A</th><th>B</th><th>\(\beta\)</th><th>C</th></tr></thead><tbody>
+<tr><td>C</td><td>S</td><td>S</td><td>C</td><td>C</td></tr>
+<tr><td>C</td><td>S</td><td>C</td><td>C</td><td>C</td></tr>
+<tr><td>C</td><td>C</td><td>S</td><td>C</td><td>C</td></tr>
+<tr><td>Z</td><td>D</td><td>D</td><td>Z</td><td>Z</td></tr>
+<tr><td>Z</td><td>D</td><td>Z</td><td>Z</td><td>Z</td></tr>
+<tr><td>Z</td><td>Z</td><td>D</td><td>Z</td><td>Z</td></tr>
+</tbody></table>
+<p>BLAS implementations are usually optimized for calculation speed for specific machines, so using them can bring significant performance advantages. This competition focuses on the calculation performance of the single-precision real number matrix (SGEMM) on domestic advanced computing platforms. Players can refer to the rocBLAS function library [5, 6] for understanding of the relevant content. The API functions implemented by BatchSgemm in the rocblas function library For: rocblas_sgemm_strided_batched.</p>
+<p>As the amount of data continues to increase, the size of matrices that need to be calculated in numerical calculations increases. People have proposed to use multiple batches to accelerate matrix multiplication calculations, because multi-batch matrix multiplication can better utilize the computing resources of hardware calculation accelerators. The sub-matrix in each batch in the calculation has a stride address offset and has the same size. Calculated as follows:</p>
+<p>\[
+C[i * stride _{c}] \leftarrow \alpha * o p(A[i * stride _{a}]) * op (B[i * stride _{b}])+\beta * C[i * stride _{c}] i \in[0. ,\text{batch count} - 1]
+\]</p>
+<p>In order to further improve the calculation efficiency of the matrix, batch and strided calculation strategies are introduced on the basis of the original matrix multiplication. In order to make full use of the performance advantages of the GPU-like heterogeneous accelerator used in the cluster in this calculation method, the function implementation needs to be further optimized.</p>
+<h3 id="test-methods"><a class="header" href="#test-methods">Test Methods</a></h3>
+<p>The example function to implement strided batched matrix-matrix operations is as follows. In order to facilitate the better optimization of the players, the function and its parameters are explained as follows:</p>
+<pre><code>sgemm strided batched(  sgemm operation trans a,
+                        sgemm operation trans b,
+                        intm,
+                        intn,
+                        int k,
+                        const float* alpha
+                        const float A,
+                        int lda,
+                        int stride a,
+                        const float* B
+                        int ldb,
+                        int stride b,
+                        const float* beta,
+                        float C,
+                        int ldc,
+                        int stride C 
+                        int batch count)
+typedef enum sgemm operation_ {
+        operation none = 0,
+        operation transpose = 1,
+        operation conjugate transpose = 2
+} sgemm operation;
+</code></pre>
+<p>Input parameters:</p>
+<p>Parameter trans_a: sgemm_operation type. Details the format of op (A) used in matrix multiplication</p>
+<p>If trans_a = operation_none, then op (A) = A;</p>
+<p>If trans_a = operation_transpose, then op (A) = A ';</p>
+<p>If trans_a = operation_conjugate_transpose, then op (A) = conjg (A ').</p>
+<p>Parameter trans_b: sgemm_operation type. The definition is the same as trans_a;</p>
+<p>Parameter m: the number of rows of matrix A, m&gt; 0;</p>
+<p>Parameter n: the number of columns in matrix B, n&gt; 0;</p>
+<p>Parameter k: the number of columns of matrix A and the number of rows of matrix B, K&gt; 0;</p>
+<p>Parameter alpha: is a single-precision real number, representing the scalar coefficient of matrix A;</p>
+<p>Parameter A: indicates that the matrix stored in the form of a pointer on the GPU is a single-precision real number matrix A;</p>
+<p>Parameter Ida: refers to the size of the first dimension of matrix A when it is actually stored, that is, if the matrix is stored first by row, then Ida K; if it is stored first by column, Ida ≯ M</p>
+<p>Parameter stride_a: represents the span from the A matrix to the next matrix;</p>
+<p>Parameter B: indicates that the matrix stored in the form of a pointer on the GPU is a single-precision real number matrix B;</p>
+<p>Parameter Idb: refers to the size of the first dimension of matrix B in actual storage, and the meaning of details is the same as lda; stride_b represents the span from the start of matrix B to the next matrix;</p>
+<p>Parameter beta: a single-precision real number representing the scalar coefficient of matrix C. If beta = 0, you do not need to define matrix C;</p>
+<p>Parameter C: indicates that the matrix C stores the elements in the form of pointers as single-precision real numbers;</p>
+<p>Parameter Idc: refers to the size of the first dimension of the matrix C in actual storage, with the same details as lda;</p>
+<p>Parameter stride_c: represents the span from the start of the C matrix to the next matrix;</p>
+<p>Parameter batch_count: indicates the number of sgemm operations in the same batch.</p>
+<p>Output parameters</p>
+<p>Parameter C: C matrix covering the input.</p>
+<p>Claim:</p>
+<ol>
+<li>
+<p>The player performs matrix multiplication performance optimization based on the given interface function. In a given test code, the API interface function cannot be changed. The non-fixed parameter players involved can be tuned by themselves according to the matrix size involved in the calculation;</p>
+</li>
+<li>
+<p>In the test sample section, the code gives a pseudo-random number generated dense matrix as test data to verify the performance of the algorithm. The main test case sizes are the following three:</p>
+</li>
+</ol>
+<table><thead><tr><th></th><th>M</th><th>N</th><th>K</th><th>Batch</th></tr></thead><tbody>
+<tr><td>1</td><td>64</td><td>64</td><td>32</td><td>30</td></tr>
+<tr><td>2</td><td>128</td><td>128</td><td>64</td><td>20</td></tr>
+<tr><td>3</td><td>128</td><td>512</td><td>256</td><td>10</td></tr>
+</tbody></table>
+<ol start="3">
+<li>The competitor needs to submit the function to implement part of the code, the compilation method of the function library, and the generated dynamic link library, test samples, test process, and the encrypted sequence of the running results.</li>
+</ol>
+<p>Note: The contestants use the test script provided by the contest group as the basis to improve the function implementation part. To avoid affecting the contestants' performance, please compile and execute the time-encrypted serial code generated by calculating the corresponding matrix to the designated location on the web page.</p>
+<h3 id="sgemm-kernel-optimization-on-vega"><a class="header" href="#sgemm-kernel-optimization-on-vega">SGEMM Kernel Optimization on VEGA</a></h3>
+<p>https://github.com/victoryang00/SGEMM_on_VEGA</p>
+<h1 id="reference"><a class="header" href="#reference">Reference</a></h1>
+<ol>
+<li>C. L. Lawson, R. J. Hanson, D. Kincaid, and F. T. Krogh. Basic Linear Algebra Subprograms for FORTRAN usage. ACM Trans.Math.Software,5:308-323,1979.</li>
+<li>J. J. Dongarra, J. Du Croz, I. S. Duff, and D. Hammarling. A set of Level 3 Basic Linear Algebra Subprograms. ACM Trans. Math.Software,16:1-28,1990.</li>
+<li>J. J. Dongarra, J. Du Croz, D. Hammarling, R. J. Hanson. An extended set of FORTRAN Basic Linear Algebra Subprograms. ACM Trans. Math. Software, 14:1-32, 399, 1988.</li>
+<li>https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms </li>
+<li>https://i-techx.github.io/iTechX/courses?course_code=CS121</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Algorithm/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../Algorithm/fft.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Algorithm/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../Algorithm/fft.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

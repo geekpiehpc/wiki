@@ -1,0 +1,719 @@
+<!DOCTYPE HTML>
+<html lang="cn" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Quest - GeekPie_HPC Wiki</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Summary</li><li class="chapter-item expanded "><a href="../../../index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="../../../Algorithm/index.html"><strong aria-hidden="true">2.</strong> Algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Algorithm/dgemm.html"><strong aria-hidden="true">2.1.</strong> dgemm</a></li><li class="chapter-item expanded "><a href="../../../Algorithm/fft.html"><strong aria-hidden="true">2.2.</strong> fft</a></li><li class="chapter-item expanded "><a href="../../../Algorithm/kmer.html"><strong aria-hidden="true">2.3.</strong> Kmer</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/index.html"><strong aria-hidden="true">3.</strong> Apps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/index.html"><strong aria-hidden="true">3.1.</strong> ASC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-19/index.html"><strong aria-hidden="true">3.1.1.</strong> Asc 19</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-19/cesm.html"><strong aria-hidden="true">3.1.1.1.</strong> Cesm</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-20/index.html"><strong aria-hidden="true">3.1.2.</strong> Asc 20-21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-20/quest.html" class="active"><strong aria-hidden="true">3.1.2.1.</strong> Quest</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-22/index.html"><strong aria-hidden="true">3.1.3.</strong> Asc 22</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-22/yuan.html"><strong aria-hidden="true">3.1.3.1.</strong> yuan</a></li><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-22/DeepMD.html"><strong aria-hidden="true">3.1.3.2.</strong> DeepMD</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/index.html"><strong aria-hidden="true">3.2.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/index.html"><strong aria-hidden="true">3.2.1.</strong> ISC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/CodeChallenge.html"><strong aria-hidden="true">3.2.1.1.</strong> Code Challenge</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/LAMMPS.html"><strong aria-hidden="true">3.2.1.2.</strong> LAMMPS</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/GPAW.html"><strong aria-hidden="true">3.2.1.3.</strong> GPAW</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/MHM2.html"><strong aria-hidden="true">3.2.1.4.</strong> MHM2</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/WRF.html"><strong aria-hidden="true">3.2.1.5.</strong> WRF</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-22/index.html"><strong aria-hidden="true">3.2.2.</strong> ISC 22</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-22/Incompact3D.html"><strong aria-hidden="true">3.2.2.1.</strong> Incompact3D</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-22/NWChem.html"><strong aria-hidden="true">3.2.2.2.</strong> NWChem</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-22/ICON.html"><strong aria-hidden="true">3.2.2.3.</strong> ICON</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/SC/index.html"><strong aria-hidden="true">3.3.</strong> SC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/index.html"><strong aria-hidden="true">3.3.1.</strong> SC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/quantum-espresso.html"><strong aria-hidden="true">3.3.1.1.</strong> Quantum Espresso</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/ramBLe.html"><strong aria-hidden="true">3.3.1.2.</strong> Ram B Le</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/cardioid.html"><strong aria-hidden="true">3.3.1.3.</strong> Cardioid</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/Mystery.html"><strong aria-hidden="true">3.3.1.4.</strong> Mystery</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC20.html"><strong aria-hidden="true">3.3.2.</strong> SC 20</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Benchmark/index.html"><strong aria-hidden="true">4.</strong> Benchmark</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Benchmark/hpcg-dat.html"><strong aria-hidden="true">4.1.</strong> Hpcg Dat</a></li><li class="chapter-item expanded "><a href="../../../Benchmark/hpl-dat.html"><strong aria-hidden="true">4.2.</strong> Hpl Dat</a></li><li class="chapter-item expanded "><a href="../../../Benchmark/io500.html"><strong aria-hidden="true">4.3.</strong> Io 500</a></li></ol></li><li class="chapter-item expanded "><a href="../../../DevOps/index.html"><strong aria-hidden="true">5.</strong> Dev Ops</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/beegfs.html"><strong aria-hidden="true">5.1.</strong> BeeGFS</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Grafana.html"><strong aria-hidden="true">5.2.</strong> Grafana</a></li><li class="chapter-item expanded "><a href="../../../DevOps/LDAP.html"><strong aria-hidden="true">5.3.</strong> LDAP</a></li><li class="chapter-item expanded "><a href="../../../DevOps/SaltStack.html"><strong aria-hidden="true">5.4.</strong> Salt Stack</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Scheduler.html"><strong aria-hidden="true">5.5.</strong> Scheduler</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Singularity.html"><strong aria-hidden="true">5.6.</strong> Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Language/index.html"><strong aria-hidden="true">6.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Language/C++.html"><strong aria-hidden="true">6.1.</strong> C++</a></li><li class="chapter-item expanded "><a href="../../../Language/Chisel.html"><strong aria-hidden="true">6.2.</strong> Chisel</a></li><li class="chapter-item expanded "><a href="../../../Language/Fortran.html"><strong aria-hidden="true">6.3.</strong> Fortran</a></li><li class="chapter-item expanded "><a href="../../../Language/Go.html"><strong aria-hidden="true">6.4.</strong> Go</a></li><li class="chapter-item expanded "><a href="../../../Language/Rust.html"><strong aria-hidden="true">6.5.</strong> Rust</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Libs/index.html"><strong aria-hidden="true">7.</strong> Libs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Libs/Svml.html"><strong aria-hidden="true">7.1.</strong> Svml</a></li><li class="chapter-item expanded "><a href="../../../Libs/NumaCTL.html"><strong aria-hidden="true">7.2.</strong> NumaCTL</a></li><li class="chapter-item expanded "><a href="../../../Libs/Boost.html"><strong aria-hidden="true">7.3.</strong> Boost</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Profiling/index.html"><strong aria-hidden="true">8.</strong> Profiling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Profiling/ArmForge.html"><strong aria-hidden="true">8.1.</strong> Arm Forge</a></li><li class="chapter-item expanded "><a href="../../../Profiling/uProf.html"><strong aria-hidden="true">8.2.</strong> Uprof</a></li><li class="chapter-item expanded "><a href="../../../Profiling/Vtune.html"><strong aria-hidden="true">8.3.</strong> Vtune</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Spack/handson.html"><strong aria-hidden="true">9.</strong> Spack</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Spack/package.html"><strong aria-hidden="true">9.1.</strong> package</a></li><li class="chapter-item expanded "><a href="../../../Spack/handson.html"><strong aria-hidden="true">9.2.</strong> handson</a></li><li class="chapter-item expanded "><a href="../../../Spack/debug.html"><strong aria-hidden="true">9.3.</strong> debug</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Sysadmin/index.html"><strong aria-hidden="true">10.</strong> Sysadmin</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Sysadmin/cluster-setup.html"><strong aria-hidden="true">10.1.</strong> Cluster Setup</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/environment-installation.html"><strong aria-hidden="true">10.2.</strong> Environment Installation</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/environment-modules.html"><strong aria-hidden="true">10.3.</strong> Environment Modules</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/it-support-machine.html"><strong aria-hidden="true">10.4.</strong> It-Support Machine</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/bmc-reverse.html"><strong aria-hidden="true">10.5.</strong> BMC Reverse</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/Oracle/index.html"><strong aria-hidden="true">10.6.</strong> Oracle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Sysadmin/Oracle/ansible.html"><strong aria-hidden="true">10.6.1.</strong> Ansible</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/Oracle/grafana.html"><strong aria-hidden="true">10.6.2.</strong> Grafana</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Sysadmin/ISC/index.html"><strong aria-hidden="true">10.7.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Sysadmin/ISC/NSCC.html"><strong aria-hidden="true">10.7.1.</strong> NSCC</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/ISC/Bridges.html"><strong aria-hidden="true">10.7.2.</strong> Bridges</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/ISC/Thor.html"><strong aria-hidden="true">10.7.3.</strong> Thor</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/ISC/Niagara.html"><strong aria-hidden="true">10.7.4.</strong> Niagara</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Sysadmin/Azure/index.html"><strong aria-hidden="true">10.8.</strong> Azure</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Sysadmin/Azure/cyclecloud.html"><strong aria-hidden="true">10.8.1.</strong> CycleCloud</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/Azure/check-list.html"><strong aria-hidden="true">10.8.2.</strong> Check List</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Sysadmin/GeekPie/index.html"><strong aria-hidden="true">10.9.</strong> GeekPie</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Sysadmin/GeekPie/hardware.html"><strong aria-hidden="true">10.9.1.</strong> Hardware</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/GeekPie/software.html"><strong aria-hidden="true">10.9.2.</strong> Software</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/GeekPie/tuning.html"><strong aria-hidden="true">10.9.3.</strong> Tuning</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/GeekPie/kernel.html"><strong aria-hidden="true">10.9.4.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="../../../Sysadmin/GeekPie/systemd-nspawn.html"><strong aria-hidden="true">10.9.5.</strong> systemd-nspawn</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Architecture/index.html"><strong aria-hidden="true">11.</strong> Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Architecture/MemoryModel.html"><strong aria-hidden="true">11.1.</strong> Memory Model</a></li><li class="chapter-item expanded "><a href="../../../Architecture/SVE.html"><strong aria-hidden="true">11.2.</strong> SVE</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">GeekPie_HPC Wiki</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/geekpiehpc/wiki" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- TITLE: Quest -->
+<!-- SUBTITLE: A quick summary of Quest -->
+<h1 id="quest-analysis"><a class="header" href="#quest-analysis">quest analysis</a></h1>
+<h2 id="program-goal-analysis"><a class="header" href="#program-goal-analysis">program goal analysis</a></h2>
+<p>what's code is actually doing is to simulate quantum computing.</p>
+<p><img src="./quest-circuit.png" alt="" /></p>
+<h3 id="different-bits-state---qubits"><a class="header" href="#different-bits-state---qubits">different bits state - qubits</a></h3>
+<p>3 states: <code>1</code> <code>0</code> <code>0/1</code></p>
+<p>store by qreal which is actualy a complex number a+bi  (a+b=1), and it can be stated as \( (\begin{smallmatrix}0.123124&amp;0\ 0&amp;0.876876\end{smallmatrix}) \) , also note that because gpu only support float32 computing. So native qreal (precision=4) is not supported in gpu simutation.</p>
+<pre><code class="language-cpp">/*
+ * Single precision, which uses 4 bytes per amplitude component
+ */
+# if QuEST_PREC==1
+    # define qreal float
+    // \cond HIDDEN_SYMBOLS   
+    # define MPI_QuEST_REAL MPI_FLOAT
+    # define MPI_MAX_AMPS_IN_MSG (1LL&lt;&lt;29) // must be 2^int
+    # define REAL_STRING_FORMAT &quot;%.8f&quot;
+    # define REAL_QASM_FORMAT &quot;%.8g&quot;
+    # define REAL_EPS 1e-5
+    # define absReal(X) fabs(X) // not fabsf(X) - better to return doubles where possible
+    // \endcond
+/*
+ * Double precision, which uses 8 bytes per amplitude component
+ */
+# elif QuEST_PREC==2
+    # define qreal double
+    // \cond HIDDEN_SYMBOLS   
+    # define MPI_QuEST_REAL MPI_DOUBLE
+    # define MPI_MAX_AMPS_IN_MSG (1LL&lt;&lt;28) // must be 2^int
+    # define REAL_STRING_FORMAT &quot;%.14f&quot;
+    # define REAL_QASM_FORMAT &quot;%.14g&quot;
+    # define REAL_EPS 1e-13
+    # define absReal(X) fabs(X)
+    // \endcond
+/*
+ * Quad precision, which uses 16 bytes per amplitude component.
+ * This is not compatible with most GPUs.
+ */
+# elif QuEST_PREC==4
+    # define qreal long double
+    // \cond HIDDEN_SYMBOLS   
+    # define MPI_QuEST_REAL MPI_LONG_DOUBLE
+    # define MPI_MAX_AMPS_IN_MSG (1LL&lt;&lt;27) // must be 2^int
+    # define REAL_STRING_FORMAT &quot;%.17Lf&quot;
+    # define REAL_QASM_FORMAT &quot;%.17Lg&quot;
+    # define REAL_EPS 1e-14
+    # define absReal(X) fabsl(X)
+    // \endcond
+# endif
+</code></pre>
+<h3 id="many-matrices-computation"><a class="header" href="#many-matrices-computation">many matrices computation</a></h3>
+<img src="./image-20200206182352740.png" alt="image-20200206182352740" style="zoom:33%;" />
+<p>all of the gate corresponds to one of the manipulation on qubits.</p>
+<h4 id="basic-operation-on-a-and-b-httpsarxivorgpdfquant-ph0207118pdf"><a class="header" href="#basic-operation-on-a-and-b-httpsarxivorgpdfquant-ph0207118pdf">Basic operation on a and b https://arxiv.org/pdf/quant-ph/0207118.pdf</a></h4>
+<p>random variables = density matrix </p>
+<p><strong>hermitian</strong>:\(\rho^{\dagger}=\rho\)</p>
+<p><strong>positive semidefinite</strong>:  <strong>eigenvalue</strong> \(\geq\) 0</p>
+<p><strong>trace</strong>: \(\Sigma(diagnal\ elements)=1\)</p>
+<p>dirac notation: ket \(v_{\phi}=|\phi\rangle=\left(\begin{array}{l}\phi_{0} \\phi_{1}\end{array}\right)\)</p>
+<p>bra   \( v_{\phi}^{\dagger}=\langle\phi|=\left(\begin{array}{ll}\phi_{0} &amp; \phi_{1}\end{array}\right)\)</p>
+<p>\(\langle\phi \mid \psi\rangle\)= inner products of bra(fi) and ket(theta). notice: \(\langle\phi \mid \phi\rangle=1\)</p>
+<p>\(|\phi\rangle|\psi\rangle\)=tensor product of ket(fi) and bra(theta)</p>
+<p>2 special notation: \(u_{0}=|0\rangle=\left(\begin{array}{l}1 \ 0\end{array}\right) \quad v_{1}=|1\rangle=\left(\begin{array}{l}0 \ 1\end{array}\right)\)</p>
+<p>the dense <strong>matrix</strong>:\(\rho=\left(\begin{array}{cc}q_{0} &amp; 0 \ 0 &amp; q_{1}\end{array}\right)\) (\(q_{0}+q_{1}=1\), the purpose of the equation is to illustrate the complex number ) can be stated  as \(\rho=q_{0}|0\rangle\left\langle 0\left|+q_{1}\right| 1\right\rangle\langle 1|\)</p>
+<p>so \(\rho|0\rangle=\left(q_{0}|0\rangle\left\langle 0\left|+q_{1}\right| 1\right\rangle\langle 1|\right)|0\rangle=q_{0}|0\rangle\)</p>
+<p>dot product (from normal bits to qubits):\( |a b\rangle=|a\rangle \otimes|b\rangle=v_{00}|00\rangle+v_{01}|01\rangle+v_{10}|10\rangle \dashv v_{11}|11\rangle \rightarrow\left[\begin{array}{l}v_{00} \ v_{01} \ v_{10} \ v_{11}\end{array}\right] \)</p>
+<p>for example in bits 5 = 101b, while in qubits \(|5\rangle_{3}=|101\rangle=|1\rangle|0\rangle|1\rangle=\left(\begin{array}{l}0 \ 1\end{array}\right)\left(\begin{array}{l}1 \ 0\end{array}\right)\left(\begin{array}{l}0 \ 1\end{array}\right)=\left(\begin{array}{l}0 \ 0 \ 0 \ 0 \ 0 \ 1 \ 0 \ 0\end{array}\right)\)</p>
+<p><img src="image-20200206193126579.png" alt="" /></p>
+<h4 id="hadamard-gate-operations"><a class="header" href="#hadamard-gate-operations">Hadamard gate operations</a></h4>
+<p>\begin{aligned}H(|0\rangle) &amp;=\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle=:|+\rangle \end{aligned}</p>
+<p>\begin{aligned} H(|1\rangle) &amp;=\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{2}}|1\rangle=:|-\rangle \end{aligned}</p>
+<p>\begin{aligned} H\left(\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle\right) &amp;=\frac{1}{2}(|0\rangle+|1\rangle)+\frac{1}{2}(|0\rangle-|1\rangle)=|0\rangle \end{aligned}</p>
+<p>\begin{aligned} H\left(\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{2}}|1\rangle\right) &amp;=\frac{1}{2}(|0\rangle+|1\rangle)-\frac{1}{2}(|0\rangle-|1\rangle)=|1\rangle\end{aligned}</p>
+<p>corresponding matrix operation in dirac notation: \(H_{1}=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}1 &amp; 1 \ 1 &amp; -1\end{array}\right)\)</p>
+<p>some specialty:</p>
+<ol>
+<li>\(H=\frac{|0\rangle+|1\rangle}{\sqrt{2}}\langle 0|+\frac{|0\rangle-|1\rangle}{\sqrt{2}}\langle 1|\)</li>
+<li>Since \(HH^{\dagger}=I\) where <em>I</em> is the identity matrix, <em>H</em> is a <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary matrix</a> (like all other quantum logical gates). Also, it is its own <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary inverse</a>, \(H=H^{\dagger}\).</li>
+</ol>
+<p>One application of the Hadamard gate to either a 0 or 1 qubit will produce a quantum state that, if observed, will be a 0 or 1 with equal probability (as seen in the first two operations). This is exactly like flipping a fair coin in the standard <a href="https://en.wikipedia.org/wiki/Probabilistic_Turing_machine">probabilistic model of computation</a>. However, if the Hadamard gate is applied twice in succession (as is effectively being done in the last two operations), then the final state is always the same as the initial state.</p>
+<pre><code class="language-cpp">__global__ void statevec_hadamardKernel (Qureg qureg, const int targetQubit){
+    // ----- sizes
+    long long int sizeBlock,                                           // size of blocks
+         sizeHalfBlock;                                       // size of blocks halved
+    // ----- indices
+    long long int thisBlock,                                           // current block
+         indexUp,indexLo;                                     // current index and corresponding index in lower half block
+
+    // ----- temp variables
+    qreal   stateRealUp,stateRealLo,                             // storage for previous state values
+           stateImagUp,stateImagLo;                             // (used in updates)
+    // ----- temp variables
+    long long int thisTask;                                   // task based approach for expose loop with small granularity
+    const long long int numTasks=qureg.numAmpsPerChunk&gt;&gt;1;
+
+    sizeHalfBlock = 1LL &lt;&lt; targetQubit;                               // size of blocks halved
+    sizeBlock     = 2LL * sizeHalfBlock;                           // size of blocks
+
+    // ---------------------------------------------------------------- //
+    //            rotate                                                //
+    // ---------------------------------------------------------------- //
+
+    //! fix -- no necessary for GPU version
+    qreal *stateVecReal = qureg.deviceStateVec.real;
+    qreal *stateVecImag = qureg.deviceStateVec.imag;
+
+    qreal recRoot2 = 1.0/sqrt(2.0);
+
+    thisTask = blockIdx.x*blockDim.x + threadIdx.x;
+    if (thisTask&gt;=numTasks) return;
+
+    thisBlock   = thisTask / sizeHalfBlock;
+    indexUp     = thisBlock*sizeBlock + thisTask%sizeHalfBlock;
+    indexLo     = indexUp + sizeHalfBlock;
+
+    // store current state vector values in temp variables
+    stateRealUp = stateVecReal[indexUp];
+    stateImagUp = stateVecImag[indexUp];
+
+    stateRealLo = stateVecReal[indexLo];
+    stateImagLo = stateVecImag[indexLo];
+
+    stateVecReal[indexUp] = recRoot2*(stateRealUp + stateRealLo);
+    stateVecImag[indexUp] = recRoot2*(stateImagUp + stateImagLo);
+
+    stateVecReal[indexLo] = recRoot2*(stateRealUp - stateRealLo);
+    stateVecImag[indexLo] = recRoot2*(stateImagUp - stateImagLo);
+}
+
+void statevec_hadamard(Qureg qureg, const int targetQubit) 
+{
+    int threadsPerCUDABlock, CUDABlocks;
+    threadsPerCUDABlock = 128;
+    CUDABlocks = ceil((qreal)(qureg.numAmpsPerChunk&gt;&gt;1)/threadsPerCUDABlock);
+    statevec_hadamardKernel&lt;&lt;&lt;CUDABlocks, threadsPerCUDABlock&gt;&gt;&gt;(qureg, targetQubit);
+}
+</code></pre>
+<h4 id="pauli-xyz-gate"><a class="header" href="#pauli-xyz-gate">Pauli-X/Y/Z gate</a></h4>
+<p>The Pauli-X gate acts on a single qubit. It is the quantum equivalent of the \( X=\left[\begin{array}{ll}0 &amp; 1 \ 1 &amp; 0\end{array}\right]\)</p>
+<pre><code class="language-cpp">void pauliX(Qureg qureg, const int targetQubit) {
+    validateTarget(qureg, targetQubit, __func__);
+    
+    statevec_pauliX(qureg, targetQubit);
+    if (qureg.isDensityMatrix) {
+        statevec_pauliX(qureg, targetQubit+qureg.numQubitsRepresented);
+    }
+    
+    qasm_recordGate(qureg, GATE_SIGMA_X, targetQubit);
+}
+</code></pre>
+<p>the real computing part</p>
+<pre><code class="language-cpp">void statevec_pauliXLocal(Qureg qureg, const int targetQubit)
+{
+    long long int sizeBlock, sizeHalfBlock;
+    long long int thisBlock, // current block
+         indexUp,indexLo;    // current index and corresponding index in lower half block
+
+    qreal stateRealUp,stateImagUp;
+    long long int thisTask;         
+    const long long int numTasks=qureg.numAmpsPerChunk&gt;&gt;1;
+
+    // set dimensions
+    sizeHalfBlock = 1LL &lt;&lt; targetQubit;  
+    sizeBlock     = 2LL * sizeHalfBlock; 
+
+    // Can't use qureg.stateVec as a private OMP var
+    qreal *stateVecReal = qureg.stateVec.real;
+    qreal *stateVecImag = qureg.stateVec.imag;
+
+# ifdef _OPENMP
+# pragma omp parallel \
+    default  (none) \
+    shared   (sizeBlock,sizeHalfBlock, stateVecReal,stateVecImag) \
+    private  (thisTask,thisBlock ,indexUp,indexLo, stateRealUp,stateImagUp) 
+# endif
+    {
+# ifdef _OPENMP
+# pragma omp for schedule (static)
+# endif
+        for (thisTask=0; thisTask&lt;numTasks; thisTask++) {
+            thisBlock   = thisTask / sizeHalfBlock;
+            indexUp     = thisBlock*sizeBlock + thisTask%sizeHalfBlock;
+            indexLo     = indexUp + sizeHalfBlock;
+
+            stateRealUp = stateVecReal[indexUp];
+            stateImagUp = stateVecImag[indexUp];
+
+            stateVecReal[indexUp] = stateVecReal[indexLo];
+            stateVecImag[indexUp] = stateVecImag[indexLo];
+
+            stateVecReal[indexLo] = stateRealUp;
+            stateVecImag[indexLo] = stateImagUp;
+        } 
+    }
+
+}
+
+void statevec_pauliXDistributed (Qureg qureg,
+        ComplexArray stateVecIn,
+        ComplexArray stateVecOut)
+{
+
+    long long int thisTask;  
+    const long long int numTasks=qureg.numAmpsPerChunk;
+
+    qreal *stateVecRealIn=stateVecIn.real, *stateVecImagIn=stateVecIn.imag;
+    qreal *stateVecRealOut=stateVecOut.real, *stateVecImagOut=stateVecOut.imag;
+
+# ifdef _OPENMP
+# pragma omp parallel \
+    default  (none) \
+    shared   (stateVecRealIn,stateVecImagIn,stateVecRealOut,stateVecImagOut) \
+    private  (thisTask)
+# endif
+    {
+# ifdef _OPENMP
+# pragma omp for schedule (static)
+# endif
+        for (thisTask=0; thisTask&lt;numTasks; thisTask++) {
+            stateVecRealOut[thisTask] = stateVecRealIn[thisTask];
+            stateVecImagOut[thisTask] = stateVecImagIn[thisTask];
+        }
+    }
+} 
+</code></pre>
+<pre><code class="language-cpp">__global__ void statevec_pauliXKernel(Qureg qureg, const int targetQubit){
+    // ----- sizes
+    long long int sizeBlock,                                           // size of blocks
+         sizeHalfBlock;                                       // size of blocks halved
+    // ----- indices
+    long long int thisBlock,                                           // current block
+         indexUp,indexLo;                                     // current index and corresponding index in lower half block
+
+    // ----- temp variables
+    qreal   stateRealUp,                             // storage for previous state values
+           stateImagUp;                             // (used in updates)
+    // ----- temp variables
+    long long int thisTask;                                   // task based approach for expose loop with small granularity
+    const long long int numTasks=qureg.numAmpsPerChunk&gt;&gt;1;
+
+    sizeHalfBlock = 1LL &lt;&lt; targetQubit;                               // size of blocks halved
+    sizeBlock     = 2LL * sizeHalfBlock;                           // size of blocks
+
+    // ---------------------------------------------------------------- //
+    //            rotate                                                //
+    // ---------------------------------------------------------------- //
+
+    //! fix -- no necessary for GPU version
+    qreal *stateVecReal = qureg.deviceStateVec.real;
+    qreal *stateVecImag = qureg.deviceStateVec.imag;
+
+    thisTask = blockIdx.x*blockDim.x + threadIdx.x;
+    if (thisTask&gt;=numTasks) return;
+
+    thisBlock   = thisTask / sizeHalfBlock;
+    indexUp     = thisBlock*sizeBlock + thisTask%sizeHalfBlock;
+    indexLo     = indexUp + sizeHalfBlock;
+
+    // store current state vector values in temp variables
+    stateRealUp = stateVecReal[indexUp];
+    stateImagUp = stateVecImag[indexUp];
+
+    stateVecReal[indexUp] = stateVecReal[indexLo];
+    stateVecImag[indexUp] = stateVecImag[indexLo];
+
+    stateVecReal[indexLo] = stateRealUp;
+    stateVecImag[indexLo] = stateImagUp;
+}
+
+void statevec_pauliX(Qureg qureg, const int targetQubit) 
+{
+    int threadsPerCUDABlock, CUDABlocks;
+    threadsPerCUDABlock = 128;
+    CUDABlocks = ceil((qreal)(qureg.numAmpsPerChunk&gt;&gt;1)/threadsPerCUDABlock);
+    statevec_pauliXKernel&lt;&lt;&lt;CUDABlocks, threadsPerCUDABlock&gt;&gt;&gt;(qureg, targetQubit);
+}
+</code></pre>
+<h2 id="source-code-analysis"><a class="header" href="#source-code-analysis">source code analysis</a></h2>
+<h4 id="tree"><a class="header" href="#tree">tree</a></h4>
+<pre><code class="language-bash">.
+├── CMakeLists.txt
+├── include
+│   ├── QuEST_complex.h				 //determine to use native external cpp support or c complex support.
+│   ├── QuEST.h								  //main func claim
+│   └── QuEST_precision.h				//define the precision
+└── src
+    ├── CMakeLists.txt
+    ├── CPU
+    │   ├── CMakeLists.txt
+    │   ├── QuEST_cpu.c
+    │   ├── QuEST_cpu_distributed.c	//distributed activator and implementation
+    │   ├── QuEST_cpu_internal.h		 //other cpu related headers here
+    │   └── QuEST_cpu_local.c			   //only cpu implementation
+    ├── GPU
+    │   ├── CMakeLists.txt
+    │   └── QuEST_gpu.cu 					 //gpu counterpart
+    ├── mt19937ar.c							  //梅森旋轉算法-伪随机数矩阵生成
+    ├── mt19937ar.h
+    ├── QuEST.c										//main func definition
+    ├── QuEST_common.c					  //func activator defined here
+    ├── QuEST_debug.h						  //debug information here
+    ├── QuEST_internal.h
+    ├── QuEST_qasm.c							//is a quantum record standard, defined qasm assertion here.
+    ├── QuEST_qasm.h
+    ├── QuEST_validation.c					//assert number of qubit here
+    └── QuEST_validation.h
+</code></pre>
+<p>https://www.quantum-inspire.com/kbase/introduction-to-quantum-computing</p>
+<h2 id="testcase-analysis"><a class="header" href="#testcase-analysis">testcase analysis</a></h2>
+<p><code>mytimer.hpp</code></p>
+<pre><code class="language-cpp">#include &lt;time.h&gt;
+#include &lt;sys/time.h&gt;
+ 
+ double get_wall_time(){
+ /* A time value that is accurate to the nearest
+   microsecond but also has a range of years.  */
+   struct timeval time;
+ // __time_t tv_sec;		/* Seconds.  */
+ // __suseconds_t tv_usec;	/* Microseconds.  */
+   if (gettimeofday(&amp;time,NULL)){
+     // Handle error
+     return 0;
+   }
+ 
+   return (double)time.tv_sec + (double)time.tv_usec * .000001;
+ }
+ 
+ double get_cpu_time(){
+   return (double)clock() / CLOCKS_PER_SEC;//directly read clock from cpu, and return with clock times cloacks per sec.
+ }```
+</code></pre>
+<p><code>random.c</code> - random manipulation</p>
+<pre><code class="language-cpp">// total number of qubit: 30
+// total number of qubit operatations: 667
+// estimated time: 3783.9266747315614 second.
+#include &quot;QuEST.h&quot;
+#include &quot;mytimer.hpp&quot;
+#include &quot;stdio.h&quot;
+
+int main(int narg, char *argv[])
+{
+
+    QuESTEnv Env = createQuESTEnv();
+    double t1 = get_wall_time();//define starting time 
+
+    FILE *fp = fopen(&quot;probs.dat&quot;, &quot;w&quot;);//open file for result
+    if (fp == NULL) {
+        printf(&quot;    open probs.dat failed, Bye!&quot;);
+        return 0;
+    }
+
+    FILE *fvec = fopen(&quot;stateVector.dat&quot;, &quot;w&quot;);
+    if (fp == NULL) {
+        printf(&quot;    open stateVector.dat failed, Bye!&quot;);
+        return 0;
+    }
+
+    Qureg q =  createQureg(30, Env);//define qubits registers
+
+    float q_measure[30];// defined q's size
+   // possible execution.
+    tGate(q, 25);
+    controlledNot(q, 28, 21);
+    controlledRotateX(q, 17, 5, 0.3293660327520663);
+    tGate(q, 3);
+    rotateX(q, 10, 4.734238389048838);
+    rotateY(q, 8, 4.959946047271496);
+    rotateZ(q, 5, 1.0427019597472071);
+    pauliZ(q, 0);
+	...
+        
+    printf(&quot;\n&quot;);
+    for (long long int i = 0; i &lt; 30; ++i) {
+        q_measure[i] = calcProbOfOutcome(q, i, 1);
+        printf(&quot;  probability for q[%2lld]==1 : %lf    \n&quot;, i, q_measure[i]);
+        fprintf(fp, &quot;Probability for q[%2lld]==1 : %lf    \n&quot;, i, q_measure[i]);
+    }
+    fprintf(fp, &quot;\n&quot;);
+    printf(&quot;\n&quot;);
+
+    for (int i = 0; i &lt; 10; ++i) {
+        Complex amp = getAmp(q, i);
+        printf(&quot;Amplitude of %dth state vector: %12.6f,%12.6f\n&quot;, i, amp.real,
+               amp.imag);
+    }
+
+    double t2 = get_wall_time();
+    printf(&quot;Complete the simulation takes time %12.6f seconds.&quot;, t2 - t1);
+    printf(&quot;\n&quot;);
+    destroyQureg(q, Env);
+    destroyQuESTEnv(Env);
+
+    return 0;
+}
+</code></pre>
+<p><code>GHZ_QFT.c</code> - only controlled manipulation</p>
+<pre><code class="language-cpp">/* GHZ quantum circuit */
+    hadamard(q, 0);
+    controlledNot(q, 0, 1);
+    controlledNot(q, 1, 2);
+    controlledNot(q, 2, 3);
+    controlledNot(q, 3, 4);
+    controlledNot(q, 4, 5);
+    controlledNot(q, 5, 6);
+    controlledNot(q, 6, 7);
+    controlledNot(q, 7, 8);
+    controlledNot(q, 8, 9);
+    controlledNot(q, 9, 10);
+    controlledNot(q, 10, 11);
+    controlledNot(q, 11, 12);
+    controlledNot(q, 12, 13);
+    controlledNot(q, 13, 14);
+    controlledNot(q, 14, 15);
+    controlledNot(q, 15, 16);
+    controlledNot(q, 16, 17);
+    controlledNot(q, 17, 18);
+    controlledNot(q, 18, 19);
+    controlledNot(q, 19, 20);
+    controlledNot(q, 20, 21);
+    controlledNot(q, 21, 22);
+    controlledNot(q, 22, 23);
+    controlledNot(q, 23, 24);
+    controlledNot(q, 24, 25);
+    controlledNot(q, 25, 26);
+    controlledNot(q, 26, 27);
+    controlledNot(q, 27, 28);
+    controlledNot(q, 28, 29);
+	/* end of GHZ circuit */
+
+	/* QFT starts */
+    hadamard(q, 0);
+    controlledRotateZ(q, 0, 1, 1.5708);
+    hadamard(q, 1);
+    controlledRotateZ(q, 0, 2, 0.785398);
+    controlledRotateZ(q, 1, 2, 1.5708);
+    hadamard(q, 2);
+    controlledRotateZ(q, 0, 3, 0.392699);
+    controlledRotateZ(q, 1, 3, 0.785398);
+    controlledRotateZ(q, 2, 3, 1.5708);
+    ...
+</code></pre>
+<h2 id="available-test-machine"><a class="header" href="#available-test-machine">available test machine</a></h2>
+<ol>
+<li>
+<p>2node 16core each <code>mpi:omp=2:16</code></p>
+<pre><code class="language-bash">#!/bin/sh
+module purge
+spack load intel ##openmpi@3.1.5/3.1.2
+export PRECISION=4 ##1/2/4
+CC=icc CXX=icpc cmake -DGPUACCELERATED=0 -DDISTRIBUTED=1 ..
+make
+export OMP_NUM_THREADS=16
+export FI_PROVIDER=tcp
+mpirun -machinefile mac -np 2 ./demo 
+</code></pre>
+<p>profiling result</p>
+<p><img src="image-20200206174728724.png" alt="" /></p>
+<p><img src="image-20200206174748013.png" alt="" /></p>
+<p>the most time-consuming part is statevec_compactUnitaryLocal</p>
+</li>
+<li>
+<p>2node 16core each <code>mpi:omp=1:32</code></p>
+<img src="./image-20200206180552841.png" alt="image-20200206180552841" style="zoom:33%;" />
+</li>
+<li>
+<p>1node 1tesla v100</p>
+<p>script</p>
+<pre><code class="language-bash">#!/bin/sh
+module purge
+spack load gcc@6
+spack load cuda@10.1 ## 10.2
+export PATH=$PATH:/usr/local/cuda/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda/lib64
+
+export PRECISION=2 ##1/2
+CC=gcc CXX=g++ cmake -DGPUACCELERATED=1 -DGPU_COMPUTE_CAPABILIty=70 ..
+make
+./demo 
+</code></pre>
+<p>profiling result</p>
+<p><img src="image-20200206200505308.png" alt="" /></p>
+</li>
+</ol>
+<p>summary</p>
+<img src="./image-20200206200701826.png" alt="image-20200206200701826" style="zoom:50%;" />
+<p><img src="image-20200206202701475.png" alt="" /></p>
+<p>the summary for profiling of both cpu and gpu, the most time is consumed on computing the real kernel which I think the computing power is fully utilized. </p>
+<p>Accelerated percentage of single node over omp+mpi is 319.799/220.807=1.448319120317744</p>
+<p>Accelerated percentage of single node over single gpu is 319.799/19.328=16.54627720533642</p>
+<p>power consumption: over cpu:<img src="./image-20200206203642478.png" alt="image-20200206203642478" style="zoom:25%;" /></p>
+<p>​									over gpu: 111W on average</p>
+<p>Our future plan: </p>
+<ol>
+<li>deploy the gpu code on multigpu using nccl.</li>
+<li>solve the global memory store and load efficiency.</li>
+</ol>
+<h2 id="misc"><a class="header" href="#misc">misc</a></h2>
+<p>Loves from Github</p>
+<ol>
+<li>https://github.com/QuEST-Kit/QuEST/issues/220
+<img src="image-20200206203018990.png" alt="" /></li>
+</ol>
+<pre><code>Hi Jiachen,
+
+There are no plans currently to combine distribution with GPU-acceleration. Note there are a few ways this can be done, and I suspect none really align with QuEST's design philosophy, nor are practical due to memory overheads. I've wanted to pen these thoughts for a while, so read on below if interested! :)
+
+Firstly, QuEST uses its hardware to accelerate the simulation of a single quantum register at a time. While I think there are good uses of multi-GPU to speedup simultaneous simulation of multiple registers, this would be a totally new pattern to QuEST's simulation style. So let's consider using multi-GPU to accelerate a single register.
+
+There are a few ways you can have &quot;multiple GPUs&quot;:
+
+multiple NVlinked GPUs
+This is when you have multiple GPUs tightly connected with a high-bandwidth fabric (e.g. this). The bandwidth is enough that you sort of can imagine it as a single big GPU, and hence it would be worthwhile for accelerating single-register simulation. However, this only exists right now as NVLink and NVSwitch, compatible only with IBM's POWER architecture - you could argue this is still esoteric, and not worth a big refactor. Note it wouldn't actually be very hard to refactor QuEST for this platform - indeed QuEST works out-of-the-box with POWER8. But it's not something on our TODO list currently.
+
+multiple local GPUs
+This is when you have multiple GPUs on the same machine, but maybe on different sockets and hence with a much lower bandwidth between them. The most common case is two GPUs - is it worthwhile using two GPUs over one to speedup single register simulation? Often, no!
+In big QC simulation, having to move memory around is often the big killer, and should be avoided where possible. Unfortunately, simulating unitaries on registers often requires moving memory. If all the memory stays in the GPU (very high &quot;internal bandwidth&quot;), this is ok, but copying memory to the other GPU (across the socket) will introduce a huge per-gate overhead!
+Hence, using two GPUs to simulate the same register size can be slower than using just one, especially as the simulation size grows and saturates the sockets!
+There's hardly a benefit from the extra VRAM too, because doubling the memory enables simulation of one additional qubit. This is not worth the slowdown, or the hardware!
+Even with more than two GPUs, the connections are likely hierarchical and so even more prone to saturation.
+
+distributed GPUs
+This is when you have a GPU(s) on each distributed node of a cluster. In this circumstance, simulating a unitary gate which requires data exchange not only costs us a VRAM to RAM overhead (similar to before), but a networking overhead to talk to the other nodes! This can be somewhat improved by having a direct GPU to network-card connection (and MPI abstraction), but I believe that's pretty cutting-edge.
+Let's say you have n nodes, each with a GPU and a multicore CPU, and you're resolved to a distributed simulation. When is it worthwhile to pay the extra memory overhead locally copying from RAM to VRAM (and use the GPU), over using just the CPUs? This is now the same trade-off to consider in the previous cases. So may or may not be worthwhile.
+
+TL-DR: besides the somewhat esoteric case of having multiple tightly-connected GPUs, multi-GPU simulation introduces a new memory overhead that doesn't exist in single-GPU simulation. This overhead is almost always way longer than the time the GPU spends simulating the gate. As to whether the whole simulation is sped up by the use of multi-GPU is system and simulation specific.
+</code></pre>
+<ol start="2">
+<li>https://github.com/NVIDIA/nccl/pull/316
+This is a PR for people to review and provide feedback on the p2p branch (issue <a href="https://github.com/NVIDIA/nccl/issues/212">#212</a>).</li>
+</ol>
+<pre><code>Looking forward to applying the P2P function to increase the power of my project!
+</code></pre>
+<ol start="3">
+<li>THU published their modified version as ICS <a href="https://ics21.github.io/program">best paper</a></li>
+<li>NUDT modified the code using memory offloading to main DRAM with GPU Memory.</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../Apps/ASC/asc-20/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../../Apps/ASC/asc-22/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../Apps/ASC/asc-20/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../../Apps/ASC/asc-22/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
