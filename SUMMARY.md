@@ -31,6 +31,7 @@ dateCreated: 2022-03-21T02:19:14.876Z
       * [MHM2](Apps/ISC/ISC-21/MHM2.md)
       * [WRF](Apps/ISC/ISC-21/WRF.md)
     - [ISC 22](Apps/ISC/ISC-22/README.md)
+      * [Code Challenge](Apps/ISC/ISC-22/CodeChallenge.md)
       * [Incompact3D](Apps/ISC/ISC-22/Incompact3D.md)
       * [NWChem](Apps/ISC/ISC-22/NWChem.md)
       * [ICON](Apps/ISC/ISC-22/ICON.md)
