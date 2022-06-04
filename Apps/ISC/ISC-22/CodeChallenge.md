@@ -60,8 +60,6 @@ The key concept of making a blocking process into a non\-blocking process is to 
 
 The variable relationship is shown in the figure\. We can see that we can calculate these arrays in parallel\.
 
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC62.%3Cpptx.opc.package.Part%20object%20at%200x107442790%3E)
-
 Make it non\-blocking in detail
 
 ![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC63.png)
