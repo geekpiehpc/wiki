@@ -1,95 +1,82 @@
+---
+title: ICON
+description: 
+published: true
+date: 2022-04-23T08:06:22.718Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:22:59.229Z
+---
+
 # ICON
-- a unified next-generation global numerical weather prediction and climate modelling system
-- Atmosphere and Ocean components
-- in Grid Point Space on a Geodesic Icosahedral Grid
-- MPI Application
-![](icon-graph.png)
-![](icon-graph1.png)
-![](icon-graph2.png)
+
+## Prepare
+
+```bash
+git clone https://gitlab.dkrz.de/icon-scc-isc22/icon-scc
+cd /path/to/icon-scc
+git submodule init 
+git submodule update
+```
+## How to run
+### spack compile
+```bash
+spack install -j (nproc) -vvvv icon%gcc@6.4.0
+```
+There are some varients:
+- debug
+- cuda
+- openmp
+
+### run copy scripts
+```bash
+cd {ICON_BUILD_DIR}
+export ICON_DIR={ICON_DIR}
+# Copy runscript-related files when building out-of-source:
+if test $(pwd) != $(cd "${ICON_DIR}"; pwd); then
+  echo "Copying runscript input files from the source directory..."
+  rsync -uavz ${ICON_DIR}/run . --exclude='*.in' --exclude='.*' --exclude='standard_*'
+  ln -sf -t run/ ${ICON_DIR}/run/standard_*
+  ln -sf set-up.info run/SETUP.config
+  rsync -uavz ${ICON_DIR}/externals . --exclude='.git' --exclude='*.f90' --exclude='*.F90' --exclude='*.c' --exclude='*.h' --exclude='*.Po' --exclude='tests' --exclude='rrtmgp*.nc' --exclude='*.mod' --exclude='*.o'
+  rsync -uavz ${ICON_DIR}/make_runscripts .
+  ln -sf ${ICON_DIR}/data
+  ln -sf ${ICON_DIR}/vertical_coord_tables
+fi
+```
+### Gen sbatch 
+```bash
+cd {ICON_BUILD_DIR}
+export ICON_DIR={ICON_DIR}
+cd {ICON_BUILD_DIR}/run
+$ICON_DIR/utils/mkexp/mkexp standard_experiments/scc.config CO2=2850
+```
+OK if 
+```bash
+Script directory: '/mnt/nfs4/node1/home/qinfr/spack/opt/spack/linux-ubuntu20.04-zen/gcc-6.4.0/icon-2021-isc-scc-hw7pyldsuxsug2jrnmhdulvk5knzbzw6/experiments/exp_scc2850/scripts'
+Data directory: '/mnt/nfs4/node1/home/qinfr/spack/opt/spack/linux-ubuntu20.04-zen/gcc-6.4.0/icon-2021-isc-scc-hw7pyldsuxsug2jrnmhdulvk5knzbzw6/experiments/exp_scc2850/outdata'
+Work directory: '/mnt/nfs4/node1/home/qinfr/spack/opt/spack/linux-ubuntu20.04-zen/gcc-6.4.0/icon-2021-isc-scc-hw7pyldsuxsug2jrnmhdulvk5knzbzw6/experiments/exp_scc2850/work'
+```
+### Modify sbatch
+In `experiments/exp_scc2850/scripts/exp_scc2850.run_start`
+- FIX SLURM args
+- FIX path
+	- no `/build/`
+  - no `/home/qinfr`
+```git
+- BUILD_DIR=/home/qinfr/spack/opt/spack/linux-ubuntu20.04-zen/gcc-6.4.0/icon-2021-isc-scc-hw7pyldsuxsug2jrnmhdulvk5knzbzw6/BUILD
++ BUILD_DIR=/mnt/nfs4/node1/home/qinfr/spack/opt/spack/linux-ubuntu20.04-zen/gcc-6.4.0/icon-2021-isc-scc-hw7pyldsuxsug2jrnmhdulvk5knzbzw6/
++ export PATH={cdo-1.9.10_BUILD_DIR}/bin:$PATH
+...
+```
 
 
-## IPM Result
-![](icon-ipm.png)
-![](icon-ipm1.png)
-
-- Why 20 MPI Rank Having more MPI_WAIT time than others?
-- How to Reduce MPI Call time and Balance MPI?
-
-## Intel® Trace Analyzer and Collector Detailed MPI Profiling Result
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC25.png)
-
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC26.png)
-
-* Intel® Trace Analyzer and Collector Detailed MPI Profiling
-  * MPI Message Matrix
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC27.png)
-
-* Intel® Trace Analyzer and Collector Detailed MPI Profiling
-  * MPI Trace
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC28.png)
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC29.png)
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC30.png)
-
-* Intel® Trace Analyzer and Collector Detailed MPI Profiling
-  * MPI Pattern 1
-
-__MPI Pattern 1 Barrier__
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC31.png)
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC32.png)
-
-_Ocean Ranks always Waiting for Atmosphere Ranks_
-
-* Intel® Trace Analyzer and Collector Detailed MPI Profiling
-  * MPI Pattern 2
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC33.png)
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC34.png)
-
-* Ocean Procs Tuning
-  * 20 Ocean\, 140 Atmosphere Ranks @ Niagara
-  * 36 Ocean\, 476 Atmosphere Ranks @ Bridges2
-  * block:block
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC35.jpg)
-
-## ICON Serial Code Tuning
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC36.png)
-
-- Nproma Tuning
-- Vectorization and SIMD
-- _AVX512 with Intel_
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC37.png)
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC38.png)
-
-## ICON Things can be Improve
-
-GPU Version
-
-Increase MPI affinity with slurm at bridges\-2
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC39.png)
-
-![](img/ISC22-Final-Report-ShanghaiTech-GeekPie_HPC40.png)
-
-## Lessons learned
-
-* Always notice the Communication Pattern of a MPI Application
-  * When a MPI application separates its ranks to do the different jobs\, the load balance must be taking into consider\.
-* A Detailed MPI Trace Profile is Important
-  * A detailed profiling result can tell you more about the data dependency and the bottleneck\.
-* Different Architecture have different Vectorization Ability
-
+  
+- Subsitute all `/home/qinfr` to `/mnt/nfs4/node1/home/qinfr/`
+### Run
+```bash
+sbatch exp_scc2850.run_start
+```
 ## Tips
 ### How to check if compiled code uses SSE and AVX instructions?
 [https://stackoverflow.com/questions/47878352/how-to-check-if-compiled-code-uses-sse-and-avx-instructions](https://stackoverflow.com/questions/47878352/how-to-check-if-compiled-code-uses-sse-and-avx-instructions)

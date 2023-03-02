@@ -1,5 +1,12 @@
-<!-- TITLE: Cluster Setup -->
-<!-- SUBTITLE: Cluster setup procedure -->
+---
+title: Cluster Setup
+description: Cluster setup procedure
+published: true
+date: 2022-03-21T03:19:57.252Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:21:24.735Z
+---
 
 # Cluster Setup 流程
 

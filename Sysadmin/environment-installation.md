@@ -1,5 +1,12 @@
-<!-- TITLE: Environment Installation -->
-<!-- SUBTITLE: Installation records for environment dependencies -->
+---
+title: Environment Installation
+description: Installation records for environment dependencies
+published: true
+date: 2022-03-21T03:20:00.218Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:21:29.318Z
+---
 
 # 环境安装记录
 

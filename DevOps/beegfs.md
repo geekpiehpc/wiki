@@ -1,3 +1,13 @@
+---
+title: beegfs
+description: 
+published: true
+date: 2022-03-21T03:19:15.226Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:20:20.156Z
+---
+
 # BeeGFS
 
 **[BeeGFS](https://www.beegfs.io/)** is a hardware-independent POSIX parallel file system developed with a strong focus on performance and designed for ease of use, simple installation, and management. 

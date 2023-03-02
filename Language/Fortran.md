@@ -1,3 +1,13 @@
+---
+title: Fortran
+description: 
+published: true
+date: 2022-03-21T03:19:24.311Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:20:33.785Z
+---
+
 # Fortran
 这个语言简直伤天害理，但确是笔者前老板最爱的语言，而且是f77，天灭fortran。可超算比赛 fortran 的上镜次数还挺多的，之前做天气应用的时候没敢改，现在既然有个小于 15w 行的程序，笔者尝试着修改。
 

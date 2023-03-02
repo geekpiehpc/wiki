@@ -1,3 +1,13 @@
+---
+title: SVE
+description: 
+published: true
+date: 2022-03-26T21:23:41.043Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-26T21:23:38.245Z
+---
+
 # SVE
 - Scalable vector length increasing parallelism while allowing implementation choice.
 - Rich addressing modes enabling non-linear data accesses.

@@ -1,3 +1,13 @@
+---
+title: hardware
+description: 
+published: true
+date: 2022-03-21T03:20:26.026Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:22:09.050Z
+---
+
 # 机器简介
 
 Currently, we are using the SuperMicro 4124GS-TNR server.
@@ -14,8 +24,6 @@ AMD claim that theoretical floating point performance can be calculated as: Doub
 ![](https://en.wikichip.org/w/images/thumb/f/f2/zen_2_core_diagram.svg/1800px-zen_2_core_diagram.svg.png)
 
 ## GPU
-
-[Dissecting theNVIDIA VoltaGPU Architecture via Microbenchmarking](https://arxiv.org/pdf/1804.06826.pdf)
 
 ## RDMA
 
@@ -90,6 +98,8 @@ The card may have problems. If you find it doesn't work correctly, ask in Slack.
 [faq2](https://www.asrockrack.com/support/faq.asp?k=Marvell9230)
 
 ### Win-Raid
+
+[forum](https://www.win-raid.com/u162-chinobino-messages-3.html)
 
 [Help-Problem-to-flash-the-Marvel-SE-card-resolve](https://www.win-raid.com/t5289f16-Help-Problem-to-flash-the-Marvel-SE-card-resolve.html)
 

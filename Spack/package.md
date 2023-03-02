@@ -1,3 +1,13 @@
+---
+title: package
+description: 
+published: true
+date: 2022-03-21T03:19:51.615Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:21:15.955Z
+---
+
 # Package
 
 原始环境中常常有各种环境变量，这些环境变量在给 Spack 打包的时候可能会有影响，因此本 SOP 提出了一种用 docker 做环境隔离的方式，以便在不影响原始环境的情况下，可以在不同的环境中运行 Spack 的打包。

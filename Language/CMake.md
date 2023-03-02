@@ -2,7 +2,7 @@
 title: CMake
 description: 
 published: true
-date: 2022-03-26T22:38:23.118Z
+date: 2022-03-26T22:38:25.534Z
 tags: 
 editor: markdown
 dateCreated: 2022-03-26T22:34:04.394Z

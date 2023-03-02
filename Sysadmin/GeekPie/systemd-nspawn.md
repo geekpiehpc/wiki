@@ -1,3 +1,13 @@
+---
+title: systemd-nspawn
+description: 
+published: true
+date: 2022-03-21T03:20:34.902Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:22:22.698Z
+---
+
 # `systemd-nspawn`
 
 [_systemd-nspawn_](https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html) is like the chroot command, but it is a _chroot on steroids_. See [systemd-nspawn - ArchWiki (archlinux.org)](https://wiki.archlinux.org/title/systemd-nspawn) and [nspawn - Debian Wiki](https://wiki.debian.org/nspawn) for introduction.

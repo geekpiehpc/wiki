@@ -1,5 +1,12 @@
-<!-- TITLE: HPL hpl.dat Config -->
-<!-- SUBTITLE: Ancestral hpl.dat config file -->
+---
+title: HPL hpl.dat Config
+description: Ancestral hpl.dat config file
+published: true
+date: 2022-03-21T03:18:55.817Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:19:49.492Z
+---
 
 # HPL .dat config file
 ## ASC18

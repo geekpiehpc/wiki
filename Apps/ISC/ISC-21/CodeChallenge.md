@@ -1,3 +1,13 @@
+---
+title: CodeChallenge
+description: 
+published: true
+date: 2022-03-26T13:17:48.429Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:22:46.060Z
+---
+
 ## AutoTuning 就是一个简单OI题
 这题目本来是 NV 内部做 OSU 测试的一个小工具，拿出来给我们做题。题目要求根据不同 rank 之间的数据交换能力，做简单的调优，
 

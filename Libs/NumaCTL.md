@@ -1,3 +1,13 @@
+---
+title: NumaCTL
+description: 
+published: true
+date: 2022-03-21T03:19:35.490Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:20:50.801Z
+---
+
 # fuck numa in linux but fine in epyc
 
 ```bash

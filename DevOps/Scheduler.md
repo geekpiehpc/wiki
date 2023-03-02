@@ -1,3 +1,13 @@
+---
+title: Scheduler
+description: 
+published: true
+date: 2022-03-21T03:19:09.731Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:20:11.334Z
+---
+
 # PBS
 
 PBS 全称为 [Portable Batch System](https://en.wikipedia.org/wiki/Portable_Batch_System)，可以用来控制多个计算机上的任务。

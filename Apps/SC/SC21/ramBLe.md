@@ -1,3 +1,13 @@
+---
+title: ramBLe
+description: 
+published: true
+date: 2022-03-21T03:21:22.131Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:23:32.586Z
+---
+
 # ramBLe
 
 ## turn off hyperthreading

@@ -1,3 +1,13 @@
+---
+title: check-list
+description: 
+published: true
+date: 2022-03-21T03:20:17.098Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:21:56.023Z
+---
+
 # SGX Explained
 
 - [x] ifconfig ib0 192.168.*

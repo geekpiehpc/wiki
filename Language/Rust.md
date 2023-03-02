@@ -1,3 +1,13 @@
+---
+title: Rust
+description: 
+published: true
+date: 2022-03-21T03:19:29.685Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:20:42.218Z
+---
+
 # Rust
 Rust 是好活，自从我校2016年以 Rust 语言开设 CS100（程序语言设计）开始，上科大就成为了宣传Rust的堡垒，中国 Rust 之父张汉东先生及宣发 Rust 的各界人士选择推广 Rust 的最佳地点就会选择上科大，这雨与 riscv 类似。写小的bash工具（ Zero Cost Abstraction 的 cffi ）、写大型（10w+ line）的系统方向程序必备。由于语言特性有很多的静态检查，会指导大家对于内存管理，异步编程有更深刻的理解。
 

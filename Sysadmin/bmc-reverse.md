@@ -1,3 +1,13 @@
+---
+title: bmc-reverse
+description: 
+published: true
+date: 2022-03-21T03:19:54.396Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:21:20.345Z
+---
+
 # BMC fuck
 
 We think it's worthwhile to reverse the BMC for the following reasons:

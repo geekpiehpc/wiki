@@ -1,5 +1,12 @@
-<!-- TITLE: Hpcg Dat -->
-<!-- SUBTITLE: A quick summary of Hpcg Dat -->
+---
+title: Hpcg Dat
+description: A quick summary of Hpcg Dat
+published: true
+date: 2022-03-21T03:18:52.901Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:19:45.208Z
+---
 
 # .dat Specs
 ## ASC20

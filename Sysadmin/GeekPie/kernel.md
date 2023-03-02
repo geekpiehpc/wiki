@@ -1,3 +1,13 @@
+---
+title: kernel
+description: 
+published: true
+date: 2022-03-21T03:20:28.839Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:22:13.684Z
+---
+
 # Kernel
 
 We use a custom kernel with NOHZ support enabled.

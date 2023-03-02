@@ -1,3 +1,13 @@
+---
+title: LDAP
+description: 
+published: true
+date: 2022-03-21T03:19:01.668Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-21T02:19:58.489Z
+---
+
 # linux 的秘密都在 PAM 里
 
 大家熟练使用 `journal -x` debug 各种系统用户认证的各种状态机的时候，抑或是 sshd 时，可以看到 PAM、xsecurity、sssd 这种字眼，这是用户认证协议。SSSD 就是一个 daemon，把系统的 NSS PAM 的机制和 LDAP 连接起来。（之前 20.04 gnome 被打也是这个协议被绕过的结果。

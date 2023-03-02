@@ -1,3 +1,13 @@
+---
+title: kmer
+description: 
+published: true
+date: 2022-03-26T15:22:18.421Z
+tags: 
+editor: markdown
+dateCreated: 2022-03-26T15:22:15.571Z
+---
+
 # MHM2 Adjusting k-mers
 A method of visualizing k-mers, the k-mer spectrum, shows the multiplicity of each k-mer in a sequence versus the number of k-mers with that multiplicity. It requires a DHT to store the sequence.
 
