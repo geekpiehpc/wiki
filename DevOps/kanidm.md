@@ -1,3 +1,13 @@
+---
+title: kanidm
+description: 
+published: true
+date: 2023-05-21T20:02:00.353Z
+tags: 
+editor: markdown
+dateCreated: 2023-05-21T19:55:09.379Z
+---
+
 # Kanidm
 
 [Kanidm](https://kanidm.github.io/kanidm/stable/) is an identity management server. We use it to manage users across multiple nodes.
@@ -14,7 +24,7 @@ To begin with, export environment variable KANIDM_URL, and login with your `geek
 
 ```bash
 export KANIDM_URL="https://hpc-idm.geekpie.icu:8443"
-kanidm login --name member_of_geekpie_admins
+kanidm login --name geekpie
 ```
 
 ## Create a new user
