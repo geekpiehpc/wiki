@@ -30,7 +30,9 @@ kanidm group add_members geekpie-hpc jsmith
 Then enable posix, set ssh key and password.
 
 ```bash
-kanidm person posix set jsmith # --shell /usr/bin/bash # --gidnumber 2345
+# In kanidm uid is the same as gid. I recommend you to manually allocate a gid.
+# Please see https://github.com/geekpiehpc/AnsiblePlaybook/blob/main/group_vars/epyc.yml for old uids.
+kanidm person posix set jsmith --gidnumber 2345 # --shell /usr/bin/bash
 kanidm person ssh add_publickey jsmith id_rsa (cat ~/.ssh/id_rsa.pub)
 # Don't need this the user do not need sudo
 kanidm person posix set_password jsmith
