@@ -45,6 +45,7 @@
   * [Grafana](DevOps/Grafana.md)
   * [Scheduler](DevOps/Scheduler.md)
   * [Singularity](DevOps/Singularity.md)
+  * [Kanidm](DevOps/GeekPie/kanidm.md)
   * [Oracle](DevOps/Oracle/README.md)
     * [Ansible](DevOps/Oracle/ansible.md)
     * [Grafana](DevOps/Oracle/grafana.md)
