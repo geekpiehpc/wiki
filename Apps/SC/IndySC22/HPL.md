@@ -76,9 +76,9 @@ Submitting results
 Final score submissions are due 1 hour after your window ends, right as the next team is starting. We will follow up with more details on this.
 
 ## 报告
-[单节点](/answer.pdf)
-[多节点](/hero_run_report.pdf)
-[hero run 相关文件](/hero_run.tar)
+[单节点](answer.pdf)
+[多节点](hero_run_report.pdf)
+[hero run 相关文件](hero_run.tar)
 
 ## 参考资料
 [Official Documentation](https://netlib.org/benchmark/hpl/documentation.html)
