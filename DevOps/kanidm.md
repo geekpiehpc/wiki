@@ -27,9 +27,9 @@ export KANIDM_URL="https://hpc-idm.geekpie.icu:8443"
 kanidm login --name geekpie
 ```
 
-## Create a new user
+## Create a user
 
-For example, to create a user for John Smith, and add it to `geekpie-hpc` group:
+To create a user called John Smith, and add it to `geekpie-hpc` group:
 
 ```bash
 kanidm person create jsmith "John Smith"
