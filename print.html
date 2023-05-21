@@ -3499,8 +3499,8 @@ qcmd -e /public/home/geekpie2/ramble-amd/ramBLe/submit/pbs-com-single-${PBS_JOBI
 <pre><code class="language-bash">export KANIDM_URL=&quot;https://hpc-idm.geekpie.icu:8443&quot;
 kanidm login --name geekpie
 </code></pre>
-<h2 id="create-a-new-user"><a class="header" href="#create-a-new-user">Create a new user</a></h2>
-<p>For example, to create a user for John Smith, and add it to <code>geekpie-hpc</code> group:</p>
+<h2 id="create-a-user"><a class="header" href="#create-a-user">Create a user</a></h2>
+<p>To create a user called John Smith, and add it to <code>geekpie-hpc</code> group:</p>
 <pre><code class="language-bash">kanidm person create jsmith &quot;John Smith&quot;
 kanidm person update jsmith --mail &quot;jsmith@shanghaitech.edu.cn&quot; # --legalname
 kanidm group add_members geekpie-hpc jsmith
