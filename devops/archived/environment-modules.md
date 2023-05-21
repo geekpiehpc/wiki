@@ -1,14 +1,16 @@
 ---
 title: Environment Modules
-description: Environment Module Management & Backups
 published: true
 date: 2022-03-26T13:18:33.561Z
-tags: 
+tags: null
 editor: markdown
 dateCreated: 2022-03-21T02:21:34.280Z
+description: Environment Module Management & Backups
 ---
 
-# Modulefile 记录
+# Environment Modules
+
+> **Warning** This is an outdated guide.
 
 Environment Module: Modulefiles 目录树结构 + 备份
 

@@ -1,45 +1,43 @@
 ---
 title: Cluster Setup
-description: Cluster setup procedure
 published: true
 date: 2022-03-21T03:19:57.252Z
-tags: 
+tags: null
 editor: markdown
 dateCreated: 2022-03-21T02:21:24.735Z
+description: Cluster setup procedure
 ---
 
-# Cluster Setup 流程
+# Cluster Setup
+
+> **Warning** This is an outdated guide.
 
 完整流程 & 踩坑笔录
 
 ## 机器信息 & 硬件准备
 
-- 节点：4 节点 （node1~4，node1 为 *主节点*）
-- 网络：Ethernet（`192.168.<A>.x`）与 IB（`192.168.<B>.x`）
-    - 星状拓扑
-    - Setup 时主节点需连接外网
-- 硬盘：每个节点一块系统盘，主节点额外挂一块 SSD 作为共享存储
-- Clonezilla 镜像 U 盘 * 1（镜像直接解压即可，故下述安装时需要 BIOS 设置为 UEFI 模式）
-- Clean Minimal CentOS7 镜像 U 盘 * 1（同上）
+* 节点：4 节点 （node1\~4，node1 为 _主节点_）
+* 网络：Ethernet（`192.168.<A>.x`）与 IB（`192.168.<B>.x`）
+  * 星状拓扑
+  * Setup 时主节点需连接外网
+* 硬盘：每个节点一块系统盘，主节点额外挂一块 SSD 作为共享存储
+* Clonezilla 镜像 U 盘 \* 1（镜像直接解压即可，故下述安装时需要 BIOS 设置为 UEFI 模式）
+* Clean Minimal CentOS7 镜像 U 盘 \* 1（同上）
 
 ## CentOS 操作系统安装
 
 下载 **CentOS-7 Minimal 镜像** 于 U 盘，插于主节点
 
-> 如果主板 BIOS 启动模式不是 UEFI 则勿忘在启动时修改 ;(
-> 主节点需要使用外置 Clonezilla 镜像 U 盘，故也把 U 盘启动顺序置前
+> 如果主板 BIOS 启动模式不是 UEFI 则勿忘在启动时修改 ;( 主节点需要使用外置 Clonezilla 镜像 U 盘，故也把 U 盘启动顺序置前
 
 主节点开机 “install CentOS 7”
 
-> 如果 Install 后触发了 `dracut-init... timeout`，在之后会跳入 `dracut` 命令行，输入 `lsblk` 后找到 U 盘设备，记下 `LABEL=AAA` 的值，而后 `reboot`；然后在选择界面按 `e`，修改第二行中的 `LABEL=BBB` 的第一段 为 `AAA`，然后 `ctrl+x` 即可
-> 另一种方法是将LABEL=CentOS\x207\x20x\86_64修改为LABEL=CentOS\x207\x20x\8
-> https://blog.csdn.net/qq_36937234/article/details/82996998
-> https://access.redhat.com/solutions/2515741
+> 如果 Install 后触发了 `dracut-init... timeout`，在之后会跳入 `dracut` 命令行，输入 `lsblk` 后找到 U 盘设备，记下 `LABEL=AAA` 的值，而后 `reboot`；然后在选择界面按 `e`，修改第二行中的 `LABEL=BBB` 的第一段 为 `AAA`，然后 `ctrl+x` 即可 另一种方法是将LABEL=CentOS\x207\x20x\86\_64修改为LABEL=CentOS\x207\x20x\8 https://blog.csdn.net/qq\_36937234/article/details/82996998 https://access.redhat.com/solutions/2515741
 
 需调整项如下：
 
-- 磁盘分区 `/` + `/boot` 即可，根目录各子目录不分散分区，格为ext4
-- 主机名 Hostname 设为 `node1`
+* 磁盘分区 `/` + `/boot` 即可，根目录各子目录不分散分区，格为ext4
+* 主机名 Hostname 设为 `node1`
 
 待安装完成，以 `root` 用户可正常登陆
 
@@ -62,8 +60,7 @@ systemctl disable firewalld.service
 
 连接外网以太网线（记住对应网口 `<INTERFACE>`，e.g. `eno2`）
 
-使用 `ip` 指令检查 DNS 地址等信息，而后在输入 `nmtui` 进入 GUI 网络设置界面，设置外网连接为 DHCP 模式，填入 
-DNS 服务器地址，而后使用 `curl` 进行校网登录：
+使用 `ip` 指令检查 DNS 地址等信息，而后在输入 `nmtui` 进入 GUI 网络设置界面，设置外网连接为 DHCP 模式，填入 DNS 服务器地址，而后使用 `curl` 进行校网登录：
 
 ```bash
 $ dhclient -v <INTERFACE>
@@ -111,11 +108,11 @@ $ bash NVIDIA-Linux-x86_64-<VER.SUB>.run --kernel-source-path /usr/src/kernels/x
 
 先安装必要的基本工具以减少重复工作：`yum -y install <TOOL-NAME>`：
 
-- NFS：`nfs-utils rpcbind`
-- Lmod：`environment-modules`
-- 其他：`gcc gcc-c++ perl wget`（通过 `yum` 预安装 gcc 用于并行库工具等的编译安装）
+* NFS：`nfs-utils rpcbind`
+* Lmod：`environment-modules`
+* 其他：`gcc gcc-c++ perl wget`（通过 `yum` 预安装 gcc 用于并行库工具等的编译安装）
 
-主节点关机，插入 *Clonezilla* 工具盘，从它启动，将主节点系统盘克隆至子节点系统盘内（勿搞错拷贝 Source & Target 盘方向）：[https://www.tecmint.com/linux-centos-ubuntu-disk-cloning-backup-using-clonezilla](https://www.tecmint.com/linux-centos-ubuntu-disk-cloning-backup-using-clonezilla)
+主节点关机，插入 _Clonezilla_ 工具盘，从它启动，将主节点系统盘克隆至子节点系统盘内（勿搞错拷贝 Source & Target 盘方向）：[https://www.tecmint.com/linux-centos-ubuntu-disk-cloning-backup-using-clonezilla](https://www.tecmint.com/linux-centos-ubuntu-disk-cloning-backup-using-clonezilla)
 
 子节点插入系统盘后，分别登陆各子节点，修改主机名和静态 ip 地址（内网网口），以便互联识别身份，注意 **4 节点 ip 和 主机名 互不相同**：
 
@@ -130,6 +127,7 @@ $ vi /etc/sysconfig/network-scripts/ifcfg-<INTERFACE>   #修改 IPADDR=192.168.<
 [howto-configure-nfs-over-rdma--roce-x](https://developer.nvidia.com/blog/doubling-network-file-system-performance-with-rdma-enabled-networking/)
 
 Maybe useful according to teacher Zhang
+
 ```
 opensmd
 openibd
@@ -140,10 +138,8 @@ openibd
 主节点插上用作共享盘的硬盘，`lsblk` 查看新硬盘已插上及名称，可看到出现 e.g. `sdb1` 盘（根据大小判断那个为共享盘，勿搞错）
 
 > 格式化磁盘流程备忘：
-> 
-> `$ fdisk /dev/sdb1`
-> `$     n                     # 新建分区`
-> `$     p 1 [Enter] [Enter]   # 整个盘建立为一个大主分区`
+>
+> `$ fdisk /dev/sdb1` `$ n # 新建分区` `$ p 1 [Enter] [Enter] # 整个盘建立为一个大主分区`
 
 挂载该磁盘并在其中建立欲共享的目录（`/home` 和 `/opt`）:
 
@@ -153,7 +149,7 @@ $ mkdir /mnt/nfs/home
 $ mkdir /mnt/nfs/opt
 ```
 
-主节点启动 NFS server，编辑共享目录配置 `/etc/exports`，添加条目（*注意不多加空格*）：
+主节点启动 NFS server，编辑共享目录配置 `/etc/exports`，添加条目（_注意不多加空格_）：
 
 ```
 /mnt/nfs/home 192.168.<A>.0/24(rw,no_root_squash,no_all_squash,sync)
@@ -162,9 +158,9 @@ $ mkdir /mnt/nfs/opt
 
 参数解释：
 
-- `rw`：可读写
-- `no_*_squash`：客户节点以 * 身份使用时不降级为匿名普通用户
-- `sync`：各端的写操作同步至磁盘
+* `rw`：可读写
+* `no_*_squash`：客户节点以 \* 身份使用时不降级为匿名普通用户
+* `sync`：各端的写操作同步至磁盘
 
 开启服务并设置开机自启：
 
@@ -185,7 +181,7 @@ $ firewall-cmd --permanent --add-service=rpc-bind
 $ firewall-cmd --reload
 ```
 
-修改 `/etc/fstab`，使主节点将共享目录 *bind mount* （目录树到目录树挂载） 到 `/home` `/opt`，子节点由 NFS 将主节点目录挂载：
+修改 `/etc/fstab`，使主节点将共享目录 _bind mount_ （目录树到目录树挂载） 到 `/home` `/opt`，子节点由 NFS 将主节点目录挂载：
 
 ```
 # On node1，在 /etc/fstab 文件末尾添加
@@ -201,22 +197,18 @@ node1:/mnt/nfs/home    /opt    nfs     rw,user,exec,suid,dev,auto,async
 而后每次开机后，各节点均登入 root 用户，**先在主节点** `mount -a`，**后在各子节点** `mount -a` 即可成功挂载共享目录
 
 > 全手动挂载方式备忘，开机后首先在主节点：
-> 
-> `$ mount /dev/nvme0n1 /mnt/nfs`
-> `$ mount --bind /mnt/nfs/home /home`
-> `$ mount --bind /mnt/nfs/opt /opt`
-> 
+>
+> `$ mount /dev/nvme0n1 /mnt/nfs` `$ mount --bind /mnt/nfs/home /home` `$ mount --bind /mnt/nfs/opt /opt`
+>
 > 而后在各子节点：
-> 
-> `$ showmount -e node1     # 检测是否有来自主节点的 nfs 共享`
-> `$ mount -t nfs node1:/mnt/nfs/home /home`
-> `$ mount -t nfs node1:/mnt/nfs/opt  /opt`
+>
+> `$ showmount -e node1 # 检测是否有来自主节点的 nfs 共享` `$ mount -t nfs node1:/mnt/nfs/home /home` `$ mount -t nfs node1:/mnt/nfs/opt /opt`
 
 > 出现 “Stale file handle” 问题 / “Access denied” 问题，在主节点重启 NFS：`systemctl restart nfs` 后再挂载一遍即可
 
 ## SSH 免密码登录配置
 
-首先配置 root 用户相互 *ssh* 免密登陆，**所有节点对之间均需配置**，e.g. 在主节点 `/root` 下：
+首先配置 root 用户相互 _ssh_ 免密登陆，**所有节点对之间均需配置**，e.g. 在主节点 `/root` 下：
 
 ```bash
 $ ssh-keygen            # 位置名称默认
@@ -225,7 +217,7 @@ $ ...
 $ ssh-copy-id node4
 ```
 
-而后在各自节点 *均* 创建普通用户，注意 **相同名称** & **相同 uid** & **相同 group (gid)** & **相同密码**：
+而后在各自节点 _均_ 创建普通用户，注意 **相同名称** & **相同 uid** & **相同 group (gid)** & **相同密码**：
 
 ```bash
 $ useradd <USERNAME> -m
@@ -233,8 +225,7 @@ $ passwd <USERNAME>
 $     [Type new PASSWORD] [Type again]    # 设置密码，不要通过 useradd 的 -p 选项，密码不规范时会失败
 ```
 
-> 密码通过 `passwd` 指令设置，否则密码不规范时 `-p` 选项可能失败且不会给出提示
-> 按相同顺序创建即是，可以通过 `cat /etc/passwd` 检查
+> 密码通过 `passwd` 指令设置，否则密码不规范时 `-p` 选项可能失败且不会给出提示 按相同顺序创建即是，可以通过 `cat /etc/passwd` 检查
 
 任意节点进入普通用户，生成并拷贝密钥（注意普通用户 Home 目录共享）：
 
