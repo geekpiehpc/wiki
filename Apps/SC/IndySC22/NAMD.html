@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html lang="cn" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>NAMD - GeekPie_HPC Wiki</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="../../../Algorithm/index.html"><strong aria-hidden="true">2.</strong> Algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Algorithm/dgemm.html"><strong aria-hidden="true">2.1.</strong> dgemm</a></li><li class="chapter-item expanded "><a href="../../../Algorithm/fft.html"><strong aria-hidden="true">2.2.</strong> fft</a></li><li class="chapter-item expanded "><a href="../../../Algorithm/kmer.html"><strong aria-hidden="true">2.3.</strong> Kmer</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/index.html"><strong aria-hidden="true">3.</strong> Apps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/index.html"><strong aria-hidden="true">3.1.</strong> ASC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-19/index.html"><strong aria-hidden="true">3.1.1.</strong> Asc 19</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-19/cesm.html"><strong aria-hidden="true">3.1.1.1.</strong> Cesm</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-20/index.html"><strong aria-hidden="true">3.1.2.</strong> Asc 20-21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-20/quest.html"><strong aria-hidden="true">3.1.2.1.</strong> Quest</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-22/index.html"><strong aria-hidden="true">3.1.3.</strong> Asc 22</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-22/yuan.html"><strong aria-hidden="true">3.1.3.1.</strong> yuan</a></li><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-22/DeepMD.html"><strong aria-hidden="true">3.1.3.2.</strong> DeepMD</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/index.html"><strong aria-hidden="true">3.2.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/index.html"><strong aria-hidden="true">3.2.1.</strong> ISC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/CodeChallenge.html"><strong aria-hidden="true">3.2.1.1.</strong> Code Challenge</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/LAMMPS.html"><strong aria-hidden="true">3.2.1.2.</strong> LAMMPS</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/GPAW.html"><strong aria-hidden="true">3.2.1.3.</strong> GPAW</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/MHM2.html"><strong aria-hidden="true">3.2.1.4.</strong> MHM2</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/WRF.html"><strong aria-hidden="true">3.2.1.5.</strong> WRF</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-22/index.html"><strong aria-hidden="true">3.2.2.</strong> ISC 22</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-22/Incompact3D.html"><strong aria-hidden="true">3.2.2.1.</strong> Incompact3D</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-22/NWChem.html"><strong aria-hidden="true">3.2.2.2.</strong> NWChem</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-22/ICON.html"><strong aria-hidden="true">3.2.2.3.</strong> ICON</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/SC/index.html"><strong aria-hidden="true">3.3.</strong> SC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/SC/IndySC22/index.html"><strong aria-hidden="true">3.3.1.</strong> SC 22</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/SC/IndySC22/MiniVite.html"><strong aria-hidden="true">3.3.1.1.</strong> MiniVite</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/IndySC22/HPL.html"><strong aria-hidden="true">3.3.1.2.</strong> HPL</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/IndySC22/NAMD.html" class="active"><strong aria-hidden="true">3.3.1.3.</strong> NAMD</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/index.html"><strong aria-hidden="true">3.3.2.</strong> SC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/quantum-espresso.html"><strong aria-hidden="true">3.3.2.1.</strong> Quantum Espresso</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/ramBLe.html"><strong aria-hidden="true">3.3.2.2.</strong> Ram B Le</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/cardioid.html"><strong aria-hidden="true">3.3.2.3.</strong> Cardioid</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/Mystery.html"><strong aria-hidden="true">3.3.2.4.</strong> Mystery</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC20.html"><strong aria-hidden="true">3.3.3.</strong> SC 20</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Benchmark/index.html"><strong aria-hidden="true">4.</strong> Benchmark</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Benchmark/hpcg-dat.html"><strong aria-hidden="true">4.1.</strong> Hpcg Dat</a></li><li class="chapter-item expanded "><a href="../../../Benchmark/hpl-dat.html"><strong aria-hidden="true">4.2.</strong> Hpl Dat</a></li><li class="chapter-item expanded "><a href="../../../Benchmark/io500.html"><strong aria-hidden="true">4.3.</strong> Io 500</a></li></ol></li><li class="chapter-item expanded "><a href="../../../DevOps/index.html"><strong aria-hidden="true">5.</strong> Dev Ops</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/beegfs.html"><strong aria-hidden="true">5.1.</strong> BeeGFS</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Grafana.html"><strong aria-hidden="true">5.2.</strong> Grafana</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Scheduler.html"><strong aria-hidden="true">5.3.</strong> Scheduler</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Singularity.html"><strong aria-hidden="true">5.4.</strong> Singularity</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Oracle/index.html"><strong aria-hidden="true">5.5.</strong> Oracle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/Oracle/ansible.html"><strong aria-hidden="true">5.5.1.</strong> Ansible</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Oracle/grafana.html"><strong aria-hidden="true">5.5.2.</strong> Grafana</a></li></ol></li><li class="chapter-item expanded "><a href="../../../DevOps/ISC/index.html"><strong aria-hidden="true">5.6.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/ISC/NSCC.html"><strong aria-hidden="true">5.6.1.</strong> NSCC</a></li><li class="chapter-item expanded "><a href="../../../DevOps/ISC/Bridges.html"><strong aria-hidden="true">5.6.2.</strong> Bridges</a></li><li class="chapter-item expanded "><a href="../../../DevOps/ISC/Thor.html"><strong aria-hidden="true">5.6.3.</strong> Thor</a></li><li class="chapter-item expanded "><a href="../../../DevOps/ISC/Niagara.html"><strong aria-hidden="true">5.6.4.</strong> Niagara</a></li></ol></li><li class="chapter-item expanded "><a href="../../../DevOps/Azure/index.html"><strong aria-hidden="true">5.7.</strong> Azure</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/Azure/cyclecloud.html"><strong aria-hidden="true">5.7.1.</strong> CycleCloud</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Azure/check-list.html"><strong aria-hidden="true">5.7.2.</strong> Check List</a></li></ol></li><li class="chapter-item expanded "><a href="../../../DevOps/GeekPie/index.html"><strong aria-hidden="true">5.8.</strong> GeekPie</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/GeekPie/hardware.html"><strong aria-hidden="true">5.8.1.</strong> Hardware</a></li><li class="chapter-item expanded "><a href="../../../DevOps/GeekPie/software.html"><strong aria-hidden="true">5.8.2.</strong> Software</a></li><li class="chapter-item expanded "><a href="../../../DevOps/GeekPie/tuning.html"><strong aria-hidden="true">5.8.3.</strong> Tuning</a></li><li class="chapter-item expanded "><a href="../../../DevOps/GeekPie/kernel.html"><strong aria-hidden="true">5.8.4.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="../../../DevOps/GeekPie/systemd-nspawn.html"><strong aria-hidden="true">5.8.5.</strong> systemd-nspawn</a></li></ol></li><li class="chapter-item expanded "><a href="../../../devops/archived/index.html"><strong aria-hidden="true">5.9.</strong> Archived</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../devops/archived/cluster-setup.html"><strong aria-hidden="true">5.9.1.</strong> Cluster Setup</a></li><li class="chapter-item expanded "><a href="../../../devops/archived/environment-installation.html"><strong aria-hidden="true">5.9.2.</strong> Environment Installation</a></li><li class="chapter-item expanded "><a href="../../../devops/archived/environment-modules.html"><strong aria-hidden="true">5.9.3.</strong> Environment Modules</a></li><li class="chapter-item expanded "><a href="../../../devops/archived/it-support-machine.html"><strong aria-hidden="true">5.9.4.</strong> It-Support Machine</a></li><li class="chapter-item expanded "><a href="../../../devops/archived/bmc-reverse.html"><strong aria-hidden="true">5.9.5.</strong> BMC Reverse</a></li><li class="chapter-item expanded "><a href="../../../devops/archived/saltstack.html"><strong aria-hidden="true">5.9.6.</strong> Salt Stack</a></li><li class="chapter-item expanded "><a href="../../../devops/archived/ldap.html"><strong aria-hidden="true">5.9.7.</strong> LDAP</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Language/index.html"><strong aria-hidden="true">6.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Language/C++.html"><strong aria-hidden="true">6.1.</strong> C++</a></li><li class="chapter-item expanded "><a href="../../../Language/Chisel.html"><strong aria-hidden="true">6.2.</strong> Chisel</a></li><li class="chapter-item expanded "><a href="../../../Language/Fortran.html"><strong aria-hidden="true">6.3.</strong> Fortran</a></li><li class="chapter-item expanded "><a href="../../../Language/Go.html"><strong aria-hidden="true">6.4.</strong> Go</a></li><li class="chapter-item expanded "><a href="../../../Language/Rust.html"><strong aria-hidden="true">6.5.</strong> Rust</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Libs/index.html"><strong aria-hidden="true">7.</strong> Libs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Libs/Svml.html"><strong aria-hidden="true">7.1.</strong> Svml</a></li><li class="chapter-item expanded "><a href="../../../Libs/NumaCTL.html"><strong aria-hidden="true">7.2.</strong> NumaCTL</a></li><li class="chapter-item expanded "><a href="../../../Libs/Boost.html"><strong aria-hidden="true">7.3.</strong> Boost</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Profiling/index.html"><strong aria-hidden="true">8.</strong> Profiling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Profiling/ArmForge.html"><strong aria-hidden="true">8.1.</strong> Arm Forge</a></li><li class="chapter-item expanded "><a href="../../../Profiling/uProf.html"><strong aria-hidden="true">8.2.</strong> Uprof</a></li><li class="chapter-item expanded "><a href="../../../Profiling/Vtune.html"><strong aria-hidden="true">8.3.</strong> Vtune</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Spack/handson.html"><strong aria-hidden="true">9.</strong> Spack</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Spack/package.html"><strong aria-hidden="true">9.1.</strong> package</a></li><li class="chapter-item expanded "><a href="../../../Spack/handson.html"><strong aria-hidden="true">9.2.</strong> handson</a></li><li class="chapter-item expanded "><a href="../../../Spack/debug.html"><strong aria-hidden="true">9.3.</strong> debug</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Architecture/index.html"><strong aria-hidden="true">10.</strong> Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Architecture/MemoryModel.html"><strong aria-hidden="true">10.1.</strong> Memory Model</a></li><li class="chapter-item expanded "><a href="../../../Architecture/SVE.html"><strong aria-hidden="true">10.2.</strong> SVE</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">GeekPie_HPC Wiki</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/geekpiehpc/wiki" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="author"><a class="header" href="#author">Author</a></h1>
+<p>@Zecheng Li</p>
+<h1 id="tutorial"><a class="header" href="#tutorial">Tutorial</a></h1>
+<p><strong>Video</strong>: <a href="https://drive.google.com/file/d/1c2bD3gZw5ZeJS81i1uXY6eAXf70t8bZo/view">https://drive.google.com/file/d/1c2bD3gZw5ZeJS81i1uXY6eAXf70t8bZo/view</a></p>
+<p><strong>NAMD 2.14 User’s Guide</strong>: <a href="https://www.ks.uiuc.edu/Research/namd/2.14/ug/">https://www.ks.uiuc.edu/Research/namd/2.14/ug/</a></p>
+<p><strong>NAMD Tutorial</strong>: <a href="http://www.ks.uiuc.edu/Training/Tutorials/namd/namd-tutorial-unix-html/index.html">http://www.ks.uiuc.edu/Training/Tutorials/namd/namd-tutorial-unix-html/index.html</a></p>
+<p>VMD User’s Guide: <a href="https://www.ks.uiuc.edu/Research/vmd/current/ug/">https://www.ks.uiuc.edu/Research/vmd/current/ug/</a></p>
+<p>VMD Tutorial: <a href="https://www.ks.uiuc.edu/Training/Tutorials/vmd/tutorial-html/">https://www.ks.uiuc.edu/Training/Tutorials/vmd/tutorial-html/</a></p>
+<h1 id="building"><a class="header" href="#building">Building</a></h1>
+<p>We use spack as the package manager. To build a simple version <strong>without</strong> MPI support: </p>
+<pre><code>spack install namd
+</code></pre>
+<p>In our competition, we need to support multiple nodes, so we choose to install charmpp with MPI backend and SMP enabled. The TCL interface is included for parsing the input file. The below command will depend on the OpenMPI with ucx support. </p>
+<pre><code>spack install -v namd%gcc interface=tcl ^charmpp backend=mpi ^openmpi fabrics=ucx
+</code></pre>
+<p>We could also use a pure MPI version. But unlike some other applications, NAMD optimized its performance for multi-threading, so the SMP version is usually faster than MPI when a single node has multiple cores. When running, we should use more communication threads (one per numa) for larger-scale jobs. </p>
+<h2 id="tuning-performance"><a class="header" href="#tuning-performance">Tuning performance</a></h2>
+<p>We could try different compilers to build NAMD. The performance critical part of NAMD is the force calculation implemented in the source of NAMD itself (instead of in some math libraries), so compiler optimization is crucial for the performance. </p>
+<p>We could try different compilers: (oneapi is not supported by charm++ that NAMD 2.14 depends on)</p>
+<pre><code>spack install -v namd%intel interface=tcl ^charmpp%intel backend=mpi ^openmpi fabrics=ucx
+spack install -v namd%nvhpc interface=tcl ^charmpp%nvhpc backend=mpi ^openmpi fabrics=ucx
+spack install -v namd%clang interface=tcl ^charmpp%clang backend=mpi ^openmpi fabrics=ucx
+</code></pre>
+<p>As you may find, Intel compiler might yield better performance than gcc, and NVHPC and clang are extremely slow. Don't worry. Have a look at the build scripts of NAMD. </p>
+<pre><code>spack edit namd
+
+if self.spec.satisfies(&quot;^charmpp@:6.10.1&quot;):
+ optims_opts = {
+ &quot;gcc&quot;: m64
+ + &quot;-O3 -fexpensive-optimizations \
+ -ffast-math -lpthread &quot;
+ + archopt,
+ &quot;intel&quot;: &quot;-O2 -ip -qopenmp-simd&quot; + archopt,
+ &quot;aocc&quot;: m64
+ + &quot;-O3 -ffp-contract=fast -ffast-math \
+ -fopenmp &quot;
+ + archopt,
+ }
+else:
+ optims_opts = {
+ &quot;gcc&quot;: m64
+ + &quot;-O3 -fexpensive-optimizations \
+ -ffast-math -lpthread &quot;
+ + archopt,
+ &quot;intel&quot;: &quot;-O2 -ip &quot; + archopt,
+ &quot;aocc&quot;: m64
+ + &quot;-O3 -ffp-contract=fast \
+ -ffast-math &quot;
+ + archopt,
+ }
+</code></pre>
+<p>It did not set the optimization flags for clang and NVHPC. We could add them by ourselves. Below is an example; you should try different flags based on your architecture. </p>
+<pre><code>&quot;clang&quot;: m64 + &quot;-O3 -ffp-contract=fast -ffast-math -mprefer-vector-width=256 &quot; + archopt,
+&quot;nvhpc&quot;: m64 + &quot;-O3 -fast &quot; + archopt,
+</code></pre>
+<p>Then we could build NAMD with clang and NVHPC. Surprisingly, clang is faster than Intel compiler on our machine (Haswell). </p>
+<p>From the <a href="https://charm.readthedocs.io/en/latest/charm++/manual.html">charm++ documentation</a>, we could find that we can compile different load balancer modules into NAMD with different flags, but the default spack build script did not include them. Having a suitable load balancer for your architecture and interconnect is important. Some load balancers might cause a compile error since multiple definitions. </p>
+<blockquote>
+<p>-module TreeLB -module RecBipartLB ... 
+links the listed LB modules into an application, which can then be used at runtime via the +balancer option.</p>
+</blockquote>
+<pre><code>spack edit namd
+
+# in function def edit(self, spec, prefix): add line
+opts.extend([&quot;-module CentralLB -module DistributedLB&quot;])
+</code></pre>
+<p>From our experience, the default load balancer, the CentralLB, and the DistributedLB should be chosen based on the input and the architecture. It will bring about a 5-10% performance difference. You can also experiment with other load balancers or even write your own load balancer (not that hard!).</p>
+<p>There are also some other flags that could be tuned. Since our machine does not support AVX512, we did not try the Intel-optimized AVX512 blocking version of NAMD. </p>
+<h1 id="assignment"><a class="header" href="#assignment">Assignment</a></h1>
+<ol>
+<li>
+<p>Quick Start &amp; Homework: <a href="https://gitlab.msu.edu/vermaaslab/indysccnamd/-/tree/main">https://gitlab.msu.edu/vermaaslab/indysccnamd/-/tree/main</a></p>
+</li>
+<li>
+<p>Running Command:</p>
+<pre><code># One per node with SMP
+mpirun -np 20 -hostfile ~/work/host20 -bind-to core -map-by ppr:1:node -x PATH namd2 +ppn 19 +pemap 1-19 +commap 0 run.namd
+
+​# One per NUMA with SMP (You should check your NUMA topology first)
+mpirun -np 40 -hostfile ~/work/host20 --bind-to core --map-by ppr:2:node  -x PATH  namd2   +ppn 9 +pemap 1-4,10-14,5-9,15-19 +commap 0,5 ./run.namd
+
+# Run with 19 replicas
+mpirun -np 19 -hostfile ~/work/host20 --bind-to core --map-by ppr:1:node  -x PATH namd2 +replicas 19 +balancer DistributedLB +ppn 20 +pemap 0-19 +commap 0 +stdout output/out.%d.log ./replicaconfig.namd
+</code></pre>
+<p>Here we oversubscribe the cores. Since core 0 is lightly loaded when communication is not heavy, we can also assign it to computation.
+Note that in above commands, we always put core 0 or core 5 to communication. This is because we have set most of the interrupt affinity to core 0 and core 5, using them could get better performance on both communication and computation. (it will be up to 5% slower if you use other cores)</p>
+</li>
+<li>
+<p>MPI Reference: <a href="https://www.ks.uiuc.edu/Research/namd/2.9/ug/node87.html">https://www.ks.uiuc.edu/Research/namd/2.9/ug/node87.html</a></p>
+</li>
+<li>
+<p>Our submission: <a href="https://drive.google.com/file/d/1HqxWP6YJIr06wz6ANMHog3v59HnhV7T2/view?usp=share_link">https://drive.google.com/file/d/1HqxWP6YJIr06wz6ANMHog3v59HnhV7T2/view?usp=share_link</a></p>
+</li>
+</ol>
+<h1 id="final"><a class="header" href="#final">Final</a></h1>
+<ol>
+<li>
+<p>Problem Set: <a href="https://drive.google.com/file/d/1zyWpv-bfN2uzke7RqnpS8PI6Q-AQFtKb/view?usp=share_link">https://drive.google.com/file/d/1zyWpv-bfN2uzke7RqnpS8PI6Q-AQFtKb/view?usp=share_link</a></p>
+</li>
+<li>
+<p>Our Submission: <a href="https://drive.google.com/drive/folders/1dpVS6027vJTsbxlOjfMEGdftOfQyCmlO?usp=share_link">https://drive.google.com/drive/folders/1dpVS6027vJTsbxlOjfMEGdftOfQyCmlO?usp=share_link</a></p>
+</li>
+</ol>
+<h1 id="experience"><a class="header" href="#experience">Experience</a></h1>
+<p>NAMD配置文件参数介绍：</p>
+<ol>
+<li>NAMD configuration parameters： <a href="https://www.ks.uiuc.edu/Research/namd/2.9/ug/node12.html">https://www.ks.uiuc.edu/Research/namd/2.9/ug/node12.html</a></li>
+<li>Non-bonded Interaction &amp; Parameters: <a href="https://www.ks.uiuc.edu/Research/namd/2.10b2/ug/node23.html">https://www.ks.uiuc.edu/Research/namd/2.10b2/ug/node23.html</a></li>
+</ol>
+<p>调参方法：</p>
+<ol>
+<li>
+<p>整体思路：在不跑崩的范围内，timestep和nonbondedFreq的乘积、timestep和fullElectFrequency的乘积尽可能大</p>
+</li>
+<li>
+<p>输出间隔也对性能有影响，调小后约能提升5-10%性能</p>
+</li>
+<li>
+<p>Reference：</p>
+<ol>
+<li><a href="https://www.ks.uiuc.edu/Research/namd/wiki/index.cgi?NamdPerformanceTuning">https://www.ks.uiuc.edu/Research/namd/wiki/index.cgi?NamdPerformanceTuning</a></li>
+<li><a href="https://www.ks.uiuc.edu/Research/namd/cvs/ug/node95.html">https://www.ks.uiuc.edu/Research/namd/cvs/ug/node95.html</a></li>
+</ol>
+</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../Apps/SC/IndySC22/HPL.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../Apps/SC/SC21/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../Apps/SC/IndySC22/HPL.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../Apps/SC/SC21/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

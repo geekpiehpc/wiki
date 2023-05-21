@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html lang="cn" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>HPL - GeekPie_HPC Wiki</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="../../../Algorithm/index.html"><strong aria-hidden="true">2.</strong> Algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Algorithm/dgemm.html"><strong aria-hidden="true">2.1.</strong> dgemm</a></li><li class="chapter-item expanded "><a href="../../../Algorithm/fft.html"><strong aria-hidden="true">2.2.</strong> fft</a></li><li class="chapter-item expanded "><a href="../../../Algorithm/kmer.html"><strong aria-hidden="true">2.3.</strong> Kmer</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/index.html"><strong aria-hidden="true">3.</strong> Apps</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/index.html"><strong aria-hidden="true">3.1.</strong> ASC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-19/index.html"><strong aria-hidden="true">3.1.1.</strong> Asc 19</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-19/cesm.html"><strong aria-hidden="true">3.1.1.1.</strong> Cesm</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-20/index.html"><strong aria-hidden="true">3.1.2.</strong> Asc 20-21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-20/quest.html"><strong aria-hidden="true">3.1.2.1.</strong> Quest</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-22/index.html"><strong aria-hidden="true">3.1.3.</strong> Asc 22</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-22/yuan.html"><strong aria-hidden="true">3.1.3.1.</strong> yuan</a></li><li class="chapter-item expanded "><a href="../../../Apps/ASC/asc-22/DeepMD.html"><strong aria-hidden="true">3.1.3.2.</strong> DeepMD</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/index.html"><strong aria-hidden="true">3.2.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/index.html"><strong aria-hidden="true">3.2.1.</strong> ISC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/CodeChallenge.html"><strong aria-hidden="true">3.2.1.1.</strong> Code Challenge</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/LAMMPS.html"><strong aria-hidden="true">3.2.1.2.</strong> LAMMPS</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/GPAW.html"><strong aria-hidden="true">3.2.1.3.</strong> GPAW</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/MHM2.html"><strong aria-hidden="true">3.2.1.4.</strong> MHM2</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-21/WRF.html"><strong aria-hidden="true">3.2.1.5.</strong> WRF</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-22/index.html"><strong aria-hidden="true">3.2.2.</strong> ISC 22</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-22/Incompact3D.html"><strong aria-hidden="true">3.2.2.1.</strong> Incompact3D</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-22/NWChem.html"><strong aria-hidden="true">3.2.2.2.</strong> NWChem</a></li><li class="chapter-item expanded "><a href="../../../Apps/ISC/ISC-22/ICON.html"><strong aria-hidden="true">3.2.2.3.</strong> ICON</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/SC/index.html"><strong aria-hidden="true">3.3.</strong> SC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/SC/IndySC22/index.html"><strong aria-hidden="true">3.3.1.</strong> SC 22</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/SC/IndySC22/MiniVite.html"><strong aria-hidden="true">3.3.1.1.</strong> MiniVite</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/IndySC22/HPL.html" class="active"><strong aria-hidden="true">3.3.1.2.</strong> HPL</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/IndySC22/NAMD.html"><strong aria-hidden="true">3.3.1.3.</strong> NAMD</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/index.html"><strong aria-hidden="true">3.3.2.</strong> SC 21</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/quantum-espresso.html"><strong aria-hidden="true">3.3.2.1.</strong> Quantum Espresso</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/ramBLe.html"><strong aria-hidden="true">3.3.2.2.</strong> Ram B Le</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/cardioid.html"><strong aria-hidden="true">3.3.2.3.</strong> Cardioid</a></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC21/Mystery.html"><strong aria-hidden="true">3.3.2.4.</strong> Mystery</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Apps/SC/SC20.html"><strong aria-hidden="true">3.3.3.</strong> SC 20</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Benchmark/index.html"><strong aria-hidden="true">4.</strong> Benchmark</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Benchmark/hpcg-dat.html"><strong aria-hidden="true">4.1.</strong> Hpcg Dat</a></li><li class="chapter-item expanded "><a href="../../../Benchmark/hpl-dat.html"><strong aria-hidden="true">4.2.</strong> Hpl Dat</a></li><li class="chapter-item expanded "><a href="../../../Benchmark/io500.html"><strong aria-hidden="true">4.3.</strong> Io 500</a></li></ol></li><li class="chapter-item expanded "><a href="../../../DevOps/index.html"><strong aria-hidden="true">5.</strong> Dev Ops</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/beegfs.html"><strong aria-hidden="true">5.1.</strong> BeeGFS</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Grafana.html"><strong aria-hidden="true">5.2.</strong> Grafana</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Scheduler.html"><strong aria-hidden="true">5.3.</strong> Scheduler</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Singularity.html"><strong aria-hidden="true">5.4.</strong> Singularity</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Oracle/index.html"><strong aria-hidden="true">5.5.</strong> Oracle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/Oracle/ansible.html"><strong aria-hidden="true">5.5.1.</strong> Ansible</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Oracle/grafana.html"><strong aria-hidden="true">5.5.2.</strong> Grafana</a></li></ol></li><li class="chapter-item expanded "><a href="../../../DevOps/ISC/index.html"><strong aria-hidden="true">5.6.</strong> ISC</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/ISC/NSCC.html"><strong aria-hidden="true">5.6.1.</strong> NSCC</a></li><li class="chapter-item expanded "><a href="../../../DevOps/ISC/Bridges.html"><strong aria-hidden="true">5.6.2.</strong> Bridges</a></li><li class="chapter-item expanded "><a href="../../../DevOps/ISC/Thor.html"><strong aria-hidden="true">5.6.3.</strong> Thor</a></li><li class="chapter-item expanded "><a href="../../../DevOps/ISC/Niagara.html"><strong aria-hidden="true">5.6.4.</strong> Niagara</a></li></ol></li><li class="chapter-item expanded "><a href="../../../DevOps/Azure/index.html"><strong aria-hidden="true">5.7.</strong> Azure</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/Azure/cyclecloud.html"><strong aria-hidden="true">5.7.1.</strong> CycleCloud</a></li><li class="chapter-item expanded "><a href="../../../DevOps/Azure/check-list.html"><strong aria-hidden="true">5.7.2.</strong> Check List</a></li></ol></li><li class="chapter-item expanded "><a href="../../../DevOps/GeekPie/index.html"><strong aria-hidden="true">5.8.</strong> GeekPie</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../DevOps/GeekPie/hardware.html"><strong aria-hidden="true">5.8.1.</strong> Hardware</a></li><li class="chapter-item expanded "><a href="../../../DevOps/GeekPie/software.html"><strong aria-hidden="true">5.8.2.</strong> Software</a></li><li class="chapter-item expanded "><a href="../../../DevOps/GeekPie/tuning.html"><strong aria-hidden="true">5.8.3.</strong> Tuning</a></li><li class="chapter-item expanded "><a href="../../../DevOps/GeekPie/kernel.html"><strong aria-hidden="true">5.8.4.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="../../../DevOps/GeekPie/systemd-nspawn.html"><strong aria-hidden="true">5.8.5.</strong> systemd-nspawn</a></li></ol></li><li class="chapter-item expanded "><a href="../../../devops/archived/index.html"><strong aria-hidden="true">5.9.</strong> Archived</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../devops/archived/cluster-setup.html"><strong aria-hidden="true">5.9.1.</strong> Cluster Setup</a></li><li class="chapter-item expanded "><a href="../../../devops/archived/environment-installation.html"><strong aria-hidden="true">5.9.2.</strong> Environment Installation</a></li><li class="chapter-item expanded "><a href="../../../devops/archived/environment-modules.html"><strong aria-hidden="true">5.9.3.</strong> Environment Modules</a></li><li class="chapter-item expanded "><a href="../../../devops/archived/it-support-machine.html"><strong aria-hidden="true">5.9.4.</strong> It-Support Machine</a></li><li class="chapter-item expanded "><a href="../../../devops/archived/bmc-reverse.html"><strong aria-hidden="true">5.9.5.</strong> BMC Reverse</a></li><li class="chapter-item expanded "><a href="../../../devops/archived/saltstack.html"><strong aria-hidden="true">5.9.6.</strong> Salt Stack</a></li><li class="chapter-item expanded "><a href="../../../devops/archived/ldap.html"><strong aria-hidden="true">5.9.7.</strong> LDAP</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../Language/index.html"><strong aria-hidden="true">6.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Language/C++.html"><strong aria-hidden="true">6.1.</strong> C++</a></li><li class="chapter-item expanded "><a href="../../../Language/Chisel.html"><strong aria-hidden="true">6.2.</strong> Chisel</a></li><li class="chapter-item expanded "><a href="../../../Language/Fortran.html"><strong aria-hidden="true">6.3.</strong> Fortran</a></li><li class="chapter-item expanded "><a href="../../../Language/Go.html"><strong aria-hidden="true">6.4.</strong> Go</a></li><li class="chapter-item expanded "><a href="../../../Language/Rust.html"><strong aria-hidden="true">6.5.</strong> Rust</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Libs/index.html"><strong aria-hidden="true">7.</strong> Libs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Libs/Svml.html"><strong aria-hidden="true">7.1.</strong> Svml</a></li><li class="chapter-item expanded "><a href="../../../Libs/NumaCTL.html"><strong aria-hidden="true">7.2.</strong> NumaCTL</a></li><li class="chapter-item expanded "><a href="../../../Libs/Boost.html"><strong aria-hidden="true">7.3.</strong> Boost</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Profiling/index.html"><strong aria-hidden="true">8.</strong> Profiling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Profiling/ArmForge.html"><strong aria-hidden="true">8.1.</strong> Arm Forge</a></li><li class="chapter-item expanded "><a href="../../../Profiling/uProf.html"><strong aria-hidden="true">8.2.</strong> Uprof</a></li><li class="chapter-item expanded "><a href="../../../Profiling/Vtune.html"><strong aria-hidden="true">8.3.</strong> Vtune</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Spack/handson.html"><strong aria-hidden="true">9.</strong> Spack</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Spack/package.html"><strong aria-hidden="true">9.1.</strong> package</a></li><li class="chapter-item expanded "><a href="../../../Spack/handson.html"><strong aria-hidden="true">9.2.</strong> handson</a></li><li class="chapter-item expanded "><a href="../../../Spack/debug.html"><strong aria-hidden="true">9.3.</strong> debug</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Architecture/index.html"><strong aria-hidden="true">10.</strong> Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Architecture/MemoryModel.html"><strong aria-hidden="true">10.1.</strong> Memory Model</a></li><li class="chapter-item expanded "><a href="../../../Architecture/SVE.html"><strong aria-hidden="true">10.2.</strong> SVE</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">GeekPie_HPC Wiki</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/geekpiehpc/wiki" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="hpl--hpl-hero-run"><a class="header" href="#hpl--hpl-hero-run">HPL &amp; HPL Hero Run</a></h1>
+<p>此次 Indy SC 比赛中的 HPL benchmark 分为两组题目，一组为 HPL 在单节点上的调优，另外一组为在整个集群上运行 HPL (约300个节点).</p>
+<h2 id="hpl"><a class="header" href="#hpl">HPL</a></h2>
+<p>Hi teams</p>
+<p>Here is the assignment on HPL!
+Compute the theoretical peak FLOPs for the processor type available on Chameleon cloud for the IndySCC competition. (10 points)
+Build and install the HPL benchmark using your choice of linear algebra library and MPI library. Which linear algebra library did you choose and why? Which MPI library did you choose and why? (20 points)
+Run the HPL benchmark on a node using a fixed problem size (N) and by varying the number of cores from 2 to 20, doubling the cores at each trial. Which parameters did you need to change? Plot the GFLOPs number for each run vs. no. of cores. (30 points)
+Run the HPL benchmark using all 20 cores and tune the HPL.dat file to achieve the best GFLOPs number. Which parameters did you tune? What were your results using the unoptimized parameter(s) vs. the optimized parameter(s)? (40 points)
+(Bonus) Run HPL on 2-nodes. Was the GFLOPs number exactly twice that of your single-node performance? Why or why not? (10 points)
+Deliverables:
+Submit a report answering the questions in the assignment. While describing your steps, be brief and to the point. 
+You should also include a description of your cluster and how you created the cluster.
+For each of the steps 2-5, include the scripts that you used to build and run HPL. Provide sufficient documentation for your codes. Please note that your environment and scripts should be reproducible, i.e., the judges should be able to run them on an empty cluster. 
+For the tuning step 4, include the final HPL.dat file that gave you the best performance.
+Submission Instructions
+The assignment is assigned to all students. However, a single submission per team is sufficient. One member of the team can submit the assignment.
+The report can be a PDF file (preferred method) or a link to a google doc (we will check the timestamp for when it was last edited).
+Please include your team name and the university in the report.</p>
+<h2 id="hpl-hero-run"><a class="header" href="#hpl-hero-run">HPL Hero Run</a></h2>
+<p>Between now and Oct 20 you are allowed to burst up to 30 compute nodes to test scaling your node deployment processes.
+Hero HPL Runs
+On Oct 20 we will begin hero HPL runs. Each team will get a 23 hour window where they will be allowed to use up 300 compute nodes to complete the best HPL score they can get. 
+Ground Rules
+During this time, the other teams will only be allowed to use their 1 head node to continue testing. At the beginning of this phase we will shut down any compute nodes still running. Resource usage during this time will be closely monitored - any interference, accidental or otherwise, with the competing team will be penalized per the IndySCC rules and at the discretion of the committee.
+Schedule
+Each window will begin at 9 am Eastern Time and will end at 8 am Eastern Time the following day. We will need an hour to make sure your nodes are shut down and ready to go for the next team. The schedule was randomly generated and assigned and is listed below. If you would like to swap dates, you are responsible for finding another team to swap with. You may use the Google classroom to ask if anyone else needs to swap and is willing. Once the first team begins, the schedule will be locked in place. Otherwise, we cannot change any dates unless mutually agreed upon and there isn’t enough time left in the month to have alternative days.</p>
+<p>Thu Oct 20 - Durham University
+Fri Oct 21 - CUHK
+Sat Oct 22 - Georgia Tech
+Sun Oct 23 - SUSTech
+Mon Oct 24 - ShanghaiTech
+Tue Oct 25 - CSC/Finland
+Wed Oct 26 - Monash University
+Thu Oct 27 - Clemson
+Fri Oct 28 - U Indonesia
+Sat Oct 29 - UTEP
+Sun Oct 30 - TAMUCC
+Helpful Hints
+A successful team may strategize to run HPL in increasing increments of nodes, rather than try for the full 300 nodes at once. It is OK if you don’t use the full number of nodes with your final score, getting hundreds of nodes to work nicely together in real-life benchmarking exercises takes time and may be difficult to do in the short period you have them. It would be advantageous to have a very good score on a smaller set of nodes than to struggle to get the full 300 running, run out of time, and not have a score at all.</p>
+<p>Also keep in mind that this hardware is fairly old and there are likely a handful of bad/slow nodes. This is where slowly increasing the number of nodes you are using can come in handy.
+Run Into Hardware Problems or Outages?</p>
+<p>If you identify a slow node, we will not be able to fix it as the only spare parts are in the form of the other nodes, and it’s unlikely we will be able to fix it by the end of your window. You should exclude the slow node and move onto another node. If you scale up to the full 300 nodes, you may deploy extras, just make note of the slow nodes and document that your final submission uses no more than 300. </p>
+<p>If there is any disruption of resource availability during your window, such as a Chameleon outage or power/networking outage at the Purdue site, you may receive some make-up time in certain situations, as described in the next paragraph.</p>
+<p>If the resources are cumulatively unavailable for more than 4 hours, at the discretion of the committee, you may receive an equivalent time slot (ie, if you were unable to access for 5 hours, you would get another 5 hours) plus an extra hour for node spin-up at the end to try again. This time would be disjoint and come at the end of the above schedule as we can’t shift the rest of the schedule for the remaining teams. </p>
+<p>If you are the last team, we will ask that you shut down at your designated time, as we need time to determine the outage length adjustments for everyone. You’ll be able to restart at a later time, and that will keep things fair as the other teams wouldn’t have the ability to just extend their window.</p>
+<p>Outages of less than 4 hours will unfortunately be considered lost time. These shorter blips are part of real life challenges, and it would not be practical to allow make-up time for shorter times as you’d spend more time just spinning nodes back up.</p>
+<p>We also cannot accommodate internet outages at your locale as we can’t verify those outages, so you may want to have a plan to find another connection if that happens.</p>
+<p>Once all teams are done running, we will open the nodes back up for you to configure for the final 48 hour competition.
+Submitting results</p>
+<p>Final score submissions are due 1 hour after your window ends, right as the next team is starting. We will follow up with more details on this.</p>
+<h2 id="报告"><a class="header" href="#报告">报告</a></h2>
+<p><a href="answer.pdf">单节点</a>
+<a href="hero_run_report.pdf">多节点</a>
+<a href="hero_run.tar">hero run 相关文件</a></p>
+<h2 id="参考资料"><a class="header" href="#参考资料">参考资料</a></h2>
+<p><a href="https://netlib.org/benchmark/hpl/documentation.html">Official Documentation</a>
+<a href="https://developer.amd.com/spack/hpl-benchmark/">AMD HPL Benchmark</a>
+<a href="https://www.pugetsystems.com/labs/hpc/How-to-Run-an-Optimized-HPL-Linpack-Benchmark-on-AMD-Ryzen-Threadripper----2990WX-32-core-Performance-1291/">Run HPL on Threadripper</a>
+<a href="https://www.jsjkx.com/CN/article/openArticlePDF.jsp?id=10370">基于 HPL测试的集群系统性能分析与优化</a></p>
+<h2 id="方案"><a class="header" href="#方案">方案</a></h2>
+<h3 id="调优-hpldat"><a class="header" href="#调优-hpldat">调优 HPL.dat</a></h3>
+<p>具体过程请参见报告。</p>
+<blockquote>
+<p>在 HPL.dat 中可以使用多组参数，这样跑一次 HPL 可以得到多个测试结果，效率会高一些。
+{.is-info}</p>
+</blockquote>
+<h3 id="调优-mpi-参数"><a class="header" href="#调优-mpi-参数">调优 MPI 参数</a></h3>
+<h4 id="进程还是线程"><a class="header" href="#进程还是线程">进程还是线程</a></h4>
+<p>HPL 底层数学库可以利用多线程，所以可以让1个 HPL 进程利用整个 Socket。具体哪种的性能更好需要测试。</p>
+<p>Intel 数学库有三套方案：单线程执行，OpenMP 和 Intel TBB，后两者可以利用多核。</p>
+<p>具体调优情况参见报告。</p>
+<h3 id="绑核"><a class="header" href="#绑核">绑核</a></h3>
+<p>numactl 可以用来绑定 HPL 使用的内存在哪一个 numa 上。
+绑核的教程参见：
+<a href="https://www.ibm.com/docs/SSZTET_10.2/admin/smpi02_proc_affinity_mapbyunit.html">IBM MPI documentation</a>
+<a href="https://nekodaemon.com/2021/02/05/Understanding-MPI-map-by-and-bind-to-option/">Understanding-MPI-map-by-and-bind-to-option</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../Apps/SC/IndySC22/MiniVite.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../Apps/SC/IndySC22/NAMD.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../Apps/SC/IndySC22/MiniVite.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../Apps/SC/IndySC22/NAMD.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
