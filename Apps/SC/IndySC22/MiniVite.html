@@ -152,8 +152,8 @@
                         <h1 id="minivite"><a class="header" href="#minivite">MiniVite</a></h1>
 <h2 id="概述"><a class="header" href="#概述">概述</a></h2>
 <h3 id="资料"><a class="header" href="#资料">资料</a></h3>
-<p><a href="/minivite/ghosh2018.pdf">ghosh2018.pdf</a>
-<a href="/minivite-indyscc.pdf">minivite-indyscc.pdf</a></p>
+<p><a href="minivite/ghosh2018.pdf">ghosh2018.pdf</a>
+<a href="minivite-indyscc.pdf">minivite-indyscc.pdf</a></p>
 <h3 id="算法"><a class="header" href="#算法">算法</a></h3>
 <p>对于每个社区，可以计算 Modularity，整个图的 Modularity 就是每个社区的 Modularity 加总。通过改变社区的划分来影响 Modularity.</p>
 <p>目标：最大化 Modularity</p>
@@ -273,7 +273,7 @@ class Minivite(MakefilePackage):
 </code></pre>
 <p>本道题目在启用 <code>USE_MPI_RMA</code> 后，性能获得较大提升。</p>
 <h3 id="报告"><a class="header" href="#报告">报告</a></h3>
-<p><a href="/minivite.pdf">minivite.pdf</a></p>
+<p><a href="minivite.pdf">minivite.pdf</a></p>
 <h3 id="评价"><a class="header" href="#评价">评价</a></h3>
 <ul>
 <li>As a response to the first question, why do you think orkut's running time is longer even though it is smaller in size compared to webbase?</li>
@@ -330,16 +330,16 @@ How large is the graph you generated on 20 nodes vs. 1 node?
 <h3 id="profile"><a class="header" href="#profile">Profile</a></h3>
 <p>原程序用的 <code>std::set</code> <code>std::map</code> <code>std::unordered_set</code> <code>std::unordered_map</code> 太慢了，换成第三方快速 HashTable 实现能加速很多倍。
 原算法开了一个不必要的 <code>vector</code> 也可以优化掉。</p>
-<p><img src="/minivite/profiling_1.png" alt="profiling_1.png" />
-<img src="/minivite/profiling_2.png" alt="profiling_2.png" />
-<img src="/minivite/profiling_3.png" alt="profiling_3.png" /></p>
+<p><img src="minivite/profiling_1.png" alt="profiling_1.png" />
+<img src="minivite/profiling_2.png" alt="profiling_2.png" />
+<img src="minivite/profiling_3.png" alt="profiling_3.png" /></p>
 <h3 id="weak-scale-1"><a class="header" href="#weak-scale-1">Weak scale</a></h3>
 <p>用 miniVite 自带的算法生成图，生成非常慢，而且进程个数必须是 $2^n$，导致只能跑进程数 $1,2,4,8,16,32,64,128,256$。
 没有用 oversubscribing 因为不太符合 weak scaling 的意思，而且跑出来数据可能会很难看（指波动大）。</p>
 <h3 id="提交"><a class="header" href="#提交">提交</a></h3>
-<p><a href="/minivite/strong-scale-report.pdf">strong-scale-report.pdf</a>
-<a href="/minivite/weak-scale-report.pdf">weak-scale-report.pdf</a>
-<a href="/minivite/0001-modify.patch">0001-modify.patch</a></p>
+<p><a href="minivite/strong-scale-report.pdf">strong-scale-report.pdf</a>
+<a href="minivite/weak-scale-report.pdf">weak-scale-report.pdf</a>
+<a href="minivite/0001-modify.patch">0001-modify.patch</a></p>
 
                     </main>
 
