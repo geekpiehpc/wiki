@@ -14,8 +14,8 @@ dateCreated: 2022-10-30T11:12:33.369Z
 
 ### 资料
 
-[ghosh2018.pdf](/minivite/ghosh2018.pdf)
-[minivite-indyscc.pdf](/minivite-indyscc.pdf)
+[ghosh2018.pdf](minivite/ghosh2018.pdf)
+[minivite-indyscc.pdf](minivite-indyscc.pdf)
 
 ### 算法
 
@@ -160,7 +160,7 @@ class Minivite(MakefilePackage):
 
 ### 报告
 
-[minivite.pdf](/minivite.pdf)
+[minivite.pdf](minivite.pdf)
 
 ### 评价
 
@@ -242,9 +242,9 @@ mpirun --hostfile ./hostfile -n 400 -map-by core --bind-to core miniVite -f com-
 原程序用的 `std::set` `std::map` `std::unordered_set` `std::unordered_map` 太慢了，换成第三方快速 HashTable 实现能加速很多倍。
 原算法开了一个不必要的 `vector` 也可以优化掉。
 
-![profiling_1.png](/minivite/profiling_1.png)
-![profiling_2.png](/minivite/profiling_2.png)
-![profiling_3.png](/minivite/profiling_3.png)
+![profiling_1.png](minivite/profiling_1.png)
+![profiling_2.png](minivite/profiling_2.png)
+![profiling_3.png](minivite/profiling_3.png)
 
 ### Weak scale
 
@@ -253,6 +253,6 @@ mpirun --hostfile ./hostfile -n 400 -map-by core --bind-to core miniVite -f com-
 
 ### 提交
 
-[strong-scale-report.pdf](/minivite/strong-scale-report.pdf)
-[weak-scale-report.pdf](/minivite/weak-scale-report.pdf)
-[0001-modify.patch](/minivite/0001-modify.patch)
+[strong-scale-report.pdf](minivite/strong-scale-report.pdf)
+[weak-scale-report.pdf](minivite/weak-scale-report.pdf)
+[0001-modify.patch](minivite/0001-modify.patch)
