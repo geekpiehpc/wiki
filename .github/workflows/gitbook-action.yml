@@ -12,8 +12,8 @@ jobs:
   build:
     name: Test and build
     env:
-      MDBOOK_VERSION: 0.4.15
-      MDBOOK_LINKCHECK_VERSION: 0.7.6
+      MDBOOK_VERSION: 0.4.29
+      MDBOOK_LINKCHECK_VERSION: 0.7.7
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -29,5 +29,5 @@ jobs:
         if: github.event_name == 'push'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book/html
+          publish_dir: ./book
           enable_jekyll: false
