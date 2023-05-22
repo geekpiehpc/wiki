@@ -34,7 +34,7 @@ To create a user called John Smith, and add it to `geekpie-hpc` group:
 ```bash
 kanidm person create jsmith "John Smith"
 kanidm person update jsmith --mail "jsmith@shanghaitech.edu.cn" # --legalname
-kanidm group add_members geekpie-hpc jsmith
+kanidm group add-members geekpie-hpc jsmith
 ```
 
 Then enable posix, set ssh key and password.
