@@ -167,7 +167,7 @@ kanidm login --name geekpie
 <p>To create a user called John Smith, and add it to <code>geekpie-hpc</code> group:</p>
 <pre><code class="language-bash">kanidm person create jsmith &quot;John Smith&quot;
 kanidm person update jsmith --mail &quot;jsmith@shanghaitech.edu.cn&quot; # --legalname
-kanidm group add_members geekpie-hpc jsmith
+kanidm group add-members geekpie-hpc jsmith
 </code></pre>
 <p>Then enable posix, set ssh key and password.</p>
 <pre><code class="language-bash"># In kanidm uid is the same as gid. I recommend you to manually allocate a gid.
