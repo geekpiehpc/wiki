@@ -43,9 +43,9 @@ Then enable posix, set ssh key and password.
 # In kanidm uid is the same as gid. I recommend you to manually allocate a gid.
 # Please see https://github.com/geekpiehpc/AnsiblePlaybook/blob/main/group_vars/epyc.yml for old uids.
 kanidm person posix set jsmith --gidnumber 2345 # --shell /usr/bin/bash
-kanidm person ssh add_publickey jsmith id_rsa (cat ~/.ssh/id_rsa.pub)
+kanidm person ssh add-publickey jsmith id_rsa (cat ~/.ssh/id_rsa.pub)
 # Don't need this the user do not need sudo
-kanidm person posix set_password jsmith
+kanidm person posix set-password jsmith
 ```
 
 ## Install
